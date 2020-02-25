@@ -1,8 +1,49 @@
-# Project-1
+# Donkey Kong
+
+By...
+Maria Calle: mav006 
+Paula Hitz: paulahitz8
+Adrià Belmonte: croaco
+Irene Hernández: ihedud 
 
 
-*Donkey Kong* is a platform videogame arcade from 1981 in which you take control of the character *Jumpman*. Your objective is to climb to the top of the level and save the girl while you dodge objects thrown at you by *Donkey Kong*, the antagonist.
+<insert photo here>
 
+
+
+
+INDEX:
+
+1. Game description
+2. General analysis
+3. Design
+4. UI
+5. Audio
+6. Art
+
+ 
+
+1. GAME DESCRIPTION
+
+Donkey Kong is an arcade platform video game created by Nintendo in 1981. It is about a protagonist character, Mario (or Jumpman as it was called back then), who has to rescue a lady (Pauline) that has been kidnapped by an enormous gorilla named Donkey Kong. The player goes through different scenarios and has to dodge whatever attacks Donkey Kong throws against him in order to rescue Pauline.Donkey Kong is one of the most important games from the golden age of arcade video games as well as one of the most popular and greatest arcade games of all time
+
+![Screenshot](https://i.ytimg.com/vi/U24OcmpZ6fA/hqdefault.jpg)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rYNMatF5hcU?start=17">
 </iframe>
+
+
+
+2. GENERAL ANALYSIS
+
+
+3. DESIGN
+
+
+4. UI
+
+
+5. AUDIO
+
+
+6. ART
