@@ -66,7 +66,7 @@ Donkey Kong is an arcade platform video game created by Nintendo in 1981. It is 
 
 
 
-![Screenshot](https://i.ytimg.com/vi/U24OcmpZ6fA/hqdefault.jpg)
+![donkey kong](https://user-images.githubusercontent.com/59050152/75244317-e3cc0e00-57cb-11ea-921b-a0ef27110eb9.jpg)
 
 
 
