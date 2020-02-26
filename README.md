@@ -1,24 +1,24 @@
 # Donkey Kong<br/>
 By...<br/>
-Maria Calle(_mav006_):<br/>
-Paula Hitz(_paulahitz8_):<br/>
-Adrià Belmonte(_croaco_):<br/>
-Irene Hernández(_ihedud_):<br/>
+Maria Calle (_mav006_):<br/>
+Paula Hitz (_paulahitz8_):<br/>
+Adrià Belmonte (_croaco_):<br/>
+Irene Hernández (_ihedud_):<br/>
 <insert photo here><br/><br/>
-__INDEX:__<br/><br/>
+__INDEX:__ <br/><br/>
 1. Game description<br/>
 2. General analysis<br/>
 3. Design<br/>
 4. UI<br/>
 5. Audio<br/>
 6. Art<br/><br/><br/>
-__1. GAME DESCRIPTION__<br/><br/>
+__1. GAME DESCRIPTION__ <br/><br/>
 Donkey Kong is an arcade platform video game created by Nintendo in 1981. It is about a protagonist character, Mario (or Jumpman as it was called back then), who has to rescue a lady (Pauline) that has been kidnapped by an enormous gorilla named Donkey Kong. The player goes through different scenarios and has to dodge whatever attacks Donkey Kong throws against him in order to rescue Pauline.Donkey Kong is one of the most important games from the golden age of arcade video games as well as one of the most popular and greatest arcade games of all time<br/>
-[[images/DONKEYKONGSCREENSHOT.JPG]]
+[[images/DONKEY_KONG_SCREENSHOT.JPG]]
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rYNMatF5hcU?start=17">
 </iframe><br/>
-__2. GENERAL ANALYSIS__<br/>
-__3. DESIGN__<br/>
-__4. UI__<br/>
-__5. AUDIO__<br/>
-__6. ART__<br/>
+__2. GENERAL ANALYSIS__ <br/>
+__3. DESIGN__ <br/>
+__4. UI__ <br/>
+__5. AUDIO __<br/>
+__6. ART__ <br/>
