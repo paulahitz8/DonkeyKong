@@ -5,7 +5,7 @@ Paula Hitz (_paulahitz8_)<br/>
 Adrià Belmonte (_croaco_)<br/>
 Irene Hernández (_ihedud_)<br/>
 ~insert photo here~<br/><br/><br/>
-### INDEX:<br/>
+#### INDEX:<br/>
 1. Game description<br/>
 2. General analysis<br/>
 3. Design<br/>
