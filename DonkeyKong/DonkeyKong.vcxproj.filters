@@ -22,6 +22,12 @@
     <Filter Include="Source Files\Utils">
       <UniqueIdentifier>{861ade76-32c6-48bb-bffc-c19d6d5a5291}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Modules\Characters">
+      <UniqueIdentifier>{f3b193a8-d974-4cab-84ac-5499c47af70f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Levels">
+      <UniqueIdentifier>{d68688bd-c039-448c-9755-3293696e7c3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -42,9 +48,6 @@
     <ClCompile Include="ModuleInput.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleLvl4.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleRender.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
@@ -57,11 +60,14 @@
     <ClCompile Include="Path.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="ModulePlayer.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleDonkey.cpp">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer.cpp">
+      <Filter>Source Files\Modules\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleLvl4.cpp">
+      <Filter>Source Files\Modules\Levels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,9 +89,6 @@
     <ClInclude Include="ModuleInput.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleLvl4.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleRender.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
@@ -104,11 +107,14 @@
     <ClInclude Include="Path.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="ModulePlayer.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleDonkey.h">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Source Files\Modules\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleLvl4.h">
+      <Filter>Source Files\Modules\Levels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
