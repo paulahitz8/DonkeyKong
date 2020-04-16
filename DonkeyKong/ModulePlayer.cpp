@@ -49,6 +49,9 @@ bool ModulePlayer::Start()
 	player.w = 12;
 	player.h = 16;
 
+
+	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Wave).wav");
+
 	return true;
 }
 
@@ -78,14 +81,14 @@ Update_Status ModulePlayer::Update()
 		position.x--;
 	
 			currentAnimation = &leftAnim;
-	
+			App->audio->PlayFx(walkingFx);
 	}
 
 	else if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT) {
 		position.x++;
 	
 			currentAnimation = &rightAnim;
-	
+			App->audio->PlayFx(walkingFx);
 	}
 	
 
@@ -115,7 +118,7 @@ Update_Status ModulePlayer::PostUpdate()
 	}
 	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT && currentAnimation != &rightidleAnim) {
 		App->render->Blit(playertexture, position.x, position.y, &(rightAnim.GetCurrentFrame()), 0);
-	
+		
 	}
 
 

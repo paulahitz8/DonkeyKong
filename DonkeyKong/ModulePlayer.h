@@ -15,7 +15,7 @@ private:
 	SDL_Rect player;
 	iPoint position = { 46, 232 };
 	SDL_Texture* playertexture = nullptr;
-
+	uint walkingFx = 0;
 public:
 	ModulePlayer(bool startEnabled);
 	~ModulePlayer();
