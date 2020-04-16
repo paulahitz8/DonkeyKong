@@ -8,24 +8,23 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
+	position.x = { 46 };
+	position.y = { 232 };
 	// left idle
 	leftidleAnim.PushBack({ 56, 2, 12, 16 });
-
 	//right idle
 	rightidleAnim.PushBack({ 188, 128, 12, 16 });
-
 	// left animation
 	leftAnim.PushBack({ 79, 2, 15, 16 });
 	leftAnim.PushBack({ 103, 2, 15, 15 });
-	leftAnim.loop = false;
+	leftAnim.PushBack({ 79, 2, 15, 16 });
 	leftAnim.speed = 0.1f;
 
 
 	//right animation
 	rightAnim.PushBack({ 162, 128, 15, 16 });
 	rightAnim.PushBack({ 138, 128, 15, 15 });
-	rightAnim.loop = false;
-	rightAnim.pingpong = true;
+	rightAnim.PushBack({ 162, 128, 15, 16 });
 	rightAnim.speed = 0.1f;
 }
 
@@ -55,13 +54,14 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
+	
 	if (currentAnimation == &rightAnim) {
-		rightAnim.Reset();
+
 		currentAnimation = &rightidleAnim;
 	}
 
 	if (currentAnimation == &leftAnim) {
-		leftAnim.Reset();
+		
 		currentAnimation = &leftidleAnim;
 	}
 
@@ -71,24 +71,28 @@ Update_Status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT) {
 		position.y++;
 	}
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT) {
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT && App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT) {
+		currentAnimation = &rightidleAnim;
+	}
+	else if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT) {
 		position.x--;
-		if (currentAnimation != &leftAnim) {
-			leftAnim.Reset();
+	
 			currentAnimation = &leftAnim;
-			
-		}
+	
 	}
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT) {
+	else if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT) {
 		position.x++;
-		if (currentAnimation != &rightAnim) {
-			rightAnim.Reset();
+	
 			currentAnimation = &rightAnim;
-		}
+	
 	}
+	
 
-	currentAnimation->Update();
+	leftAnim.Update();
+	rightAnim.Update();
+	leftidleAnim.Update();
+	rightidleAnim.Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -96,8 +100,25 @@ Update_Status ModulePlayer::Update()
 Update_Status ModulePlayer::PostUpdate()
 {
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	App->render->Blit(playertexture, position.x, position.y, &rect, 0);
+	if (currentAnimation == &rightidleAnim) {
+		App->render->Blit(playertexture, position.x, position.y, &(rightidleAnim.GetCurrentFrame()), 0);
 	
+	}
+	if (currentAnimation == &leftidleAnim) {
+		App->render->Blit(playertexture, position.x, position.y, &(leftidleAnim.GetCurrentFrame()), 0);
+	
+	}
+
+	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT && currentAnimation != &rightidleAnim) {
+		App->render->Blit(playertexture, position.x, position.y, &(leftAnim.GetCurrentFrame()), 0);
+		
+	}
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT && currentAnimation != &rightidleAnim) {
+		App->render->Blit(playertexture, position.x, position.y, &(rightAnim.GetCurrentFrame()), 0);
+	
+	}
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
