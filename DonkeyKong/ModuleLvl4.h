@@ -12,9 +12,25 @@ class ModuleLvl4 : public Module
 {
 
 private:
-	SDL_Rect background;
+	
 	iPoint position = { 0, 0 }; //x y
-	SDL_Texture* texture = nullptr; 
+	 
+
+	//TILEMAP
+
+	SDL_Rect tile;
+
+	SDL_Texture* backgroundTexture = nullptr;
+	SDL_Texture* floorTexture = nullptr;
+	SDL_Texture* floorCarrotTexture = nullptr;
+	SDL_Texture* carrotTexture = nullptr;
+	SDL_Texture* ladderTexture = nullptr;
+	SDL_Texture* floorLadderTexture = nullptr;
+	SDL_Texture* leftPoleTexture = nullptr;
+	SDL_Texture* rightPoleTexture = nullptr;
+	
+
+	int map[32][32];
 	
 
 public:
@@ -24,6 +40,8 @@ public:
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
 	bool CleanUp() override;
+
+
 };
 
 #endif
