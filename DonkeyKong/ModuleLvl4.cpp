@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleInput.h"
+#include "ModuleAudio.h"
 
 ModuleLvl4::ModuleLvl4(bool startEnabled) : Module(startEnabled)
 {
@@ -18,6 +19,7 @@ ModuleLvl4::~ModuleLvl4()
 bool ModuleLvl4::Start()
 {
 	texture = App->textures->Load("Assets/cositasfondo/background.png");
+	App->audio->PlayMusic("Assets/Music/10 Stage 4 BGM.ogg", 1.0f);
 
 		// comprueba esto 
 
