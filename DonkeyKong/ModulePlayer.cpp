@@ -68,81 +68,58 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
-	
-	if (currentAnimation == &rightAnim) {
-		currentAnimation = &rightidleAnim;
-	}
 
-	if (currentAnimation == &leftAnim) {
-		currentAnimation = &leftidleAnim;
-	}
-
-	if (App->input->keys[SDL_SCANCODE_UP] == KEY_REPEAT) {
-		position.y -= 1;
-	}
-	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT) {
-		position.y += 1;
-	}
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT && App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT) {
-		currentAnimation = &rightidleAnim;
-	}
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT) {
-		position.x -= 1;
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
+	{
+		position.x -= speed;
+		/*if (currentAnimation != &leftAnim)
+		{
+			leftAnim.Reset();
 			currentAnimation = &leftAnim;
-			App->audio->PlayFx(walkingFx);
+		}*/
+			currentAnimation = &leftAnim;
+			//App->audio->PlayFx(walkingFx);
 	}
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT) {
-		position.x += 1;
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+	{
+		position.x += speed;
+		/*if (currentAnimation != &rightAnim)
+		{
+			rightAnim.Reset();
 			currentAnimation = &rightAnim;
-			App->audio->PlayFx(walkingFx);
-			App->audio->PlayFx(silenceFx);
+		}*/
+			currentAnimation = &rightAnim;
+			//App->audio->PlayFx(walkingFx);
+			//App->audio->PlayFx(silenceFx);
 	}
-	
-	// Animation Update CREO QUE TODO ESO SE PUEDE SUSTITUIR POR LA DE CURRENT ANIMATION
-	/*leftAnim.Update();
-	rightAnim.Update();
-	leftidleAnim.Update();
-	rightidleAnim.Update();
-	rightwalkAnim.Update();*/
-	currentAnimation->Update();
 
-	// Collider position Update
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+	{
+		position.y += speed;
+	}
+
+	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+	{
+		position.y -= speed;
+	}
+
 	collider->SetPos(position.x, position.y);
 
+	currentAnimation->Update();
+
 	return Update_Status::UPDATE_CONTINUE;
+	
 }
 
 Update_Status ModulePlayer::PostUpdate()
 {
-	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 
-	if (currentAnimation == &rightidleAnim) {
-		App->render->Blit(playertexture, position.x, position.y, &(rightidleAnim.GetCurrentFrame()), 0);
-	
-	}
-	if (currentAnimation == &leftidleAnim) {
-		App->render->Blit(playertexture, position.x, position.y, &(leftidleAnim.GetCurrentFrame()), 0);
-	
-	}
-
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT && currentAnimation != &rightidleAnim) {
-		App->render->Blit(playertexture, position.x, position.y, &(leftAnim.GetCurrentFrame()), 0);
-		
-	}
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT && currentAnimation != &rightidleAnim) {
-		App->render->Blit(playertexture, position.x, position.y, &(rightAnim.GetCurrentFrame()), 0);
-		
-	}
-
-
-	// los de las animaciones miraos esto. Podría sustituir todas esas lineas de aqui?
-
-	/*if (!destroyed)
+	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->Blit(texture, position.x, position.y, &rect);
-	}*/
+		App->render->Blit(playertexture, position.x, position.y, &rect);
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
