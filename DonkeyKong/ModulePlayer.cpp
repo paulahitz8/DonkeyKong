@@ -13,20 +13,20 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	position.x = { 46 };
 	position.y = { 232 };
 	// left idle
-	leftidleAnim.PushBack({ 56, 2, 12, 16 });
+	leftidleAnim.PushBack({ 37, 68, 12, 26 });
 	//right idle
-	rightidleAnim.PushBack({ 188, 128, 12, 16 });
+	rightidleAnim.PushBack({ 207, 194, 12, 26 });
 	// left animation
-	leftAnim.PushBack({ 79, 2, 15, 16 });
-	leftAnim.PushBack({ 103, 2, 15, 15 });
-	leftAnim.PushBack({ 79, 2, 15, 16 });
+	leftAnim.PushBack({ 59, 78, 30, 16 });
+	leftAnim.PushBack({ 101, 68, 13, 26 });
+	leftAnim.PushBack({ 59, 78, 30, 16 });
 	leftAnim.speed = 0.1f;
 
 
 	//right animation
-	rightAnim.PushBack({ 162, 128, 15, 16 });
-	rightAnim.PushBack({ 138, 128, 15, 15 });
-	rightAnim.PushBack({ 162, 128, 15, 16 });
+	rightAnim.PushBack({ 167, 204, 30, 16 });
+	rightAnim.PushBack({ 142, 194, 13, 26 });
+	rightAnim.PushBack({ 167, 204, 30, 16 });
 	rightAnim.speed = 0.1f;
 }
 
