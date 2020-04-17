@@ -28,6 +28,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.PushBack({ 142, 194, 13, 26 });
 	rightAnim.PushBack({ 167, 204, 30, 16 });
 	rightAnim.speed = 0.1f;
+
 }
 
 ModulePlayer::~ModulePlayer() {
@@ -52,7 +53,9 @@ bool ModulePlayer::Start()
 	player.h = 16;
 
 
-	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Wave).wav");
+	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
+	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
+	
 
 	return true;
 }
@@ -91,6 +94,7 @@ Update_Status ModulePlayer::Update()
 	
 			currentAnimation = &rightAnim;
 			App->audio->PlayFx(walkingFx);
+			App->audio->PlayFx(silenceFx);
 	}
 	
 
@@ -98,6 +102,7 @@ Update_Status ModulePlayer::Update()
 	rightAnim.Update();
 	leftidleAnim.Update();
 	rightidleAnim.Update();
+	rightwalkAnim.Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }

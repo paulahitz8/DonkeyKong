@@ -16,6 +16,8 @@ private:
 	iPoint position = { 46, 232 };
 	SDL_Texture* playertexture = nullptr;
 	uint walkingFx = 0;
+	uint silenceFx = 0;
+	
 public:
 	ModulePlayer(bool startEnabled);
 	~ModulePlayer();
@@ -28,7 +30,7 @@ public:
 	Animation rightidleAnim;
 	Animation leftAnim;
 	Animation rightAnim;
-	
+	Animation rightwalkAnim;
 };
 
 #endif

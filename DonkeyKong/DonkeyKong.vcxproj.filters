@@ -78,12 +78,6 @@
     <ClCompile Include="InitialScreen.cpp">
       <Filter>Source Files\Modules\Levels</Filter>
     </ClCompile>
-    <ClCompile Include="Colliders.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleCollisions.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -139,12 +133,6 @@
     </ClInclude>
     <ClInclude Include="InitialScreen.h">
       <Filter>Source Files\Modules\Levels</Filter>
-    </ClInclude>
-    <ClInclude Include="Colliders.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleCollisions.h">
-      <Filter>Source Files\Modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
