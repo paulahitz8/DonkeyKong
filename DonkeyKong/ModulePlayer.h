@@ -12,22 +12,51 @@ struct SDL_Texture;
 class ModulePlayer : public Module
 {
 private:
+
 	SDL_Rect player;
 	iPoint position = { 46, 232 };
 	SDL_Texture* playertexture = nullptr;
+
+	// Sound effects indices
 	uint walkingFx = 0;
-public:
-	ModulePlayer(bool startEnabled);
-	~ModulePlayer();
-	bool Start() override;
-	Update_Status Update() override;
-	Update_Status PostUpdate() override;
-	bool CleanUp() override;
+
+	// The player's collider
+	Collider* collider = nullptr;
+
+	// A flag to detect when the player has been destroyed
+	bool destroyed = false;
+
+	// Animation
 	Animation* currentAnimation = nullptr;
 	Animation leftidleAnim;
 	Animation rightidleAnim;
 	Animation leftAnim;
 	Animation rightAnim;
+
+public:
+	// Constructor
+	ModulePlayer(bool startEnabled);
+
+	// Destructor
+	~ModulePlayer();
+
+	// Called when the module is activated
+	// Loads the necessary textures for the player
+	bool Start() override;
+
+	// Called at the middle of the application loop
+	// Processes new input and handles player movement
+	Update_Status Update() override;
+
+	// Called at the end of the application loop
+	// Performs the render call of the player sprite
+	Update_Status PostUpdate() override;
+
+	//This is NOT in the handout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	bool CleanUp() override;
+
+	// Collision callback, called when the player intersects with another collider
+	void OnCollision(Collider* c1, Collider* c2) override;
 	
 };
 

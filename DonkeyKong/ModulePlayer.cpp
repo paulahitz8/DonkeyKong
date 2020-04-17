@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleCollisions.h"
 
 #include "SDL_scancode.h"
 
@@ -39,6 +40,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	playertexture = App->textures->Load("Assets/Mario/mariosprites.png");
+	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Wave).wav");
 	currentAnimation = &rightAnim; //mario empieza mirando a la derecha
 	
 								   
@@ -51,8 +53,9 @@ bool ModulePlayer::Start()
 	player.w = 12;
 	player.h = 16;
 
+	destroyed = false;
 
-	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Wave).wav");
+	collider = App->collision->AddCollider({ player.x, player.y, 12, 16 }, Collider::Type::PLAYER, this);
 
 	return true;
 }
@@ -61,12 +64,10 @@ Update_Status ModulePlayer::Update()
 {
 	
 	if (currentAnimation == &rightAnim) {
-
 		currentAnimation = &rightidleAnim;
 	}
 
 	if (currentAnimation == &leftAnim) {
-		
 		currentAnimation = &leftidleAnim;
 	}
 
@@ -81,23 +82,24 @@ Update_Status ModulePlayer::Update()
 	}
 	else if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT) {
 		position.x--;
-	
 			currentAnimation = &leftAnim;
 			App->audio->PlayFx(walkingFx);
 	}
 
 	else if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT) {
 		position.x++;
-	
 			currentAnimation = &rightAnim;
 			App->audio->PlayFx(walkingFx);
 	}
 	
-
+	// Animation Update
 	leftAnim.Update();
 	rightAnim.Update();
 	leftidleAnim.Update();
 	rightidleAnim.Update();
+
+	// Collider position Update
+	collider->SetPos(position.x, position.y);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -105,6 +107,7 @@ Update_Status ModulePlayer::Update()
 Update_Status ModulePlayer::PostUpdate()
 {
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+
 	if (currentAnimation == &rightidleAnim) {
 		App->render->Blit(playertexture, position.x, position.y, &(rightidleAnim.GetCurrentFrame()), 0);
 	
@@ -124,7 +127,28 @@ Update_Status ModulePlayer::PostUpdate()
 	}
 
 
+	// los de las animaciones miraos esto. Podría sustituir todas esas lineas de aqui?
+
+	/*if (!destroyed)
+	{
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(texture, position.x, position.y, &rect);
+	}*/
+
 	return Update_Status::UPDATE_CONTINUE;
+}
+
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+{
+	if (c1 == collider && destroyed == false)
+	{
+
+		// Aquí necesitamos el sonido de muerte que es el 20. en la lista. lo que pasa es que se carga con loadfx y no con loadmusic y no se como hacerlo.App->audio->PlayFx(explosionFx);
+
+		App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
+
+		destroyed = true;
+	}
 }
 
 bool ModulePlayer::CleanUp()
