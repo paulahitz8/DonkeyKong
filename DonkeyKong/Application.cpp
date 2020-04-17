@@ -9,7 +9,8 @@
 #include "ModuleLvl4.h"
 #include "ModulePlayer.h"
 #include "ModuleDonkey.h"
-
+#include "ModuleFadeToBlack.h"
+#include "IntroScreen.h"
 
 Application::Application()
 {
@@ -21,11 +22,13 @@ Application::Application()
 	modules[i++] =	input =			new ModuleInput(true);
 	modules[i++] =	textures =		new ModuleTextures(true);
 	modules[i++] =	audio =			new ModuleAudio(true);
-	modules[i++] =	lvl4 =			new ModuleLvl4(true);
-	modules[i++] =	player =		new ModulePlayer(true);
-	modules[i++] =	donkey =		new ModuleDonkey(true);
 
+	modules[i++] =	lvl4 =			new ModuleLvl4(false);
+	modules[i++] =	player =		new ModulePlayer(false);
+	modules[i++] =	donkey =		new ModuleDonkey(false);
+	modules[i++] = intro =			new IntroScreen(true);
 
+	modules[i++] =	fade	=		new ModuleFadeToBlack(true);
 	modules[i++] =	render =		new ModuleRender(true);
 }
 
@@ -43,6 +46,10 @@ Application::~Application()
 bool Application::Init()
 {
 	bool ret = true;
+
+	//player->Disable();
+	//lvl4->Disable();
+	//donkey->Disable();
 
 	// All modules (active and disabled) will be initialized
 	for (int i = 0; i < NUM_MODULES && ret; ++i)

@@ -4,6 +4,9 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
+#include "ModuleDonkey.h"
+
 
 int lvl4[32][32]{	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -52,21 +55,17 @@ ModuleLvl4::~ModuleLvl4()
 
 bool ModuleLvl4::Start()
 {
-	//texture = App->textures->Load("Assets/cositasfondo/background.png");
 	App->audio->PlayMusic("Assets/Music/10 Stage 4 BGM.ogg", 1.0f);
 
 	//if (texture == nullptr) {
 	//	return false;
 	//}
-	
-	//floor.x = 0;
-	//floor.y = 0;
-	tile.w = 8;
-	tile.h = 8;
-
 
 
 	//TILEMAP
+
+	tile.w = 8;
+	tile.h = 8;
 
 	backgroundTexture = App->textures->Load("Assets/cositasfondo/background.png");
 	floorTexture = App->textures->Load("Assets/cositasfondo/suelo.png");
@@ -76,6 +75,11 @@ bool ModuleLvl4::Start()
 	floorLadderTexture = App->textures->Load("Assets/cositasfondo/sueloescalera.png");
 	leftPoleTexture = App->textures->Load("Assets/cositasfondo/barraizquierda.png");
 	rightPoleTexture = App->textures->Load("Assets/cositasfondo/barraderecha.png");
+
+	// Enable Player?
+
+	App->player->Enable();
+	App->donkey->Enable();
 
 
 	return true;
@@ -88,7 +92,6 @@ Update_Status ModuleLvl4::Update()
 
 Update_Status ModuleLvl4::PostUpdate()
 {
-	//App->render->Blit(texture, position.x, position.y, &background, 0);
 
 	int type = 0;
 
@@ -140,5 +143,8 @@ Update_Status ModuleLvl4::PostUpdate()
 
 bool ModuleLvl4::CleanUp()
 {
+	//Disable player?
+	App->player->Disable();
+	App->donkey->Disable();
 	return true;
 }
