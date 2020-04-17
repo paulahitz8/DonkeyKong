@@ -27,6 +27,9 @@ private:
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
+	bool ladderOn = false;
+	bool groundOn = false;
+
 
 	// Animation
 	Animation* currentAnimation = nullptr;
