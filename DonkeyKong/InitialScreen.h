@@ -20,7 +20,7 @@ private:
 
 	SDL_Texture* aTexture = nullptr;
 	SDL_Texture* bTexture = nullptr;
-	SDL_Texture* cCarrotTexture = nullptr;
+	SDL_Texture* cTexture = nullptr;
 	SDL_Texture* dTexture = nullptr;
 	SDL_Texture* eTexture = nullptr;
 	SDL_Texture* fTexture = nullptr;
