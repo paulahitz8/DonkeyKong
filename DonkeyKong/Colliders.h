@@ -13,6 +13,9 @@ struct Collider
 		PLAYER,
 		ENEMY,
 		HAMMER,
+		WALL,
+		LADDER,
+		GROUND,
 
 		MAX
 	};
