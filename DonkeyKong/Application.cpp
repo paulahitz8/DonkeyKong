@@ -11,6 +11,7 @@
 #include "ModuleDonkey.h"
 #include "ModuleFadeToBlack.h"
 #include "IntroScreen.h"
+#include "ModuleCollisions.h"
 
 Application::Application()
 {
@@ -27,8 +28,11 @@ Application::Application()
 	modules[i++] =	player =		new ModulePlayer(false);
 	modules[i++] =	donkey =		new ModuleDonkey(false);
 	modules[i++] = intro =			new IntroScreen(true);
-
+	
+	modules[i++] = collision =		new ModuleCollisions(true);
 	modules[i++] =	fade	=		new ModuleFadeToBlack(true);
+
+
 	modules[i++] =	render =		new ModuleRender(true);
 }
 
