@@ -58,6 +58,9 @@
     <ClCompile Include="ModuleLvl4.cpp">
       <Filter>Source\Modules\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleLady.cpp">
+      <Filter>Source\Modules\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -122,6 +125,9 @@
     </ClInclude>
     <ClInclude Include="ModuleLvl4.h">
       <Filter>Source\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleLady.h">
+      <Filter>Source\Modules\Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
