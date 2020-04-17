@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModuleCollisions.h"
 
 #include "SDL_scancode.h"
 

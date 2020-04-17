@@ -5,36 +5,57 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "SDL_Rect.h"
+#include "p2Point.h"
 
 struct SDL_Texture;
 
 
 class InitialScreen : public Module
 {
+private:
+	iPoint position = { 0, 0 }; //x y
+
+	SDL_Rect letter;
+
+	SDL_Texture* aTexture = nullptr;
+	SDL_Texture* bTexture = nullptr;
+	SDL_Texture* cTexture = nullptr;
+	SDL_Texture* dTexture = nullptr;
+	SDL_Texture* eTexture = nullptr;
+	SDL_Texture* fTexture = nullptr;
+	SDL_Texture* gTexture = nullptr;
+	SDL_Texture* hTexture = nullptr;
+	SDL_Texture* iTexture = nullptr;
+	SDL_Texture* jTexture = nullptr;
+	SDL_Texture* kTexture = nullptr;
+	SDL_Texture* lTexture = nullptr;
+	SDL_Texture* mTexture = nullptr;
+	SDL_Texture* nTexture = nullptr;
+	SDL_Texture* oTexture = nullptr;
+	SDL_Texture* pTexture = nullptr;
+	SDL_Texture* qTexture = nullptr;
+	SDL_Texture* rTexture = nullptr;
+	SDL_Texture* sTexture = nullptr;
+	SDL_Texture* tTexture = nullptr;
+	SDL_Texture* uTexture = nullptr;
+	SDL_Texture* vTexture = nullptr;
+	SDL_Texture* wTexture = nullptr;
+	SDL_Texture* xTexture = nullptr;
+	SDL_Texture* yTexture = nullptr;
+	SDL_Texture* zTexture = nullptr;
+
+
+	int map[32][32];
+
 public:
-	//Constructor
 	InitialScreen(bool startEnabled);
-
-	//Destructor
 	~InitialScreen();
-
-	// Called when the module is activated
-	// Loads the necessary textures for the map background
 	bool Start() override;
-
-	// Called at the middle of the application loop
-	// Updates the scene's background animations
 	Update_Status Update() override;
-
-	// Called at the end of the application loop.
-	// Performs the render call of all the parts of the scene's background
 	Update_Status PostUpdate() override;
 
 	bool CleanUp();
-
-public:
-	// The scene sprite sheet loaded into an SDL_Texture
-
 	SDL_Rect initialbackground;
 	SDL_Texture* initialbackgroundtexture = nullptr;
 };
