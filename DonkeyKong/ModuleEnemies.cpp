@@ -29,8 +29,8 @@ bool ModuleEnemies::Start()
 
 	fireballs.x = 34;
 	fireballs.y = 66;
-	fireballs.w = 40;
-	fireballs.h = 32;
+	fireballs.w = 100;
+	fireballs.h = 102;
 
 	return true;
 }

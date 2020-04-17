@@ -13,7 +13,7 @@ class ModuleEnemies : public Module
 private:
 
 	SDL_Rect fireballs;
-	iPoint position = { 108, 56 };
+	iPoint position = { 0, 50 };
 	SDL_Texture* fireballstexture = nullptr;
 
 	//Collider* collider = nullptr;

@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 12 //actualiza esto
+#define NUM_MODULES 13 //actualiza esto
 
 class Module; //este no cuenta en NUM_MODULES :D
 class ModuleWindow;
