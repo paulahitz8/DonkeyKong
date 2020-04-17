@@ -32,7 +32,7 @@ private:
 	Animation rightidleAnim;
 	Animation leftAnim;
 	Animation rightAnim;
-
+	Animation rightwalkAnim;
 
 	uint silenceFx = 0;
 	
@@ -61,12 +61,8 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 	
-	Animation* currentAnimation = nullptr;
-	Animation leftidleAnim;
-	Animation rightidleAnim;
-	Animation leftAnim;
-	Animation rightAnim;
-	Animation rightwalkAnim;
+
+
 
 };
 
