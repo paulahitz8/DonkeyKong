@@ -26,10 +26,10 @@ bool ModuleLady::Start()
 		return false;
 	}*/
 
-	lady.x = 60;
-	lady.y = 100;
-	lady.w = 30;
-	lady.h = 40;
+	lady.x = 72;
+	lady.y = 116;
+	lady.w = 15;
+	lady.h = 22;
 
 	return true;
 }
