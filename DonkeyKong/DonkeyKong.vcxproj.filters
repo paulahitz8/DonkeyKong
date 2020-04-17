@@ -75,6 +75,9 @@
     <ClCompile Include="ModuleFadeToBlack.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="InitialScreen.cpp">
+      <Filter>Source Files\Modules\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="ModuleFadeToBlack.h">
       <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="InitialScreen.h">
+      <Filter>Source Files\Modules\Levels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
