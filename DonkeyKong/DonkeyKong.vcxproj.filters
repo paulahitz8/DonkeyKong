@@ -78,6 +78,15 @@
     <ClCompile Include="InitialScreen.cpp">
       <Filter>Source Files\Modules\Levels</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="Colliders.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCollisions.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+>>>>>>> 79c6b0e74149b4e3f6546de0d53add7496f5f783
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -134,5 +143,14 @@
     <ClInclude Include="InitialScreen.h">
       <Filter>Source Files\Modules\Levels</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="Colliders.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleCollisions.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+>>>>>>> 79c6b0e74149b4e3f6546de0d53add7496f5f783
   </ItemGroup>
 </Project>
