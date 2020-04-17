@@ -13,10 +13,10 @@ class ModuleDonkey : public Module
 private:
 
 	SDL_Rect donkey;
-	iPoint position = { 108, 56 };
+	iPoint donkeyPosition = { 108, 56 };
 	SDL_Texture* donkeytexture = nullptr;
 
-	//Collider* collider = nullptr;
+	Collider* colliderD = nullptr;
 
 public:
 
@@ -27,8 +27,6 @@ public:
 
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
-
-	//virtual void OnCollision(Collider* collider);
 
 	bool CleanUp() override;
 

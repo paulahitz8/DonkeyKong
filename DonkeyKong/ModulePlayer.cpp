@@ -42,7 +42,6 @@ bool ModulePlayer::Start()
 	playertexture = App->textures->Load("Assets/Mario/mariosprites.png");
 	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Wave).wav");
 	currentAnimation = &rightAnim; //mario empieza mirando a la derecha
-	
 								   
 	 /*if (playertexture == nullptr) {
 		return false;
