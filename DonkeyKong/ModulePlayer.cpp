@@ -68,9 +68,9 @@ bool ModulePlayer::Start()
 Update_Status ModulePlayer::Update()
 {
 
-	if (App->input->keys[SDL_SCANCODE_LEFT && groundOn == true] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT ] == Key_State::KEY_REPEAT)
 	{
-		position.x += speed;
+		position.x -= speed;
 		/*if (currentAnimation != &leftAnim)
 		{
 			leftAnim.Reset();
@@ -80,7 +80,7 @@ Update_Status ModulePlayer::Update()
 			//App->audio->PlayFx(walkingFx);
 	}
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT && groundOn == true] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT ] == Key_State::KEY_REPEAT)
 	{
 		position.x += speed;
 		/*if (currentAnimation != &rightAnim)
@@ -98,7 +98,7 @@ Update_Status ModulePlayer::Update()
 		position.y += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_UP && ladderOn == true] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_UP ] == Key_State::KEY_REPEAT)
 	{
 		position.y -= speed;
 	}
@@ -123,7 +123,7 @@ Update_Status ModulePlayer::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-/*void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
@@ -134,9 +134,9 @@ Update_Status ModulePlayer::PostUpdate()
 
 		destroyed = true;
 	}
-}*/
+}
 
-void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+/*void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && c2->type == Collider::LADDER) {
 		position.y -= 2;
@@ -164,7 +164,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		destroyed = true;
 	}
-}
+}*/
 
 bool ModulePlayer::CleanUp()
 {
