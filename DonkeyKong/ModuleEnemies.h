@@ -5,6 +5,7 @@
 #include "Module.h"
 #include "SDL_Rect.h"
 #include "p2Point.h"
+#include "Animation.h"
 
 struct SDL_Texture;
 
@@ -17,6 +18,11 @@ private:
 	SDL_Texture* fireballstexture = nullptr;
 
 	//Collider* collider = nullptr;
+
+	bool destroyed = false;
+
+	Animation* currentAnimation = nullptr;
+	Animation leftAnim;
 
 public:
 

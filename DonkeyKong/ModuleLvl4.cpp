@@ -7,6 +7,7 @@
 #include "ModulePlayer.h"
 #include "ModuleDonkey.h"
 #include "ModuleEnemies.h"
+#include "ModuleLady.h"
 
 
 int lvl4[32][32]{	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -82,6 +83,7 @@ bool ModuleLvl4::Start()
 	App->player->Enable();
 	App->donkey->Enable();
 	App->fireballs->Enable();
+	App->lady->Enable();
 
 
 	return true;
@@ -149,5 +151,6 @@ bool ModuleLvl4::CleanUp()
 	App->player->Disable();
 	App->donkey->Disable();
 	App->fireballs->Disable();
+	App->lady->Disable();
 	return true;
 }

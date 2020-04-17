@@ -13,7 +13,7 @@ class ModuleLady : public Module
 private:
 
 	SDL_Rect lady;
-	iPoint ladyPosition = { 0, 0 };
+	iPoint ladyPosition = { 110, 10 };
 	SDL_Texture* ladytexture = nullptr;
 
 

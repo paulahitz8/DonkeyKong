@@ -20,16 +20,16 @@ ModuleLady::~ModuleLady() {
 bool ModuleLady::Start()
 {
 	LOG("Loading player textures");
-	ladytexture = App->textures->Load("Assets/Donkey/DKAPaulineSprite.png");
+	ladytexture = App->textures->Load("Assets/Lady/PaulineSprites.png");
 
 	/*if (playertexture == nullptr) {
 		return false;
 	}*/
 
-	lady.x = 0;
-	lady.y = 0;
-	lady.w = 12;
-	lady.h = 16;
+	lady.x = 60;
+	lady.y = 100;
+	lady.w = 30;
+	lady.h = 40;
 
 	return true;
 }
