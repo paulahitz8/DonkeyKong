@@ -14,10 +14,12 @@ struct SDL_Texture;
 class InitialScreen : public Module
 {
 private:
-	iPoint position = { 0, 0 }; //x y
+	iPoint position = { 0, 0 }; //x y aun no sabemos donde imprimirlo
 
 	SDL_Rect letter;
 
+
+	SDL_Texture* backgroundTexture = nullptr;
 	SDL_Texture* aTexture = nullptr;
 	SDL_Texture* bTexture = nullptr;
 	SDL_Texture* cTexture = nullptr;
@@ -46,7 +48,6 @@ private:
 	SDL_Texture* zTexture = nullptr;
 
 
-	int map[32][32];
 
 public:
 	InitialScreen(bool startEnabled);
@@ -54,8 +55,8 @@ public:
 	bool Start() override;
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
-
 	bool CleanUp();
+
 	SDL_Rect initialbackground;
 	SDL_Texture* initialbackgroundtexture = nullptr;
 };

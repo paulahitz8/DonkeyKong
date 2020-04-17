@@ -28,7 +28,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	//right animation
 	rightAnim.PushBack({ 167, 204, 30, 16 });
 	rightAnim.PushBack({ 142, 194, 13, 26 });
-	rightAnim.speed = 0.1f;
+	rightAnim.speed = 0.1f; rightAnim.PushBack({ 142, 194, 13, 26 });
 }
 
 ModulePlayer::~ModulePlayer() {
