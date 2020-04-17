@@ -33,6 +33,10 @@ private:
 	Animation leftAnim;
 	Animation rightAnim;
 
+
+	uint silenceFx = 0;
+	
+
 public:
 	// Constructor
 	ModulePlayer(bool startEnabled);
@@ -54,10 +58,16 @@ public:
 
 	//This is NOT in the handout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	bool CleanUp() override;
-
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 	
+	Animation* currentAnimation = nullptr;
+	Animation leftidleAnim;
+	Animation rightidleAnim;
+	Animation leftAnim;
+	Animation rightAnim;
+	Animation rightwalkAnim;
+
 };
 
 #endif

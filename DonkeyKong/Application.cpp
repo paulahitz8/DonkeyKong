@@ -6,11 +6,13 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include "InitialScreen.h"
+#include "IntroScreen.h"
 #include "ModuleLvl4.h"
 #include "ModulePlayer.h"
 #include "ModuleDonkey.h"
 #include "ModuleFadeToBlack.h"
-#include "IntroScreen.h"
+
 #include "ModuleCollisions.h"
 
 Application::Application()
@@ -24,10 +26,13 @@ Application::Application()
 	modules[i++] =	textures =		new ModuleTextures(true);
 	modules[i++] =	audio =			new ModuleAudio(true);
 
+	modules[i++] = initial =		new InitialScreen(true);
+	modules[i++] = intro =			new IntroScreen(false);
 	modules[i++] =	lvl4 =			new ModuleLvl4(false);
 	modules[i++] =	player =		new ModulePlayer(false);
 	modules[i++] =	donkey =		new ModuleDonkey(false);
-	modules[i++] = intro =			new IntroScreen(true);
+	
+	
 	
 	modules[i++] = collision =		new ModuleCollisions(true);
 	modules[i++] =	fade	=		new ModuleFadeToBlack(true);

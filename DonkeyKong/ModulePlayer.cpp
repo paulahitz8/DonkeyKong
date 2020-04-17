@@ -29,6 +29,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.PushBack({ 142, 194, 13, 26 });
 	rightAnim.PushBack({ 167, 204, 30, 16 });
 	rightAnim.speed = 0.1f;
+
 }
 
 ModulePlayer::~ModulePlayer() {
@@ -55,7 +56,13 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 
+
 	collider = App->collision->AddCollider({ player.x, player.y, 12, 16 }, Collider::Type::PLAYER, this);
+
+	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
+	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
+	
+
 
 	return true;
 }
@@ -90,6 +97,7 @@ Update_Status ModulePlayer::Update()
 		position.x++;
 			currentAnimation = &rightAnim;
 			App->audio->PlayFx(walkingFx);
+			App->audio->PlayFx(silenceFx);
 	}
 	
 	// Animation Update
@@ -97,6 +105,7 @@ Update_Status ModulePlayer::Update()
 	rightAnim.Update();
 	leftidleAnim.Update();
 	rightidleAnim.Update();
+	rightwalkAnim.Update();
 
 	// Collider position Update
 	collider->SetPos(position.x, position.y);
