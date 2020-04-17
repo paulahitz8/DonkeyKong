@@ -56,7 +56,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 
 
-	collider = App->collision->AddCollider({ player.x, player.y, 12, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collision->AddCollider({ position.x, position.y, 12, 16 }, Collider::Type::PLAYER, this);
 
 	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
 	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
@@ -78,33 +78,34 @@ Update_Status ModulePlayer::Update()
 	}
 
 	if (App->input->keys[SDL_SCANCODE_UP] == KEY_REPEAT) {
-		position.y--;
+		position.y -= 1;
 	}
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT) {
-		position.y++;
+		position.y += 1;
 	}
 	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT && App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT) {
 		currentAnimation = &rightidleAnim;
 	}
-	else if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT) {
-		position.x--;
+	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT) {
+		position.x -= 1;
 			currentAnimation = &leftAnim;
 			App->audio->PlayFx(walkingFx);
 	}
 
-	else if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT) {
-		position.x++;
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT) {
+		position.x += 1;
 			currentAnimation = &rightAnim;
 			App->audio->PlayFx(walkingFx);
 			App->audio->PlayFx(silenceFx);
 	}
 	
-	// Animation Update
-	leftAnim.Update();
+	// Animation Update CREO QUE TODO ESO SE PUEDE SUSTITUIR POR LA DE CURRENT ANIMATION
+	/*leftAnim.Update();
 	rightAnim.Update();
 	leftidleAnim.Update();
 	rightidleAnim.Update();
-	rightwalkAnim.Update();
+	rightwalkAnim.Update();*/
+	currentAnimation->Update();
 
 	// Collider position Update
 	collider->SetPos(position.x, position.y);
