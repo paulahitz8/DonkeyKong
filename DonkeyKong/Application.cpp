@@ -13,6 +13,7 @@
 #include "ModuleDonkey.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
+#include "ModuleLady.h"
 
 #include "ModuleCollisions.h"
 
@@ -33,6 +34,7 @@ Application::Application()
 	modules[i++] =	player =		new ModulePlayer(false);
 	modules[i++] =	donkey =		new ModuleDonkey(false);
 	modules[i++] =  fireballs =		new ModuleEnemies(false);
+	modules[i++] =  lady =			new ModuleLady(false);
 	
 	
 	
