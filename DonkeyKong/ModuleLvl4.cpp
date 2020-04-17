@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleDonkey.h"
+#include "ModuleEnemies.h"
 
 
 int lvl4[32][32]{	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -80,6 +81,7 @@ bool ModuleLvl4::Start()
 
 	App->player->Enable();
 	App->donkey->Enable();
+	App->fireballs->Enable();
 
 
 	return true;
@@ -146,5 +148,6 @@ bool ModuleLvl4::CleanUp()
 	//Disable player?
 	App->player->Disable();
 	App->donkey->Disable();
+	App->fireballs->Disable();
 	return true;
 }

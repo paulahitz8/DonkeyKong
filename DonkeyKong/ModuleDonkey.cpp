@@ -32,6 +32,8 @@ bool ModuleDonkey::Start()
 	donkey.w = 40;
 	donkey.h = 32;
 
+	colliderD = App->collision->AddCollider({ donkeyPosition.x, donkeyPosition.y, 40, 32 }, Collider::Type::ENEMY, this);
+
 	return true;
 }
 
@@ -42,9 +44,11 @@ Update_Status ModuleDonkey::Update()
 
 Update_Status ModuleDonkey::PostUpdate()
 {
-	App->render->Blit(donkeytexture, position.x, position.y, &donkey, 0);
+	App->render->Blit(donkeytexture, donkeyPosition.x, donkeyPosition.y, &donkey, 0);
+
 	return Update_Status::UPDATE_CONTINUE;
 }
+
 
 bool ModuleDonkey::CleanUp()
 {

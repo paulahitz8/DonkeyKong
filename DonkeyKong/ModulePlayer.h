@@ -17,6 +17,8 @@ private:
 	iPoint position = { 46, 232 };
 	SDL_Texture* playertexture = nullptr;
 
+	int speed = 2;
+
 	// Sound effects indices
 	uint walkingFx = 0;
 
