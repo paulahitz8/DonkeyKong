@@ -15,14 +15,20 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	position.y = { 232 };
 
 	// left idle
-	leftidleAnim.PushBack({ 37, 68, 12, 26 });
+	leftidleAnim.PushBack({ 59, 68, 30, 26 });
+	leftidleAnim.PushBack({ 19, 68, 30, 26 });
+	leftidleAnim.speed = 0.1f;
 
 	//right idle
-	rightidleAnim.PushBack({ 207, 194, 12, 26 });
+	rightidleAnim.PushBack({ 167, 194, 30, 26 });
+	rightidleAnim.PushBack({ 207, 194, 30, 26 });
+	rightidleAnim.speed = 0.1f;
 
 	// left animation
-	leftAnim.PushBack({ 59, 78, 30, 16 });
-	leftAnim.PushBack({ 101, 68, 13, 26 });
+	leftAnim.PushBack({ 100, 68, 30, 26 });
+	leftAnim.PushBack({ 18, 38, 30, 26 });
+	leftAnim.PushBack({ 149, 68, 30, 26 });
+	leftAnim.PushBack({ 149, 68, 30, 26 });
 	leftAnim.speed = 0.1f;
 
 	//right animation
@@ -75,11 +81,6 @@ Update_Status ModulePlayer::Update()
 			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 			{
 				position.x -= speedx;
-				//if (currentAnimation != &leftAnim)
-				//{
-					//leftAnim.Reset();
-					//currentAnimation = &leftAnim;
-				//}
 				currentAnimation = &leftAnim;
 				//App->audio->PlayFx(walkingFx);
 			}
@@ -87,11 +88,6 @@ Update_Status ModulePlayer::Update()
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 			{
 				position.x += speedx;
-				//if (currentAnimation != &rightAnim)
-				//{
-					//rightAnim.Reset();
-					//currentAnimation = &rightAnim;
-				//}
 				currentAnimation = &rightAnim;
 				//App->audio->PlayFx(walkingFx);
 				//App->audio->PlayFx(silenceFx);
