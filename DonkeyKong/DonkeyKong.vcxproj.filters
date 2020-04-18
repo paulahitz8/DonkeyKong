@@ -61,6 +61,12 @@
     <ClCompile Include="ModuleLady.cpp">
       <Filter>Source\Modules\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="Enemies.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFireballs.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -129,6 +135,12 @@
     <ClInclude Include="ModuleLady.h">
       <Filter>Source\Modules\Characters</Filter>
     </ClInclude>
+    <ClInclude Include="Enemies.h">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFireballs.h">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -148,6 +160,12 @@
     </Filter>
     <Filter Include="Source\Modules\Scenes">
       <UniqueIdentifier>{2755aa0d-95d7-4466-b1a0-9397bba602aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities">
+      <UniqueIdentifier>{f2255416-6823-4f4d-a1e7-38cbd8bdcb47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Enemies">
+      <UniqueIdentifier>{80a4e118-ec13-4b60-a248-1fc089f8ac4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

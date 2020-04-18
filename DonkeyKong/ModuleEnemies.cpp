@@ -1,69 +1,173 @@
 #include "ModuleEnemies.h"
-#include "Application.h"
-#include "ModuleTextures.h"
-#include "ModuleInput.h"
-#include "ModuleRender.h"
-#include "ModuleAudio.h"
-#include "ModuleCollisions.h"
 
-#include "SDL_scancode.h"
+#include "Application.h"
+
+#include "ModuleRender.h"
+#include "ModuleTextures.h"
+#include "ModuleAudio.h"
+
+#include "Enemies.h"
+#include "EnemyFireballs.h"
+
+#define SPAWN_MARGIN 50
+
 
 ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
-	leftAnim.PushBack({ 120, 160, 20, 20 });
-	leftAnim.PushBack({ 145, 160, 20, 20 });
-	leftAnim.speed = 0.2;
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		enemies[i] = nullptr;
 }
 
-ModuleEnemies::~ModuleEnemies() {
+ModuleEnemies::~ModuleEnemies()
+{
 
 }
-
 
 bool ModuleEnemies::Start()
 {
-	LOG("Loading player textures");
-	fireballstexture = App->textures->Load("Assets/Enemies/Enemies2.png");
-
-	currentAnimation = &leftAnim;
-
-	/*if (playertexture == nullptr) {
-		return false;
-	}*/
-
-	fireballs.x = 120;
-	fireballs.y = 160;
-	fireballs.w = 20;
-	fireballs.h = 20;
-
-	destroyed = false;
+	enemiestexture = App->textures->Load("Assets/Enemies/Enemies2.png");
+	enemyDestroyedFx = App->audio->LoadFx("Assets/Music/21 SFX (Kill).wav");
 
 	return true;
 }
 
 Update_Status ModuleEnemies::Update()
 {
-	currentAnimation = &leftAnim;
+	HandleEnemiesSpawn();
 
-	currentAnimation->Update();
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+			enemies[i]->Update();
+	}
+
+	HandleEnemiesDespawn();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status ModuleEnemies::PostUpdate()
 {
-	if (!destroyed)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->Blit(fireballstexture, position.x, position.y, &rect);
+		if (enemies[i] != nullptr)
+			enemies[i]->Draw();
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
+// Called before quitting
 bool ModuleEnemies::CleanUp()
 {
+	LOG("Freeing all enemies");
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
+
 	return true;
 }
 
+bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, int x, int y)
+{
+	bool ret = false;
 
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (spawnQueue[i].type == ENEMY_TYPE::NO_TYPE)
+		{
+			spawnQueue[i].type = type;
+			spawnQueue[i].x = x;
+			spawnQueue[i].y = y;
+			ret = true;
+			break;
+		}
+	}
+
+	return ret;
+}
+
+void ModuleEnemies::HandleEnemiesSpawn()
+{
+	// Iterate all the enemies queue
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (spawnQueue[i].type != ENEMY_TYPE::NO_TYPE)
+		{
+			// Spawn a new enemy if the screen has reached a spawn position
+			if (spawnQueue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			{
+				LOG("Spawning enemy at %d", spawnQueue[i].x * SCREEN_SIZE);
+
+				SpawnEnemy(spawnQueue[i]);
+				spawnQueue[i].type = ENEMY_TYPE::NO_TYPE; // Removing the newly spawned enemy from the queue
+			}
+		}
+	}
+}
+
+void ModuleEnemies::HandleEnemiesDespawn()
+{
+	// Iterate existing enemies
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			// Delete the enemy when it has reached the end of the screen
+			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			{
+				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
+
+				delete enemies[i];
+				enemies[i] = nullptr;
+			}
+		}
+	}
+}
+
+void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
+{
+	// Find an empty slot in the enemies array
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] == nullptr)
+		{
+			switch (info.type)
+			{
+			case ENEMY_TYPE::FIREBALLS:
+				enemies[i] = new Enemy_Fireballs(info.x, info.y);
+				break;
+			/*case ENEMY_TYPE::BROWNSHIP:
+				enemies[i] = new Enemy_BrownShip(info.x, info.y);
+				break;
+			case ENEMY_TYPE::MECH:
+				enemies[i] = new Enemy_Mech(info.x, info.y);
+				break;*/
+			}
+			enemies[i]->enemiestexture = enemiestexture;
+			enemies[i]->destroyedFx = enemyDestroyedFx;
+			break;
+		}
+	}
+}
+
+void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
+{
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
+		{
+			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
+
+			delete enemies[i];
+			enemies[i] = nullptr;
+			break;
+		}
+	}
+}
