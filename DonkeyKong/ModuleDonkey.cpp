@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleCollisions.h"
 
 #include "SDL_scancode.h"
@@ -11,6 +12,13 @@
 ModuleDonkey::ModuleDonkey(bool startEnabled) : Module(startEnabled)
 {
 
+	//donkey idle
+	donkeyidleAnim.PushBack({ 34,66,40,32 });
+
+	//donkey moving
+	donkeyAnim.PushBack({ 82,66,46,32 });
+	donkeyAnim.PushBack({ 136,66,46,32 });
+	donkeyidleAnim.speed = 0.1f;
 }
 
 ModuleDonkey::~ModuleDonkey() {

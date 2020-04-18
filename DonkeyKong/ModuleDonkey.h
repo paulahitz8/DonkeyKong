@@ -5,6 +5,7 @@
 #include "Module.h"
 #include "SDL_Rect.h"
 #include "p2Point.h"
+#include "Animation.h"
 
 struct SDL_Texture;
 
@@ -16,19 +17,22 @@ private:
 	iPoint donkeyPosition = { 108, 56 };
 	SDL_Texture* donkeytexture = nullptr;
 
+
 	Collider* colliderD = nullptr;
 
 public:
 
 	ModuleDonkey(bool startEnabled);
 	~ModuleDonkey();
-
 	bool Start() override;
-
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
-
 	bool CleanUp() override;
+
+	//Animation
+	//Animation* currentAnimation = nullptr;
+	Animation donkeyidleAnim;
+	Animation donkeyAnim;
 
 };
 
