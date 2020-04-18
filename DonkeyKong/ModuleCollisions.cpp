@@ -149,12 +149,12 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::WALL: // blue
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
-		case Collider::Type::GROUND: // blue
+		case Collider::Type::GROUND: // blue??
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
-		case Collider::Type::LADDER: // blue
+		case Collider::Type::LADDER: // blue??
 			App->render->DrawQuad(colliders[i]->rect, 0, 200, 200, alpha);
-			break;
+			break;   
 		}
 
 	}
