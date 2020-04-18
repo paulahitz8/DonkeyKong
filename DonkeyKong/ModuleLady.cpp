@@ -4,8 +4,8 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
-
 #include "SDL_scancode.h"
+
 
 ModuleLady::ModuleLady(bool startEnabled) : Module(startEnabled)
 {
@@ -18,7 +18,6 @@ ModuleLady::ModuleLady(bool startEnabled) : Module(startEnabled)
 	ladyAnim3.PushBack({ 97,116,15,22 });
 	ladyAnim4.PushBack({ 72,116,15,22 });
 	ladyAnim5.PushBack({ 97,116,15,22 });
-
 }
 
 ModuleLady::~ModuleLady() {
@@ -72,21 +71,7 @@ Update_Status ModuleLady::Update()
 			currentAnimation = &ladyAnim5;
 		}
 	}
-	//else if (currentAnimation == &ladyAnim1) {
-	//	if (i % 20 == 0) {
-	//		currentAnimation = &ladyAnim2;
-	//	}
-	//}
-	//else if (currentAnimation == &ladyAnim2) {
-	//	if (i % 20 == 0) {
-	//		currentAnimation = &ladyAnim1;
-	//	}
-	//}
-	//else if (currentAnimation == &ladyAnim1) {
-	//	if (i % 20 == 0) {
-	//		currentAnimation = &ladyAnim2;
-	//	}
-	//}
+
 	else if (currentAnimation == &ladyAnim5) {
 		if (i % 20 == 0) {
 			currentAnimation = &ladyidleAnim;
