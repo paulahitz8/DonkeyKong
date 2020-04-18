@@ -32,6 +32,9 @@ public:
 	Animation ladyidleAnim;
 	Animation ladyAnim1;
 	Animation ladyAnim2;
+	Animation ladyAnim3;
+	Animation ladyAnim4;
+	Animation ladyAnim5;
 
 
 };

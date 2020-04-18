@@ -13,9 +13,12 @@ ModuleLady::ModuleLady(bool startEnabled) : Module(startEnabled)
 	ladyidleAnim.PushBack({ 72,116,15,22 });
 
 	//lady moving
-	ladyAnim1.PushBack({ 72,116,15,22 });
-	ladyAnim2.PushBack({ 97,116,15,22 });
-	ladyidleAnim.speed = 0.1f;
+	ladyAnim1.PushBack({ 97,116,15,22 });
+	ladyAnim2.PushBack({ 72,116,15,22 });
+	ladyAnim3.PushBack({ 97,116,15,22 });
+	ladyAnim4.PushBack({ 72,116,15,22 });
+	ladyAnim5.PushBack({ 97,116,15,22 });
+
 }
 
 ModuleLady::~ModuleLady() {
@@ -49,20 +52,46 @@ Update_Status ModuleLady::Update()
 		currentAnimation = &ladyAnim1;
 
 	}
-
-	/*if (i % 50 == 0){
-		currentAnimation = &donkeyidleAnim;
-	}*/
-
-
-
-	if (currentAnimation == &ladyAnim1) {
+	else if (currentAnimation == &ladyAnim1) {
 		if (i % 20 == 0) {
 			currentAnimation = &ladyAnim2;
 		}
 	}
-
-
+	else if (currentAnimation == &ladyAnim2) {
+		if (i % 20 == 0) {
+			currentAnimation = &ladyAnim3;
+		}
+	}
+	else if (currentAnimation == &ladyAnim3) {
+		if (i % 20 == 0) {
+			currentAnimation = &ladyAnim4;
+		}
+	}
+	else if (currentAnimation == &ladyAnim4) {
+		if (i % 20 == 0) {
+			currentAnimation = &ladyAnim5;
+		}
+	}
+	//else if (currentAnimation == &ladyAnim1) {
+	//	if (i % 20 == 0) {
+	//		currentAnimation = &ladyAnim2;
+	//	}
+	//}
+	//else if (currentAnimation == &ladyAnim2) {
+	//	if (i % 20 == 0) {
+	//		currentAnimation = &ladyAnim1;
+	//	}
+	//}
+	//else if (currentAnimation == &ladyAnim1) {
+	//	if (i % 20 == 0) {
+	//		currentAnimation = &ladyAnim2;
+	//	}
+	//}
+	else if (currentAnimation == &ladyAnim5) {
+		if (i % 20 == 0) {
+			currentAnimation = &ladyidleAnim;
+		}
+	}
 
 	currentAnimation->Update();
 	//if (currentAnimation->HasFinished() == true) {
@@ -76,7 +105,8 @@ Update_Status ModuleLady::Update()
 
 Update_Status ModuleLady::PostUpdate()
 {
-	App->render->Blit(ladytexture, ladyPosition.x, ladyPosition.y, &lady, 0);
+	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	App->render->Blit(ladytexture, ladyPosition.x, ladyPosition.y, &rect);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
