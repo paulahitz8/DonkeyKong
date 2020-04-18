@@ -57,7 +57,7 @@ public:
 	ModuleLvl4* lvl4 = nullptr;
 	ModulePlayer* player = nullptr;
 	ModuleDonkey* donkey = nullptr;
-	ModuleEnemies* fireballs = nullptr;
+	ModuleEnemies* enemies = nullptr;
 	ModuleLady* lady = nullptr;
 
 	

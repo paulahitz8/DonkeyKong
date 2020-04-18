@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Colliders.cpp" />
+    <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="EnemyFireballs.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="InitialScreen.cpp" />
     <ClCompile Include="IntroScreen.cpp" />
@@ -44,6 +46,8 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Colliders.h" />
+    <ClInclude Include="Enemies.h" />
+    <ClInclude Include="EnemyFireballs.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="InitialScreen.h" />
     <ClInclude Include="IntroScreen.h" />

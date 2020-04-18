@@ -114,9 +114,9 @@ bool ModuleLvl4::Start()
 
 	App->player->Enable();
 	App->donkey->Enable();
-	App->fireballs->Enable();
+	App->enemies->Enable();
 	App->lady->Enable();
-
+	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 218, 196);
 
 	return true;
 }
@@ -182,7 +182,7 @@ bool ModuleLvl4::CleanUp()
 	//Disable player?
 	App->player->Disable();
 	App->donkey->Disable();
-	App->fireballs->Disable();
+	App->enemies->Disable();
 	App->lady->Disable();
 	return true;
 }
