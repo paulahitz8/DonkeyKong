@@ -9,7 +9,13 @@
 
 ModuleLady::ModuleLady(bool startEnabled) : Module(startEnabled)
 {
+	//lady idle
+	ladyidleAnim.PushBack({ 72,116,15,22 });
 
+	//lady moving
+	ladyAnim1.PushBack({ 72,116,15,22 });
+	ladyAnim2.PushBack({ 97,116,15,22 });
+	ladyidleAnim.speed = 0.1f;
 }
 
 ModuleLady::~ModuleLady() {
@@ -21,6 +27,7 @@ bool ModuleLady::Start()
 {
 	LOG("Loading player textures");
 	ladytexture = App->textures->Load("Assets/Lady/PaulineSprites.png");
+	currentAnimation = &ladyidleAnim;
 
 	/*if (playertexture == nullptr) {
 		return false;
@@ -36,6 +43,34 @@ bool ModuleLady::Start()
 
 Update_Status ModuleLady::Update()
 {
+
+	if (i % 501 == 0)
+	{
+		currentAnimation = &ladyAnim1;
+
+	}
+
+	/*if (i % 50 == 0){
+		currentAnimation = &donkeyidleAnim;
+	}*/
+
+
+
+	if (currentAnimation == &ladyAnim1) {
+		if (i % 20 == 0) {
+			currentAnimation = &ladyAnim2;
+		}
+	}
+
+
+
+	currentAnimation->Update();
+	//if (currentAnimation->HasFinished() == true) {
+	//	currentAnimation->Reset();
+	//}
+
+	i++;
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 

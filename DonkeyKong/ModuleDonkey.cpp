@@ -19,7 +19,7 @@ ModuleDonkey::ModuleDonkey(bool startEnabled) : Module(startEnabled)
 	donkeyAnim1.PushBack({ 82,66,46,32 });
 	donkeyAnim2.PushBack({ 136,66,46,32 });
 	donkeyAnim3.PushBack({ 82,66,46,32 });
-	donkeyidleAnim.speed = 0.1f;
+	
 }
 
 ModuleDonkey::~ModuleDonkey() {
