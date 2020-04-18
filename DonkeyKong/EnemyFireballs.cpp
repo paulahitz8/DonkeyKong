@@ -16,7 +16,7 @@ Enemy_Fireballs::Enemy_Fireballs(int x, int y) : Enemies(x, y)
 	path.PushBack({ -1.0f, 0.5f }, 80);
 	path.PushBack({ -1.0f, 1.0f }, 80);
 
-	colliderF = App->collision->AddCollider({ position.x, position.y, 40, 32 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	colliderF = App->collision->AddCollider({ position.x, position.y, 15, 12 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Fireballs::Update()
