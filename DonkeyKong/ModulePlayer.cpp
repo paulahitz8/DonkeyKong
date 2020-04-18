@@ -257,11 +257,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			position.y -= 1;
 		}
 		
-		if ((position.y < (c2->rect.y + 26)) && (position.y > (c2->rect.y )) && (position.x < (c2->rect.x - 2))) {
+		if ((position.y < (c2->rect.y + 26)) && (position.y > (c2->rect.y - 14)) && (position.x < (c2->rect.x - 2))) {
 			position.x += 1;
 		}
 
-		if ((position.y < (c2->rect.y + 26)) && (position.y > (c2->rect.y)) && (position.x > (c2->rect.x))) {
+		if ((position.y < (c2->rect.y + 26)) && (position.y > (c2->rect.y - 14)) && (position.x > (c2->rect.x))) {
 			position.x -= 1;
 		}
 
