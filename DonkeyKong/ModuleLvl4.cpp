@@ -70,6 +70,10 @@ bool ModuleLvl4::Start()
 	tile.w = 8;
 	tile.h = 8;
 
+	back.w = 256;
+	back.h = 256;
+
+	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
 	backgroundTexture = App->textures->Load("Assets/cositasfondo/background.png");
 	floorTexture = App->textures->Load("Assets/cositasfondo/suelo.png");
 	floorCarrotTexture = App->textures->Load("Assets/cositasfondo/sueloencimazanahoria.png");
@@ -166,6 +170,7 @@ Update_Status ModuleLvl4::Update()
 
 Update_Status ModuleLvl4::PostUpdate()
 {
+	
 
 	int type = 0;
 
@@ -211,6 +216,8 @@ Update_Status ModuleLvl4::PostUpdate()
 			}
 		}
 	}
+
+	App->render->Blit(backTexture, 0, 0, &back, 0);
 
 	return Update_Status::UPDATE_CONTINUE;
 }

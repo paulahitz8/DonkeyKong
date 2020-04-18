@@ -26,7 +26,7 @@ bool IntroScreen::Start()
 	background.h = 256;
 	background.w = 256;
 
-	introBackground = App->textures->Load("Assets/cositasfondo/introBackground.png");
+	introBackground = App->textures->Load("Assets/cositasfondo/introobackground.png");
 	//App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 	App->audio->PlayMusic("Assets/Music/00 - Donkey Kong Main Theme (1).wav", 1.0f);
 
