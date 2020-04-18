@@ -21,6 +21,9 @@ private:
 	// And an animation for each step
 	Path path;
 
+
+	Collider* colliderF = nullptr;
+
 	// This enemy has one sprite and one frame
 	// We are keeping it an animation for consistency with other enemies
 	Animation leftAnim;
