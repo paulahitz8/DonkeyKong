@@ -32,7 +32,7 @@ bool ModuleDonkey::Start()
 	donkey.w = 40;
 	donkey.h = 32;
 
-	colliderD = App->collision->AddCollider({ donkeyPosition.x, donkeyPosition.y, 40, 32 }, Collider::Type::ENEMY, this);
+	colliderD = App->collision->AddCollider({ donkeyPosition.x, donkeyPosition.y, 40, 32 }, Collider::Type::WALL, this);
 
 	return true;
 }

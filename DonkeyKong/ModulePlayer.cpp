@@ -68,44 +68,115 @@ bool ModulePlayer::Start()
 Update_Status ModulePlayer::Update()
 {
 
-	if (App->input->keys[SDL_SCANCODE_LEFT ] == Key_State::KEY_REPEAT)
-	{
-		position.x -= speed;
-		/*if (currentAnimation != &leftAnim)
+	if (!destroyed) {
+		/*if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && groundOn == true)
 		{
-			leftAnim.Reset();
-			currentAnimation = &leftAnim;
-		}*/
+			position.x -= speedx;
+			//if (currentAnimation != &leftAnim)
+			//{
+				//leftAnim.Reset();
+				//currentAnimation = &leftAnim;
+			//}
 			currentAnimation = &leftAnim;
 			//App->audio->PlayFx(walkingFx);
-	}
+		}
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT ] == Key_State::KEY_REPEAT)
-	{
-		position.x += speed;
-		/*if (currentAnimation != &rightAnim)
+		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && groundOn == true)
 		{
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
-		}*/
+			position.x += speedx;
+			//if (currentAnimation != &rightAnim)
+			//{
+				//rightAnim.Reset();
+				//currentAnimation = &rightAnim;
+			//}
 			currentAnimation = &rightAnim;
 			//App->audio->PlayFx(walkingFx);
 			//App->audio->PlayFx(silenceFx);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && ladderOn == true)
+		{
+			position.y += speedy;
+
+		}
+
+		if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && ladderOn == true)
+		{
+			position.y -= speedy;
+		}*/
+
+		if (groundOn == true) {
+
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
+			{
+				position.x -= speedx;
+				//if (currentAnimation != &leftAnim)
+				//{
+					//leftAnim.Reset();
+					//currentAnimation = &leftAnim;
+				//}
+				currentAnimation = &leftAnim;
+				//App->audio->PlayFx(walkingFx);
+			}
+
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+			{
+				position.x += speedx;
+				//if (currentAnimation != &rightAnim)
+				//{
+					//rightAnim.Reset();
+					//currentAnimation = &rightAnim;
+				//}
+				currentAnimation = &rightAnim;
+				//App->audio->PlayFx(walkingFx);
+				//App->audio->PlayFx(silenceFx);
+			}
+
+			if (ladderOn == true) {
+
+				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+				{
+					position.y += speedy;
+
+				}
+
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+				{
+					position.y -= speedy;
+				}
+
+			}
+
+		}
+
+		if (groundOn == false) {
+
+			if (ladderOn == true) {
+				
+				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+				{
+					position.y += speedy;
+
+				}
+
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+				{
+					position.y -= speedy;
+				}
+			}
+
+		}
+		 
+		collider->SetPos(position.x, position.y);
+
+		currentAnimation->Update();
 	}
 
-	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-	{
-		position.y += speed;
+	if (destroyed) {
+
+
+
 	}
-
-	if (App->input->keys[SDL_SCANCODE_UP ] == Key_State::KEY_REPEAT)
-	{
-		position.y -= speed;
-	}
-
-	collider->SetPos(position.x, position.y);
-
-	currentAnimation->Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 	
@@ -120,51 +191,102 @@ Update_Status ModulePlayer::PostUpdate()
 		App->render->Blit(playertexture, position.x, position.y, &rect);
 	}
 
+	if (destroyed) {
+
+		//animació mort
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(playertexture, position.x, position.y, &rect);
+
+	}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+/*void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
 
 		// Aquí necesitamos el sonido de muerte que es el 20. en la lista. lo que pasa es que se carga con loadfx y no con loadmusic y no se como hacerlo.App->audio->PlayFx(explosionFx);
 
-		App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
+		//App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
 
 		destroyed = true;
 	}
-}
 
-/*void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+}*/
+
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && c2->type == Collider::LADDER) {
-		position.y -= 2;
-		ladderOn = true;
+
+	// LADDER
+	/*if (c1 == collider && c2->type == Collider::LADDER) {
+
+		//position.y -= 2; ?
+		if (position.x + 4 < c2->rect.x && position.x + 9 > c2->rect.x + 1)
+			ladderOn = true; 
+	} 
+	else { ladderOn = false; }*/
+
+	if (c2->type == Collider::Type::LADDER)
+	{
+		//if (position.x > (c2->rect.x - 2) && position.x < (c2->rect.x + 2) )
+			ladderOn = true;
+
+		/*if (position.y < c2->rect.y - 15)
+		{
+			ladderOn = false;
+		}*/
 	}
-	else {
+	else
+		ladderOn = false;
 
-		if (c1 == collider && c2->type == Collider::GROUND) {
+	// GROUND
+	/*if (c1 == collider && c2->type == Collider::GROUND){ groundOn = true; } //position.y -= 2;
+	else { groundOn = false; }*/
 
-			position.y -= 2;
-			groundOn = true;
+	if (c2->type == Collider::Type::GROUND)
+	{
+		groundOn = true;
+		/*if (ladderOn == true) {
+
+			speedy = 2;
 
 		}
-		else {
-			groundOn = false;
-		}
-	}
+		if (ladderOn == false)
+		{
+			if (position.y + 16 > c2->rect.y)
+			{
+				position.y = c2->rect.y - 15;
+				speedy = 0;
+			}
 
+		}*/
+	}
+	else
+		groundOn = false;
+
+
+
+
+	// ENEMY
 	if (c1 == collider && c2->type == Collider::ENEMY && destroyed == false)
 	{
-
 		// Aquí necesitamos el sonido de muerte que es el 20. en la lista. lo que pasa es que se carga con loadfx y no con loadmusic y no se como hacerlo.App->audio->PlayFx(explosionFx);
 
 		App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
 
 		destroyed = true;
 	}
-}*/
+
+	// WALL
+	if (c1 == collider && destroyed == false && c2->type == Collider::WALL) {
+		if (position.x < (c2->GetRect().x + c2->GetRect().w)	&&	   position.x > c2->GetRect().x)	{ position.x = (c2->GetRect().x + c2->GetRect().w); }
+		if ((position.x + player.w) > c2->GetRect().x	&&  (position.x + player.w) < (c2->GetRect().x + c2->GetRect().w) )  	{ position.x  = (c2->GetRect().x - player.w); }
+		
+	}
+
+} 
 
 bool ModulePlayer::CleanUp()
 {

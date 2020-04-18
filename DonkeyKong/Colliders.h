@@ -25,6 +25,8 @@ struct Collider
 
 	void SetPos(int x, int y);
 
+	SDL_Rect GetRect() { return rect; };
+
 	bool Intersects(const SDL_Rect& r) const;
 
 	//Variables

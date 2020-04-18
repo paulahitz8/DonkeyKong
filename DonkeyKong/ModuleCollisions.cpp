@@ -146,7 +146,17 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::HAMMER: // yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
+		case Collider::Type::WALL: // blue
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
+			break;
+		case Collider::Type::GROUND: // blue
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
+		case Collider::Type::LADDER: // blue
+			App->render->DrawQuad(colliders[i]->rect, 0, 200, 200, alpha);
+			break;
 		}
+
 	}
 }
 

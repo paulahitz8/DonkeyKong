@@ -14,10 +14,11 @@ class ModulePlayer : public Module
 private:
 
 	SDL_Rect player;
-	iPoint position = { 46, 232 };
+	iPoint position = { 46, 233 };
 	SDL_Texture* playertexture = nullptr;
 
-	int speed = 2;
+	int speedx = 2;
+	int speedy = 2;
 
 	// Sound effects indices
 	uint walkingFx = 0;
