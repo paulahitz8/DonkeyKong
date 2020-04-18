@@ -7,6 +7,7 @@
 #include "ModulePlayer.h"
 #include "ModuleDonkey.h"
 #include "ModuleEnemies.h"
+#include "ModuleCollisions.h"
 #include "ModuleLady.h"
 
 
@@ -77,6 +78,49 @@ bool ModuleLvl4::Start()
 	floorLadderTexture = App->textures->Load("Assets/cositasfondo/sueloescalera.png");
 	leftPoleTexture = App->textures->Load("Assets/cositasfondo/barraizquierda.png");
 	rightPoleTexture = App->textures->Load("Assets/cositasfondo/barraderecha.png");
+
+	// Level 4 colliders:
+	// Base
+	App->collision->AddCollider({ 16, 248, 224, 8 }, Collider::Type::GROUND); 
+
+	// First floor
+	App->collision->AddCollider({ 24, 208, 49, 8 }, Collider::Type::GROUND); 
+	App->collision->AddCollider({ 79, 208, 98, 8 }, Collider::Type::GROUND);  
+	App->collision->AddCollider({ 79 + 98 + 6, 208, 49, 8 }, Collider::Type::GROUND); 
+
+	// Second floor
+	App->collision->AddCollider({ 32, 168, 41, 8 }, Collider::Type::GROUND); 
+	App->collision->AddCollider({ 79, 168, 98, 8 }, Collider::Type::GROUND); 
+	App->collision->AddCollider({ 79 + 98 + 6, 168, 41, 8 }, Collider::Type::GROUND); 
+
+	// Third floor
+	App->collision->AddCollider({ 40, 128, 33, 8 }, Collider::Type::GROUND); 
+	App->collision->AddCollider({ 79, 128, 98, 8 }, Collider::Type::GROUND); 
+	App->collision->AddCollider({ 79 + 98 + 6, 128, 33, 8 }, Collider::Type::GROUND); 
+
+	// Fourth floor
+	App->collision->AddCollider({ 48, 88, 79 - 6 - 48, 8 }, Collider::Type::GROUND); // Floor 3
+	App->collision->AddCollider({ 79, 88, 98, 8 }, Collider::Type::GROUND); // Floor 3
+	App->collision->AddCollider({ 79 + 98 + 6, 88, 79 - 6 - 48, 8 }, Collider::Type::GROUND); // Floor 3
+
+	// Fifth floor
+	App->collision->AddCollider({ 78 - 6, 88 - 40, 98 + 7 + 7, 8 }, Collider::Type::GROUND); // Floor 3
+	
+																			  
+																			  /*// RIGHT LADDER
+	App->collision->AddCollider({ 201, 128, 1, 8 }, Collider::Type::GROUND); // Floor 3
+
+	App->collision->AddCollider({ 31, 88, 1, 8 }, Collider::Type::GROUND); // Floor 4
+	// LEFT LADDER
+	App->collision->AddCollider({ 41, 88, 15, 8 }, Collider::Type::GROUND); // Floor 4
+	App->collision->AddCollider({ 63, 88, 1, 8 }, Collider::Type::GROUND); // Floor 4
+	//MID LADDER
+	App->collision->AddCollider({ 73, 88, 78, 8 }, Collider::Type::GROUND); // Floor 4
+	//MID LADDER
+	App->collision->AddCollider({ 160, 88, 1, 8 }, Collider::Type::GROUND); // Floor 4
+	App->collision->AddCollider({ 168, 88, 15, 8 }, Collider::Type::GROUND); // Floor 4
+	// RIGHT LADDER
+	App->collision->AddCollider({ 193, 88, 1, 8 }, Collider::Type::GROUND); // Floor 4*/
 
 	// Enable Player?
 
