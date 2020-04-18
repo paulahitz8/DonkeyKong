@@ -15,26 +15,28 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	position.y = { 232 };
 
 	// left idle
-	leftidleAnim.PushBack({ 59, 68, 30, 26 });
-	leftidleAnim.PushBack({ 19, 68, 30, 26 });
+	leftidleAnim.PushBack({ 11, 68, 32, 26 });
+	leftidleAnim.PushBack({ 57, 68, 32, 26 });
 	leftidleAnim.speed = 0.1f;
 
 	//right idle
-	rightidleAnim.PushBack({ 167, 194, 30, 26 });
-	rightidleAnim.PushBack({ 207, 194, 30, 26 });
+	rightidleAnim.PushBack({ 213, 194, 32, 26 });
+	rightidleAnim.PushBack({ 176, 194, 32, 26 });
 	rightidleAnim.speed = 0.1f;
 
 	// left animation
-	leftAnim.PushBack({ 100, 68, 30, 26 });
-	leftAnim.PushBack({ 18, 38, 30, 26 });
-	leftAnim.PushBack({ 149, 68, 30, 26 });
-	leftAnim.PushBack({ 149, 68, 30, 26 });
+	leftAnim.PushBack({ 107, 68, 32, 26 });
+	leftAnim.PushBack({ 141, 68, 32, 26 });
+	leftAnim.PushBack({ 184, 68, 32, 26 });
+	leftAnim.PushBack({ 222, 68, 32, 26 });
 	leftAnim.speed = 0.1f;
 
 	//right animation
-	rightAnim.PushBack({ 167, 204, 30, 16 });
-	rightAnim.PushBack({ 142, 194, 13, 26 });
-	rightAnim.speed = 0.1f; rightAnim.PushBack({ 142, 194, 13, 26 });
+	rightAnim.PushBack({ 118, 194, 32, 16 });
+	rightAnim.PushBack({ 82, 194, 32, 26 });
+	rightAnim.PushBack({ 37, 194, 32, 26 });
+	rightAnim.PushBack({ 2, 194, 32, 26 });
+	rightAnim.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer() {
@@ -253,11 +255,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			position.y -= 1;
 		}
 		
-		if ((position.y < (c2->rect.y + 26)) && (position.y > (c2->rect.y - 14)) && (position.x < (c2->rect.x - 2))) {
+		if ((position.y < (c2->rect.y + 27)) && (position.y > (c2->rect.y - 14)) && (position.x < (c2->rect.x - 2))) {
 			position.x += 1;
 		}
 
-		if ((position.y < (c2->rect.y + 26)) && (position.y > (c2->rect.y - 14)) && (position.x > (c2->rect.x))) {
+		if ((position.y < (c2->rect.y + 27)) && (position.y > (c2->rect.y - 14)) && (position.x > (c2->rect.x))) {
 			position.x -= 1;
 		}
 

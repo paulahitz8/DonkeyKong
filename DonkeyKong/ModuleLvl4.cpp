@@ -120,7 +120,24 @@ bool ModuleLvl4::Start()
 	
 																			  
 	// Base floor ladders
-	App->collision->AddCollider({ 24, 205 , 8, 34 + 10 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 24, 205 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 120, 205 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 224, 205 , 8, 44 }, Collider::Type::LADDER);
+
+	App->collision->AddCollider({ 32, 166 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 88, 166 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 160, 166 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 216, 166 , 8, 44 }, Collider::Type::LADDER);
+
+	App->collision->AddCollider({ 40, 126 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 120, 126 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 208, 126 , 8, 44 }, Collider::Type::LADDER);
+
+	App->collision->AddCollider({ 48, 86 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 80, 86 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 168, 86 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 200, 86 , 8, 44 }, Collider::Type::LADDER);
+
 
 	// Enable Player?
 
