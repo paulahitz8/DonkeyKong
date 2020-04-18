@@ -86,11 +86,11 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 16 + 224, 247, 16, 9 }, Collider::Type::WALL);
 
 	// First floor
-	App->collision->AddCollider({ 0, 206, 23, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 206, 24, 10 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 24, 207, 49, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 207, 98, 9 }, Collider::Type::GROUND);  
 	App->collision->AddCollider({ 79 + 98 + 6, 207, 49, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 99 + 6 + 49, 207, 24, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 79 + 98 + 6 + 49, 207, 24, 9 }, Collider::Type::WALL);
 
 	// Second floor
 	App->collision->AddCollider({ 0, 168, 32, 9 }, Collider::Type::WALL);
