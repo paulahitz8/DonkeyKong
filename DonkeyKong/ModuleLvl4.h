@@ -17,9 +17,10 @@ private:
 	 
 
 	//TILEMAP
-
+	SDL_Rect back;
 	SDL_Rect tile;
 
+	SDL_Texture* backTexture = nullptr;
 	SDL_Texture* backgroundTexture = nullptr;
 	SDL_Texture* floorTexture = nullptr;
 	SDL_Texture* floorCarrotTexture = nullptr;
