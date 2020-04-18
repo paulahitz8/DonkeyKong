@@ -69,45 +69,103 @@ Update_Status ModulePlayer::Update()
 {
 
 	if (!destroyed) {
-		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && groundOn == true)
+		/*if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && groundOn == true)
 		{
-			position.x -= speed;
-			/*if (currentAnimation != &leftAnim)
-			{
-				leftAnim.Reset();
-				currentAnimation = &leftAnim;
-			}*/
+			position.x -= speedx;
+			//if (currentAnimation != &leftAnim)
+			//{
+				//leftAnim.Reset();
+				//currentAnimation = &leftAnim;
+			//}
 			currentAnimation = &leftAnim;
 			//App->audio->PlayFx(walkingFx);
 		}
 
 		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && groundOn == true)
 		{
-			position.x += speed;
-			/*if (currentAnimation != &rightAnim)
-			{
-				rightAnim.Reset();
-				currentAnimation = &rightAnim;
-			}*/
+			position.x += speedx;
+			//if (currentAnimation != &rightAnim)
+			//{
+				//rightAnim.Reset();
+				//currentAnimation = &rightAnim;
+			//}
 			currentAnimation = &rightAnim;
 			//App->audio->PlayFx(walkingFx);
 			//App->audio->PlayFx(silenceFx);
 		}
 
-		//if (ladderOn == true) {
+		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && ladderOn == true)
+		{
+			position.y += speedy;
 
-			if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+		}
+
+		if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && ladderOn == true)
+		{
+			position.y -= speedy;
+		}*/
+
+		if (groundOn == true) {
+
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 			{
-				position.y += speed;
+				position.x -= speedx;
+				//if (currentAnimation != &leftAnim)
+				//{
+					//leftAnim.Reset();
+					//currentAnimation = &leftAnim;
+				//}
+				currentAnimation = &leftAnim;
+				//App->audio->PlayFx(walkingFx);
 			}
 
-			if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 			{
-				position.y -= speed;
+				position.x += speedx;
+				//if (currentAnimation != &rightAnim)
+				//{
+					//rightAnim.Reset();
+					//currentAnimation = &rightAnim;
+				//}
+				currentAnimation = &rightAnim;
+				//App->audio->PlayFx(walkingFx);
+				//App->audio->PlayFx(silenceFx);
 			}
 
-		//}
+			if (ladderOn == true) {
 
+				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+				{
+					position.y += speedy;
+
+				}
+
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+				{
+					position.y -= speedy;
+				}
+
+			}
+
+		}
+
+		if (groundOn == false) {
+
+			if (ladderOn == true) {
+				
+				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+				{
+					position.y += speedy;
+
+				}
+
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+				{
+					position.y -= speedy;
+				}
+			}
+
+		}
 		 
 		collider->SetPos(position.x, position.y);
 
@@ -162,13 +220,54 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 
 	// LADDER
-	//if (c1 == collider && c2->type == Collider::LADDER) { ladderOn = true; } //position.y -= 2; ?
-	//else { ladderOn = false; }
+	/*if (c1 == collider && c2->type == Collider::LADDER) {
+
+		//position.y -= 2; ?
+		if (position.x + 4 < c2->rect.x && position.x + 9 > c2->rect.x + 1)
+			ladderOn = true; 
+	} 
+	else { ladderOn = false; }*/
+
+	if (c2->type == Collider::Type::LADDER)
+	{
+		//if (position.x > (c2->rect.x - 2) && position.x < (c2->rect.x + 2) )
+			ladderOn = true;
+
+		/*if (position.y < c2->rect.y - 15)
+		{
+			ladderOn = false;
+		}*/
+	}
+	else
+		ladderOn = false;
 
 	// GROUND
 	/*if (c1 == collider && c2->type == Collider::GROUND){ groundOn = true; } //position.y -= 2;
 	else { groundOn = false; }*/
-	while (c1 == collider && c2->type == Collider::GROUND) { groundOn = true; }
+
+	if (c2->type == Collider::Type::GROUND)
+	{
+		groundOn = true;
+		/*if (ladderOn == true) {
+
+			speedy = 2;
+
+		}
+		if (ladderOn == false)
+		{
+			if (position.y + 16 > c2->rect.y)
+			{
+				position.y = c2->rect.y - 15;
+				speedy = 0;
+			}
+
+		}*/
+	}
+	else
+		groundOn = false;
+
+
+
 
 	// ENEMY
 	if (c1 == collider && c2->type == Collider::ENEMY && destroyed == false)
