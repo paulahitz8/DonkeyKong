@@ -229,72 +229,27 @@ Update_Status ModulePlayer::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-/*void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
-{
-	if (c1 == collider && destroyed == false)
-	{
-
-		// Aquí necesitamos el sonido de muerte que es el 20. en la lista. lo que pasa es que se carga con loadfx y no con loadmusic y no se como hacerlo.App->audio->PlayFx(explosionFx);
-
-		//App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
-
-		destroyed = true;
-	}
-
-}*/
-
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 
 	// LADDER
-	/*if (c1 == collider && c2->type == Collider::LADDER) {
-
-		//position.y -= 2; ?
-		if (position.x + 4 < c2->rect.x && position.x + 9 > c2->rect.x + 1)
-			ladderOn = true; 
-	} 
-	else { ladderOn = false; }*/
-	
-	/*if (c2->type == Collider::Type::LADDER && ((position.x + ) > (c2->rect.x - 4) && position.x < (c2->rect.x + 4)))
-	{
-		if ((position.y + player.h) < (c2->rect.y + 2)) {
-			position.y += 1;
-		}
-
-		if ((position.y + player.h) > c2->rect.y + 44)
-		{
-			position.y -= 1;
-		}
-		
-		if ((position.y < (c2->rect.y + 27)) && (position.y > (c2->rect.y - 14)) && (position.x < (c2->rect.x - 2))) {
-			position.x += 1;
-		}
-
-		if ((position.y < (c2->rect.y + 27)) && (position.y > (c2->rect.y - 14)) && (position.x > (c2->rect.x))) {
-			position.x -= 1;
-		}
-
-			ladderOn = true;
-	}
-	else
-		ladderOn = false;*/
 		
 	if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 4) && (position.x + 18) < (c2->rect.x + 4)))
 	{
-		if (((position.y + 10) + player.h) < (c2->rect.y + 2)) {
+		if (((position.y + 10) + player.h) < (c2->rect.y + 3)) {
 			position.y += 1;
 		}
 
-		if (((position.y + 10) + player.h) > c2->rect.y + 44)
+		if (((position.y + 10) + player.h) > c2->rect.y + 42)
 		{
 			position.y -= 1;
 		}
 
-		if (((position.y + 10) < (c2->rect.y + 27)) && ((position.y + 10) > (c2->rect.y - 14)) && ((position.x + 18) < (c2->rect.x - 2))) {
+		if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 2))) {
 			position.x += 1;
 		}
 
-		if (((position.y + 10) < (c2->rect.y + 27)) && ((position.y + 10) > (c2->rect.y - 14)) && ((position.x + 18) > (c2->rect.x))) {
+		if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x))) {
 			position.x -= 1;
 		}
 
@@ -304,31 +259,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		ladderOn = false;
 		
 	// GROUND
-	/*if (c1 == collider && c2->type == Collider::GROUND){ groundOn = true; } //position.y -= 2;
-	else { groundOn = false; }*/
 
 	if (c2->type == Collider::Type::GROUND || c2->type ==Collider::Type::LADDER)
 	{
 		groundOn = true;
-		/*if (ladderOn == true) {
-
-			speedy = 2;
-
-		}
-		if (ladderOn == false)
-		{
-			if (position.y + 16 > c2->rect.y)
-			{
-				position.y = c2->rect.y - 15;
-				speedy = 0;
-			}
-
-		}*/
 	}
 	else
 		groundOn = false;
-
-
 
 
 	// ENEMY
