@@ -227,25 +227,26 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			ladderOn = true; 
 	} 
 	else { ladderOn = false; }*/
-
+	
 	if (c2->type == Collider::Type::LADDER)
 	{
 		//if (position.x > (c2->rect.x - 2) && position.x < (c2->rect.x + 2) )
 			ladderOn = true;
 
-		if (position.y < c2->rect.y - 15)
+		/*if (position.y < c2->rect.y - 15)
 		{
 			ladderOn = false;
-		}
+		}*/
 	}
 	else
 		ladderOn = false;
-
+		
+		
 	// GROUND
 	/*if (c1 == collider && c2->type == Collider::GROUND){ groundOn = true; } //position.y -= 2;
 	else { groundOn = false; }*/
 
-	if (c2->type == Collider::Type::GROUND)
+	if (c2->type == Collider::Type::GROUND || c2->type ==Collider::Type::LADDER)
 	{
 		groundOn = true;
 		/*if (ladderOn == true) {

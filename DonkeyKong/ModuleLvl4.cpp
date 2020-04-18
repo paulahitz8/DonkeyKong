@@ -81,12 +81,16 @@ bool ModuleLvl4::Start()
 
 	// Level 4 colliders:
 	// Base
+	App->collision->AddCollider({ 0, 247, 16, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 16, 247, 224, 9 }, Collider::Type::GROUND); 
+	App->collision->AddCollider({ 16 + 224, 247, 16, 9 }, Collider::Type::WALL);
 
 	// First floor
+	App->collision->AddCollider({ 0, 207, 24, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 24, 207, 49, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 207, 98, 9 }, Collider::Type::GROUND);  
 	App->collision->AddCollider({ 79 + 98 + 6, 207, 49, 9 }, Collider::Type::GROUND); 
+	App->collision->AddCollider({ 24 + 49 + 98 + 49, 207, 24, 9 }, Collider::Type::WALL);
 
 	// Second floor
 	App->collision->AddCollider({ 32, 168, 41, 8 }, Collider::Type::GROUND); 
