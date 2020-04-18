@@ -85,67 +85,60 @@ bool ModuleLvl4::Start()
 	rightPoleTexture = App->textures->Load("Assets/cositasfondo/barraderecha.png");
 
 	// Level 4 colliders:
-	// Base
-	App->collision->AddCollider({ 0, 247, 16, 9 }, Collider::Type::WALL);
+	// Walls and ground by floor
+	App->collision->AddCollider({ 0, 246, 14, 10 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 16, 247, 224, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 16 + 224, 247, 16, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 16 + 224 + 3, 246, 16, 10 }, Collider::Type::WALL);
 
-	// First floor
-	App->collision->AddCollider({ 0, 206, 22, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 206, 21, 10 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 24, 207, 49, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 207, 98, 9 }, Collider::Type::GROUND);  
 	App->collision->AddCollider({ 79 + 98 + 6, 207, 49, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6 + 49, 207, 24, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 79 + 98 + 6 + 49 + 3, 207, 24, 9 }, Collider::Type::WALL);
 
-	// Second floor
-	App->collision->AddCollider({ 0, 168, 30, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 168, 29, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 32, 168, 41, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 168, 98, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6, 168, 41, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6 + 41, 168, 32, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 79 + 98 + 6 + 41 + 3, 168, 32, 9 }, Collider::Type::WALL);
 
-	// Third floor
-	App->collision->AddCollider({ 0, 128, 38, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 128, 37, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 40, 128, 33, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 128, 98, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6, 128, 33, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6 + 33, 128, 40, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 79 + 98 + 6 + 33 + 3, 128, 40, 9 }, Collider::Type::WALL);
 
-	// Fourth floor
-	App->collision->AddCollider({ 0, 88, 46, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 88, 45, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 48, 88, 25, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 88, 98, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6, 88, 25, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6 + 25, 88, 48, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 79 + 98 + 6 + 25 + 3, 88, 48, 9 }, Collider::Type::WALL);
 
-	// Fifth floor
-	App->collision->AddCollider({ 0, 48, 70, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 48, 69, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 72, 48, 112, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 72 + 112, 48, 72, 9 }, Collider::Type::WALL);
-	
+	App->collision->AddCollider({ 72 + 112 + 3, 48, 72, 9 }, Collider::Type::WALL);
 																			  
-	// Base floor ladders
-	App->collision->AddCollider({ 24, 205 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 120, 205 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 224, 205 , 8, 44 }, Collider::Type::LADDER);
+	// Ladders by floor
+	App->collision->AddCollider({ 27, 205 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 123, 205 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 227, 205 , 2, 44 }, Collider::Type::LADDER);
 
-	App->collision->AddCollider({ 32, 166 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 88, 166 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 160, 166 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 216, 166 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 35, 166 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 91, 166 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 163, 166 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 219, 166 , 2, 44 }, Collider::Type::LADDER);
 
-	App->collision->AddCollider({ 40, 126 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 120, 126 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 208, 126 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 43, 126 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 123, 126 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 211, 126 , 2, 44 }, Collider::Type::LADDER);
 
-	App->collision->AddCollider({ 48, 86 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 80, 86 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 168, 86 , 8, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 200, 86 , 8, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 51, 86 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 83, 86 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 171, 86 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 203, 86 , 2, 44 }, Collider::Type::LADDER);
 
 
 	// Enable Player
-
 	App->player->Enable();
 	App->donkey->Enable();
 	App->enemies->Enable();

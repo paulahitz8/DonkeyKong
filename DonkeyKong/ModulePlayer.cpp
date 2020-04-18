@@ -76,86 +76,12 @@ bool ModulePlayer::Start()
 Update_Status ModulePlayer::Update()
 {
 
-	if (!destroyed) {
 
-		if (groundOn == true) {
-
-			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
-			{
-				position.x -= speedx;
-				currentAnimation = &leftAnim;
-				//App->audio->PlayFx(walkingFx);
-			}
-
-			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
-			{
-				position.x += speedx;
-				currentAnimation = &rightAnim;
-				//App->audio->PlayFx(walkingFx);
-				//App->audio->PlayFx(silenceFx);
-			}
-
-			// If last movement was left, set the current animation back to left idle
-			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
-			{
-				currentAnimation = &leftidleAnim;
-			}
-			// If last movement was right, set the current animation back to left idle
-			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
-				currentAnimation = &rightidleAnim;
-
-
-			if (ladderOn == true) {
-
-				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-				{
-					position.y += speedy;
-
-				}
-
-				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
-				{
-					position.y -= speedy;
-
-				}
-
-			}
-
-		}
-
-		else {
-
-			if (ladderOn == true) {
-				
-				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-				{
-					position.y += speedy;
-
-				}
-
-				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
-				{
-					position.y -= speedy;
-				}
-			}
-
-		}
-
-		collider->SetPos(position.x + 18, position.y + 10);
-
-		currentAnimation->Update();
-	}
-
-	/*if (groundOn == true) {
+	if (groundOn == true) {
 
 		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 		{
 			position.x -= speedx;
-			//if (currentAnimation != &leftAnim)
-			//{
-				//leftAnim.Reset();
-				//currentAnimation = &leftAnim;
-			//}
 			currentAnimation = &leftAnim;
 			//App->audio->PlayFx(walkingFx);
 		}
@@ -163,50 +89,60 @@ Update_Status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 		{
 			position.x += speedx;
-			//if (currentAnimation != &rightAnim)
-			//{
-				//rightAnim.Reset();
-				//currentAnimation = &rightAnim;
-			//}
 			currentAnimation = &rightAnim;
 			//App->audio->PlayFx(walkingFx);
 			//App->audio->PlayFx(silenceFx);
+		}
+
+		// If last movement was left, set the current animation back to left idle
+		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
+		{
+			currentAnimation = &leftidleAnim;
+		}
+		// If last movement was right, set the current animation back to left idle
+		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
+			currentAnimation = &rightidleAnim;
+
+
+		if (ladderOn == true) {
+
+			if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+			{
+				position.y += speedy;
+
+			}
+
+			if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+			{
+				position.y -= speedy;
+
+			}
+
 		}
 
 	}
 
 	else {
 
-	}
+		if (ladderOn == true) {
+				
+			if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+			{
+				position.y += speedy;
 
-	if (ladderOn == true) {
-		
-		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-		{
-			position.y += speedy;
+			}
 
+			if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+			{
+				position.y -= speedy;
+			}
 		}
 
-		if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
-		{
-			position.y -= speedy;
-		}
-
 	}
 
-	collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x + 18, position.y + 10);
 
 	currentAnimation->Update();
-	}*/
-
-	if (destroyed) {
-
-		App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
-		//livecount--;
-
-
-
-	}
 
 	return Update_Status::UPDATE_CONTINUE;
 	
@@ -237,7 +173,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	// LADDER
 		
-	if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 4) && (position.x + 18) < (c2->rect.x + 4)))
+	if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 8) && (position.x + 18) < (c2->rect.x)))
 	{
 		if (((position.y + 10) + player.h) < (c2->rect.y + 3)) {
 			position.y += 1;
@@ -248,11 +184,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			position.y -= 1;
 		}
 
-		if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 2))) {
+		if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 6))) {
 			position.x += 1;
 		}
 
-		if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x))) {
+		if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x - 4))) {
 			position.x -= 1;
 		}
 
@@ -274,8 +210,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	// ENEMY
 	if (c1 == collider && c2->type == Collider::ENEMY && destroyed == false)
 	{
-		// Aquí necesitamos el sonido de muerte que es el 20. en la lista. lo que pasa es que se carga con loadfx y no con loadmusic y no se como hacerlo.App->audio->PlayFx(explosionFx);
-
 		//App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
 
 		destroyed = true;

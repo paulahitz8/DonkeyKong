@@ -18,6 +18,7 @@ class ModulePlayer;
 class ModuleDonkey;
 class ModuleEnemies;
 class ModuleLady;
+class ModuleCarrots;
 
 class ModuleFadeToBlack;
 class ModuleCollisions;
@@ -59,6 +60,7 @@ public:
 	ModuleDonkey* donkey = nullptr;
 	ModuleEnemies* enemies = nullptr;
 	ModuleLady* lady = nullptr;
+	ModuleCarrots* carrots = nullptr;
 
 	
 	ModuleCollisions* collision = nullptr;

@@ -70,6 +70,9 @@
     <ClCompile Include="ModuleFonts.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleCarrots.cpp">
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -145,6 +148,9 @@
       <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="ModuleFonts.h">
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleCarrots.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
   </ItemGroup>
