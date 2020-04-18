@@ -9,6 +9,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 #include "ModuleLady.h"
+#include "SDL.h"
 
 
 int lvl4[32][32]{	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -145,22 +146,24 @@ bool ModuleLvl4::Start()
 	App->donkey->Enable();
 	App->enemies->Enable();
 	App->lady->Enable();
-	time_t time = 0/*(time_t * time*/;
-	for (int i = 0; i < MAX_ENEMIES; i++) {
+	/*for (int i = 0; i < MAX_ENEMIES; i++) {
 		int x = 217 + (i*15);
 		int y = 196 + (i*15);
-		if (time % 5 == 0)
-		{
-			App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, x, y);
-		}
-	}
+		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, x, y);
+	}*/
 	
-
+	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
 	return true;
 }
 
 Update_Status ModuleLvl4::Update()
 {
+	if (i % 500 == 0 && j <= 5)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
+		j++;
+	}
+	i++;
 	return Update_Status::UPDATE_CONTINUE;
 }
 

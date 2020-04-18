@@ -29,6 +29,8 @@ private:
 	SDL_Texture* leftPoleTexture = nullptr;
 	SDL_Texture* rightPoleTexture = nullptr;
 	
+	int i = 0;
+	int j = 0;
 
 	int map[32][32];
 	
