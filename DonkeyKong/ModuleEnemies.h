@@ -8,7 +8,7 @@
 #include "p2Point.h"
 #include "Animation.h"
 
-#define MAX_ENEMIES 100
+#define MAX_ENEMIES 5
 
 enum class ENEMY_TYPE
 {
@@ -66,6 +66,8 @@ public:
 private:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
+
+private: //?
 
 	// A queue with all spawn points information
 	EnemySpawnpoint spawnQueue[MAX_ENEMIES];

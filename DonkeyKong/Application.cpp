@@ -33,8 +33,9 @@ Application::Application()
 	modules[i++] =	lvl4 =			new ModuleLvl4(false);
 	modules[i++] =	player =		new ModulePlayer(false);
 	modules[i++] =	donkey =		new ModuleDonkey(false);
-	modules[i++] =  enemies =		new ModuleEnemies(false);
 	modules[i++] =  lady =			new ModuleLady(false);
+	modules[i++] =  enemies =		new ModuleEnemies(false);
+	
 	
 	
 	

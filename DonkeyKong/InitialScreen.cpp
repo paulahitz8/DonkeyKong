@@ -40,7 +40,7 @@ int text[36][36]{	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,9,0,18,0,5,0,14,0,5,0,0,0,0,8,0,5,0,18,0,14,0,1,0,14,0,4,0,5,0,26,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0, 0,0,0,1,0,4,0,18,0,9,0,1,0,0,0,0,2,0,5,0,12,0,13,0,15,0,14,0,20,0,5,0,0,0,0},
+					{0,0,0,0,1,0,4,0,18,0,9,0,1,0,0,0,0,2,0,5,0,12,0,13,0,15,0,14,0,20,0,5,0,0,0,0},
 				
 };
 
@@ -69,7 +69,7 @@ bool InitialScreen::Start()
 
 	//initialbackgroundtexture = App->textures->Load("Assets/cositasfondo/fondonegro.png");
 	//App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
-	App->audio->PlayMusic("Assets/Music/00 - Donkey Kong Main Theme (1).wav", 1.0f);
+	//App->audio->PlayMusic("Assets/Music/00 - Donkey Kong Main Theme (1).wav", 1.0f);
 
 	letter.w = 7;
 	letter.h = 7;
