@@ -33,6 +33,7 @@
     <ClCompile Include="ModuleDonkey.cpp" />
     <ClCompile Include="ModuleEnemies.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
+    <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleLady.cpp" />
     <ClCompile Include="ModuleLvl4.cpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="ModuleDonkey.h" />
     <ClInclude Include="ModuleEnemies.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
+    <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleLady.h" />
     <ClInclude Include="ModuleLvl4.h" />

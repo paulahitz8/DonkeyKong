@@ -67,6 +67,9 @@
     <ClCompile Include="EnemyFireballs.cpp">
       <Filter>Source\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleFonts.cpp">
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -140,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="EnemyFireballs.h">
       <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFonts.h">
+      <Filter>Source\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

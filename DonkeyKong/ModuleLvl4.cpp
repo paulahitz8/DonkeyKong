@@ -116,7 +116,7 @@ bool ModuleLvl4::Start()
 	App->donkey->Enable();
 	App->enemies->Enable();
 	App->lady->Enable();
-	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 218, 196);
+	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
 
 	return true;
 }
