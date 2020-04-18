@@ -201,6 +201,9 @@ Update_Status ModulePlayer::Update()
 
 	if (destroyed) {
 
+		App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
+		//livecount--;
+
 
 
 	}
@@ -273,7 +276,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		// Aquí necesitamos el sonido de muerte que es el 20. en la lista. lo que pasa es que se carga con loadfx y no con loadmusic y no se como hacerlo.App->audio->PlayFx(explosionFx);
 
-		App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
+		//App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
 
 		destroyed = true;
 	}
