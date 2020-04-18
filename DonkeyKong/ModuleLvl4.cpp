@@ -116,7 +116,13 @@ bool ModuleLvl4::Start()
 	App->donkey->Enable();
 	App->enemies->Enable();
 	App->lady->Enable();
-	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
+	for (int i = 0; i < MAX_ENEMIES; i++) {
+		int x = 217 + (i*15);
+		int y = 196 + (i*15);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, x, y);
+		
+	}
+	
 
 	return true;
 }
