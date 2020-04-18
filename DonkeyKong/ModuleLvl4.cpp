@@ -145,11 +145,14 @@ bool ModuleLvl4::Start()
 	App->donkey->Enable();
 	App->enemies->Enable();
 	App->lady->Enable();
+	time_t time = 0/*(time_t * time*/;
 	for (int i = 0; i < MAX_ENEMIES; i++) {
 		int x = 217 + (i*15);
 		int y = 196 + (i*15);
-		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, x, y);
-		
+		if (time % 5 == 0)
+		{
+			App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, x, y);
+		}
 	}
 	
 
