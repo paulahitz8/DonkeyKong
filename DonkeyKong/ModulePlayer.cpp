@@ -11,31 +11,31 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	position.x = { 46 };
-	position.y = { 232 };
+	position.x = { 43 };
+	position.y = { 222 };
 
 	// left idle
-	leftidleAnim.PushBack({ 11, 68, 32, 26 });
-	leftidleAnim.PushBack({ 57, 68, 32, 26 });
+	leftidleAnim.PushBack({ 0, 0 , 45, 26 });
+	leftidleAnim.PushBack({ 0, 37, 45, 26 });
 	leftidleAnim.speed = 0.1f;
 
 	//right idle
-	rightidleAnim.PushBack({ 213, 194, 32, 26 });
-	rightidleAnim.PushBack({ 176, 194, 32, 26 });
+	rightidleAnim.PushBack({ 0, 64, 45, 26 });
+	rightidleAnim.PushBack({ 0, 100, 45, 26 });
 	rightidleAnim.speed = 0.1f;
 
 	// left animation
-	leftAnim.PushBack({ 107, 68, 32, 26 });
-	leftAnim.PushBack({ 141, 68, 32, 26 });
-	leftAnim.PushBack({ 184, 68, 32, 26 });
-	leftAnim.PushBack({ 222, 68, 32, 26 });
+	leftAnim.PushBack({ 203, 1, 45, 26 });
+	leftAnim.PushBack({ 203, 36, 45, 26 });
+	leftAnim.PushBack({ 203, 63, 45, 26 });
+	leftAnim.PushBack({ 203, 94, 45, 26 });
 	leftAnim.speed = 0.1f;
 
 	//right animation
-	rightAnim.PushBack({ 118, 194, 32, 16 });
-	rightAnim.PushBack({ 82, 194, 32, 26 });
-	rightAnim.PushBack({ 37, 194, 32, 26 });
-	rightAnim.PushBack({ 2, 194, 32, 26 });
+	rightAnim.PushBack({ 203, 122, 50, 16 });
+	rightAnim.PushBack({ 203, 161, 50, 26 });
+	rightAnim.PushBack({ 203, 189, 50, 26 });
+	rightAnim.PushBack({ 203, 227, 50, 26 });
 	rightAnim.speed = 0.1f;
 }
 
@@ -63,7 +63,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 
 
-	collider = App->collision->AddCollider({ position.x, position.y, 12, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collision->AddCollider({ position.x, position.y + 10, 12, 16 }, Collider::Type::PLAYER, this);
 
 	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
 	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
@@ -85,12 +85,16 @@ Update_Status ModulePlayer::Update()
 				position.x -= speedx;
 				currentAnimation = &leftAnim;
 				//App->audio->PlayFx(walkingFx);
+
+				collider->SetPos(position.x + 20, position.y + 10);
 			}
 
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 			{
 				position.x += speedx;
 				currentAnimation = &rightAnim;
+
+				collider->SetPos(position.x, position.y + 10);
 				//App->audio->PlayFx(walkingFx);
 				//App->audio->PlayFx(silenceFx);
 			}
@@ -129,8 +133,6 @@ Update_Status ModulePlayer::Update()
 			}
 
 		}
-		 
-		collider->SetPos(position.x, position.y);
 
 		currentAnimation->Update();
 	}
