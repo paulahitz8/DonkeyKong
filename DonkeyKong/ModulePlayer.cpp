@@ -84,7 +84,7 @@ Update_Status ModulePlayer::Update()
 			{
 				position.x -= speedx;
 				currentAnimation = &leftAnim;
-				//App->audio->PlayFx(walkingFx);
+				App->audio->PlayFx(walkingFx);
 			}
 
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)

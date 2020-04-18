@@ -86,35 +86,35 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 16 + 224, 247, 16, 9 }, Collider::Type::WALL);
 
 	// First floor
-	App->collision->AddCollider({ 0, 206, 24, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 206, 22, 10 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 24, 207, 49, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 207, 98, 9 }, Collider::Type::GROUND);  
 	App->collision->AddCollider({ 79 + 98 + 6, 207, 49, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6 + 49, 207, 24, 9 }, Collider::Type::WALL);
 
 	// Second floor
-	App->collision->AddCollider({ 0, 168, 32, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 168, 30, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 32, 168, 41, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 168, 98, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6, 168, 41, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6 + 41, 168, 32, 9 }, Collider::Type::WALL);
 
 	// Third floor
-	App->collision->AddCollider({ 0, 128, 40, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 128, 38, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 40, 128, 33, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 128, 98, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6, 128, 33, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6 + 33, 128, 40, 9 }, Collider::Type::WALL);
 
 	// Fourth floor
-	App->collision->AddCollider({ 0, 88, 48, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 88, 46, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 48, 88, 25, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 88, 98, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6, 88, 25, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6 + 25, 88, 48, 9 }, Collider::Type::WALL);
 
 	// Fifth floor
-	App->collision->AddCollider({ 0, 48, 72, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 48, 70, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 72, 48, 112, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 72 + 112, 48, 72, 9 }, Collider::Type::WALL);
 	
