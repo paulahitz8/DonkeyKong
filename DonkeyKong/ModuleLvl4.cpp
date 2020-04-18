@@ -144,25 +144,19 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 200, 86 , 8, 44 }, Collider::Type::LADDER);
 
 
-	// Enable Player?
+	// Enable Player
 
 	App->player->Enable();
 	App->donkey->Enable();
 	App->enemies->Enable();
 	App->lady->Enable();
-	/*for (int i = 0; i < MAX_ENEMIES; i++) {
-		int x = 217 + (i*15);
-		int y = 196 + (i*15);
-		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, x, y);
-	}*/
-	
-	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
+
 	return true;
 }
 
 Update_Status ModuleLvl4::Update()
 {
-	if (i % 500 == 0 && j <= 5)
+	if (i % 500 == 0 && j < 5)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
 		j++;

@@ -20,6 +20,9 @@ private:
 
 	Collider* colliderD = nullptr;
 
+	int i = 1;
+
+
 public:
 
 	ModuleDonkey(bool startEnabled);
@@ -30,9 +33,11 @@ public:
 	bool CleanUp() override;
 
 	//Animation
-	//Animation* currentAnimation = nullptr;
+	Animation* currentAnimation = nullptr;
 	Animation donkeyidleAnim;
-	Animation donkeyAnim;
+	Animation donkeyAnim1;
+	Animation donkeyAnim2;
+	Animation donkeyAnim3;
 
 };
 
