@@ -149,7 +149,7 @@ Update_Status ModulePlayer::Update()
 
 		}
 
-		if (groundOn == false) {
+		else {
 
 			if (ladderOn == true) {
 				
@@ -233,10 +233,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		//if (position.x > (c2->rect.x - 2) && position.x < (c2->rect.x + 2) )
 			ladderOn = true;
 
-		/*if (position.y < c2->rect.y - 15)
+		if (position.y < c2->rect.y - 15)
 		{
 			ladderOn = false;
-		}*/
+		}
 	}
 	else
 		ladderOn = false;
