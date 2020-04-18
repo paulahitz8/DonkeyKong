@@ -27,6 +27,8 @@ void Enemies::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
+
+
 }
 
 void Enemies::Draw()
