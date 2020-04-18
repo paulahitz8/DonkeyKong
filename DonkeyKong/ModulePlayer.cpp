@@ -15,20 +15,20 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	position.y = { 222 };
 
 	// left idle
-	leftidleAnim.PushBack({ 0, 0 , 45, 26 });
-	leftidleAnim.PushBack({ 0, 37, 45, 26 });
+	leftidleAnim.PushBack({ 0, 0 , 50, 26 });
+	leftidleAnim.PushBack({ 0, 37, 50, 26 });
 	leftidleAnim.speed = 0.1f;
 
 	//right idle
-	rightidleAnim.PushBack({ 0, 64, 45, 26 });
-	rightidleAnim.PushBack({ 0, 100, 45, 26 });
+	rightidleAnim.PushBack({ 0, 64, 50, 26 });
+	rightidleAnim.PushBack({ 0, 100, 50, 26 });
 	rightidleAnim.speed = 0.1f;
 
 	// left animation
-	leftAnim.PushBack({ 203, 1, 45, 26 });
-	leftAnim.PushBack({ 203, 36, 45, 26 });
-	leftAnim.PushBack({ 203, 63, 45, 26 });
-	leftAnim.PushBack({ 203, 94, 45, 26 });
+	leftAnim.PushBack({ 203, 1, 50, 26 });
+	leftAnim.PushBack({ 203, 36, 50, 26 });
+	leftAnim.PushBack({ 203, 63, 50, 26 });
+	leftAnim.PushBack({ 203, 94, 50, 26 });
 	leftAnim.speed = 0.1f;
 
 	//right animation
@@ -49,7 +49,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	playertexture = App->textures->Load("Assets/Mario/mariosprites.png");
 	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
-	currentAnimation = &rightAnim; //mario empieza mirando a la derecha
+	currentAnimation = &rightidleAnim; //mario empieza mirando a la derecha
 								   
 	 /*if (playertexture == nullptr) {
 		return false;
@@ -63,7 +63,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 
 
-	collider = App->collision->AddCollider({ position.x, position.y + 10, 12, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collision->AddCollider({ position.x + 18, position.y + 10, 12, 16 }, Collider::Type::PLAYER, this);
 
 	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
 	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
@@ -85,19 +85,25 @@ Update_Status ModulePlayer::Update()
 				position.x -= speedx;
 				currentAnimation = &leftAnim;
 				//App->audio->PlayFx(walkingFx);
-
-				collider->SetPos(position.x + 20, position.y + 10);
 			}
 
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 			{
 				position.x += speedx;
 				currentAnimation = &rightAnim;
-
-				collider->SetPos(position.x, position.y + 10);
 				//App->audio->PlayFx(walkingFx);
 				//App->audio->PlayFx(silenceFx);
 			}
+
+			// If last movement was left, set the current animation back to left idle
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
+			{
+				currentAnimation = &leftidleAnim;
+			}
+			// If last movement was right, set the current animation back to left idle
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
+				currentAnimation = &rightidleAnim;
+
 
 			if (ladderOn == true) {
 
@@ -110,6 +116,7 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 				{
 					position.y -= speedy;
+
 				}
 
 			}
@@ -133,6 +140,8 @@ Update_Status ModulePlayer::Update()
 			}
 
 		}
+
+		collider->SetPos(position.x + 18, position.y + 10);
 
 		currentAnimation->Update();
 	}
@@ -246,7 +255,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	} 
 	else { ladderOn = false; }*/
 	
-	if (c2->type == Collider::Type::LADDER && (position.x > (c2->rect.x - 4) && position.x < (c2->rect.x + 4)))
+	/*if (c2->type == Collider::Type::LADDER && ((position.x + ) > (c2->rect.x - 4) && position.x < (c2->rect.x + 4)))
 	{
 		if ((position.y + player.h) < (c2->rect.y + 2)) {
 			position.y += 1;
@@ -268,8 +277,31 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			ladderOn = true;
 	}
 	else
-		ladderOn = false;
+		ladderOn = false;*/
 		
+	if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 4) && (position.x + 18) < (c2->rect.x + 4)))
+	{
+		if (((position.y + 10) + player.h) < (c2->rect.y + 2)) {
+			position.y += 1;
+		}
+
+		if (((position.y + 10) + player.h) > c2->rect.y + 44)
+		{
+			position.y -= 1;
+		}
+
+		if (((position.y + 10) < (c2->rect.y + 27)) && ((position.y + 10) > (c2->rect.y - 14)) && ((position.x + 18) < (c2->rect.x - 2))) {
+			position.x += 1;
+		}
+
+		if (((position.y + 10) < (c2->rect.y + 27)) && ((position.y + 10) > (c2->rect.y - 14)) && ((position.x + 18) > (c2->rect.x))) {
+			position.x -= 1;
+		}
+
+		ladderOn = true;
+	}
+	else
+		ladderOn = false;
 		
 	// GROUND
 	/*if (c1 == collider && c2->type == Collider::GROUND){ groundOn = true; } //position.y -= 2;

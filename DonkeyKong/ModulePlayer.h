@@ -14,7 +14,7 @@ class ModulePlayer : public Module
 private:
 
 	SDL_Rect player;
-	iPoint position = { 46, 233 };
+	iPoint position;
 	SDL_Texture* playertexture = nullptr;
 
 	int speedx = 1;
