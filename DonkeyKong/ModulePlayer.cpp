@@ -279,10 +279,16 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 
 	// WALL
-	if (c1 == collider && destroyed == false && c2->type == Collider::WALL) {
+	/*if (c1 == collider && destroyed == false && c2->type == Collider::WALL) {
 		if (position.x < (c2->GetRect().x + c2->GetRect().w)	&&	   position.x > c2->GetRect().x)	{ position.x = (c2->GetRect().x + c2->GetRect().w); }
 		if ((position.x + player.w) > c2->GetRect().x	&&  (position.x + player.w) < (c2->GetRect().x + c2->GetRect().w) )  	{ position.x  = (c2->GetRect().x - player.w); }
 		if (position.y < (c2->GetRect().y + c2->GetRect().h) && position.y >(c2->GetRect().y)) { position.y = (c2->GetRect().y + c2->GetRect().h); }
+	}*/
+
+	if (c1 == collider && destroyed == false && c2->type == Collider::WALL) {
+		if ((position.x + 18) < (c2->GetRect().x + c2->GetRect().w) && (position.x + 18) > c2->GetRect().x) { position.x += 2; }
+		if (((position.x + 18) + player.w) > c2->GetRect().x && ((position.x + 18) + player.w) < (c2->GetRect().x + c2->GetRect().w)) { position.x -= 2; }
+		if ((position.y + 10) < (c2->GetRect().y + c2->GetRect().h) && (position.y + 10) >(c2->GetRect().y)) { position.y = 10 + (c2->GetRect().y + c2->GetRect().h); }
 	}
 
 } 
