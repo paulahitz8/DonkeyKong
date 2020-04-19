@@ -108,13 +108,15 @@ Update_Status ModulePlayer::Update()
 		godmode = !godmode;
 
 	}
+	if (godmode == true) {
+
+		groundOn == true;
+		ladderOn == true;
+
+	}
+
 
 	if (destroyed) {
-
-		//animació mort!!!!
-		//SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		//App->render->Blit(playertexture, position.x, position.y, &rect);
-
 
 		if (livecount == 0) {
 
@@ -338,7 +340,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 
 	}
-
 
 } 
 

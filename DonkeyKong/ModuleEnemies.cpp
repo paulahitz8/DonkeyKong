@@ -143,12 +143,6 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			case ENEMY_TYPE::FIREBALLS:
 				enemies[i] = new Enemy_Fireballs(info.x, info.y);
 				break;
-			/*case ENEMY_TYPE::BROWNSHIP:
-				enemies[i] = new Enemy_BrownShip(info.x, info.y);
-				break;
-			case ENEMY_TYPE::MECH:
-				enemies[i] = new Enemy_Mech(info.x, info.y);
-				break;*/
 			}
 			enemies[i]->enemiestexture = enemiestexture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;
@@ -159,11 +153,12 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
+
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
+			enemies[i]->OnCollision(c2); //Notify collision of an enemy
 
 			delete enemies[i];
 			enemies[i] = nullptr;
