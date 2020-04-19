@@ -15,6 +15,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleLady.h"
 #include "ModuleCarrots.h"
+#include "GameOver.h"
 
 #include "ModuleCollisions.h"
 
@@ -37,6 +38,7 @@ Application::Application()
 	modules[i++] =  lady =			new ModuleLady(false);
 	modules[i++] =  enemies =		new ModuleEnemies(false);
 	modules[i++] =  carrots =		new ModuleCarrots(false);
+	modules[i++] =  gameover =		new GameOver(false);
 	
 	
 	

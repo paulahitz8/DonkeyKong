@@ -73,6 +73,9 @@
     <ClCompile Include="ModuleCarrots.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -152,6 +155,9 @@
     </ClInclude>
     <ClInclude Include="ModuleCarrots.h">
       <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Source\Modules\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

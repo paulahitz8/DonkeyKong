@@ -19,6 +19,7 @@ class ModuleDonkey;
 class ModuleEnemies;
 class ModuleLady;
 class ModuleCarrots;
+class GameOver;
 
 class ModuleFadeToBlack;
 class ModuleCollisions;
@@ -61,6 +62,7 @@ public:
 	ModuleEnemies* enemies = nullptr;
 	ModuleLady* lady = nullptr;
 	ModuleCarrots* carrots = nullptr;
+	GameOver* gameover = nullptr;
 
 	
 	ModuleCollisions* collision = nullptr;
