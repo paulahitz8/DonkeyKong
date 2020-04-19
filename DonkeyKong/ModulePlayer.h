@@ -55,7 +55,7 @@ public:
 	Animation angelAnim;
 
 	int livecount = 3;
-	int carrotcount = 6;
+	int carrotcount = 8;
 	Collider* colliderDelete = nullptr;
 
 	int carrotDeletex, carrotDeletey;

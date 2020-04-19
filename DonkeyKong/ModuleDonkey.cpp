@@ -39,8 +39,6 @@ bool ModuleDonkey::Start()
 	donkey.w = 40;
 	donkey.h = 32;
 
-	colliderD = App->collision->AddCollider({ donkeyPosition.x, donkeyPosition.y, 40, 32 }, Collider::Type::WALL, this);
-
 
 	//añadir sonido con la animacion
 
@@ -48,10 +46,7 @@ bool ModuleDonkey::Start()
 }
 
 Update_Status ModuleDonkey::Update()
-{
-	
-	
-	
+{	
 	
 	if (i % 501 == 0)
 	{

@@ -117,6 +117,11 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 0, 48, 69, 9 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 72, 48, 112, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 72 + 112 + 3, 48, 72, 9 }, Collider::Type::WALL);
+
+	//Donkey walls
+	App->collision->AddCollider({ 90, 56, 2, 32 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 164, 56, 2, 32 }, Collider::Type::WALL);
+
 																			  
 	// Ladders by floor
 	App->collision->AddCollider({ 27, 206 , 2, 44 }, Collider::Type::LADDER);
