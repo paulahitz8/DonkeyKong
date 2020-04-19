@@ -38,7 +38,7 @@ bool ModuleHammer::Start()
 Update_Status ModuleHammer::Update()
 {
 
-	if ((App->player->currentAnimation == &App->player->leftAnim) || App->player->currentAnimation.getCurrentFrame() == ) {
+	/*if ((App->player->currentAnimation == &App->player->leftAnim) || App->player->currentAnimation.getCurrentFrame() == ) {
 		//hammerPosition.x = App->player->position.x - 16;
 		//hammerPosition.y = App->player->position.y + 4;
 		hammerCollider->SetPos(App->player->position.x - 16, App->player->position.y + 4);
@@ -59,7 +59,7 @@ Update_Status ModuleHammer::Update()
 		//hammerPosition.x = App->player->position.x + 1;
 		//hammerPosition.y = App->player->position.y - 11;
 		hammerCollider->SetPos(App->player->position.x + 1, App->player->position.y - 11);
-	}
+	}*/
 	
 	//hammerCollider->SetPos(hammerPosition.x, hammerPosition.y);
 

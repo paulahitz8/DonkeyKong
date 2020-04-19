@@ -23,22 +23,22 @@ int lvl4[32][32]{	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 					{0,0,0,0,0,0,0,0,0,0,7,6,0,0,0,0,0,0,0,0,7,6,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,7,6,0,0,0,0,0,0,0,0,7,6,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,2,7,6,0,0,0,0,0,0,0,0,7,6,2,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,5,1,1,3,5,1,1,1,1,1,1,1,1,1,1,5,3,1,1,5,0,0,0,0,0,0},
+					{0,0,0,0,0,0,5,1,1,3,5,1,1,1,1,1,1,1,1,1,1,5,3,1,1,5,0,0,0,0,0,0}, //
 					{0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0},
 					{0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0},
 					{0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0},
 					{0,0,0,0,0,0,4,0,0,2,4,0,0,0,0,0,0,0,0,0,0,4,2,0,0,4,0,0,0,0,0,0},
-					{0,0,0,0,0,5,5,1,1,3,5,1,1,1,1,5,1,1,1,1,1,5,3,1,1,5,5,0,0,0,0,0},
+					{0,0,0,0,0,5,5,1,1,3,5,1,1,1,1,5,1,1,1,1,1,5,3,1,1,5,5,0,0,0,0,0}, //15
 					{0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0},
 					{0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0},
 					{0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0},
 					{0,0,0,0,0,4,0,0,0,2,0,0,0,0,0,4,0,0,0,0,0,0,2,0,0,0,4,0,0,0,0,0},
-					{0,0,0,0,5,5,1,1,1,3,1,5,1,1,1,5,1,1,1,1,5,1,3,1,1,1,5,5,0,0,0,0},
+					{0,0,0,0,5,5,1,1,1,3,1,5,1,1,1,5,1,1,1,1,5,1,3,1,1,1,5,5,0,0,0,0}, // 20
 					{0,0,0,0,4,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,4,0,0,0,0},
 					{0,0,0,0,4,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,4,0,0,0,0},
 					{0,0,0,0,4,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,4,0,0,0,0},
 					{0,0,0,0,4,0,0,0,0,2,0,4,0,0,0,0,0,0,0,0,4,0,2,0,0,0,0,4,0,0,0,0},
-					{0,0,0,5,5,1,1,1,1,3,1,5,1,1,1,1,1,1,1,1,5,1,3,1,1,1,1,5,5,0,0,0},
+					{0,0,0,5,5,1,1,1,1,3,1,5,1,1,1,1,1,1,1,1,5,1,3,1,1,1,1,5,5,0,0,0}, // 25
 					{0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0},
 					{0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0},
 					{0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0},
@@ -138,17 +138,17 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 203, 86 , 2, 44 }, Collider::Type::LADDER);
 
 	// Carrots
-	App->collision->AddCollider({ 72, 193, 8, 15 }, Collider::Type::CARROT);
-	App->collision->AddCollider({ 176, 193, 8, 15 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 75, 193, 2, 15 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 179, 193, 2, 15 }, Collider::Type::CARROT);
 
-	App->collision->AddCollider({ 72,  153, 8, 15 }, Collider::Type::CARROT);
-	App->collision->AddCollider({ 176, 153, 8, 15 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 75,  153, 2, 15 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 179, 153, 2, 15 }, Collider::Type::CARROT);
 
-	App->collision->AddCollider({ 72, 113, 8, 15 }, Collider::Type::CARROT);
-	App->collision->AddCollider({ 176, 113, 8, 15 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 75, 113, 2, 15 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 179, 113, 2, 15 }, Collider::Type::CARROT);
 
-	App->collision->AddCollider({ 72, 73, 8, 15 }, Collider::Type::CARROT);
-	App->collision->AddCollider({ 176, 73, 8, 15 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 75, 73, 2, 15 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 179, 73, 2, 15 }, Collider::Type::CARROT);
 
 	// Enable Player
 	App->player->Enable();
@@ -175,13 +175,60 @@ Update_Status ModuleLvl4::Update()
 	}
 
 	// Carrots
-	if (App->player->carrotDeletex == 72 && App->player->carrotDeletey == 193) {
+	if (App->player->carrotDeletey == 193) {
 
-		lvl4[26][9] = 0;
-		lvl4[25][9] = 0;
-		
-		//poner collider pared
-		//delete App->player->colliderDelete;
+		if (App->player->carrotDeletex == 75) {
+			lvl4[26][9] = 0;
+			lvl4[25][9] = 0;
+			//poner collider pared
+			//delete App->player->colliderDelete;
+		}
+		if(App->player->carrotDeletex == 179) {
+			lvl4[26][22] = 0;
+			lvl4[25][22] = 0;
+		}
+
+	}
+	if (App->player->carrotDeletey == 153) {
+
+		if (App->player->carrotDeletex == 75) {
+			lvl4[21][9] = 0;
+			lvl4[20][9] = 0;
+			//poner collider pared
+			//delete App->player->colliderDelete;
+		}
+		if (App->player->carrotDeletex == 179) {
+			lvl4[21][22] = 0;
+			lvl4[20][22] = 0;
+		}
+
+	}
+	if (App->player->carrotDeletey == 113) {
+
+		if (App->player->carrotDeletex == 75) {
+			lvl4[16][9] = 0;
+			lvl4[15][9] = 0;
+			//poner collider pared
+			//delete App->player->colliderDelete;
+		}
+		if (App->player->carrotDeletex == 179) {
+			lvl4[16][22] = 0;
+			lvl4[15][22] = 0;
+		}
+
+	}
+	if (App->player->carrotDeletey == 73) {
+
+		if (App->player->carrotDeletex == 75) {
+			lvl4[11][9] = 0;
+			lvl4[10][9] = 0;
+			//poner collider pared
+			//delete App->player->colliderDelete;
+		}
+		if (App->player->carrotDeletex == 179) {
+			lvl4[11][22] = 0;
+			lvl4[10][22] = 0;
+		}
 
 	}
 	
