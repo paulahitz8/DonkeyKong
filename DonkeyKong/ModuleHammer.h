@@ -1,6 +1,12 @@
+#pragma once
+#ifndef __MODULE_HAMMER_H__
+#define __MODULE_HAMMER_H__
+
 #include "Module.h"
-#include "Animation.h"
+#include "SDL_Rect.h"
 #include "p2Point.h"
+#include "Animation.h"
+
 
 
 struct SDL_Texture;
@@ -30,8 +36,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
-	// Position of the hammer in the map
-	iPoint hammerPosition;
+
 
 	int temp = 0;
 
@@ -52,3 +57,5 @@ public:
 
 
 };
+
+#endif
