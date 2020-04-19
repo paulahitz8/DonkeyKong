@@ -82,7 +82,7 @@ Update_Status PierdeVida::Update()
 		lives[4][2 + i] = 1;
 	}
 
-	if (j % 151 == 0){
+	if (j % 151 == 0) {
 		App->fade->FadeToBlack(this, (Module*)App->lvl4, 30);
 	}
 	j++;

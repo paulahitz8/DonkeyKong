@@ -44,11 +44,13 @@ private:
 	/*Animation rightwalkAnim;*/
 	Animation deadAnim1;
 	Animation deadAnim2;
+	Animation deadAnim3;
+	Animation deadAnim4;
 	Animation angelAnim;
-	Animation deadAnim;
 
 	
 	int i = 1;
+	int j = 0;
 
 public:
 
