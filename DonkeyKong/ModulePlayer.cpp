@@ -31,18 +31,20 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	leftAnim.speed = 0.1f;
 
 	//right animation
-	rightAnim.PushBack({ 203, 122, 50, 16 });
+	rightAnim.PushBack({ 203, 122, 50, 26 });
 	rightAnim.PushBack({ 203, 161, 50, 26 });
 	rightAnim.PushBack({ 203, 189, 50, 26 });
 	rightAnim.PushBack({ 203, 227, 50, 26 });
 	rightAnim.speed = 0.1f;
 
 	//dead animation
-	deadAnim.PushBack({ 139, 41, 50, 26 });
-	deadAnim.PushBack({ 139, 71, 50, 26 });
+	deadAnim1.PushBack({ 149, 41, 50, 26 });
+	deadAnim4.PushBack({ 149, 71, 50, 26 });
+	deadAnim2.PushBack({ 89, 68, 50, 26 });
+	deadAnim3.PushBack({ 89, 101, 50, 26 });
 
 	//dead angel animation
-	angelAnim.PushBack({ 139, 104, 50, 26 });
+	angelAnim.PushBack({ 59, 67, 30, 26 });
 }
 
 ModulePlayer::~ModulePlayer() {
@@ -100,15 +102,31 @@ Update_Status ModulePlayer::Update()
 		}
 
 		else {
-			if (currentAnimation != &angelAnim)
+			if (currentAnimation != &angelAnim && currentAnimation != &deadAnim2 && currentAnimation != &deadAnim3 && currentAnimation != &deadAnim4)
 			{
-				currentAnimation = &deadAnim;
+				currentAnimation = &deadAnim1;
 			}
-			/*if (currentAnimation == &deadAnim1 && i % 20 == 0)
+			if (j <= 3)
 			{
-				currentAnimation = &deadAnim2;
-			}*/
-			if (currentAnimation == &deadAnim && i % 100 == 0)
+				if (currentAnimation == &deadAnim1 && i % 7 == 0)
+				{
+					currentAnimation = &deadAnim2;
+				}
+				if (currentAnimation == &deadAnim2 && i % 14 == 0)
+				{
+					currentAnimation = &deadAnim3;
+				}
+				if (currentAnimation == &deadAnim3 && i % 21 == 0)
+				{
+					currentAnimation = &deadAnim4;
+				}
+				if (currentAnimation == &deadAnim4 && i % 28 == 0)
+				{
+					currentAnimation = &deadAnim1;
+					j++;
+				}
+			}
+			else if (currentAnimation == &deadAnim1 && i % 40 == 0)
 			{
 				currentAnimation = &angelAnim;
 			}
@@ -119,6 +137,7 @@ Update_Status ModulePlayer::Update()
 				position.x = { 43 };
 				position.y = { 222 };
 				destroyed = false;
+				i = 0;
 			}
 			i++;
 		}
