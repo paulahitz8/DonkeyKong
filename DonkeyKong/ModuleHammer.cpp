@@ -37,33 +37,34 @@ bool ModuleHammer::Start()
 
 Update_Status ModuleHammer::Update()
 {
-
-	/*if ((App->player->currentAnimation == &App->player->leftAnim) || App->player->currentAnimation.getCurrentFrame() == ) {
-		//hammerPosition.x = App->player->position.x - 16;
-		//hammerPosition.y = App->player->position.y + 4;
-		hammerCollider->SetPos(App->player->position.x - 16, App->player->position.y + 4);
+	if (App->player->currentAnimation->GetFrame() % 2 == 0) // Hammer down
+	{
+		if ((App->player->currentAnimation == &App->player->leftAnim) || (App->player->currentAnimation == &App->player->leftidleAnim)) {
+			//hammerPosition.x = App->player->position.x + 3;
+			//hammerPosition.y = App->player->position.y - 16;
+			hammerCollider->SetPos(App->player->position.x + 3, App->player->position.y - 16);
+		}
+		else if ((App->player->currentAnimation == &App->player->rightAnim) || (App->player->currentAnimation == &App->player->rightidleAnim)) {
+			//hammerPosition.x = App->player->position.x + 35;
+			//hammerPosition.y = App->player->position.y - 16;
+			hammerCollider->SetPos(App->player->position.x + 35, App->player->position.y - 16);
+		}
 	}
-	else if ((App->player->currentAnimation == &App->player->rightAnim)) {
-		//hammerPosition.x = App->player->position.x + 18;
-		//hammerPosition.y = App->player->position.y + 4;
-		hammerCollider->SetPos(App->player->position.x + 18, App->player->position.y + 4);
-	}
 
-
-	if ((App->player->currentAnimation == &App->player->hammerLeftAnim) || (App->player->currentAnimation == &App->player->hammerLeftIdleAnim)) {
-		//hammerPosition.x = App->player->position.x + 1;
-		//hammerPosition.y = App->player->position.y - 11;
-		hammerCollider->SetPos(App->player->position.x + 1, App->player->position.y - 11);
+	else // Hammer up
+	{
+		if ((App->player->currentAnimation == &App->player->leftAnim) || (App->player->currentAnimation == &App->player->leftidleAnim)) {
+			//hammerPosition.x = App->player->position.x + 19;
+			//hammerPosition.y = App->player->position.y - 1;
+			hammerCollider->SetPos(App->player->position.x + 19, App->player->position.y - 1);
+		}
+		else if ((App->player->currentAnimation == &App->player->rightAnim) || (App->player->currentAnimation == &App->player->rightidleAnim)) {
+			//hammerPosition.x = App->player->position.x + 17;
+			//hammerPosition.y = App->player->position.y - 1;
+			hammerCollider->SetPos(App->player->position.x + 17, App->player->position.y - 1);
+		}
 	}
-	else if ((App->player->currentAnimation == &App->player->hammerRightAnim) || (App->player->currentAnimation == &App->player->hammerRightIdleAnim)) {
-		//hammerPosition.x = App->player->position.x + 1;
-		//hammerPosition.y = App->player->position.y - 11;
-		hammerCollider->SetPos(App->player->position.x + 1, App->player->position.y - 11);
-	}*/
-	
 	//hammerCollider->SetPos(hammerPosition.x, hammerPosition.y);
-
-
 
 	return Update_Status::UPDATE_CONTINUE;
 }
