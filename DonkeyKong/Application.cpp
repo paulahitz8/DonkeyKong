@@ -14,6 +14,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
 #include "ModuleLady.h"
+#include "ModuleHammer.h"
 #include "PierdeVida.h"
 #include "GameOver.h"
 #include "WinningScreen.h"
@@ -38,6 +39,7 @@ Application::Application()
 	modules[i++] =	donkey =		new ModuleDonkey(false);
 	modules[i++] =  lady =			new ModuleLady(false);
 	modules[i++] =  enemies =		new ModuleEnemies(false);
+	modules[i++] =  hammer =		new ModuleHammer(false);
 	modules[i++] =  pierdevida =	new PierdeVida(false);
 	modules[i++] =  gameover =		new GameOver(false);
 	modules[i++] =  winning =		new WinningScreen(false);

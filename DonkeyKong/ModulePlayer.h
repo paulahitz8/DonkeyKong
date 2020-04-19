@@ -14,7 +14,7 @@ class ModulePlayer : public Module
 private:
 
 	SDL_Rect player;
-	iPoint position;
+
 	SDL_Texture* playertexture = nullptr;
 	
 
@@ -34,6 +34,12 @@ private:
 	bool ladderOn = false;
 	bool groundOn = false;
 
+	int i = 1;
+	int j = 0;
+
+public:
+
+	iPoint position;
 
 	// Animation
 	Animation* currentAnimation = nullptr;
@@ -48,14 +54,9 @@ private:
 	Animation deadAnim4;
 	Animation angelAnim;
 
-	
-	int i = 1;
-	int j = 0;
-
-public:
-
 	int livecount = 3;
-	int carrotcount = 3;
+	int carrotcount = 6;
+	Collider* colliderDelete = nullptr;
 
 	int carrotDeletex, carrotDeletey;
 

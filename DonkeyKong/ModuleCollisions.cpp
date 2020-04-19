@@ -165,9 +165,12 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::GROUND: // blue??
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
-		case Collider::Type::LADDER: // blue??
-			App->render->DrawQuad(colliders[i]->rect, 0, 200, 200, alpha);
+		case Collider::Type::LADDER: // purple
+			App->render->DrawQuad(colliders[i]->rect, 152, 74, 255, alpha);
 			break;   
+		case Collider::Type::CARROT: // orange
+			App->render->DrawQuad(colliders[i]->rect, 255, 157, 66, alpha);
+			break;
 		}
 
 	}

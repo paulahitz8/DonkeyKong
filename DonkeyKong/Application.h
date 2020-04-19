@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 17 //actualiza esto
+#define NUM_MODULES 18 //actualiza esto
 
 class Module; //este no cuenta en NUM_MODULES :D
 class ModuleWindow;
@@ -17,6 +17,7 @@ class ModuleLvl4;
 class ModulePlayer;
 class ModuleDonkey;
 class ModuleEnemies;
+class ModuleHammer;
 class ModuleLady;
 class PierdeVida;
 class GameOver;
@@ -61,6 +62,7 @@ public:
 	ModulePlayer* player = nullptr;
 	ModuleDonkey* donkey = nullptr;
 	ModuleEnemies* enemies = nullptr;
+	ModuleHammer* hammer = nullptr;
 	ModuleLady* lady = nullptr;
 	PierdeVida* pierdevida = nullptr;
 	GameOver* gameover = nullptr;

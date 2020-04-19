@@ -101,6 +101,7 @@ Update_Status ModulePlayer::Update()
 			destroyed = false;
 		}
 
+
 		else {
 			if (currentAnimation != &angelAnim && currentAnimation != &deadAnim2 && currentAnimation != &deadAnim3 && currentAnimation != &deadAnim4)
 			{
@@ -265,6 +266,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c2->type == Collider::Type::GROUND || c2->type ==Collider::Type::LADDER)
 	{
+
 		groundOn = true;
 	}
 	else
@@ -288,15 +290,20 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 
 	// CARROT
-	if (c1 == collider && c2->type == Collider::CARROT && destroyed == false)
+	if (c2->type == Collider::Type::CARROT)
 	{
+
 		carrotcount--;
+
+		colliderDelete = c2;
 
 		carrotDeletex = c2->GetRect().x;
 		carrotDeletey = c2->GetRect().y;
 
-		
+		groundOn = true;
+
 	}
+
 
 } 
 
