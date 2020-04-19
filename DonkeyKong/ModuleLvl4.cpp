@@ -72,7 +72,7 @@ bool ModuleLvl4::Start()
 	back.w = 256;
 	back.h = 256;
 
-	//backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
+	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
 
 	backgroundTexture = App->textures->Load("Assets/cositasfondo/background.png");
 	floorTexture = App->textures->Load("Assets/cositasfondo/suelo.png");
@@ -119,9 +119,9 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 72 + 112 + 3, 48, 72, 9 }, Collider::Type::WALL);
 																			  
 	// Ladders by floor
-	App->collision->AddCollider({ 27, 205 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 123, 205 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 227, 205 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 27, 206 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 123, 206 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 227, 206 , 2, 44 }, Collider::Type::LADDER);
 
 	App->collision->AddCollider({ 35, 166 , 2, 44 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 91, 166 , 2, 44 }, Collider::Type::LADDER);
@@ -222,7 +222,7 @@ Update_Status ModuleLvl4::PostUpdate()
 			}
 		}
 	}
-	//App->render->Blit(backTexture, 0, 0, &back, 0);
+	App->render->Blit(backTexture, 0, 0, &back, 0);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
