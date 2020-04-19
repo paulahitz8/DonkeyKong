@@ -10,6 +10,9 @@ struct SDL_Texture;
 
 class PierdeVida : public Module
 {
+
+	int i = 1;
+
 public:
 	//Constructor
 	PierdeVida(bool startEnabled);
@@ -31,6 +34,7 @@ public:
 
 	SDL_Rect background;
 	SDL_Texture* backgroundTexture = nullptr;
+
 };
 
 
