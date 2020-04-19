@@ -137,6 +137,18 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 171, 86 , 2, 44 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 203, 86 , 2, 44 }, Collider::Type::LADDER);
 
+	// Carrots
+	/*App->collision->AddCollider({ 0, 246, 14, 10 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 16, 247, 224, 9 }, Collider::Type::CARROT);
+
+	App->collision->AddCollider({ 0, 207, 14, 10 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 16, 207, 224, 9 }, Collider::Type::CARROT);
+
+	App->collision->AddCollider({ 0, 168, 14, 10 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 16, 168, 224, 9 }, Collider::Type::CARROT);
+
+	App->collision->AddCollider({ 0, 88, 14, 10 }, Collider::Type::CARROT);
+	App->collision->AddCollider({ 16, 88, 224, 9 }, Collider::Type::CARROT);*/
 
 	// Enable Player
 	App->player->Enable();
@@ -149,7 +161,7 @@ bool ModuleLvl4::Start()
 
 Update_Status ModuleLvl4::Update()
 {
-
+	// Lives
 	for (int i = 0; i < 3; i++) {
 
 		lvl4[4][2 + i] = 0;
@@ -161,6 +173,15 @@ Update_Status ModuleLvl4::Update()
 		lvl4[4][2 + i] = 8;
 
 	}
+
+	// Carrots
+	/*if (App->player->carrotDeletex == posición de una de las zanahorias) {
+
+		lvl4[][] = 0;
+		quitar collider zanahoria
+		poner collider pared
+
+	}*/
 	
 
 	if (i % 500 == 0 && j < 5)

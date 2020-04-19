@@ -30,7 +30,6 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
-    <ClCompile Include="ModuleCarrots.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />
     <ClCompile Include="ModuleDonkey.cpp" />
     <ClCompile Include="ModuleEnemies.cpp" />
@@ -60,7 +59,6 @@
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleAudio.h" />
-    <ClInclude Include="ModuleCarrots.h" />
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleDonkey.h" />
     <ClInclude Include="ModuleEnemies.h" />

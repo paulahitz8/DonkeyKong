@@ -70,9 +70,6 @@
     <ClCompile Include="ModuleFonts.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleCarrots.cpp">
-      <Filter>Source\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>Source\Modules\Scenes</Filter>
     </ClCompile>
@@ -157,9 +154,6 @@
       <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="ModuleFonts.h">
-      <Filter>Source\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleCarrots.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="GameOver.h">

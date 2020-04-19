@@ -55,6 +55,9 @@ private:
 public:
 
 	int livecount = 3;
+	int carrotcount = 3;
+
+	int carrotDeletex, carrotDeletey;
 
 	// Constructor
 	ModulePlayer(bool startEnabled);
