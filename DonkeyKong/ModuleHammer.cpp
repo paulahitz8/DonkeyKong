@@ -31,7 +31,7 @@ bool ModuleHammer::Start()
 
 	bool ret = true;
 
-	hammerCollider = App->collision->AddCollider({ App->player->position.x, App->player->position.y, 10,10 }, Collider::Type::HAMMER);
+	hammerCollider = App->collision->AddCollider({ App->player->position.x + 17 , App->player->position.y - 1, 9,5 }, Collider::Type::HAMMER, this);
 	return ret;
 }
 
@@ -64,7 +64,7 @@ Update_Status ModuleHammer::Update()
 			hammerCollider->SetPos(App->player->position.x + 17, App->player->position.y - 1);
 		}
 	}
-	//hammerCollider->SetPos(hammerPosition.x, hammerPosition.y);
+	hammerCollider->SetPos(hammerPosition.x + 17, hammerPosition.y - 1);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
