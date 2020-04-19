@@ -47,6 +47,8 @@ public:
 	Animation rightidleAnim;
 	Animation leftAnim;
 	Animation rightAnim;
+	Animation upladderAnim;
+	Animation downladderAnim;
 	/*Animation rightwalkAnim;*/
 	Animation deadAnim1;
 	Animation deadAnim2;

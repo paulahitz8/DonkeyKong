@@ -28,14 +28,30 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	leftAnim.PushBack({ 203, 36, 50, 26 });
 	leftAnim.PushBack({ 203, 63, 50, 26 });
 	leftAnim.PushBack({ 203, 94, 50, 26 });
-	leftAnim.speed = 0.1f;
+	leftAnim.speed = 0.12f;
 
 	//right animation
 	rightAnim.PushBack({ 203, 122, 50, 26 });
 	rightAnim.PushBack({ 203, 161, 50, 26 });
 	rightAnim.PushBack({ 203, 189, 50, 26 });
 	rightAnim.PushBack({ 203, 227, 50, 26 });
-	rightAnim.speed = 0.1f;
+	rightAnim.speed = 0.12f;
+
+	//up animation
+	upladderAnim.PushBack({ 261, 94, 50, 26 });
+	upladderAnim.PushBack({ 261, 122, 50, 26 });
+	upladderAnim.PushBack({ 261, 1, 50, 26 });
+	upladderAnim.PushBack({ 261, 35, 50, 26 });
+	upladderAnim.PushBack({ 261, 63, 50, 26 });
+	upladderAnim.speed = 0.12f;
+
+	//down animation
+	downladderAnim.PushBack({ 261, 63, 50, 26 });
+	downladderAnim.PushBack({ 261, 35, 50, 26 });
+	downladderAnim.PushBack({ 261, 1, 50, 26 });
+	downladderAnim.PushBack({ 261, 122, 50, 26 });
+	downladderAnim.PushBack({ 261, 94, 50, 26 });
+	downladderAnim.speed = 0.12f;
 
 	//dead animation
 	deadAnim1.PushBack({ 149, 41, 50, 26 });
@@ -56,7 +72,6 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	playertexture = App->textures->Load("Assets/Mario/mariosprites.png");
-	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
 	currentAnimation = &rightidleAnim; //mario empieza mirando a la derecha
 
 	position.x = { 43 };
@@ -155,7 +170,10 @@ Update_Status ModulePlayer::Update()
 			{
 				position.x -= speedx;
 				currentAnimation = &leftAnim;
-				//App->audio->PlayFx(walkingFx);
+				/*if (currentAnimation->GetFrame() % 2 == 0)
+				{
+					App->audio->PlayFx(walkingFx);
+				}*/
 			}
 
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
@@ -181,15 +199,19 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 				{
 					position.y += speedy;
-
+					currentAnimation = &downladderAnim;
 				}
 
 				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 				{
-					position.y -= speedy;
-
+						position.y -= speedy;
+						currentAnimation = &upladderAnim;
 				}
 
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_UP || App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_UP)
+				{
+					currentAnimation = &rightidleAnim;
+				}
 			}
 
 		}
