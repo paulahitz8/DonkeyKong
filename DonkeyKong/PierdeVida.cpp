@@ -37,7 +37,7 @@ Update_Status PierdeVida::Update()
 
 	if (i % 161 == 0)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->lvl4, 30);
+		App->fade->FadeToBlack(this, (Module*)App->lvl4, 10);
 	}
 	i++;
 	return Update_Status::UPDATE_CONTINUE;

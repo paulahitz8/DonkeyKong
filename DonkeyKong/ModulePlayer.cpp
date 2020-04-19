@@ -138,6 +138,7 @@ Update_Status ModulePlayer::Update()
 				position.y = { 222 };
 				destroyed = false;
 				i = 0;
+				j = 0;
 			}
 			i++;
 		}
