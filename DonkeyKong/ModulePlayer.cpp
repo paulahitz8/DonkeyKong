@@ -110,8 +110,37 @@ Update_Status ModulePlayer::Update()
 	}
 	if (godmode == true) {
 
-		groundOn == true;
-		ladderOn == true;
+		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
+		{
+			position.x -= speedx;
+			currentAnimation = &leftAnim;
+		}
+
+		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+		{
+			position.x += speedx;
+			currentAnimation = &rightAnim;
+
+		}
+
+		// If last movement was left, set the current animation back to left idle
+		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
+		{
+			currentAnimation = &leftidleAnim;
+		}
+		// If last movement was right, set the current animation back to left idle
+		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
+			currentAnimation = &rightidleAnim;
+
+		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+		{
+			position.y += 2;
+		}
+
+		if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+		{
+			position.y -= 2;
+		}
 
 	}
 
