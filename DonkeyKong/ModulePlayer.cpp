@@ -70,6 +70,7 @@ bool ModulePlayer::Start()
 
 	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
 	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
+	deadFx = App->audio->LoadFx("Assets/Music/20 SFX (Miss).wav");
 	
 
 
@@ -231,7 +232,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	// ENEMY
 	if (c1 == collider && c2->type == Collider::ENEMY && destroyed == false)
 	{
-
+		App->audio->PlayFx(deadFx);
 		livecount--;
 
 		destroyed = true;
