@@ -156,10 +156,8 @@ Update_Status ModulePlayer::Update()
 			}
 			else if(currentAnimation == &angelAnim && i % 200 == 0)
 			{
-				currentAnimation = &rightidleAnim;
+
 				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->pierdevida, 30);
-				position.x = { 43 };
-				position.y = { 222 };
 				destroyed = false;
 				i = 0;
 				j = 0;
@@ -178,18 +176,13 @@ Update_Status ModulePlayer::Update()
 			{
 				position.x -= speedx;
 				currentAnimation = &leftAnim;
-				/*if (currentAnimation->GetFrame() % 2 == 0)
-				{
-					App->audio->PlayFx(walkingFx);
-				}*/
 			}
 
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 			{
 				position.x += speedx;
 				currentAnimation = &rightAnim;
-				//App->audio->PlayFx(walkingFx);
-				//App->audio->PlayFx(silenceFx);
+
 			}
 
 			// If last movement was left, set the current animation back to left idle
