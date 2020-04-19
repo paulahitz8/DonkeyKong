@@ -57,6 +57,7 @@ public:
 
 		return frames[actualFrame];
 	}
+
 	int GetFrame() const
 	{
 		return currentFrame;

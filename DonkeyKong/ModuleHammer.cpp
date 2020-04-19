@@ -1,7 +1,7 @@
 #include "ModuleHammer.h"
 #include "ModulePlayer.h"
-
 #include "Application.h"
+#include "Animation.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
