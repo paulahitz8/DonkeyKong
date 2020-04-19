@@ -10,17 +10,17 @@
 #include "SDL_scancode.h"
 
 
-ModuleCarrot::ModuleCarrot(bool startEnabled) : Module(startEnabled)
+ModuleCarrots::ModuleCarrots(bool startEnabled) : Module(startEnabled)
 {
 
 }
 
-ModuleCarrot::~ModuleCarrot() {
+ModuleCarrots::~ModuleCarrots() {
 
 }
 
 
-bool ModuleCarrot::Start()
+bool ModuleCarrots::Start()
 {
 	LOG("Loading player textures");
 	carrottexture = App->textures->Load("Assets/Donkey/zanahoria.png");
@@ -42,13 +42,13 @@ bool ModuleCarrot::Start()
 	return true;
 }
 
-Update_Status ModuleCarrot::Update()
+Update_Status ModuleCarrots::Update()
 {
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status ModuleCarrot::PostUpdate()
+Update_Status ModuleCarrots::PostUpdate()
 {
 	//SDL_Rect rect; ??????
 	App->render->Blit(carrottexture, carrotPosition.x, carrotPosition.y, &carrot);
@@ -57,7 +57,7 @@ Update_Status ModuleCarrot::PostUpdate()
 }
 
 
-bool ModuleCarrot::CleanUp()
+bool ModuleCarrots::CleanUp()
 {
 	return true;
 }

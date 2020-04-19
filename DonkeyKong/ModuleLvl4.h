@@ -29,6 +29,7 @@ private:
 	SDL_Texture* floorLadderTexture = nullptr;
 	SDL_Texture* leftPoleTexture = nullptr;
 	SDL_Texture* rightPoleTexture = nullptr;
+	SDL_Texture* liveTexture = nullptr;
 	
 	int i = 1;
 	int j = 0;

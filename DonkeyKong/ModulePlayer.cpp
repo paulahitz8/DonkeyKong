@@ -11,8 +11,7 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	position.x = { 43 };
-	position.y = { 222 };
+
 
 	// left idle
 	leftidleAnim.PushBack({ 0, 0 , 50, 26 });
@@ -50,6 +49,9 @@ bool ModulePlayer::Start()
 	playertexture = App->textures->Load("Assets/Mario/mariosprites.png");
 	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
 	currentAnimation = &rightidleAnim; //mario empieza mirando a la derecha
+
+	position.x = { 43 };
+	position.y = { 222 };
 								   
 	 /*if (playertexture == nullptr) {
 		return false;
@@ -59,6 +61,7 @@ bool ModulePlayer::Start()
 	player.y = 2;
 	player.w = 12;
 	player.h = 16;
+
 
 	destroyed = false;
 
@@ -75,69 +78,95 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
+	if (destroyed) {
 
+		//animació mort!!!!
+		//SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		//App->render->Blit(playertexture, position.x, position.y, &rect);
 
-	if (groundOn == true) {
+		if (livecount == 0) {
 
-		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
-		{
-			position.x -= speedx;
-			currentAnimation = &leftAnim;
-			//App->audio->PlayFx(walkingFx);
-		}
-
-		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
-		{
-			position.x += speedx;
-			currentAnimation = &rightAnim;
-			//App->audio->PlayFx(walkingFx);
-			//App->audio->PlayFx(silenceFx);
-		}
-
-		// If last movement was left, set the current animation back to left idle
-		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
-		{
-			currentAnimation = &leftidleAnim;
-		}
-		// If last movement was right, set the current animation back to left idle
-		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
-			currentAnimation = &rightidleAnim;
-
-
-		if (ladderOn == true) {
-
-			if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-			{
-				position.y += speedy;
-
-			}
-
-			if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
-			{
-				position.y -= speedy;
-
-			}
+			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 30);
 
 		}
+
+		else {
+
+			position.x = { 43 };
+			position.y = { 222 };
+
+		}
+
+		destroyed = false;
+
 
 	}
 
-	else {
 
-		if (ladderOn == true) {
-				
-			if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+	if (!destroyed) {
+
+		if (groundOn == true) {
+
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 			{
-				position.y += speedy;
+				position.x -= speedx;
+				currentAnimation = &leftAnim;
+				//App->audio->PlayFx(walkingFx);
+			}
+
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+			{
+				position.x += speedx;
+				currentAnimation = &rightAnim;
+				//App->audio->PlayFx(walkingFx);
+				//App->audio->PlayFx(silenceFx);
+			}
+
+			// If last movement was left, set the current animation back to left idle
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
+			{
+				currentAnimation = &leftidleAnim;
+			}
+			// If last movement was right, set the current animation back to left idle
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
+				currentAnimation = &rightidleAnim;
+
+
+			if (ladderOn == true) {
+
+				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+				{
+					position.y += speedy;
+
+				}
+
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+				{
+					position.y -= speedy;
+
+				}
 
 			}
 
-			if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
-			{
-				position.y -= speedy;
-			}
 		}
 
+		else {
+
+			if (ladderOn == true) {
+
+				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+				{
+					position.y += speedy;
+
+				}
+
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+				{
+					position.y -= speedy;
+				}
+			}
+
+		}
 	}
 
 	collider->SetPos(position.x + 18, position.y + 10);
@@ -151,19 +180,11 @@ Update_Status ModulePlayer::Update()
 Update_Status ModulePlayer::PostUpdate()
 {
 
-	if (!destroyed)
-	{
-		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->Blit(playertexture, position.x, position.y, &rect);
-	}
 
-	if (destroyed) {
+	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	App->render->Blit(playertexture, position.x, position.y, &rect);
 
-		//animació mort
-		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->Blit(playertexture, position.x, position.y, &rect);
 
-	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -210,7 +231,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	// ENEMY
 	if (c1 == collider && c2->type == Collider::ENEMY && destroyed == false)
 	{
-		//App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 60);
+
+		livecount--;
 
 		destroyed = true;
 	}

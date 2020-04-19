@@ -65,7 +65,6 @@ bool ModuleLvl4::Start()
 	//	return false;
 	//}
 
-
 	//TILEMAP
 
 	tile.w = 8;
@@ -73,7 +72,7 @@ bool ModuleLvl4::Start()
 	back.w = 256;
 	back.h = 256;
 
-	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
+	//backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
 
 	backgroundTexture = App->textures->Load("Assets/cositasfondo/background.png");
 	floorTexture = App->textures->Load("Assets/cositasfondo/suelo.png");
@@ -83,6 +82,7 @@ bool ModuleLvl4::Start()
 	floorLadderTexture = App->textures->Load("Assets/cositasfondo/sueloescalera.png");
 	leftPoleTexture = App->textures->Load("Assets/cositasfondo/barraizquierda.png");
 	rightPoleTexture = App->textures->Load("Assets/cositasfondo/barraderecha.png");
+	liveTexture = App->textures->Load("Assets/cositasfondo/MarioLive.png");
 
 	// Level 4 colliders:
 	// Walls and ground by floor
@@ -149,6 +149,20 @@ bool ModuleLvl4::Start()
 
 Update_Status ModuleLvl4::Update()
 {
+
+	for (int i = 0; i < 3; i++) {
+
+		lvl4[4][2 + i] = 0;
+
+	}
+
+	for (int i = 0; i < App->player->livecount; i++) {
+		
+		lvl4[4][2 + i] = 8;
+
+	}
+	
+
 	if (i % 500 == 0 && j < 5)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
@@ -201,17 +215,23 @@ Update_Status ModuleLvl4::PostUpdate()
 			case 7:
 				App->render->Blit(rightPoleTexture, row * 8, column * 8, &tile, 0);
 				break;
+			case 8:
+				App->render->Blit(liveTexture, row * 8, column * 8, &tile, 0);
+				break;
 
 			}
 		}
 	}
-	App->render->Blit(backTexture, 0, 0, &back, 0);
+	//App->render->Blit(backTexture, 0, 0, &back, 0);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 bool ModuleLvl4::CleanUp()
 {
 	//Disable player?
+	App->collision->CleanUp();
+
+
 	App->player->Disable();
 	App->donkey->Disable();
 	App->enemies->Disable();

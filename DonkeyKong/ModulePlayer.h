@@ -17,7 +17,7 @@ private:
 	iPoint position;
 	SDL_Texture* playertexture = nullptr;
 	
-	int livecount = 3;
+
 	int speedx = 1;
 	int speedy = 1;
 
@@ -45,6 +45,9 @@ private:
 	
 
 public:
+
+	int livecount = 3;
+
 	// Constructor
 	ModulePlayer(bool startEnabled);
 

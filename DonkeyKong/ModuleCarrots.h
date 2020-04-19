@@ -1,5 +1,5 @@
 #pragma once
-#ifndef __MODULE_CARROT_H__
+#ifndef __MODULE_CARROTS_H__
 #define __MODULE_DONKEY_H__
 
 #include "Module.h"
@@ -8,7 +8,7 @@
 
 struct SDL_Texture;
 
-class ModuleCarrot : public Module
+class ModuleCarrots : public Module
 {
 private:
 
@@ -22,8 +22,8 @@ private:
 
 public:
 
-	ModuleCarrot(bool startEnabled);
-	~ModuleCarrot();
+	ModuleCarrots(bool startEnabled);
+	~ModuleCarrots();
 	bool Start() override;
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
