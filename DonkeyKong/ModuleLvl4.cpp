@@ -72,7 +72,7 @@ bool ModuleLvl4::Start()
 	back.w = 256;
 	back.h = 256;
 
-	//backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
+	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
 
 	backgroundTexture = App->textures->Load("Assets/cositasfondo/background.png");
 	floorTexture = App->textures->Load("Assets/cositasfondo/suelo.png");
@@ -222,7 +222,7 @@ Update_Status ModuleLvl4::PostUpdate()
 			}
 		}
 	}
-	//App->render->Blit(backTexture, 0, 0, &back, 0);
+	App->render->Blit(backTexture, 0, 0, &back, 0);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
