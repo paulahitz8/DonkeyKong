@@ -44,6 +44,8 @@
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
+    <ClCompile Include="PierdeVida.cpp" />
+    <ClCompile Include="WinningScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -73,6 +75,8 @@
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="ModulePlayer.h" />
+    <ClInclude Include="PierdeVida.h" />
+    <ClInclude Include="WinningScreen.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -76,6 +76,12 @@
     <ClCompile Include="GameOver.cpp">
       <Filter>Source\Modules\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="PierdeVida.cpp">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="WinningScreen.cpp">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -157,6 +163,12 @@
       <Filter>Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="GameOver.h">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="PierdeVida.h">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="WinningScreen.h">
       <Filter>Source\Modules\Scenes</Filter>
     </ClInclude>
   </ItemGroup>

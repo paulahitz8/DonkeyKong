@@ -115,6 +115,7 @@ Update_Status ModulePlayer::Update()
 			else if(currentAnimation == &angelAnim && i % 200 == 0)
 			{
 				currentAnimation = &rightidleAnim;
+				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->pierdevida, 30);
 				position.x = { 43 };
 				position.y = { 222 };
 				destroyed = false;

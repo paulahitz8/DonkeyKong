@@ -15,7 +15,9 @@
 #include "ModuleEnemies.h"
 #include "ModuleLady.h"
 #include "ModuleCarrots.h"
+#include "PierdeVida.h"
 #include "GameOver.h"
+#include "WinningScreen.h"
 
 #include "ModuleCollisions.h"
 
@@ -38,7 +40,9 @@ Application::Application()
 	modules[i++] =  lady =			new ModuleLady(false);
 	modules[i++] =  enemies =		new ModuleEnemies(false);
 	modules[i++] =  carrots =		new ModuleCarrots(false);
+	modules[i++] =  pierdevida =	new PierdeVida(false);
 	modules[i++] =  gameover =		new GameOver(false);
+	modules[i++] =  winning =		new WinningScreen(false);
 	
 	
 	
