@@ -4,33 +4,45 @@
 #define __SCENE_GAMEOVER_H__
 
 #include "Module.h"
+#include "SDL_Rect.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
 class GameOver : public Module
 {
+
+private:
+
+	//TILEMAP
+	SDL_Rect back;
+	SDL_Rect tile;
+
+	SDL_Texture* backTexture = nullptr;
+	SDL_Texture* backgroundTexture = nullptr;
+	SDL_Texture* floorTexture = nullptr;
+	SDL_Texture* floorCarrotTexture = nullptr;
+	SDL_Texture* carrotTexture = nullptr;
+	SDL_Texture* ladderTexture = nullptr;
+	SDL_Texture* floorLadderTexture = nullptr;
+	SDL_Texture* leftPoleTexture = nullptr;
+	SDL_Texture* rightPoleTexture = nullptr;
+	SDL_Texture* liveTexture = nullptr;
+
+	int i = 1;
+	int j = 0;
+
+	int map[32][32];
+
+
 public:
-	//Constructor
+
 	GameOver(bool startEnabled);
-	//Destructor
 	~GameOver();
-	// Called when the module is activated
-	// Loads the necessary textures for the map background
 	bool Start() override;
-	// Called at the middle of the application loop
-	// Updates the scene's background animations
 	Update_Status Update() override;
-	// Called at the end of the application loop.
-	// Performs the render call of all the parts of the scene's background
 	Update_Status PostUpdate() override;
 	bool CleanUp();
-
-public:
-	// The scene sprite sheet loaded into an SDL_Texture
-
-	SDL_Rect background;
-	SDL_Texture* backgroundTexture = nullptr;
 };
 
 
