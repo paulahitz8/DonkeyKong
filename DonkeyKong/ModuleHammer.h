@@ -14,6 +14,11 @@ struct Collider;
 
 class ModuleHammer : public Module
 {
+
+private: 
+
+	int i = 1;
+
 public:
 	// Constructor
 	ModuleHammer(bool startEnabled);
