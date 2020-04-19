@@ -34,10 +34,10 @@ bool GameOver::Start()
 
 Update_Status GameOver::Update()
 {
-	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
-	//{
-	//	App->fade->FadeToBlack(this, (Module*)App->lvl4, 30);
-	//}
+	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->lvl4, 30);
+	}
 
 	// en teoria se acaba el juego aunque podriamos poner un try again o algo
 	// si pulsa una tecla

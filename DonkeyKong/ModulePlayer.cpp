@@ -95,7 +95,7 @@ Update_Status ModulePlayer::Update()
 
 		if (livecount == 0) {
 
-			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 30);
+			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->gameover, 30);
 			destroyed = false;
 		}
 
