@@ -103,6 +103,12 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
+
+	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN) {
+		godmode = !godmode;
+
+	}
+
 	if (destroyed) {
 
 		//animació mort!!!!
@@ -258,75 +264,78 @@ Update_Status ModulePlayer::PostUpdate()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 
-	// LADDER
-		
-	if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 8) && (position.x + 18) < (c2->rect.x)))
-	{
-		if (((position.y + 10) + player.h) < (c2->rect.y + 3)) {
-			position.y += 1;
-		}
-
-		if (((position.y + 10) + player.h) > c2->rect.y + 42)
+	
+	if (godmode == false) {
+		// LADDER
+		if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 8) && (position.x + 18) < (c2->rect.x)))
 		{
-			position.y -= 1;
+			if (((position.y + 10) + player.h) < (c2->rect.y + 3)) {
+				position.y += 1;
+			}
+
+			if (((position.y + 10) + player.h) > c2->rect.y + 42)
+			{
+				position.y -= 1;
+			}
+
+			if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 6))) {
+				position.x += 1;
+			}
+
+			if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x - 4))) {
+				position.x -= 1;
+			}
+
+			ladderOn = true;
+		}
+		else
+			ladderOn = false;
+
+		// GROUND
+
+		if (c2->type == Collider::Type::GROUND || c2->type == Collider::Type::LADDER)
+		{
+
+			groundOn = true;
+		}
+		else
+			groundOn = false;
+
+
+		// ENEMY
+		if (c1 == collider && c2->type == Collider::ENEMY && destroyed == false)
+		{
+			App->audio->PlayFx(deadFx);
+			livecount--;
+
+			destroyed = true;
 		}
 
-		if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 6))) {
-			position.x += 1;
+		// WALL
+		if (c1 == collider && destroyed == false && c2->type == Collider::WALL) {
+			if ((position.x + 18) < (c2->GetRect().x + c2->GetRect().w) && (position.x + 18) > c2->GetRect().x) { position.x += 2; }
+			if (((position.x + 18) + player.w) > c2->GetRect().x && ((position.x + 18) + player.w) < (c2->GetRect().x + c2->GetRect().w)) { position.x -= 2; }
 		}
 
-		if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x - 4))) {
-			position.x -= 1;
+		// CARROT
+		if (c2->type == Collider::Type::CARROT)
+		{
+
+			carrotcount--;
+
+			if (carrotcount == 0) {
+
+				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 30);
+			}
+
+			colliderDelete = c2;
+
+			carrotDeletex = c2->GetRect().x;
+			carrotDeletey = c2->GetRect().y;
+
+			groundOn = true;
+
 		}
-
-		ladderOn = true;
-	}
-	else
-		ladderOn = false;
-		
-	// GROUND
-
-	if (c2->type == Collider::Type::GROUND || c2->type ==Collider::Type::LADDER)
-	{
-
-		groundOn = true;
-	}
-	else
-		groundOn = false;
-
-
-	// ENEMY
-	if (c1 == collider && c2->type == Collider::ENEMY && destroyed == false)
-	{
-		App->audio->PlayFx(deadFx);
-		livecount--;
-
-		destroyed = true;
-	}
-
-	// WALL
-	if (c1 == collider && destroyed == false && c2->type == Collider::WALL) {
-		if ((position.x + 18) < (c2->GetRect().x + c2->GetRect().w) && (position.x + 18) > c2->GetRect().x) { position.x += 2; }
-		if (((position.x + 18) + player.w) > c2->GetRect().x && ((position.x + 18) + player.w) < (c2->GetRect().x + c2->GetRect().w)) { position.x -= 2; }
-	}
-
-	// CARROT
-	if (c2->type == Collider::Type::CARROT)
-	{
-
-		carrotcount--;
-
-		if (carrotcount == 0) {
-
-			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 30);
-		}
-
-		colliderDelete = c2;
-
-		carrotDeletex = c2->GetRect().x;
-		carrotDeletey = c2->GetRect().y;
-
-		groundOn = true;
 
 	}
 

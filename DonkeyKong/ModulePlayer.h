@@ -37,6 +37,8 @@ private:
 	int i = 1;
 	int j = 0;
 
+	bool godmode = false;
+
 public:
 
 	iPoint position;
