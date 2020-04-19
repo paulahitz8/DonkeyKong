@@ -38,8 +38,8 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.1f;
 
 	//dead animation
-	deadAnim1.PushBack({ 139, 41, 50, 26 });
-	deadAnim2.PushBack({ 139, 71, 50, 26 });
+	deadAnim.PushBack({ 139, 41, 50, 26 });
+	deadAnim.PushBack({ 139, 71, 50, 26 });
 
 	//dead angel animation
 	angelAnim.PushBack({ 139, 104, 50, 26 });
@@ -102,13 +102,13 @@ Update_Status ModulePlayer::Update()
 		else {
 			if (currentAnimation != &angelAnim)
 			{
-				currentAnimation = &deadAnim1;
+				currentAnimation = &deadAnim;
 			}
 			/*if (currentAnimation == &deadAnim1 && i % 20 == 0)
 			{
 				currentAnimation = &deadAnim2;
 			}*/
-			if (currentAnimation == &deadAnim2 && i % 100 == 0)
+			if (currentAnimation == &deadAnim && i % 100 == 0)
 			{
 				currentAnimation = &angelAnim;
 			}

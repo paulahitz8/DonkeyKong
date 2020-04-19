@@ -45,6 +45,7 @@ private:
 	Animation deadAnim1;
 	Animation deadAnim2;
 	Animation angelAnim;
+	Animation deadAnim;
 
 	
 	int i = 1;
