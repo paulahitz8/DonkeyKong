@@ -36,6 +36,13 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.PushBack({ 203, 189, 50, 26 });
 	rightAnim.PushBack({ 203, 227, 50, 26 });
 	rightAnim.speed = 0.1f;
+
+	//dead animation
+	deadAnim1.PushBack({ 139, 41, 50, 26 });
+	deadAnim2.PushBack({ 139, 71, 50, 26 });
+
+	//dead angel animation
+	angelAnim.PushBack({ 139, 104, 50, 26 });
 }
 
 ModulePlayer::~ModulePlayer() {
@@ -85,21 +92,35 @@ Update_Status ModulePlayer::Update()
 		//SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		//App->render->Blit(playertexture, position.x, position.y, &rect);
 
+
 		if (livecount == 0) {
 
 			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->intro, 30);
-
+			destroyed = false;
 		}
 
 		else {
-
-			position.x = { 43 };
-			position.y = { 222 };
-
+			if (currentAnimation != &angelAnim)
+			{
+				currentAnimation = &deadAnim1;
+			}
+			/*if (currentAnimation == &deadAnim1 && i % 20 == 0)
+			{
+				currentAnimation = &deadAnim2;
+			}*/
+			if (currentAnimation == &deadAnim2 && i % 100 == 0)
+			{
+				currentAnimation = &angelAnim;
+			}
+			else if(currentAnimation == &angelAnim && i % 200 == 0)
+			{
+				currentAnimation = &rightidleAnim;
+				position.x = { 43 };
+				position.y = { 222 };
+				destroyed = false;
+			}
+			i++;
 		}
-
-		destroyed = false;
-
 
 	}
 

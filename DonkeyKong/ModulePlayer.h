@@ -41,10 +41,13 @@ private:
 	Animation rightidleAnim;
 	Animation leftAnim;
 	Animation rightAnim;
-	Animation rightwalkAnim;
+	/*Animation rightwalkAnim;*/
+	Animation deadAnim1;
+	Animation deadAnim2;
+	Animation angelAnim;
 
 	
-	
+	int i = 1;
 
 public:
 
