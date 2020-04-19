@@ -181,13 +181,13 @@ Update_Status ModuleLvl4::Update()
 			lvl4[26][9] = 0;
 			lvl4[25][9] = 0;
 			//poner collider pared
-			//delete App->player->colliderDelete;
+
 		}
 		if(App->player->carrotDeletex == 179) {
 			lvl4[26][22] = 0;
 			lvl4[25][22] = 0;
 		}
-
+		App->player->colliderDelete->SetPos(0, 0);
 	}
 	if (App->player->carrotDeletey == 153) {
 
@@ -195,13 +195,12 @@ Update_Status ModuleLvl4::Update()
 			lvl4[21][9] = 0;
 			lvl4[20][9] = 0;
 			//poner collider pared
-			//delete App->player->colliderDelete;
 		}
 		if (App->player->carrotDeletex == 179) {
 			lvl4[21][22] = 0;
 			lvl4[20][22] = 0;
 		}
-
+		App->player->colliderDelete->SetPos(0, 0);
 	}
 	if (App->player->carrotDeletey == 113) {
 
@@ -209,13 +208,12 @@ Update_Status ModuleLvl4::Update()
 			lvl4[16][9] = 0;
 			lvl4[15][9] = 0;
 			//poner collider pared
-			//delete App->player->colliderDelete;
 		}
 		if (App->player->carrotDeletex == 179) {
 			lvl4[16][22] = 0;
 			lvl4[15][22] = 0;
 		}
-
+		App->player->colliderDelete->SetPos(0, 0);
 	}
 	if (App->player->carrotDeletey == 73) {
 
@@ -223,14 +221,14 @@ Update_Status ModuleLvl4::Update()
 			lvl4[11][9] = 0;
 			lvl4[10][9] = 0;
 			//poner collider pared
-			//delete App->player->colliderDelete;
 		}
 		if (App->player->carrotDeletex == 179) {
 			lvl4[11][22] = 0;
 			lvl4[10][22] = 0;
 		}
-
+		App->player->colliderDelete->SetPos(0, 0);
 	}
+
 	
 
 	if (i % 500 == 0 && j < 5)
