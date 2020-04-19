@@ -175,14 +175,13 @@ Update_Status ModuleLvl4::Update()
 	}
 
 	// Carrots
-	if (App->player->carrotDeletex == 72 && App->player->carrotDeletey == 207) {
+	if (App->player->carrotDeletex == 72 && App->player->carrotDeletey == 193) {
 
 		lvl4[26][9] = 0;
 		lvl4[25][9] = 0;
 		
 		//poner collider pared
-
-		delete App->player->colliderDelete;
+		//delete App->player->colliderDelete;
 
 	}
 	

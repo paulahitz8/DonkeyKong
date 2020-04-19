@@ -295,7 +295,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		carrotcount--;
 
-		colliderDelete = c2;
+		//colliderDelete = c2;
 
 		carrotDeletex = c2->GetRect().x;
 		carrotDeletey = c2->GetRect().y;
