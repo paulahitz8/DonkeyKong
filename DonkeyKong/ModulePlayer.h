@@ -23,6 +23,8 @@ private:
 
 	// Sound effects indices
 	uint walkingFx = 0;
+	uint silenceFx = 0;
+	uint deadFx = 0;
 
 	// The player's collider
 	Collider* collider = nullptr;
@@ -41,7 +43,7 @@ private:
 	Animation rightAnim;
 	Animation rightwalkAnim;
 
-	uint silenceFx = 0;
+	
 	
 
 public:
