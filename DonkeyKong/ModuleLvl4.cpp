@@ -169,15 +169,15 @@ bool ModuleLvl4::Start()
 Update_Status ModuleLvl4::Update()
 {
 	// Lives
-	for (int i = 0; i < 3; i++) {
+	for (int ilive = 0; ilive < 3; ilive++) {
 
-		lvl4[4][2 + i] = 0;
+		lvl4[4][2 + ilive] = 0;
 
 	}
 
-	for (int i = 0; i < App->player->livecount; i++) {
+	for (int ilive = 0; ilive < App->player->livecount; ilive++) {
 		
-		lvl4[4][2 + i] = 8;
+		lvl4[4][2 + ilive] = 8;
 
 	}
 
