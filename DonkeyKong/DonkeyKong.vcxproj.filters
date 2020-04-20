@@ -82,6 +82,9 @@
     <ClCompile Include="ModuleHammer.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleScore.cpp">
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -169,6 +172,9 @@
       <Filter>Source\Modules\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="ModuleHammer.h">
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleScore.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
   </ItemGroup>

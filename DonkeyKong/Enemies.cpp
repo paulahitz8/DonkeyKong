@@ -42,14 +42,21 @@ void Enemies::OnCollision(Collider* collider)
 	//App->audio->PlayFx(destroyedFx);
 	/*if (collider->type == Collider::Type::HAMMER)
 	{
-		//DeleteEnemy
-	}*/
+		Delete();
+	}
 
-	/*if (this->collider->type == Collider::Type::Item_Type && collider->type == Collider::Type::PLAYER)
+	if (this->collider->type == Collider::Type::Item_Type && collider->type == Collider::Type::PLAYER)
 	{
 		if (((collider->rect.x < this->collider->rect.x) && (collider->rect.x + collider->rect.w >= this->collider->rect.x + this->collider->rect.w))) {
 			App->scene->Nuts--;
 			SetToDelete();
 		}
 	}*/
+}
+
+void Enemies::Delete()
+{
+	/*pendingToDelete = true;
+	if (collider != nullptr)
+		collider->pendingToDelete = true;*/
 }

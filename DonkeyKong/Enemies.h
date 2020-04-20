@@ -27,6 +27,8 @@ public:
 	// Called from ModuleEnemies' Update
 	virtual void Draw();
 
+	void Delete();
+
 	// Collision response
 	// Triggers an animation and a sound fx
 	virtual void OnCollision(Collider* collider);
@@ -41,6 +43,7 @@ public:
 	// Sound fx when destroyed
 	int destroyedFx = 0;
 
+	//bool pendingToDelete = false;
 
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
