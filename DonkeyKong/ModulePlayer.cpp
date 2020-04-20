@@ -39,20 +39,19 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.2f;
 
 	//up animation
-	upladderAnim3.PushBack({ 261, 94, 50, 26 });
+	upladderAnim1.PushBack({ 261, 94, 50, 26 });
 	upladderAnim.PushBack({ 261, 122, 50, 26 });
 	upladderAnim.PushBack({ 261, 1, 50, 26 });
-	upladderAnim1.PushBack({ 261, 35, 50, 26 });
-	upladderAnim2.PushBack({ 261, 63, 50, 26 });
-	upladderAnim.speed = 0.12f;
+	upladderAnim2.PushBack({ 261, 35, 50, 26 });
+	upladderAnim3.PushBack({ 261, 63, 50, 26 });
 	upladderAnim.speed = 0.12f;
 
 	//down animation
-	downladderAnim.PushBack({ 261, 63, 50, 26 });
-	downladderAnim.PushBack({ 261, 35, 50, 26 });
+	downladderAnim3.PushBack({ 261, 63, 50, 26 });
+	downladderAnim2.PushBack({ 261, 35, 50, 26 });
 	downladderAnim.PushBack({ 261, 1, 50, 26 });
 	downladderAnim.PushBack({ 261, 122, 50, 26 });
-	downladderAnim.PushBack({ 261, 94, 50, 26 });
+	downladderAnim1.PushBack({ 261, 94, 50, 26 });
 	downladderAnim.speed = 0.12f;
 
 	//dead animation
@@ -271,7 +270,22 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 				{
 					position.y += speedy;
-					currentAnimation = &downladderAnim;
+					if (position.y == 223 || position.y == 182 || position.y == 142 || position.y == 102 || position.y == 62)
+					{
+						currentAnimation = &downladderAnim1;
+					}
+					else if (((position.y > 182) && (position.y <= 190)) || ((position.y > 142) && (position.y <= 150)) || ((position.y > 102) && (position.y <= 110)) || ((position.y > 62) && (position.y <= 70)))
+					{
+						currentAnimation = &downladderAnim3;
+					}
+					else if (((position.y > 190) && (position.y < 198)) || ((position.y > 150) && (position.y < 158)) || ((position.y > 110) && (position.y < 118)) || ((position.y > 70) && (position.y < 78)))
+					{
+						currentAnimation = &downladderAnim2;
+					}
+					else
+					{
+						currentAnimation = &downladderAnim;
+					}
 					if (position.y % 15 == 0)
 					{
 						App->audio->PlayFx(walkingFx);
@@ -281,21 +295,21 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 				{
 					position.y -= speedy;
-					if (position.y % 30 == 0)
-					{
-						currentAnimation = &upladderAnim;
-					}
-					else if (position.y % 50 == 0)
+					if (position.y == 222 || position.y == 182 || position.y == 142 || position.y == 102 || position.y == 62)
 					{
 						currentAnimation = &upladderAnim1;
 					}
-					else if (position.y % 70 == 0)
+					else if (((position.y > 182) && (position.y <= 190)) || ((position.y > 142) && (position.y <= 150)) || ((position.y > 102) && (position.y <= 110)) || ((position.y > 62) && (position.y <= 70)))
+					{
+						currentAnimation = &upladderAnim3;
+					}
+					else if (((position.y > 190) && (position.y < 198)) || ((position.y > 150) && (position.y < 158)) || ((position.y > 110) && (position.y < 118)) || ((position.y > 70) && (position.y < 78)))
 					{
 						currentAnimation = &upladderAnim2;
 					}
-					else if (position.y % 40 == 0)
+					else
 					{
-						currentAnimation = &upladderAnim3;
+						currentAnimation = &upladderAnim;
 					}
 					if (position.y % 15 == 0)
 					{
@@ -305,7 +319,7 @@ Update_Status ModulePlayer::Update()
 
 				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_UP || App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_UP)
 				{
-					currentAnimation = &rightidleAnim;
+					currentAnimation = &upladderAnim1;
 				}
 			}
 

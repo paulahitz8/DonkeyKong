@@ -55,7 +55,9 @@ public:
 	Animation upladderAnim2;
 	Animation upladderAnim3;
 	Animation downladderAnim;
-	/*Animation rightwalkAnim;*/
+	Animation downladderAnim1;
+	Animation downladderAnim2;
+	Animation downladderAnim3;
 	Animation deadAnim1;
 	Animation deadAnim2;
 	Animation deadAnim3;
