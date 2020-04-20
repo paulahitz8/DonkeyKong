@@ -63,6 +63,10 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 	//dead angel animation
 	angelAnim.PushBack({ 59, 67, 30, 26 });
+
+	////100 anim
+	//cienAnim.PushBack({ 59, 104, 15, 7 });
+	//clearanim.PushBack({ 0, 0, 15, 7 });
 }
 
 ModulePlayer::~ModulePlayer() {
@@ -74,7 +78,11 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	playertexture = App->textures->Load("Assets/Mario/mariosprites.png");
+	//cientexture = App->textures->Load("Assets/Lady/RandomSprites.png");
+
 	currentAnimation = &rightidleAnim; //mario empieza mirando a la derecha
+	//currentAnimation2 = &clearanim;
+
 
 	position.x = { 43 };
 	position.y = { 222 };
@@ -100,6 +108,8 @@ bool ModulePlayer::Start()
 	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
 	deadFx = App->audio->LoadFx("Assets/Music/20 SFX (Miss).wav");
 	bonusFx = App->audio->LoadFx("Assets/Music/19 SFX (Bonus).wav");
+
+
 	
 
 
@@ -335,6 +345,9 @@ Update_Status ModulePlayer::PostUpdate()
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	App->render->Blit(playertexture, position.x, position.y, &rect);
 
+	//SDL_Rect rect2 = currentAnimation2->GetCurrentFrame();
+	//App->render->Blit(playertexture, position.x, position.y + 10, &rect2);
+
 
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -402,6 +415,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 			carrotcount--;
 			App->audio->PlayFx(bonusFx);
+		/*	currentAnimation2 = &cienAnim;*/
 
 			if (carrotcount == 0) {
 

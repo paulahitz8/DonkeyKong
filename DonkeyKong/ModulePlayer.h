@@ -62,6 +62,11 @@ public:
 	Animation deadAnim4;
 	Animation angelAnim;
 
+	/*SDL_Texture* cientexture = nullptr;
+	Animation* currentAnimation2 = nullptr;
+	Animation cienAnim;
+	Animation clearanim;*/
+
 	int livecount = 3;
 	int carrotcount = 8;
 	Collider* colliderDelete = nullptr;

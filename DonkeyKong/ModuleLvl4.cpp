@@ -72,8 +72,11 @@ bool ModuleLvl4::Start()
 	tile.h = 8;
 	back.w = 256;
 	back.h = 256;
+	cienrect = { 59,104,15,7 };
+
 
 	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
+	cientexture = App->textures->Load("Assets/Lady/RandomSprites.png");
 
 	backgroundTexture = App->textures->Load("Assets/cositasfondo/background.png");
 	floorTexture = App->textures->Load("Assets/cositasfondo/suelo.png");
@@ -182,54 +185,64 @@ Update_Status ModuleLvl4::Update()
 
 	// Carrots
 	if (App->player->carrotDeletey == 193) {
-
+		cienpos.y = 216;
 		if (App->player->carrotDeletex == 75) {
 			lvl4[26][9] = 0;
 			lvl4[25][9] = 0;
+			cienpos.x = 69;
 		}
-		if(App->player->carrotDeletex == 179) {
+		if (App->player->carrotDeletex == 179) {
 			lvl4[26][22] = 0;
 			lvl4[25][22] = 0;
+			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
 	}
 	if (App->player->carrotDeletey == 153) {
-
+		cienpos.y = 176;
 		if (App->player->carrotDeletex == 75) {
 			lvl4[21][9] = 0;
 			lvl4[20][9] = 0;
+			cienpos.x = 69;
 		}
 		if (App->player->carrotDeletex == 179) {
 			lvl4[21][22] = 0;
 			lvl4[20][22] = 0;
+			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
 	}
 	if (App->player->carrotDeletey == 113) {
-
+		cienpos.y = 136;
 		if (App->player->carrotDeletex == 75) {
 			lvl4[16][9] = 0;
 			lvl4[15][9] = 0;
+			cienpos.x = 69;
 		}
 		if (App->player->carrotDeletex == 179) {
 			lvl4[16][22] = 0;
 			lvl4[15][22] = 0;
+			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
 	}
 	if (App->player->carrotDeletey == 73) {
-
+		cienpos.y = 96;
 		if (App->player->carrotDeletex == 75) {
 			lvl4[11][9] = 0;
 			lvl4[10][9] = 0;
+			cienpos.x = 69;
 		}
 		if (App->player->carrotDeletex == 179) {
 			lvl4[11][22] = 0;
 			lvl4[10][22] = 0;
+			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
 	}
 	
+	
+
 
 	if (i % 500 == 0 && j < 5)
 	{
@@ -237,6 +250,10 @@ Update_Status ModuleLvl4::Update()
 		j++;
 	}
 	i++;
+
+
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -291,6 +308,15 @@ Update_Status ModuleLvl4::PostUpdate()
 		}
 	}
 	App->render->Blit(backTexture, 0, 0, &back, 0);
+
+	
+	if (cienpos.x != 0 && cienpos.y != 0) {
+
+		App->render->Blit(cientexture, cienpos.x, cienpos.y, &cienrect);
+		
+	}
+	
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
