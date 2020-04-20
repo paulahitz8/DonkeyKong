@@ -34,7 +34,7 @@ bool ModuleDonkey::Start()
 		return false;
 	}*/
 
-	stompFx = App->audio->LoadFx("Assets/Music/17 SFX(Stomp).wav");
+	stompFx = App->audio->LoadFx("Assets/Music/17 SFX (Stomp).wav");
 
 	donkey.x = 34;
 	donkey.y = 66;
