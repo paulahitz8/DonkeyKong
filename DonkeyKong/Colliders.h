@@ -17,6 +17,7 @@ struct Collider
 		LADDER,
 		GROUND,
 		CARROT,
+		OBJECT,
 
 		MAX
 	};

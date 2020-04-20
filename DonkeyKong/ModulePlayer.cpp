@@ -413,6 +413,16 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	}
 
+	// OBJECT
+	if (c2->type == Collider::Type::OBJECT)
+	{
+
+		//SCORE ++;
+
+		groundOn = true;
+
+	}
+
 } 
 
 bool ModulePlayer::CleanUp()
