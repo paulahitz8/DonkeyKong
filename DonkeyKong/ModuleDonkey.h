@@ -18,6 +18,8 @@ private:
 	SDL_Texture* donkeytexture = nullptr;
 	Collider* colliderD = nullptr;
 
+	uint stompFx = 0;
+
 	int i = 1;
 
 
@@ -29,6 +31,8 @@ public:
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
 	bool CleanUp() override;
+
+	
 
 	//Animation
 	Animation* currentAnimation = nullptr;
