@@ -8,6 +8,10 @@
 #include "p2Point.h"
 
 struct SDL_Texture;
+struct pos {
+	float x;
+	float y;
+};
 
 class WinningScreen : public Module
 {
@@ -27,9 +31,8 @@ public:
 	SDL_Texture* happybackgroundTexture = nullptr;
 
 	Animation* currentAnimation = nullptr;
-	Animation donkeyidleAnim, angryAnim1, angryAnim2, downAnim, dizzyAnim;
-
-	iPoint donkeypos;
+	Animation donkeyidleAnim, angryAnim, downAnim, dizzyAnim;
+	pos donkeypos;
 	//maybe un path?
 
 private:

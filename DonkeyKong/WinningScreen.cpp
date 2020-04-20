@@ -15,29 +15,31 @@ WinningScreen::WinningScreen(bool startEnabled) : Module(startEnabled)
 	donkeyidleAnim.PushBack({ 22,46,40,32 });
 
 	//angry anim
-	angryAnim1.PushBack({ 70,46,46,32 });
-	angryAnim2.PushBack({ 124,46,46,32 });
-	
+	angryAnim.PushBack({ 70,46,46,32 });
+	angryAnim.PushBack({ 124,46,46,32 });
+	angryAnim.loop = true;
+	angryAnim.speed = 0.1f;
 
 	//down anim
 	downAnim.PushBack({ 178,46,40,32 });
 
-
 	//dizzy anim
-	dizzyAnim.PushBack({ 97,116,15,22 });
+	dizzyAnim.PushBack({ 51,87,40,40 });
+	dizzyAnim.PushBack({ 99,87,40,40 });
+	dizzyAnim.PushBack({ 147,87,40,40 });
+	dizzyAnim.PushBack({ 52,133,40,40 });
+	dizzyAnim.PushBack({ 100,133,40,40 });
+	dizzyAnim.PushBack({ 148,133,40,40 });
 	dizzyAnim.loop = true;
 	dizzyAnim.speed = 0.1f;
 
-	
-
-	
 }
 
 WinningScreen::~WinningScreen()
 {
 }
 
-// Load assets
+
 bool WinningScreen::Start()
 {
 	LOG("Loading background assets");
@@ -50,16 +52,20 @@ bool WinningScreen::Start()
 	back.w = 256;
 	back.h = 256;
 
+	donkeypos.x = 108;
+	donkeypos.y = 56;
+
 	pauline = {8, 189, 16, 22};
 	mario = {34, 195, 12, 16};
 	heart = {57, 189, 15, 13};
 	donkey = {22, 46, 40, 32};
 	
-	App->audio->PlayMusic("Assets/Music/endingsounds.wav", 1.0f);
+	
 	spritesTexture = App->textures->Load("Assets/Ending/sprites.png");
 	backgroundTexture = App->textures->Load("Assets/Ending/one.png");
 	happybackgroundTexture = App->textures->Load("Assets/Ending/happyending.png");
 	
+	App->audio->PlayMusic("Assets/Music/try.ogg", 1.0f);
 
 	return ret;
 }
@@ -76,38 +82,25 @@ Update_Status WinningScreen::Update()
 		a = 1;
 		
 	}
-
-	if (i < 300 && i % 201 == 0) {
+	if (i > 50 && i < 200) {
 		a = 2;
-		currentAnimation = &angryAnim1;
+		currentAnimation = &angryAnim;
+	}
 
-	}
-	if (currentAnimation == &angryAnim1) {
-		if (i % 10 == 0) {
-			currentAnimation = &angryAnim2;
-		}
-	}
-	else if (currentAnimation == &angryAnim2) {
-		if (i % 10 == 0) {
-			currentAnimation = &angryAnim1;
-		}
-	}
-	else if (currentAnimation == &angryAnim1) {
-		if (i % 10 == 0) {
-			currentAnimation = &angryAnim2;
-		}
-	}
-	else if (currentAnimation == &angryAnim2) {
-		if (i % 10 == 0) {
-			currentAnimation = &donkeyidleAnim;
-		}
-	}
-	if (i > 400 && i < 600) {
+	if (i > 200 && i < 300) {
 		a = 3;
 		currentAnimation = &downAnim;
+		donkeypos.y += 1.3;
 	}
+
+	if (i > 300) {
+		a = 4;
+		currentAnimation = &dizzyAnim;
+		donkeypos.y = 184;
+
+	}
+
 	currentAnimation->Update();
-	
 	i++;
 
 
@@ -124,24 +117,31 @@ Update_Status WinningScreen::PostUpdate()
 		
 		App->render->Blit(backgroundTexture, 0, 0, &back);
 		App->render->Blit(spritesTexture, 120, 26, &pauline);
-		App->render->Blit(spritesTexture, 108, 56, &donkey);
+		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &donkey);
 		App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);
 	}
 	else if (a == 2) {
 		App->render->Blit(backgroundTexture, 0, 0, &back);
 		App->render->Blit(spritesTexture, 120, 26, &pauline);
-		App->render->Blit(spritesTexture, 108, 56, &rect);
+		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
 		App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);
 	}
 
 	else if (a == 3) {
 		App->render->Blit(backgroundTexture, 0, 0, &back);
 		App->render->Blit(spritesTexture, 120, 26, &pauline);
-		App->render->Blit(spritesTexture, 108, 56, &rect);
+		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
 		App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);
 
 	}
 	
+	else if (a == 4) {
+		App->render->Blit(happybackgroundTexture, 0, 0, &back);
+		App->render->Blit(spritesTexture, 120, 66, &pauline);
+		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
+		App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);
+
+	}
 	//else if (a == 4) {
 	//	App->render->Blit(happybackgroundTexture, 0, 0, &back, 0);
 	//}
