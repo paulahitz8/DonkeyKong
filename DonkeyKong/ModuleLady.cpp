@@ -9,15 +9,30 @@
 
 ModuleLady::ModuleLady(bool startEnabled) : Module(startEnabled)
 {
-	//lady idle
-	ladyidleAnim.PushBack({ 72,116,15,22 });
+	//lady moving left
+	leftladyAnim.PushBack({ 97,116,15,22 });
+	leftladyAnim.PushBack({ 72,116,15,22 });
+	leftladyAnim.speed = 0.1f;
 
-	//lady moving
-	ladyAnim1.PushBack({ 97,116,15,22 });
-	ladyAnim2.PushBack({ 72,116,15,22 });
-	ladyAnim3.PushBack({ 97,116,15,22 });
-	ladyAnim4.PushBack({ 72,116,15,22 });
-	ladyAnim5.PushBack({ 97,116,15,22 });
+	//lady moving right
+	rightladyAnim.PushBack({ 98, 145, 15, 22 });
+	rightladyAnim.PushBack({ 73, 145, 15, 22 });
+	rightladyAnim.speed = 0.1f;
+
+	//idle lady left
+	leftidleladyAnim.PushBack({ 72,116,15,22 });
+
+	//idlw lady right
+	rightidleladyAnim.PushBack({ 98,145,15,22 });
+
+	//left help
+	lefthelpAnim.PushBack({ 65, 51, 24, 8 });
+
+	//right help
+	righthelpAnim.PushBack({ 33, 51, 23 , 8 });
+
+	//idle help
+	helpidleAnim.PushBack({ 0, 0, 23, 8 });
 }
 
 ModuleLady::~ModuleLady() {
@@ -29,7 +44,9 @@ bool ModuleLady::Start()
 {
 	LOG("Loading player textures");
 	ladytexture = App->textures->Load("Assets/Lady/PaulineSprites.png");
-	currentAnimation = &ladyidleAnim;
+	helptexture = App->textures->Load("Assets/Lady/RandomSprites.png");
+	currentAnimation = &leftidleladyAnim;
+	currentAnimationhelp = &helpidleAnim;
 
 	/*if (playertexture == nullptr) {
 		return false;
@@ -46,35 +63,60 @@ bool ModuleLady::Start()
 Update_Status ModuleLady::Update()
 {
 
+	if (i % 351 == 0)
+	{
+		if (currentAnimation == &leftidleladyAnim)
+		{
+			currentAnimation = &rightidleladyAnim;
+		}
+		else if (currentAnimation == &rightidleladyAnim)
+		{
+			currentAnimation = &leftidleladyAnim;
+		}
+		if (currentAnimation == &leftladyAnim)
+		{
+			currentAnimation = &rightladyAnim;
+			currentAnimationhelp = &righthelpAnim;
+			helpPosition.x = 90;
+		}
+		else if (currentAnimation == &rightladyAnim)
+		{
+			currentAnimation = &leftladyAnim;
+			currentAnimationhelp = &lefthelpAnim;
+			helpPosition.x = 140;
+		}
+	}
+
 	if (i % 501 == 0)
 	{
-		currentAnimation = &ladyAnim1;
-
-	}
-	else if (currentAnimation == &ladyAnim1) {
-		if (i % 20 == 0) {
-			currentAnimation = &ladyAnim2;
+		if (currentAnimation == &leftidleladyAnim)
+		{
+			currentAnimation = &leftladyAnim;
+			currentAnimationhelp = &lefthelpAnim;
+			helpPosition.x = 140;
 		}
-	}
-	else if (currentAnimation == &ladyAnim2) {
-		if (i % 20 == 0) {
-			currentAnimation = &ladyAnim3;
+		if (currentAnimation == &rightidleladyAnim)
+		{
+			currentAnimation = &rightladyAnim;
+			currentAnimationhelp = &righthelpAnim;
+			helpPosition.x = 90;
 		}
+		j = 0;
 	}
-	else if (currentAnimation == &ladyAnim3) {
-		if (i % 20 == 0) {
-			currentAnimation = &ladyAnim4;
+	if (currentAnimation == &leftladyAnim || currentAnimation == &rightladyAnim)
+	{
+		j++;
+	}
+	if (j % 71 == 0)
+	{
+		currentAnimationhelp = &helpidleAnim;
+		if (currentAnimation == &leftladyAnim)
+		{
+			currentAnimation = &leftidleladyAnim;
 		}
-	}
-	else if (currentAnimation == &ladyAnim4) {
-		if (i % 20 == 0) {
-			currentAnimation = &ladyAnim5;
-		}
-	}
-
-	else if (currentAnimation == &ladyAnim5) {
-		if (i % 20 == 0) {
-			currentAnimation = &ladyidleAnim;
+		if (currentAnimation == &rightladyAnim)
+		{
+			currentAnimation = &rightidleladyAnim;
 		}
 	}
 
@@ -92,6 +134,9 @@ Update_Status ModuleLady::PostUpdate()
 {
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	App->render->Blit(ladytexture, ladyPosition.x, ladyPosition.y, &rect);
+
+	SDL_Rect recthelp = currentAnimationhelp->GetCurrentFrame();
+	App->render->Blit(helptexture, helpPosition.x, helpPosition.y, &recthelp);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
