@@ -171,13 +171,13 @@ Update_Status ModuleLvl4::Update()
 	// Lives
 	for (int ilive = 0; ilive < 3; ilive++) {
 
-		lvl4[4][2 + ilive] = 0;
+		lvl4[3][2 + ilive] = 0;
 
 	}
 
 	for (int ilive = 0; ilive < App->player->livecount; ilive++) {
 		
-		lvl4[4][2 + ilive] = 8;
+		lvl4[3][2 + ilive] = 8;
 
 	}
 
