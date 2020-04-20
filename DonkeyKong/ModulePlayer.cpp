@@ -364,7 +364,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 			if (carrotcount == 0) {
 
-				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 30);
+				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
 			}
 
 			colliderDelete = c2;
