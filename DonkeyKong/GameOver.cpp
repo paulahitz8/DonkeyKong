@@ -29,8 +29,8 @@ bool GameOver::Start()
 	backgroundgameoverTexture = App->textures->Load("Assets/cositasfondo/gameover.png");
 	
 	App->audio->PlayMusic("Assets/Music/silence.wav", 1.0f);
-
-
+	
+		
 	return ret;
 }
 
