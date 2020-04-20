@@ -43,9 +43,9 @@ void Enemies::OnCollision(Collider* collider)
 	/*if (collider->type == Collider::Type::HAMMER)
 	{
 		//DeleteEnemy
-	}
+	}*/
 
-	if (this->collider->type == Collider::Type::Item_Type && collider->type == Collider::Type::PLAYER)
+	/*if (this->collider->type == Collider::Type::Item_Type && collider->type == Collider::Type::PLAYER)
 	{
 		if (((collider->rect.x < this->collider->rect.x) && (collider->rect.x + collider->rect.w >= this->collider->rect.x + this->collider->rect.w))) {
 			App->scene->Nuts--;
