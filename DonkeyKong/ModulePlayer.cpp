@@ -205,13 +205,20 @@ Update_Status ModulePlayer::Update()
 			{
 				position.x -= speedx;
 				currentAnimation = &leftAnim;
+				if (position.x % 15 == 0)
+				{
+					App->audio->PlayFx(walkingFx);
+				}
 			}
 
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 			{
 				position.x += speedx;
 				currentAnimation = &rightAnim;
-
+				if (position.x % 15 == 0)
+				{
+					App->audio->PlayFx(walkingFx);
+				}
 			}
 
 			// If last movement was left, set the current animation back to left idle
