@@ -75,11 +75,11 @@ bool PierdeVida::Start()
 Update_Status PierdeVida::Update()
 {
 	for (int i = 0; i < 3; i++) {
-		lives[4][2 + i] = 0;
+		lives[3][2 + i] = 0;
 	}
 
 	for (int i = 0; i < App->player->livecount; i++) {
-		lives[4][2 + i] = 1;
+		lives[3][2 + i] = 1;
 	}
 
 	if (j % 151 == 0) {

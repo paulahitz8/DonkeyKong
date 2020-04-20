@@ -30,6 +30,10 @@ public:
 	SDL_Texture* backgroundTexture = nullptr;
 	SDL_Texture* happybackgroundTexture = nullptr;
 
+	SDL_Rect tile;
+	SDL_Texture* liveTexture = nullptr;
+	SDL_Texture* backgroundtileTexture = nullptr;
+
 	Animation* currentAnimation = nullptr;
 	Animation donkeyidleAnim, angryAnim, downAnim, dizzyAnim;
 	pos donkeypos;
@@ -38,6 +42,7 @@ public:
 private:
 	int i = 1;
 	int a = 0;
+	
 };
 
 
