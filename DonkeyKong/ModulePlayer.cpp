@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModuleHammer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollisions.h"
 
@@ -82,6 +83,8 @@ bool ModulePlayer::Start()
 		return false;
 	}*/
 
+	carrotcount = 8;
+
 	player.x = 56;
 	player.y = 2;
 	player.w = 12;
@@ -159,12 +162,18 @@ Update_Status ModulePlayer::Update()
 
 		if (livecount == 0) {
 
+			collider->pendingToDelete = true;
+			App->hammer->hammerCollider->pendingToDelete = true;
+
 			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->gameover, 30);
 			destroyed = false;
 		}
 
 
 		else {
+
+			collider->pendingToDelete = true;
+
 			if (currentAnimation != &angelAnim && currentAnimation != &deadAnim2 && currentAnimation != &deadAnim3 && currentAnimation != &deadAnim4)
 			{
 				currentAnimation = &deadAnim1;
