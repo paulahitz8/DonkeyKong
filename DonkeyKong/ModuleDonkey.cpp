@@ -34,6 +34,8 @@ bool ModuleDonkey::Start()
 		return false;
 	}*/
 
+	stompFx = App->audio->LoadFx("Assets/Music/17 SFX(Stomp).wav");
+
 	donkey.x = 34;
 	donkey.y = 66;
 	donkey.w = 40;
@@ -51,7 +53,7 @@ Update_Status ModuleDonkey::Update()
 	if (i % 501 == 0)
 	{
 		currentAnimation = &donkeyAnim1;
-
+		App->audio->PlayFx(stompFx);
 	}
 	
 	/*if (i % 50 == 0){
@@ -63,12 +65,16 @@ Update_Status ModuleDonkey::Update()
 	if (currentAnimation == &donkeyAnim1) {
 		if (i % 20 == 0) {
 			currentAnimation = &donkeyAnim2;
+			App->audio->PlayFx(stompFx);
+
 		}
 	}
 
 	else if (currentAnimation == &donkeyAnim2) {
 		if (i % 20 == 0) {
 			currentAnimation = &donkeyAnim3;
+			App->audio->PlayFx(stompFx);
+
 		}
 	}
 

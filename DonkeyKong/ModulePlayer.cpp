@@ -38,11 +38,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.2f;
 
 	//up animation
-	upladderAnim.PushBack({ 261, 94, 50, 26 });
+	upladderAnim3.PushBack({ 261, 94, 50, 26 });
 	upladderAnim.PushBack({ 261, 122, 50, 26 });
 	upladderAnim.PushBack({ 261, 1, 50, 26 });
-	upladderAnim.PushBack({ 261, 35, 50, 26 });
-	upladderAnim.PushBack({ 261, 63, 50, 26 });
+	upladderAnim1.PushBack({ 261, 35, 50, 26 });
+	upladderAnim2.PushBack({ 261, 63, 50, 26 });
+	upladderAnim.speed = 0.12f;
 	upladderAnim.speed = 0.12f;
 
 	//down animation
@@ -95,6 +96,7 @@ bool ModulePlayer::Start()
 	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
 	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
 	deadFx = App->audio->LoadFx("Assets/Music/20 SFX (Miss).wav");
+	bonusFx = App->audio->LoadFx("Assets/Music/19 SFX (Bonus).wav");
 	
 
 
@@ -245,12 +247,27 @@ Update_Status ModulePlayer::Update()
 
 				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 				{
-						position.y -= speedy;
+					position.y -= speedy;
+					if (position.y % 30 == 0)
+					{
 						currentAnimation = &upladderAnim;
-						if (position.y % 15 == 0)
-						{
-							App->audio->PlayFx(walkingFx);
-						}
+					}
+					else if (position.y % 50 == 0)
+					{
+						currentAnimation = &upladderAnim1;
+					}
+					else if (position.y % 70 == 0)
+					{
+						currentAnimation = &upladderAnim2;
+					}
+					else if (position.y % 40 == 0)
+					{
+						currentAnimation = &upladderAnim3;
+					}
+					if (position.y % 15 == 0)
+					{
+						App->audio->PlayFx(walkingFx);
+					}
 				}
 
 				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_UP || App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_UP)
@@ -361,6 +378,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 
 			carrotcount--;
+			App->audio->PlayFx(bonusFx);
 
 			if (carrotcount == 0) {
 

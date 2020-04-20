@@ -25,6 +25,7 @@ private:
 	uint walkingFx = 0;
 	uint silenceFx = 0;
 	uint deadFx = 0;
+	uint bonusFx = 0;
 
 	// The player's collider
 	Collider* collider = nullptr;
@@ -50,6 +51,9 @@ public:
 	Animation leftAnim;
 	Animation rightAnim;
 	Animation upladderAnim;
+	Animation upladderAnim1;
+	Animation upladderAnim2;
+	Animation upladderAnim3;
 	Animation downladderAnim;
 	/*Animation rightwalkAnim;*/
 	Animation deadAnim1;
