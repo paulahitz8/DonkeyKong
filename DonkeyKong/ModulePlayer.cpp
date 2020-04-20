@@ -25,17 +25,17 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 	// left animation
 	leftAnim.PushBack({ 203, 1, 50, 26 });
-	leftAnim.PushBack({ 203, 36, 50, 26 });
 	leftAnim.PushBack({ 203, 63, 50, 26 });
+	leftAnim.PushBack({ 203, 36, 50, 26 });
 	leftAnim.PushBack({ 203, 94, 50, 26 });
-	leftAnim.speed = 0.12f;
+	leftAnim.speed = 0.2f;
 
 	//right animation
 	rightAnim.PushBack({ 203, 122, 50, 26 });
-	rightAnim.PushBack({ 203, 161, 50, 26 });
 	rightAnim.PushBack({ 203, 189, 50, 26 });
+	rightAnim.PushBack({ 203, 161, 50, 26 });
 	rightAnim.PushBack({ 203, 227, 50, 26 });
-	rightAnim.speed = 0.12f;
+	rightAnim.speed = 0.2f;
 
 	//up animation
 	upladderAnim.PushBack({ 261, 94, 50, 26 });
