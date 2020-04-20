@@ -237,12 +237,20 @@ Update_Status ModulePlayer::Update()
 				{
 					position.y += speedy;
 					currentAnimation = &downladderAnim;
+					if (position.y % 15 == 0)
+					{
+						App->audio->PlayFx(walkingFx);
+					}
 				}
 
 				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 				{
 						position.y -= speedy;
 						currentAnimation = &upladderAnim;
+						if (position.y % 15 == 0)
+						{
+							App->audio->PlayFx(walkingFx);
+						}
 				}
 
 				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_UP || App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_UP)
