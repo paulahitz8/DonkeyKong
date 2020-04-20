@@ -45,9 +45,6 @@ public:
 
 	int temp = 0;
 
-	// A flag to detect when the hammer has been destroyed
-	bool hammerExist = true;
-
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
 
