@@ -93,11 +93,27 @@ Update_Status WinningScreen::Update()
 		donkeypos.y += 1.3;
 	}
 
-	if (i > 300) {
+	if (i > 300 && i < 370) {
 		a = 4;
 		currentAnimation = &dizzyAnim;
 		donkeypos.y = 184;
 
+	}
+
+	if (i > 370 && i < 400) {
+		a = 5;
+		currentAnimation = &dizzyAnim;
+		donkeypos.y = 184;
+	}
+
+	if (i > 400) {
+		a = 6;
+		currentAnimation = &dizzyAnim;
+		donkeypos.y = 184;
+	}
+
+	if (i > 730) {
+		App->fade->FadeToBlack(this, (Module*)App->intro, 30);
 	}
 
 	currentAnimation->Update();
@@ -142,10 +158,25 @@ Update_Status WinningScreen::PostUpdate()
 		App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);
 
 	}
-	//else if (a == 4) {
-	//	App->render->Blit(happybackgroundTexture, 0, 0, &back, 0);
-	//}
 
+	else if (a == 5) {
+		App->render->Blit(happybackgroundTexture, 0, 0, &back);
+		App->render->Blit(spritesTexture, 120, 66, &pauline);
+		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
+		App->render->Blit(spritesTexture, 154, 72, &mario);
+
+	}
+
+	else if (a == 6) {
+		App->render->Blit(happybackgroundTexture, 0, 0, &back);
+		App->render->Blit(spritesTexture, 120, 66, &pauline);
+		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
+		App->render->Blit(spritesTexture, 154, 72, &mario);
+		App->render->Blit(spritesTexture, 138, 59, &heart);
+
+	}
+
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
 

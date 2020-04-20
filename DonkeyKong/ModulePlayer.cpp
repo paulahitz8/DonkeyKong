@@ -110,7 +110,7 @@ Update_Status ModulePlayer::Update()
 		godmode = !godmode;
 
 	}
-	if (App->input->keys[SDL_SCANCODE_F5] == Key_State::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
 		App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
 
 	}
