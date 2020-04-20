@@ -155,6 +155,12 @@ Update_Status ModulePlayer::Update()
 			position.y -= 2;
 		}
 
+		if (position.x < 0) {position.x +=2;}
+		if (position.x > 216) { position.x -= 2; }
+		if (position.y < 0) { position.y += 2; }
+		if (position.y > 232) { position.y -= 2; }
+
+
 	}
 
 

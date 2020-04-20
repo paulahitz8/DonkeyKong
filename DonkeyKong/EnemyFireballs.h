@@ -17,10 +17,6 @@ public:
 	void Update() override;
 
 private:
-	// A set of steps that define the position in the screen
-	// And an animation for each step
-	Path path;
-
 
 	Collider* colliderF = nullptr;
 
