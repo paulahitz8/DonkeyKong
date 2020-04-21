@@ -407,6 +407,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 			carrotcount--;
 			App->audio->PlayFx(bonusFx);
+			n++;
 
 			if (carrotcount == 0) {
 

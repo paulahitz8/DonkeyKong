@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
 
 int score[32][32]{	{10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10},
 					{10,10,10,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,10,10,10,10,10,10,10,10,10,10,10,10,10},
@@ -82,6 +83,9 @@ Update_Status ModuleScore::Update()
 	//{
 	//	App->fade->FadeToBlack(this, (Module*)App->intro, 30);
 	//}
+
+	score[1][6] = App->player->n;
+	score[1][16] = App->player->n;
 
 	return Update_Status::UPDATE_CONTINUE;
 }
