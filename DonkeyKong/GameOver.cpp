@@ -32,7 +32,7 @@ bool GameOver::Start()
 	
 	App->audio->PlayMusic("Assets/Music/silence.wav", 1.0f);
 	
-	//App->score->Enable();
+	App->score->Enable();
 	return ret;
 }
 
@@ -57,6 +57,6 @@ Update_Status GameOver::PostUpdate()
 bool GameOver::CleanUp() {
 
 	App->textures->Unload(backgroundgameoverTexture);
-	
+	App->score->Disable();
 	return true;
 }

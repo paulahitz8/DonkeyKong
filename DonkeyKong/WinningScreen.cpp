@@ -104,7 +104,7 @@ bool WinningScreen::Start()
 	App->audio->PlayMusic("Assets/Music/try.ogg", 1.0f);
 
 	//Enable
-//	App->score->Enable();
+	App->score->Enable();
 
 
 	return ret;
@@ -243,7 +243,7 @@ Update_Status WinningScreen::PostUpdate()
 bool WinningScreen::CleanUp() {
 
 	App->textures->Unload(backgroundTexture);
-	//App->score->Disable();
+	App->score->Disable();
 
 	return true;
 }
