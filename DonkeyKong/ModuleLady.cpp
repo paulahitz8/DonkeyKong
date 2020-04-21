@@ -42,6 +42,7 @@ ModuleLady::~ModuleLady() {
 
 bool ModuleLady::Start()
 {
+	i = 1;
 	LOG("Loading player textures");
 	ladytexture = App->textures->Load("Assets/Lady/PaulineSprites.png");
 	helptexture = App->textures->Load("Assets/Lady/RandomSprites.png");

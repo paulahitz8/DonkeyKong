@@ -27,6 +27,7 @@ ModuleDonkey::~ModuleDonkey() {
 
 bool ModuleDonkey::Start()
 {
+	i = 1;
 	LOG("Loading player textures");
 	donkeytexture = App->textures->Load("Assets/Donkey/DonkeyKongSprites2.png");
 	currentAnimation = &donkeyidleAnim; 

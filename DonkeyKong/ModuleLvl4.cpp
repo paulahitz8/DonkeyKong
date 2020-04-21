@@ -62,6 +62,8 @@ ModuleLvl4::~ModuleLvl4()
 
 bool ModuleLvl4::Start()
 {
+	i = 1;
+	j = 0;
 
 	App->winning->win = false;
 	App->player->n = 0;
