@@ -28,7 +28,13 @@ void Enemies::Update()
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
-
+	position.x += speed;
+	if (position.x < 24) {
+		speed = -speed;
+	}
+	if (position.x > 220) {
+		speed = -speed;
+	}
 }
 
 void Enemies::Draw()

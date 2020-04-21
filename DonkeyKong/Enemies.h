@@ -57,6 +57,8 @@ public:
 
 	// Original spawn position. Stored for movement calculations
 	iPoint spawnPos;
+
+	int speed = 1;
 };
 
 #endif // __ENEMIES_H__
