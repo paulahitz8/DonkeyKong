@@ -15,6 +15,19 @@
 
 ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
+	deadAnim.PushBack({ 82, 168, 14, 12 });
+	deadAnim.PushBack({ 108, 170 , 10 , 8 });
+	deadAnim.PushBack({ 82, 168, 14, 12 });
+	deadAnim.PushBack({ 108, 170 , 10 , 8 });
+	deadAnim.PushBack({ 82, 168, 14, 12 });
+	deadAnim.PushBack({ 108, 170 , 10 , 8 });
+	deadAnim.PushBack({ 134, 171, 6, 6 });
+	deadAnim.PushBack({ 154, 168, 14, 12 });
+	deadAnim.speed = 0.12f;
+	deadAnim.loop = false;
+
+	blankAnim.PushBack({ 0, 0, 20, 20 });
+
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 }
@@ -27,7 +40,10 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	enemiestexture = App->textures->Load("Assets/Enemies/Enemies2.png");
+	particlestexture = App->textures->Load("Assets/Lady/RandomSprites.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Music/21 SFX (Kill).wav");
+
+	currentAnim2 = &blankAnim;
 
 	return true;
 }
@@ -44,6 +60,21 @@ Update_Status ModuleEnemies::Update()
 
 	HandleEnemiesDespawn();
 
+	if (enemyDead == true)
+	{
+		i = 1;
+		currentAnim2 = &deadAnim;
+		enemyDead = false;
+	}
+
+	if (currentAnim2 == &deadAnim && i % 71 == 0)
+	{
+		currentAnim2 = &blankAnim;
+	}
+
+	i++;
+	currentAnim2->Update();
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -54,6 +85,9 @@ Update_Status ModuleEnemies::PostUpdate()
 		if (enemies[i] != nullptr)
 			enemies[i]->Draw();
 	}
+
+	if (currentAnim2 != nullptr)
+		App->render->Blit(particlestexture, position.x, position.y, &(currentAnim2->GetCurrentFrame()));
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -160,6 +194,12 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && c2->type == Collider::Type::HAMMER)
 		{
 			enemies[i]->OnCollision(c2); //Notify collision of an enemy
+
+			position = enemies[i]->GetPos();
+
+			enemyDead = true;
+
+			App->audio->PlayFx(enemyDestroyedFx);
 
 			delete enemies[i];
 			enemies[i] = nullptr;

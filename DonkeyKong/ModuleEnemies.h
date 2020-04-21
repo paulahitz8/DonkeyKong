@@ -7,6 +7,7 @@
 #include "SDL_Rect.h"
 #include "p2Point.h"
 #include "Animation.h"
+#include "Enemies.h"
 
 #define MAX_ENEMIES 5
 
@@ -63,8 +64,20 @@ private: //?
 	Enemies* enemies[MAX_ENEMIES] = { nullptr };
 
 	SDL_Texture* enemiestexture = nullptr;
+	SDL_Texture* particlestexture = nullptr;
+
+
+	Animation* currentAnim2 = nullptr;
+
+	bool enemyDead;
 
 	int enemyDestroyedFx = 0;
+	int i = 1;
+
+	iPoint position;
+
+	Animation deadAnim;
+	Animation blankAnim;
 };
 
 #endif // __MODULE_ENEMIES_H__

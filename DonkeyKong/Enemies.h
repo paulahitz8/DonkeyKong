@@ -29,6 +29,8 @@ public:
 
 	void Delete();
 
+	iPoint GetPos() const;
+
 	// Collision response
 	// Triggers an animation and a sound fx
 	virtual void OnCollision(Collider* collider);

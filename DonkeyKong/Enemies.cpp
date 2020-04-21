@@ -20,6 +20,11 @@ const Collider* Enemies::GetCollider() const
 	return collider;
 }
 
+iPoint Enemies::GetPos() const
+{
+	return position;
+}
+
 void Enemies::Update()
 {
 	if (currentAnim != nullptr)
