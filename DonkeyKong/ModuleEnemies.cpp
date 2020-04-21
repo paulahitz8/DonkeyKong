@@ -23,8 +23,7 @@ ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 	deadAnim.PushBack({ 108, 170 , 10 , 8 });
 	deadAnim.PushBack({ 134, 171, 6, 6 });
 	deadAnim.PushBack({ 154, 168, 14, 12 });
-	deadAnim.speed = 0.12f;
-	deadAnim.loop = false;
+	deadAnim.speed = 0.11f;
 
 	blankAnim.PushBack({ 0, 0, 20, 20 });
 
