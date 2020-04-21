@@ -19,7 +19,7 @@ private:
 	SDL_Rect number;
 
 
-	SDL_Texture* backgroundTexture = nullptr;
+	SDL_Texture* backkTexture = nullptr;
 	SDL_Texture* Texture0 = nullptr;
 	SDL_Texture* Texture1 = nullptr;
 	SDL_Texture* Texture2 = nullptr;
@@ -31,7 +31,7 @@ private:
 	SDL_Texture* Texture8 = nullptr;
 	SDL_Texture* Texture9 = nullptr;
 
-
+	int scoremap[32][32] = { 0 };
 
 
 public:
