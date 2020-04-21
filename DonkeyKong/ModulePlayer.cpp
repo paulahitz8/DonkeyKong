@@ -270,7 +270,7 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 				{
 					position.y += speedy;
-					if (position.y == 223 || position.y == 182 || position.y == 142 || position.y == 102 || position.y == 62)
+					if (position.y == 223 || position.y == 183 || position.y == 143 || position.y == 103 || position.y == 63)
 					{
 						currentAnimation = &downladderAnim1;
 					}
