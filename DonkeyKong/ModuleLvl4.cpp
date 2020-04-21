@@ -99,37 +99,37 @@ bool ModuleLvl4::Start()
 
 	// Level 4 colliders:
 	// Walls and ground by floor
-	App->collision->AddCollider({ 0, 246, 14, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 245, 14, 11 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 16, 247, 224, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 16 + 224 + 3, 246, 16, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 16 + 223 + 3, 246, 16, 11 }, Collider::Type::WALL);
 
-	App->collision->AddCollider({ 0, 206, 21, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 207, 21, 11 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 24, 207, 49, 9 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 207, 98, 9 }, Collider::Type::GROUND);  
 	App->collision->AddCollider({ 79 + 98 + 6, 207, 49, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6 + 49 + 3, 207, 24, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 79 + 97 + 6 + 49 + 3, 207, 24, 10 }, Collider::Type::WALL);
 
-	App->collision->AddCollider({ 0, 168, 29, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 167, 29, 10 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 32, 168, 41, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 168, 98, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6, 168, 41, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6 + 41 + 3, 168, 32, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 79 + 98 + 5 + 41 + 3, 168, 32, 10 }, Collider::Type::WALL);
 
-	App->collision->AddCollider({ 0, 128, 37, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 127, 37, 10 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 40, 128, 33, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 128, 98, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6, 128, 33, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6 + 33 + 3, 128, 40, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 79 + 97 + 6 + 33 + 3, 128, 40, 10 }, Collider::Type::WALL);
 
-	App->collision->AddCollider({ 0, 88, 45, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 87, 45, 10 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 48, 88, 25, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79, 88, 98, 8 }, Collider::Type::GROUND); 
 	App->collision->AddCollider({ 79 + 98 + 6, 88, 25, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6 + 25 + 3, 88, 48, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 79 + 97 + 6 + 25 + 3, 88, 48, 10 }, Collider::Type::WALL);
 
-	App->collision->AddCollider({ 0, 48, 69, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 47, 69, 10 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 72, 48, 112, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 72 + 112 + 3, 48, 72, 9 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 72 + 111 + 3, 48, 72, 10 }, Collider::Type::WALL);
 
 	//Donkey walls
 	App->collision->AddCollider({ 90, 56, 2, 32 }, Collider::Type::WALL);
