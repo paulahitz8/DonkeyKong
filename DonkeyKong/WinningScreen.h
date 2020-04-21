@@ -38,6 +38,9 @@ public:
 	Animation donkeyidleAnim, angryAnim, downAnim, dizzyAnim;
 	pos donkeypos;
 
+	bool win = false;
+	int p = 1;
+
 private:
 	int i = 1;
 	int a = 0;

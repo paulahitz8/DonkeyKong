@@ -5,6 +5,7 @@
 #include "ModuleAudio.h"
 #include "ModuleScore.h"
 #include "ModuleInput.h"
+#include "ModuleScore.h"
 #include "ModuleFadeToBlack.h"
 
 IntroScreen::IntroScreen(bool startEnabled) : Module(startEnabled)
@@ -32,11 +33,15 @@ bool IntroScreen::Start()
 
 	App->score->Enable();
 
+	
+
 	return ret;
 }
 
 Update_Status IntroScreen::Update()
 {
+	
+
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->lvl4, 30);

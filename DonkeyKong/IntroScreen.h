@@ -16,7 +16,7 @@ public:
 
 	~IntroScreen();
 
-
+	int p = 0;
 	bool Start() override;
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;

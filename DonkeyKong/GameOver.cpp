@@ -22,7 +22,9 @@ GameOver::~GameOver()
 bool GameOver::Start()
 {
 	LOG("Loading background assets");
-
+	if (App->score->a > b) {
+		b = App->score->a;
+	}
 	bool ret = true;
 
 	backgroundgameover.h = 256;

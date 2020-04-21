@@ -78,7 +78,7 @@ WinningScreen::~WinningScreen()
 bool WinningScreen::Start()
 {
 	LOG("Loading background assets");
-
+	
 	currentAnimation = &donkeyidleAnim;
 	bool ret = true;
 
@@ -164,6 +164,8 @@ Update_Status WinningScreen::Update()
 	currentAnimation->Update();
 	i++;
 
+	win = true;
+	p = 0;
 
 	return Update_Status::UPDATE_CONTINUE;
 }

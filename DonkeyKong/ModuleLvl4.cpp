@@ -10,6 +10,7 @@
 #include "ModuleDonkey.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
+#include "WinningScreen.h"
 #include "ModuleLady.h"
 #include "SDL.h"
 
@@ -62,7 +63,8 @@ ModuleLvl4::~ModuleLvl4()
 bool ModuleLvl4::Start()
 {
 
-
+	App->winning->win = false;
+	App->player->n = 0;
 	// FUnciona mas o menos pero la zanahoria que coges justo antes de morir no spawnea otra vez
 
 	for (int a = 0; a < 32; a++) {

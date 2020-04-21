@@ -65,6 +65,7 @@ public:
 	Animation angelAnim;
 
 	int n = 0;
+	
 	bool resetVidas = false;
 	int livecount = 3;
 	int carrotcount = 8;

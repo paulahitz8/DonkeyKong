@@ -163,7 +163,7 @@ Update_Status ModulePlayer::Update()
 		if (livecount == 0) {
 
 			resetVidas = true;
-
+			n = 0;
 			collider->pendingToDelete = true;
 			App->hammer->hammerCollider->pendingToDelete = true;
 
@@ -410,7 +410,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			n++;
 
 			if (carrotcount == 0) {
-
+				
 				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
 			}
 

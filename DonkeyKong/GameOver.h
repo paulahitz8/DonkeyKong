@@ -16,7 +16,7 @@ public:
 
 	SDL_Rect backgroundgameover;
 	SDL_Texture* backgroundgameoverTexture = nullptr;
-
+	int b = 0;
 
 public:
 
