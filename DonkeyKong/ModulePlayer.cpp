@@ -440,7 +440,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 bool ModulePlayer::CleanUp()
 {
 
-	// Borrar audio
+
 	return true;
 }
 

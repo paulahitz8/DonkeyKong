@@ -330,6 +330,7 @@ bool ModuleLvl4::CleanUp()
 {
 	App->collision->CleanUp();
 
+
 	App->player->Disable();
 	App->donkey->Disable();
 	App->hammer->Disable();

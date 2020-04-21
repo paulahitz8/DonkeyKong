@@ -121,5 +121,6 @@ bool PierdeVida::CleanUp() {
 
 	App->textures->Unload(backTexture);
 	App->score->Disable();
+	
 	return true;
 }

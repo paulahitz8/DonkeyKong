@@ -247,5 +247,6 @@ bool WinningScreen::CleanUp() {
 	App->textures->Unload(backgroundTexture);
 	App->score->Disable();
 
+
 	return true;
 }

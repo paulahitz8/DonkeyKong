@@ -63,6 +63,7 @@ bool IntroScreen::CleanUp() {
 
 	App->textures->Unload(introBackground);
 	App->score->Disable();
+	
 
 	return true;
 }
