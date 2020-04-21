@@ -78,10 +78,10 @@ bool ModuleScore::Start()
 
 Update_Status ModuleScore::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->intro, 30);
-	}
+	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	//{
+	//	App->fade->FadeToBlack(this, (Module*)App->intro, 30);
+	//}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -177,7 +177,7 @@ Update_Status ModuleScore::PostUpdate()
 
 bool ModuleScore::CleanUp() {
 
-
+	App->textures->Unload(backkTexture);
 
 	return true;
 }
