@@ -19,6 +19,7 @@ private:
 	Collider* colliderF = nullptr;
 
 	Animation leftAnim;
+	Animation rightAnim;
 };
 
 #endif // __ENEMY_BROWNSHIP_H__
