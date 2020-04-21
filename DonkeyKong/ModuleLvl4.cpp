@@ -14,7 +14,7 @@
 #include "SDL.h"
 
 
-int lvl4[32][32]{	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+int lvl4Initial[32][32]{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -61,11 +61,17 @@ ModuleLvl4::~ModuleLvl4()
 
 bool ModuleLvl4::Start()
 {
-	App->audio->PlayMusic("Assets/Music/10 Stage 4 BGM.ogg", 1.0f);
 
-	//if (texture == nullptr) {
-	//	return false;
-	//}
+
+	// FUnciona mas o menos pero la zanahoria que coges justo antes de morir no spawnea otra vez
+
+	for (int a = 0; a < 32; a++) {
+		for (int b = 0; b < 32; b++) {
+			lvl4[a][b] = lvl4Initial[a][b];
+		}
+	}
+
+	App->audio->PlayMusic("Assets/Music/10 Stage 4 BGM.ogg", 1.0f);
 
 	//TILEMAP
 

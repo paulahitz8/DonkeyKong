@@ -80,12 +80,12 @@ bool ModulePlayer::Start()
 
 	position.x = { 43 };
 	position.y = { 222 };
-								   
-	 /*if (playertexture == nullptr) {
-		return false;
-	}*/
 
 	carrotcount = 8;
+	if (resetVidas == true) {
+		livecount = 3;
+		resetVidas = false;
+	}
 
 	player = { 56, 2, 12, 16 };
 
@@ -161,6 +161,8 @@ Update_Status ModulePlayer::Update()
 	if (destroyed) {
 
 		if (livecount == 0) {
+
+			resetVidas = true;
 
 			collider->pendingToDelete = true;
 			App->hammer->hammerCollider->pendingToDelete = true;
@@ -436,6 +438,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 bool ModulePlayer::CleanUp()
 {
+
+	// Borrar audio
 	return true;
 }
 

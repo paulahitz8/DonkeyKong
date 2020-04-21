@@ -64,6 +64,7 @@ public:
 	Animation deadAnim4;
 	Animation angelAnim;
 
+	bool resetVidas = false;
 	int livecount = 3;
 	int carrotcount = 8;
 	Collider* colliderDelete = nullptr;

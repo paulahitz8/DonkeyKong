@@ -37,7 +37,7 @@ private:
 	int j = 0;
 	int t = 1;
 
-	int map[32][32];
+	int lvl4[32][32] = {};
 	
 
 public:
