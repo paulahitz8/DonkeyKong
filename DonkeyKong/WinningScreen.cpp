@@ -7,6 +7,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
+#include "ModuleScore.h"
 
 int life[32][32]{ {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -66,6 +67,7 @@ WinningScreen::WinningScreen(bool startEnabled) : Module(startEnabled)
 	dizzyAnim.loop = true;
 	dizzyAnim.speed = 0.1f;
 
+
 }
 
 WinningScreen::~WinningScreen()
@@ -80,10 +82,7 @@ bool WinningScreen::Start()
 	currentAnimation = &donkeyidleAnim;
 	bool ret = true;
 
-	back.x = 0;
-	back.y = 0;
-	back.w = 256;
-	back.h = 256;
+	back = { 0, 0, 256, 256 };
 
 	donkeypos.x = 108;
 	donkeypos.y = 56;
@@ -98,13 +97,15 @@ bool WinningScreen::Start()
 
 	backgroundtileTexture = App->textures->Load("Assets/cositasfondo/background.png");
 	liveTexture = App->textures->Load("Assets/cositasfondo/MarioLive.png");
-
-	
 	spritesTexture = App->textures->Load("Assets/Ending/sprites.png");
 	backgroundTexture = App->textures->Load("Assets/Ending/one.png");
 	happybackgroundTexture = App->textures->Load("Assets/Ending/happyending.png");
 	
 	App->audio->PlayMusic("Assets/Music/try.ogg", 1.0f);
+
+	//Enable
+	App->score->Enable();
+
 
 	return ret;
 }
@@ -242,14 +243,7 @@ Update_Status WinningScreen::PostUpdate()
 bool WinningScreen::CleanUp() {
 
 	App->textures->Unload(backgroundTexture);
+	App->score->Disable();
 
 	return true;
 }
-
-// orden
-//1. imagen cambiada con musica
-//2. donkey enfadado con sonido
-//3. donkey se cae con sonido
-//4. donkey se golpea con sonido + pauline baja 
-//5. mario sube
-//6. corazon y musiquita

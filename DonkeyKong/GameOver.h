@@ -14,10 +14,8 @@ class GameOver : public Module
 
 public:
 
-
 	SDL_Rect backgroundgameover;
 	SDL_Texture* backgroundgameoverTexture = nullptr;
-
 
 
 public:

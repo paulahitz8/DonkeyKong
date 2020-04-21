@@ -16,10 +16,5 @@ Enemy_Fireballs::Enemy_Fireballs(int x, int y) : Enemies(x, y)
 
 void Enemy_Fireballs::Update()
 {
-	//path.Update();
-	//position = spawnPos + path.GetRelativePosition();
-
-	// Call to the base class. It must be called at the end
-	// It will update the collider depending on the position
 	Enemies::Update();
 }

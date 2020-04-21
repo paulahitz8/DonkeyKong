@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModuleScore.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 
@@ -27,9 +28,9 @@ bool IntroScreen::Start()
 	background.w = 256;
 
 	introBackground = App->textures->Load("Assets/cositasfondo/introobackground.png");
-	//App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 	App->audio->PlayMusic("Assets/Music/00 - Donkey Kong Main Theme (1).wav", 1.0f);
 
+	App->score->Enable();
 
 	return ret;
 }
@@ -44,10 +45,9 @@ Update_Status IntroScreen::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-// Update: draw background
+
 Update_Status IntroScreen::PostUpdate()
 {
-	// Draw everything --------------------------------------
 
 	App->render->Blit(introBackground, 0, 0, &background, 0);
 
@@ -57,6 +57,7 @@ Update_Status IntroScreen::PostUpdate()
 bool IntroScreen::CleanUp() {
 
 	App->textures->Unload(introBackground);
+	App->score->Disable();
 
 	return true;
 }

@@ -64,42 +64,23 @@ public:
 	Animation deadAnim4;
 	Animation angelAnim;
 
-	/*SDL_Texture* cientexture = nullptr;
-	Animation* currentAnimation2 = nullptr;
-	Animation cienAnim;
-	Animation clearanim;*/
-
+	bool resetVidas = false;
 	int livecount = 3;
 	int carrotcount = 8;
 	Collider* colliderDelete = nullptr;
 
 	int carrotDeletex, carrotDeletey;
 
-	// Constructor
+
 	ModulePlayer(bool startEnabled);
 
-	// Destructor
 	~ModulePlayer();
 
-	// Called when the module is activated
-	// Loads the necessary textures for the player
 	bool Start() override;
-
-	// Called at the middle of the application loop
-	// Processes new input and handles player movement
 	Update_Status Update() override;
-
-	// Called at the end of the application loop
-	// Performs the render call of the player sprite
 	Update_Status PostUpdate() override;
-
-	//This is NOT in the handout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	bool CleanUp() override;
-	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
-	
-
-
 
 };
 

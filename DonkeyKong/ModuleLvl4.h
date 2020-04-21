@@ -13,8 +13,7 @@ class ModuleLvl4 : public Module
 
 private:
 	
-	iPoint position = { 0, 0 }; //x y
-	//iPoint cienpos = { 0 , 0 };
+	iPoint position = { 0, 0 };
 	iPoint cienpos;
 	SDL_Texture* cientexture = nullptr;
 	SDL_Rect cienrect;
@@ -38,7 +37,7 @@ private:
 	int j = 0;
 	int t = 1;
 
-	int map[32][32];
+	int lvl4[32][32] = {};
 	
 
 public:

@@ -28,30 +28,19 @@ struct SDL_Texture;
 class ModuleEnemies : public Module
 {
 public:
-	// Constructor
+
 	ModuleEnemies(bool startEnabled);
 
-	// Destructor
 	~ModuleEnemies();
 
-	// Called when the module is activated
-	// Loads the necessary textures for the enemies
 	bool Start() override;
 
-	// Called at the middle of the application loop
-	// Handles all enemies logic and spawning/despawning
 	Update_Status Update() override;
 
-	// Called at the end of the application loop
-	// Iterates all the enemies and draws them
 	Update_Status PostUpdate() override;
 
-	// Called on application exit
-	// Destroys all active enemies left in the array
 	bool CleanUp() override;
 
-	// Called when an enemi collider hits another collider
-	// The enemy is destroyed and an explosion particle is fired
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	// Add an enemy into the queue to be spawned later
@@ -63,7 +52,6 @@ public:
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleEnemiesDespawn();
 
-private:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
 
@@ -72,13 +60,10 @@ private: //?
 	// A queue with all spawn points information
 	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
 
-	// All spawned enemies in the scene
 	Enemies* enemies[MAX_ENEMIES] = { nullptr };
 
-	// The enemies sprite sheet
 	SDL_Texture* enemiestexture = nullptr;
 
-	// The audio fx for destroying an enemy
 	int enemyDestroyedFx = 0;
 };
 

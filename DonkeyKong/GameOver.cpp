@@ -1,10 +1,12 @@
 #include "GameOver.h"
+
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleScore.h"
 #include "ModulePlayer.h"
 #include "SDL.h"
 
@@ -30,7 +32,7 @@ bool GameOver::Start()
 	
 	App->audio->PlayMusic("Assets/Music/silence.wav", 1.0f);
 	
-		
+	App->score->Enable();
 	return ret;
 }
 
@@ -55,6 +57,6 @@ Update_Status GameOver::PostUpdate()
 bool GameOver::CleanUp() {
 
 	App->textures->Unload(backgroundgameoverTexture);
-
+	App->score->Disable();
 	return true;
 }

@@ -14,7 +14,7 @@
 #include "SDL.h"
 
 
-int lvl4[32][32]{	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+int lvl4Initial[32][32]{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -61,11 +61,17 @@ ModuleLvl4::~ModuleLvl4()
 
 bool ModuleLvl4::Start()
 {
-	App->audio->PlayMusic("Assets/Music/10 Stage 4 BGM.ogg", 1.0f);
 
-	//if (texture == nullptr) {
-	//	return false;
-	//}
+
+	// FUnciona mas o menos pero la zanahoria que coges justo antes de morir no spawnea otra vez
+
+	for (int a = 0; a < 32; a++) {
+		for (int b = 0; b < 32; b++) {
+			lvl4[a][b] = lvl4Initial[a][b];
+		}
+	}
+
+	App->audio->PlayMusic("Assets/Music/10 Stage 4 BGM.ogg", 1.0f);
 
 	//TILEMAP
 
@@ -160,7 +166,7 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 179, 73, 2, 15 }, Collider::Type::CARROT);
 
 	// Enable Player
-	//App->score->Enable();
+	App->score->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
 	App->hammer->Enable();
@@ -243,18 +249,14 @@ Update_Status ModuleLvl4::Update()
 		App->player->colliderDelete->pendingToDelete = true;
 	}
 	
-	
 
-
+	// Enemy spawn timer
 	if (i % 500 == 0 && j < 5)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
 		j++;
 	}
 	i++;
-
-
-
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -324,7 +326,6 @@ Update_Status ModuleLvl4::PostUpdate()
 
 bool ModuleLvl4::CleanUp()
 {
-	//Disable player?
 	App->collision->CleanUp();
 
 	App->player->Disable();
@@ -332,6 +333,6 @@ bool ModuleLvl4::CleanUp()
 	App->hammer->Disable();
 	App->enemies->Disable();
 	App->lady->Disable();
-	//App->score->Disable();
+	App->score->Disable();
 	return true;
 }
