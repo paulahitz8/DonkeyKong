@@ -34,7 +34,6 @@ private:
 	SDL_Texture* liveTexture = nullptr;
 	
 	int i = 1;
-	int j = 0;
 	int t = 1;
 	
 

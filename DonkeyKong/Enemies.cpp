@@ -34,11 +34,32 @@ void Enemies::Update()
 		collider->SetPos(position.x, position.y);
 
 	position.x += speed;
-	if (position.x < 24) {
-		speed = -speed;
+	if (position.y == 196)
+	{
+		if (position.x < 24) {
+			speed = -speed;
+		}
+		if (position.x > 220) {
+			speed = -speed;
+		}
 	}
-	if (position.x > 220) {
-		speed = -speed;
+	if (position.y == 156)
+	{
+		if (position.x < 32) {
+			speed = -speed;
+		}
+		if (position.x > 212) {
+			speed = -speed;
+		}
+	}
+	if (position.y == 116)
+	{
+		if (position.x < 40) {
+			speed = -speed;
+		}
+		if (position.x > 206) {
+			speed = -speed;
+		}
 	}
 }
 
