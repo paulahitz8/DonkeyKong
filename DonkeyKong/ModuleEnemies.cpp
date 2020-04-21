@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleCollisions.h"
 
 #include "Enemies.h"
 #include "EnemyFireballs.h"
@@ -156,7 +157,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && c2->type == Collider::Type::HAMMER)
 		{
 			enemies[i]->OnCollision(c2); //Notify collision of an enemy
 

@@ -39,24 +39,6 @@ void Enemies::Draw()
 
 void Enemies::OnCollision(Collider* collider)
 {
-	//App->audio->PlayFx(destroyedFx);
-	/*if (collider->type == Collider::Type::HAMMER)
-	{
-		Delete();
-	}
-
-	if (this->collider->type == Collider::Type::Item_Type && collider->type == Collider::Type::PLAYER)
-	{
-		if (((collider->rect.x < this->collider->rect.x) && (collider->rect.x + collider->rect.w >= this->collider->rect.x + this->collider->rect.w))) {
-			App->scene->Nuts--;
-			SetToDelete();
-		}
-	}*/
+	//Current anim == dead anim
 }
 
-void Enemies::Delete()
-{
-	/*pendingToDelete = true;
-	if (collider != nullptr)
-		collider->pendingToDelete = true;*/
-}

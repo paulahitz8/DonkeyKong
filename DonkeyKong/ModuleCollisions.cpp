@@ -31,7 +31,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::OBJECT] = false;
 
 	matrix[Collider::Type::HAMMER][Collider::Type::PLAYER] = false;
-	matrix[Collider::Type::HAMMER][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::HAMMER][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::HAMMER][Collider::Type::HAMMER] = false;
 	matrix[Collider::Type::HAMMER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::HAMMER][Collider::Type::GROUND] = false;

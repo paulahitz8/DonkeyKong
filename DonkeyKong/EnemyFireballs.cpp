@@ -11,7 +11,7 @@ Enemy_Fireballs::Enemy_Fireballs(int x, int y) : Enemies(x, y)
 
 	currentAnim = &leftAnim;
 
-	colliderF = App->collision->AddCollider({ position.x, position.y, 15, 12 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ position.x, position.y, 15, 12 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Fireballs::Update()

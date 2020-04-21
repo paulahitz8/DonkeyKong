@@ -34,6 +34,10 @@ public:
 	virtual void OnCollision(Collider* collider);
 
 public:
+
+	bool pendingToDelete = false;
+
+
 	// The current position in the world
 	iPoint position;
 
