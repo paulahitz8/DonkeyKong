@@ -26,22 +26,12 @@ public:
 	// Destructor
 	~ModuleHammer();
 
-	// Called when the module is activated
-	// Loads the necessary textures for the hammer
 	bool Start() override;
-
-	// Called at the middle of the application loop
-	// Processes new input and handles hammer movement
 	Update_Status Update() override;
-
-	// Called at the end of the application loop
 	Update_Status PostUpdate() override;
-
-	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
-
 
 	int temp = 0;
 

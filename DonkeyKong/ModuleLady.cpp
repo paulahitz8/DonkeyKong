@@ -1,10 +1,10 @@
 #include "ModuleLady.h"
+
 #include "Application.h"
 #include "ModuleTextures.h"
-#include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
-#include "SDL_scancode.h"
+
 
 
 ModuleLady::ModuleLady(bool startEnabled) : Module(startEnabled)
@@ -52,10 +52,7 @@ bool ModuleLady::Start()
 		return false;
 	}*/
 
-	lady.x = 72;
-	lady.y = 116;
-	lady.w = 15;
-	lady.h = 22;
+	lady = { 72, 116, 15, 22 };
 
 	return true;
 }
@@ -121,9 +118,6 @@ Update_Status ModuleLady::Update()
 	}
 
 	currentAnimation->Update();
-	//if (currentAnimation->HasFinished() == true) {
-	//	currentAnimation->Reset();
-	//}
 
 	i++;
 

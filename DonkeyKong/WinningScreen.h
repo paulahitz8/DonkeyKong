@@ -37,7 +37,6 @@ public:
 	Animation* currentAnimation = nullptr;
 	Animation donkeyidleAnim, angryAnim, downAnim, dizzyAnim;
 	pos donkeypos;
-	//maybe un path?
 
 private:
 	int i = 1;

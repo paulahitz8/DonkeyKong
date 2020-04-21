@@ -1,4 +1,5 @@
 #include "ModulePlayer.h"
+
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
@@ -63,9 +64,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	//dead angel animation
 	angelAnim.PushBack({ 59, 67, 30, 26 });
 
-	////100 anim
-	//cienAnim.PushBack({ 59, 104, 15, 7 });
-	//clearanim.PushBack({ 0, 0, 15, 7 });
 }
 
 ModulePlayer::~ModulePlayer() {
@@ -77,11 +75,8 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	playertexture = App->textures->Load("Assets/Mario/mariosprites.png");
-	//cientexture = App->textures->Load("Assets/Lady/RandomSprites.png");
 
 	currentAnimation = &rightidleAnim; //mario empieza mirando a la derecha
-	//currentAnimation2 = &clearanim;
-
 
 	position.x = { 43 };
 	position.y = { 222 };
@@ -92,14 +87,9 @@ bool ModulePlayer::Start()
 
 	carrotcount = 8;
 
-	player.x = 56;
-	player.y = 2;
-	player.w = 12;
-	player.h = 16;
-
+	player = { 56, 2, 12, 16 };
 
 	destroyed = false;
-
 
 	collider = App->collision->AddCollider({ position.x + 18, position.y + 10, 12, 16 }, Collider::Type::PLAYER, this);
 
@@ -107,10 +97,6 @@ bool ModulePlayer::Start()
 	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
 	deadFx = App->audio->LoadFx("Assets/Music/20 SFX (Miss).wav");
 	bonusFx = App->audio->LoadFx("Assets/Music/19 SFX (Bonus).wav");
-
-
-	
-
 
 	return true;
 }
@@ -168,7 +154,6 @@ Update_Status ModulePlayer::Update()
 		if (position.x > 216) { position.x -= 2; }
 		if (position.y < 0) { position.y += 2; }
 		if (position.y > 232) { position.y -= 2; }
-
 
 	}
 
@@ -354,23 +339,14 @@ Update_Status ModulePlayer::Update()
 
 Update_Status ModulePlayer::PostUpdate()
 {
-
-
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	App->render->Blit(playertexture, position.x, position.y, &rect);
-
-	//SDL_Rect rect2 = currentAnimation2->GetCurrentFrame();
-	//App->render->Blit(playertexture, position.x, position.y + 10, &rect2);
-
-
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
-{
-
-	
+{	
 	if (godmode == false) {
 		// LADDER
 		if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 8) && (position.x + 18) < (c2->rect.x)))
@@ -429,7 +405,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 			carrotcount--;
 			App->audio->PlayFx(bonusFx);
-		/*	currentAnimation2 = &cienAnim;*/
 
 			if (carrotcount == 0) {
 

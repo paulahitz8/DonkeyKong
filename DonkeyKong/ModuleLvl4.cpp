@@ -243,18 +243,14 @@ Update_Status ModuleLvl4::Update()
 		App->player->colliderDelete->pendingToDelete = true;
 	}
 	
-	
 
-
+	// Enemy spawn timer
 	if (i % 500 == 0 && j < 5)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
 		j++;
 	}
 	i++;
-
-
-
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -324,7 +320,6 @@ Update_Status ModuleLvl4::PostUpdate()
 
 bool ModuleLvl4::CleanUp()
 {
-	//Disable player?
 	App->collision->CleanUp();
 
 	App->player->Disable();

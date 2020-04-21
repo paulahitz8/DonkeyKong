@@ -14,7 +14,7 @@ struct SDL_Texture;
 class InitialScreen : public Module
 {
 private:
-	iPoint position = { 0, 0 }; //x y aun no sabemos donde imprimirlo
+	iPoint position = { 0, 0 };
 
 	SDL_Rect letter;
 

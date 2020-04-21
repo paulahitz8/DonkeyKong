@@ -1,13 +1,11 @@
 #include "ModuleHammer.h"
+
 #include "ModulePlayer.h"
 #include "Application.h"
 #include "Animation.h"
 #include "ModuleTextures.h"
-#include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
-#include "ModuleAudio.h"
-#include "ModulePlayer.h"
 #include "ModuleLvl4.h"
 #include "ModuleEnemies.h"
 
@@ -37,7 +35,7 @@ bool ModuleHammer::Start()
 
 Update_Status ModuleHammer::Update()
 {
-	if (App->player->currentAnimation->GetFrame() % 2 == 0) // Hammer down
+	if (App->player->currentAnimation->GetFrame() % 2 == 0)
 	{
 		if ((App->player->currentAnimation == &App->player->leftAnim) || (App->player->currentAnimation == &App->player->leftidleAnim)) {
 			hammerCollider->SetPos(App->player->position.x + 18, App->player->position.y + 1);
@@ -47,7 +45,7 @@ Update_Status ModuleHammer::Update()
 		}
 	}
 
-	else // Hammer up
+	else
 	{
 	
 		if ((App->player->currentAnimation == &App->player->leftAnim) || (App->player->currentAnimation == &App->player->leftidleAnim)) {
@@ -58,19 +56,16 @@ Update_Status ModuleHammer::Update()
 		}
 	}
 
-	//hammerCollider->SetPos(App->player->position.x + 18, App->player->position.y + 1);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-// Called at the end of the application loop
 Update_Status ModuleHammer::PostUpdate()
 {
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-// Collision callback, called when the player intersects with another collider
 void ModuleHammer::OnCollision(Collider* c1, Collider* c2)
 {
 

@@ -64,13 +64,6 @@ bool InitialScreen::Start()
 
 	bool ret = true;
 
-	//initialbackground.h = 256;
-	//initialbackground.w = 256;
-
-	//initialbackgroundtexture = App->textures->Load("Assets/cositasfondo/fondonegro.png");
-	//App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
-	//App->audio->PlayMusic("Assets/Music/00 - Donkey Kong Main Theme (1).wav", 1.0f);
-
 	letter.w = 7;
 	letter.h = 7;
 
@@ -116,13 +109,9 @@ Update_Status InitialScreen::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-// Update: draw background
+
 Update_Status InitialScreen::PostUpdate()
 {
-	// Draw everything --------------------------------------
-
-	//App->render->Blit(initialbackgroundtexture, 0, 0, &initialbackground, 0);
-
 	int whichletter = 0;
 
 	for (int column = 0; column < 36; column++) {

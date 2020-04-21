@@ -80,10 +80,7 @@ bool WinningScreen::Start()
 	currentAnimation = &donkeyidleAnim;
 	bool ret = true;
 
-	back.x = 0;
-	back.y = 0;
-	back.w = 256;
-	back.h = 256;
+	back = { 0, 0, 256, 256 };
 
 	donkeypos.x = 108;
 	donkeypos.y = 56;
@@ -98,8 +95,6 @@ bool WinningScreen::Start()
 
 	backgroundtileTexture = App->textures->Load("Assets/cositasfondo/background.png");
 	liveTexture = App->textures->Load("Assets/cositasfondo/MarioLive.png");
-
-	
 	spritesTexture = App->textures->Load("Assets/Ending/sprites.png");
 	backgroundTexture = App->textures->Load("Assets/Ending/one.png");
 	happybackgroundTexture = App->textures->Load("Assets/Ending/happyending.png");
@@ -245,11 +240,3 @@ bool WinningScreen::CleanUp() {
 
 	return true;
 }
-
-// orden
-//1. imagen cambiada con musica
-//2. donkey enfadado con sonido
-//3. donkey se cae con sonido
-//4. donkey se golpea con sonido + pauline baja 
-//5. mario sube
-//6. corazon y musiquita

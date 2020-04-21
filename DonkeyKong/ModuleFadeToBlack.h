@@ -13,16 +13,9 @@ public:
 	//Destructor
 	~ModuleFadeToBlack();
 
-	// Called when the module is activated
-	// Enables the blending mode for transparency
+
 	bool Start() override;
-
-	// Called at the middle of the application loop
-	// Updates the fade logic
 	Update_Status Update() override;
-
-	// Called at the end of the application loop
-	// Performs the render call of a black rectangle with transparency
 	Update_Status PostUpdate() override;
 
 	// Called from another module

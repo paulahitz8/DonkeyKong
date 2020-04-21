@@ -1,10 +1,10 @@
 #include "ModuleDonkey.h"
+
 #include "Application.h"
+
 #include "ModuleTextures.h"
-#include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
-#include "ModuleFadeToBlack.h"
 #include "ModuleCollisions.h"
 #include "SDL_scancode.h"
 
@@ -30,19 +30,15 @@ bool ModuleDonkey::Start()
 	LOG("Loading player textures");
 	donkeytexture = App->textures->Load("Assets/Donkey/DonkeyKongSprites2.png");
 	currentAnimation = &donkeyidleAnim; 
+	
 	/*if (playertexture == nullptr) {
 		return false;
 	}*/
 
 	stompFx = App->audio->LoadFx("Assets/Music/17 SFX (Stomp).wav");
 
-	donkey.x = 34;
-	donkey.y = 66;
-	donkey.w = 40;
-	donkey.h = 32;
+	donkey = { 34, 66, 40, 32 };
 
-
-	//añadir sonido con la animacion
 
 	return true;
 }
@@ -55,11 +51,6 @@ Update_Status ModuleDonkey::Update()
 		currentAnimation = &donkeyAnim1;
 		App->audio->PlayFx(stompFx);
 	}
-	
-	/*if (i % 50 == 0){
-		currentAnimation = &donkeyidleAnim;
-	}*/
-	
 
 
 	if (currentAnimation == &donkeyAnim1) {
@@ -85,10 +76,7 @@ Update_Status ModuleDonkey::Update()
 	}
 
 	currentAnimation->Update();
-	//if (currentAnimation->HasFinished() == true) {
-	//	currentAnimation->Reset();
-	//}
-	
+
 	i++;
 
 	return Update_Status::UPDATE_CONTINUE;
