@@ -166,7 +166,7 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 179, 73, 2, 15 }, Collider::Type::CARROT);
 
 	// Enable Player
-	//App->score->Enable();
+	App->score->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
 	App->hammer->Enable();
@@ -333,6 +333,6 @@ bool ModuleLvl4::CleanUp()
 	App->hammer->Disable();
 	App->enemies->Disable();
 	App->lady->Disable();
-	//App->score->Disable();
+	App->score->Disable();
 	return true;
 }

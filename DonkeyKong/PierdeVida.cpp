@@ -6,6 +6,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleScore.h"
 
 int lives[32][32]{ {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, 
@@ -68,6 +69,8 @@ bool PierdeVida::Start()
 
 	App->audio->PlayMusic("Assets/Music/05 How high can you get.ogg", 1.0f);
 	
+	//Enable
+	//App->score->Enable();
 	return ret;
 }
 
@@ -117,6 +120,5 @@ Update_Status PierdeVida::PostUpdate()
 bool PierdeVida::CleanUp() {
 
 	App->textures->Unload(backTexture);
-
 	return true;
 }

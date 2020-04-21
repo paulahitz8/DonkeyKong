@@ -7,6 +7,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
+#include "ModuleScore.h"
 
 int life[32][32]{ {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -66,6 +67,7 @@ WinningScreen::WinningScreen(bool startEnabled) : Module(startEnabled)
 	dizzyAnim.loop = true;
 	dizzyAnim.speed = 0.1f;
 
+
 }
 
 WinningScreen::~WinningScreen()
@@ -100,6 +102,10 @@ bool WinningScreen::Start()
 	happybackgroundTexture = App->textures->Load("Assets/Ending/happyending.png");
 	
 	App->audio->PlayMusic("Assets/Music/try.ogg", 1.0f);
+
+	//Enable
+//	App->score->Enable();
+
 
 	return ret;
 }
@@ -237,6 +243,7 @@ Update_Status WinningScreen::PostUpdate()
 bool WinningScreen::CleanUp() {
 
 	App->textures->Unload(backgroundTexture);
+	//App->score->Disable();
 
 	return true;
 }
