@@ -220,6 +220,16 @@ Update_Status ModulePlayer::Update()
 
 	if (!destroyed) {
 
+
+		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN) {
+			isJumping = true;
+
+			position.x += position.x + 0.1;      // Apply horizontal velocity to X position
+			position.y -= position.y + 0.1 - (gravity/2);      // Apply vertical velocity to X position
+
+		}
+
+
 		if (groundOn == true) {
 
 			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)

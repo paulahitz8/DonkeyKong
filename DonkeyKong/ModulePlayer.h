@@ -39,6 +39,8 @@ private:
 	int j = 0;
 
 	bool godmode = false;
+	bool isJumping = false;
+
 
 public:
 
