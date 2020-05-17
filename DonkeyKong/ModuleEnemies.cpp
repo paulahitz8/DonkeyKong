@@ -2,6 +2,7 @@
 
 #include "Application.h"
 
+#include "ModulePlayer.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
@@ -193,6 +194,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && c2->type == Collider::Type::HAMMER)
 		{
 			enemies[i]->OnCollision(c2); //Notify collision of an enemy
+
+			App->player->n = App->player->n + 8;
 
 			position = enemies[i]->GetPos();
 

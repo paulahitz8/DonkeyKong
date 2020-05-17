@@ -62,6 +62,7 @@ bool ModuleScore::Start()
 	LOG("Loading background assets");
 
 
+
 	//for (int a = 0; a < 32; a++) {
 	//	for (int b = 0; b < 32; b++) {
 	//		score[a][b] = scoreinitial[a][b];
@@ -96,8 +97,16 @@ Update_Status ModuleScore::Update()
 	//{
 	//	App->fade->FadeToBlack(this, (Module*)App->intro, 30);
 	//}
-	
-	score[1][6] = App->player->n;
+	if (App->player->n < 10)
+	{
+		score[1][6] = App->player->n;
+	}
+	else
+	{
+		App->player->n = App->player->n % 10;
+		score[1][6] = App->player->n;
+		score[1][5]++;
+	}
 	//score[1][16] = App->player->n;
 //	int a = score[1][16];
 	a = App->player->n;
@@ -112,6 +121,7 @@ Update_Status ModuleScore::Update()
 
 	if (App->winning->win == true) {
 		score[1][6] = 0;
+		score[1][5] = 0;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
