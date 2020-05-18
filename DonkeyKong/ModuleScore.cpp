@@ -106,6 +106,16 @@ Update_Status ModuleScore::Update()
 		App->player->n = App->player->n % 10;
 		score[1][6] = App->player->n;
 		score[1][5]++;
+		if (score[1][5] >= 10)
+		{
+			score[1][5] = score[1][5] % 10;
+			score[1][4]++;
+			if (score[1][4] >= 10)
+			{
+				score[1][4] = score[1][4] % 10;
+				score[1][3]++;
+			}
+		}
 	}
 	//score[1][16] = App->player->n;
 //	int a = score[1][16];
