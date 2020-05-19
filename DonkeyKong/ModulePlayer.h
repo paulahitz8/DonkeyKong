@@ -18,10 +18,12 @@ private:
 	SDL_Texture* playertexture = nullptr;
 	
 	int jumpTimer = 0;
-	float gravity = 0.5;
+	int gravity = 1;
 	int speedx = 1;
 	int speedy = 1;
-	float jumpingspeedy = 1.5;
+	int currenty;
+	int startingy;
+	int jumpingspeedy = 6;
 	float jumpingspeedx = 0.3;
 
 	// Sound effects indices
