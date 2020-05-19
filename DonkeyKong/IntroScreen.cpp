@@ -47,6 +47,8 @@ Update_Status IntroScreen::Update()
 		App->fade->FadeToBlack(this, (Module*)App->lvl4, 30);
 	}
 
+	intro = true;
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 

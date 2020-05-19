@@ -24,6 +24,7 @@ public:
 
 public:
 
+	bool intro = false;
 	SDL_Rect background;
 	SDL_Texture* introBackground = nullptr;
 };

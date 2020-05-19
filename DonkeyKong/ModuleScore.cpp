@@ -129,9 +129,16 @@ Update_Status ModuleScore::Update()
 		score[1][16] = App->gameover->b;
 	}
 
-	if (App->winning->win == true) {
+	/*if (App->winning->win == true) {
 		score[1][6] = 0;
 		score[1][5] = 0;
+		score[1][4] = 0;
+	}*/
+
+	if (App->intro->intro == true) {
+		score[1][6] = 0;
+		score[1][5] = 0;
+		score[1][4] = 0;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
