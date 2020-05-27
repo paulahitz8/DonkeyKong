@@ -22,9 +22,6 @@ GameOver::~GameOver()
 bool GameOver::Start()
 {
 	LOG("Loading background assets");
-	if (App->score->a > b) {
-		b = App->score->a;
-	}
 	bool ret = true;
 
 	backgroundgameover.h = 256;
@@ -35,6 +32,9 @@ bool GameOver::Start()
 	App->audio->PlayMusic("Assets/Music/silence.wav", 1.0f);
 	
 	App->score->Enable();
+
+	gameover = true;
+
 	return ret;
 }
 

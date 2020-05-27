@@ -163,7 +163,6 @@ Update_Status ModulePlayer::Update()
 		if (livecount == 0) {
 
 			resetVidas = true;
-			n = 0;
 			collider->pendingToDelete = true;
 			App->hammer->hammerCollider->pendingToDelete = true;
 

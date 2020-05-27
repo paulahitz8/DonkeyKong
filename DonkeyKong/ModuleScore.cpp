@@ -8,8 +8,8 @@
 #include "IntroScreen.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleLvl4.h"
 #include "GameOver.h"
-#include "WinningScreen.h"
 
 int score[32][32]{	{10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10},
 					{10,10,10,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,10,10,10,10,10,10,10,10,10,10,10,10,10},
@@ -117,28 +117,43 @@ Update_Status ModuleScore::Update()
 			}
 		}
 	}
-	//score[1][16] = App->player->n;
-//	int a = score[1][16];
-	a = App->player->n;
-
-	if (a > App->gameover->b) {
-		App->gameover->b = a;
-		score[1][16] = App->gameover->b;
+	if (score[1][3] > score[1][13])
+	{
+		score[1][13] = score[1][3];
+		score[1][14] = score[1][4];
+		score[1][15] = score[1][5];
+		score[1][16] = score[1][6];
 	}
-	else {
-		score[1][16] = App->gameover->b;
+	if (score[1][4] > score[1][14] && score[1][3] >= score[1][13])
+	{
+		score[1][14] = score[1][4];
+		score[1][15] = score[1][5];
+		score[1][16] = score[1][6];
+	}
+	if (score[1][5] > score[1][15] && score[1][4] >= score[1][14] && score[1][3] >= score[1][13])
+	{
+		score[1][15] = score[1][5];
+		score[1][16] = score[1][6];
+	}
+	if (score[1][6] > score[1][16] && score[1][5] >= score[1][15] && score[1][4] >= score[1][14] && score[1][3] >= score[1][13])
+	{
+		score[1][16] = score[1][6];
 	}
 
-	/*if (App->winning->win == true) {
+	if (App->lvl4->lvl4score == true)
+	{
 		score[1][6] = 0;
 		score[1][5] = 0;
 		score[1][4] = 0;
-	}*/
+		score[1][3] = 0;
+		App->lvl4->lvl4score = false;
+	}
 
 	if (App->intro->intro == true) {
 		score[1][6] = 0;
 		score[1][5] = 0;
 		score[1][4] = 0;
+		score[1][3] = 0;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;

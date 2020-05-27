@@ -11,6 +11,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 #include "WinningScreen.h"
+#include "IntroScreen.h"
+#include "GameOver.h"
 #include "ModuleLady.h"
 #include "SDL.h"
 
@@ -64,8 +66,15 @@ bool ModuleLvl4::Start()
 {
 	i = 1;
 
+	if (App->gameover->gameover == true)
+	{
+		lvl4score = true;
+		App->player->n = 0;
+		App->gameover->gameover = false;
+	}
 	App->winning->win = false;
-	App->player->n = 0;
+	App->intro->intro = false;
+	
 	// FUnciona mas o menos pero la zanahoria que coges justo antes de morir no spawnea otra vez
 
 	for (int a = 0; a < 32; a++) {

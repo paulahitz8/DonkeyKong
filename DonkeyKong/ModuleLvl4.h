@@ -47,7 +47,7 @@ public:
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
 	bool CleanUp() override;
-
+	bool lvl4score = false;
 
 };
 
