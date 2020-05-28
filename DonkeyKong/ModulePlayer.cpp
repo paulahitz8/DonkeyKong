@@ -73,6 +73,9 @@ ModulePlayer::~ModulePlayer() {
 
 bool ModulePlayer::Start()
 {
+	carrotDeletex = 0;
+	carrotDeletey = 0;
+
 	LOG("Loading player textures");
 	playertexture = App->textures->Load("Assets/Mario/mariosprites.png");
 
@@ -174,6 +177,7 @@ Update_Status ModulePlayer::Update()
 		else {
 
 			collider->pendingToDelete = true;
+			App->hammer->hammerCollider->pendingToDelete = true;
 
 			if (currentAnimation != &angelAnim && currentAnimation != &deadAnim2 && currentAnimation != &deadAnim3 && currentAnimation != &deadAnim4)
 			{
@@ -439,6 +443,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			if (carrotcount == 0) {
 				
 				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
+				resetVidas = true;
 			}
 
 			colliderDelete = c2;

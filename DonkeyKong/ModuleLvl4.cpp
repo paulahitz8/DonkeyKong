@@ -83,6 +83,9 @@ bool ModuleLvl4::Start()
 		}
 	}
 
+	cienpos.x = 0;
+	cienpos.y = 0;
+
 	App->audio->PlayMusic("Assets/Music/10 Stage 4 BGM.ogg", 1.0f);
 
 	//TILEMAP
@@ -211,49 +214,49 @@ Update_Status ModuleLvl4::Update()
 			lvl4[25][9] = 0;
 			cienpos.x = 69;
 		}
-		if (App->player->carrotDeletex == 179) {
+		else if (App->player->carrotDeletex == 179) {
 			lvl4[26][22] = 0;
 			lvl4[25][22] = 0;
 			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
 	}
-	if (App->player->carrotDeletey == 153) {
+	else if (App->player->carrotDeletey == 153) {
 		cienpos.y = 176;
 		if (App->player->carrotDeletex == 75) {
 			lvl4[21][9] = 0;
 			lvl4[20][9] = 0;
 			cienpos.x = 69;
 		}
-		if (App->player->carrotDeletex == 179) {
+		else if (App->player->carrotDeletex == 179) {
 			lvl4[21][22] = 0;
 			lvl4[20][22] = 0;
 			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
 	}
-	if (App->player->carrotDeletey == 113) {
+	else if (App->player->carrotDeletey == 113) {
 		cienpos.y = 136;
 		if (App->player->carrotDeletex == 75) {
 			lvl4[16][9] = 0;
 			lvl4[15][9] = 0;
 			cienpos.x = 69;
 		}
-		if (App->player->carrotDeletex == 179) {
+		else if (App->player->carrotDeletex == 179) {
 			lvl4[16][22] = 0;
 			lvl4[15][22] = 0;
 			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
 	}
-	if (App->player->carrotDeletey == 73) {
+	else if (App->player->carrotDeletey == 73) {
 		cienpos.y = 96;
 		if (App->player->carrotDeletex == 75) {
 			lvl4[11][9] = 0;
 			lvl4[10][9] = 0;
 			cienpos.x = 69;
 		}
-		if (App->player->carrotDeletex == 179) {
+		else if (App->player->carrotDeletex == 179) {
 			lvl4[11][22] = 0;
 			lvl4[10][22] = 0;
 			cienpos.x = 173;
