@@ -101,11 +101,13 @@ bool ModuleEnemies::CleanUp()
 	{
 		if (enemies[i] != nullptr)
 		{
+			enemies[i]->collider->~Collider();
 			delete enemies[i];
 			enemies[i] = nullptr;
 		}
 	}
-
+	App->textures->Unload(enemiestexture);
+	App->textures->Unload(particlestexture);
 	return true;
 }
 
