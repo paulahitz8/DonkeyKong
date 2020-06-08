@@ -85,6 +85,15 @@
     <ClCompile Include="ModuleScore.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleLvl2.cpp">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleLvl3.cpp">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SiguienteNivel.cpp">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -176,6 +185,15 @@
     </ClInclude>
     <ClInclude Include="ModuleScore.h">
       <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleLvl2.h">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleLvl3.h">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SiguienteNivel.h">
+      <Filter>Source\Modules\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

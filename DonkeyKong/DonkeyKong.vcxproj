@@ -38,6 +38,8 @@
     <ClCompile Include="ModuleHammer.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleLady.cpp" />
+    <ClCompile Include="ModuleLvl2.cpp" />
+    <ClCompile Include="ModuleLvl3.cpp" />
     <ClCompile Include="ModuleLvl4.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleScore.cpp" />
@@ -46,6 +48,7 @@
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
     <ClCompile Include="PierdeVida.cpp" />
+    <ClCompile Include="SiguienteNivel.cpp" />
     <ClCompile Include="WinningScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +72,8 @@
     <ClInclude Include="ModuleHammer.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleLady.h" />
+    <ClInclude Include="ModuleLvl2.h" />
+    <ClInclude Include="ModuleLvl3.h" />
     <ClInclude Include="ModuleLvl4.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleScore.h" />
@@ -78,6 +83,7 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="ModulePlayer.h" />
     <ClInclude Include="PierdeVida.h" />
+    <ClInclude Include="SiguienteNivel.h" />
     <ClInclude Include="WinningScreen.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

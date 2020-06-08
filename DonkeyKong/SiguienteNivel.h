@@ -1,14 +1,15 @@
+
 #pragma once
 
-#ifndef __SCENE_PIERDEVIDA_H__
-#define __SCENE_PIERDEVIDA_H__
+#ifndef __SCENE_SIGUIENTENIVEL_H__
+#define __SCENE_SIGUIENTENIVEL_H__
 
 #include "Module.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class PierdeVida : public Module
+class SiguienteNivel : public Module
 {
 
 	int j = 1;
@@ -21,11 +22,11 @@ class PierdeVida : public Module
 	SDL_Rect tile;
 	SDL_Texture* liveTexture = nullptr;
 	SDL_Texture* backgroundTexture = nullptr;
-	
+
 
 public:
-	PierdeVida(bool startEnabled);
-	~PierdeVida();
+	SiguienteNivel(bool startEnabled);
+	~SiguienteNivel();
 	bool Start() override;
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;

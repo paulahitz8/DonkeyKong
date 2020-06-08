@@ -1,4 +1,4 @@
-#include "ModuleLvl4.h"
+#include "ModuleLvl3.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -17,11 +17,11 @@
 #include "SDL.h"
 
 
-int lvl4Initial[32][32]{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+int lvl3Initial[32][32]{ {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, 
+					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,7,6,0,0,0,0,0,0,0,0,7,6,0,0,0,0,0,0,0,0,0,0},
@@ -51,44 +51,44 @@ int lvl4Initial[32][32]{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 					{0,0,1,5,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,0,0},
 };
 
-ModuleLvl4::ModuleLvl4(bool startEnabled) : Module(startEnabled)
+ModuleLvl3::ModuleLvl3(bool startEnabled) : Module(startEnabled)
 {
 
 }
 
-ModuleLvl4::~ModuleLvl4()
+ModuleLvl3::~ModuleLvl3()
 {
 
 }
 
 
-bool ModuleLvl4::Start()
+bool ModuleLvl3::Start()
 {
 	i = 1;
-	lvl4status = true;
-	App->player->activelevel = 4;
+	App->player->activelevel = 3;
+	lvl3status = true;
 
 	if (App->gameover->gameover == true)
 	{
-		lvl4score = true;
+		lvl3score = true;
 		App->player->n = 0;
 		App->gameover->gameover = false;
 	}
 	App->winning->win = false;
 	App->intro->intro = false;
-	
+
 	// FUnciona mas o menos pero la zanahoria que coges justo antes de morir no spawnea otra vez
 
 	for (int a = 0; a < 32; a++) {
 		for (int b = 0; b < 32; b++) {
-			lvl4[a][b] = lvl4Initial[a][b];
+			lvl3[a][b] = lvl3Initial[a][b];
 		}
 	}
 
 	cienpos.x = 0;
 	cienpos.y = 0;
 
-	App->audio->PlayMusic("Assets/Music/10 Stage 4 BGM.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Music/stage2.ogg", 1.0f);
 
 	//TILEMAP
 
@@ -102,7 +102,7 @@ bool ModuleLvl4::Start()
 	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
 	cientexture = App->textures->Load("Assets/Lady/RandomSprites.png");
 
-	backgroundTexture = App->textures->Load("Assets/cositasfondo/background.png");
+	background3Texture = App->textures->Load("Assets/cositasfondo/background3.png");
 	floorTexture = App->textures->Load("Assets/cositasfondo/suelo.png");
 	floorCarrotTexture = App->textures->Load("Assets/cositasfondo/sueloencimazanahoria.png");
 	carrotTexture = App->textures->Load("Assets/cositasfondo/zanahoria.png");
@@ -112,75 +112,63 @@ bool ModuleLvl4::Start()
 	rightPoleTexture = App->textures->Load("Assets/cositasfondo/barraderecha.png");
 	liveTexture = App->textures->Load("Assets/cositasfondo/MarioLive.png");
 
-	// Level 4 colliders:
+	// Level 3 colliders:
 	// Walls and ground by floor
 	App->collision->AddCollider({ 0, 245, 14, 11 }, Collider::Type::WALL);
-	App->collision->AddCollider({ 16, 247, 224, 9 }, Collider::Type::GROUND); 
+	App->collision->AddCollider({ 16, 247, 224, 9 }, Collider::Type::GROUND);
 	App->collision->AddCollider({ 16 + 223 + 3, 246, 16, 11 }, Collider::Type::WALL);
 
-	App->collision->AddCollider({ 0, 207, 21, 11 }, Collider::Type::WALL);
-	App->collision->AddCollider({ 24, 207, 49, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79, 207, 98, 9 }, Collider::Type::GROUND);  
-	App->collision->AddCollider({ 79 + 98 + 6, 207, 49, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 97 + 6 + 49 + 3, 207, 24, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 319, 14, 11 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 16, 321, 24, 9 }, Collider::Type::GROUND);
 
-	App->collision->AddCollider({ 0, 167, 29, 10 }, Collider::Type::WALL);
-	App->collision->AddCollider({ 32, 168, 41, 8 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79, 168, 98, 8 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6, 168, 41, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 5 + 41 + 3, 168, 32, 10 }, Collider::Type::WALL);
 
-	App->collision->AddCollider({ 0, 127, 37, 10 }, Collider::Type::WALL);
-	App->collision->AddCollider({ 40, 128, 33, 8 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79, 128, 98, 8 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6, 128, 33, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 97 + 6 + 33 + 3, 128, 40, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 189, 14, 11 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 16, 191, 24, 9 }, Collider::Type::GROUND);
 
-	App->collision->AddCollider({ 0, 87, 45, 10 }, Collider::Type::WALL);
-	App->collision->AddCollider({ 48, 88, 25, 8 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79, 88, 98, 8 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 98 + 6, 88, 25, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 79 + 97 + 6 + 25 + 3, 88, 48, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 133, 14, 11 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 16, 135, 24, 9 }, Collider::Type::GROUND);
 
-	App->collision->AddCollider({ 0, 47, 69, 10 }, Collider::Type::WALL);
-	App->collision->AddCollider({ 72, 48, 112, 9 }, Collider::Type::GROUND); 
-	App->collision->AddCollider({ 72 + 111 + 3, 48, 72, 10 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 0, 85, 14, 11 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 16, 87, 168, 9 }, Collider::Type::GROUND);
 
-	//Donkey walls
-	App->collision->AddCollider({ 90, 56, 2, 32 }, Collider::Type::WALL);
-	App->collision->AddCollider({ 164, 56, 2, 32 }, Collider::Type::WALL);
-																	  
+
+
+
+	App->collision->AddCollider({ 80, 207, 24, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 72, 135, 32, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 136, 231, 24, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 168, 223, 16, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 192, 215, 16, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 216, 207, 24, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 224, 183, 16, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 200, 175, 16, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 152, 159, 16, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 200, 143, 40, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 144, 127, 24, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 176, 119, 16, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 200, 111, 16, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 224, 103, 16, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 104, 55, 48, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 176, 167, 16, 9 }, Collider::Type::GROUND);
+	App->collision->AddCollider({ 16, 231, 24, 9 }, Collider::Type::GROUND);
+
+
+	
+
+
+
 	// Ladders by floor
-	App->collision->AddCollider({ 27, 206 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 123, 206 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 227, 206 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 27, 190 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 35, 134 , 2, 60 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 83, 134 , 2, 76 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 99, 134 , 2, 76 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 227, 182 , 2, 28 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 203, 142 , 2, 36 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 227, 102 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 179, 86 , 2, 36 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 147, 54 , 2, 36 }, Collider::Type::LADDER);
 
-	App->collision->AddCollider({ 35, 166 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 91, 166 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 163, 166 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 219, 166 , 2, 44 }, Collider::Type::LADDER);
 
-	App->collision->AddCollider({ 43, 126 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 123, 126 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 211, 126 , 2, 44 }, Collider::Type::LADDER);
-
-	App->collision->AddCollider({ 51, 86 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 83, 86 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 171, 86 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 203, 86 , 2, 44 }, Collider::Type::LADDER);
-
-	// Carrots
-	App->collision->AddCollider({ 75, 193, 2, 15 }, Collider::Type::CARROT);
-	App->collision->AddCollider({ 179, 193, 2, 15 }, Collider::Type::CARROT);
-
-	App->collision->AddCollider({ 75,  153, 2, 15 }, Collider::Type::CARROT);
-	App->collision->AddCollider({ 179, 153, 2, 15 }, Collider::Type::CARROT);
-
-	App->collision->AddCollider({ 75, 113, 2, 15 }, Collider::Type::CARROT);
-	App->collision->AddCollider({ 179, 113, 2, 15 }, Collider::Type::CARROT);
-
-	App->collision->AddCollider({ 75, 73, 2, 15 }, Collider::Type::CARROT);
-	App->collision->AddCollider({ 179, 73, 2, 15 }, Collider::Type::CARROT);
 
 	// Enable Player
 	App->score->Enable();
@@ -193,18 +181,18 @@ bool ModuleLvl4::Start()
 	return true;
 }
 
-Update_Status ModuleLvl4::Update()
+Update_Status ModuleLvl3::Update()
 {
 	// Lives
 	for (int ilive = 0; ilive < 3; ilive++) {
 
-		lvl4[3][2 + ilive] = 0;
+		lvl3[3][2 + ilive] = 0;
 
 	}
 
 	for (int ilive = 0; ilive < App->player->livecount; ilive++) {
-		
-		lvl4[3][2 + ilive] = 8;
+
+		lvl3[3][2 + ilive] = 8;
 
 	}
 
@@ -212,13 +200,13 @@ Update_Status ModuleLvl4::Update()
 	if (App->player->carrotDeletey == 193) {
 		cienpos.y = 216;
 		if (App->player->carrotDeletex == 75) {
-			lvl4[26][9] = 0;
-			lvl4[25][9] = 0;
+			lvl3[26][9] = 0;
+			lvl3[25][9] = 0;
 			cienpos.x = 69;
 		}
 		else if (App->player->carrotDeletex == 179) {
-			lvl4[26][22] = 0;
-			lvl4[25][22] = 0;
+			lvl3[26][22] = 0;
+			lvl3[25][22] = 0;
 			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
@@ -226,13 +214,13 @@ Update_Status ModuleLvl4::Update()
 	else if (App->player->carrotDeletey == 153) {
 		cienpos.y = 176;
 		if (App->player->carrotDeletex == 75) {
-			lvl4[21][9] = 0;
-			lvl4[20][9] = 0;
+			lvl3[21][9] = 0;
+			lvl3[20][9] = 0;
 			cienpos.x = 69;
 		}
 		else if (App->player->carrotDeletex == 179) {
-			lvl4[21][22] = 0;
-			lvl4[20][22] = 0;
+			lvl3[21][22] = 0;
+			lvl3[20][22] = 0;
 			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
@@ -240,13 +228,13 @@ Update_Status ModuleLvl4::Update()
 	else if (App->player->carrotDeletey == 113) {
 		cienpos.y = 136;
 		if (App->player->carrotDeletex == 75) {
-			lvl4[16][9] = 0;
-			lvl4[15][9] = 0;
+			lvl3[16][9] = 0;
+			lvl3[15][9] = 0;
 			cienpos.x = 69;
 		}
 		else if (App->player->carrotDeletex == 179) {
-			lvl4[16][22] = 0;
-			lvl4[15][22] = 0;
+			lvl3[16][22] = 0;
+			lvl3[15][22] = 0;
 			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
@@ -254,18 +242,18 @@ Update_Status ModuleLvl4::Update()
 	else if (App->player->carrotDeletey == 73) {
 		cienpos.y = 96;
 		if (App->player->carrotDeletex == 75) {
-			lvl4[11][9] = 0;
-			lvl4[10][9] = 0;
+			lvl3[11][9] = 0;
+			lvl3[10][9] = 0;
 			cienpos.x = 69;
 		}
 		else if (App->player->carrotDeletex == 179) {
-			lvl4[11][22] = 0;
-			lvl4[10][22] = 0;
+			lvl3[11][22] = 0;
+			lvl3[10][22] = 0;
 			cienpos.x = 173;
 		}
 		App->player->colliderDelete->pendingToDelete = true;
 	}
-	
+
 
 	// Enemy spawn timer
 
@@ -286,70 +274,71 @@ Update_Status ModuleLvl4::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status ModuleLvl4::PostUpdate()
+Update_Status ModuleLvl3::PostUpdate()
 {
 
 	int type = 0;
 
-	for (int column = 0; column < 32; column++) {
-		for (int row = 0; row < 32; row++) {
+	//for (int column = 0; column < 32; column++) {
+	//	for (int row = 0; row < 32; row++) {
 
-			type = lvl4[column][row];
+	//		type = lvl3[column][row];
 
-			switch (type) {
+	//		switch (type) {
 
-			case 0:
-				App->render->Blit(backgroundTexture, row * 8, column * 8, &tile, 0);
-				break;
+	//		case 0:
+	//			App->render->Blit(backgroundTexture, row * 8, column * 8, &tile, 0);
+	//			break;
 
-			case 1:
-				App->render->Blit(floorTexture, row * 8, column * 8, &tile, 0);
-				break;
+	//		case 1:
+	//			App->render->Blit(floorTexture, row * 8, column * 8, &tile, 0);
+	//			break;
 
-			case 2:
-				App->render->Blit(floorCarrotTexture, row * 8, column * 8, &tile, 0);
-				break;
+	//		case 2:
+	//			App->render->Blit(floorCarrotTexture, row * 8, column * 8, &tile, 0);
+	//			break;
 
-			case 3:
-				App->render->Blit(carrotTexture, row * 8, column * 8, &tile, 0);
-				break;
+	//		case 3:
+	//			App->render->Blit(carrotTexture, row * 8, column * 8, &tile, 0);
+	//			break;
 
-			case 4:
-				App->render->Blit(ladderTexture, row * 8, column * 8, &tile, 0);
-				break;
+	//		case 4:
+	//			App->render->Blit(ladderTexture, row * 8, column * 8, &tile, 0);
+	//			break;
 
-			case 5:
-				App->render->Blit(floorLadderTexture, row * 8, column * 8, &tile, 0);
-				break;
+	//		case 5:
+	//			App->render->Blit(floorLadderTexture, row * 8, column * 8, &tile, 0);
+	//			break;
 
-			case 6:
-				App->render->Blit(leftPoleTexture, row * 8, column * 8, &tile, 0);
-				break;
+	//		case 6:
+	//			App->render->Blit(leftPoleTexture, row * 8, column * 8, &tile, 0);
+	//			break;
 
-			case 7:
-				App->render->Blit(rightPoleTexture, row * 8, column * 8, &tile, 0);
-				break;
-			case 8:
-				App->render->Blit(liveTexture, row * 8, column * 8, &tile, 0);
-				break;
+	//		case 7:
+	//			App->render->Blit(rightPoleTexture, row * 8, column * 8, &tile, 0);
+	//			break;
+	//		case 8:
+	//			App->render->Blit(liveTexture, row * 8, column * 8, &tile, 0);
+	//			break;
 
-			}
-		}
-	}
-	App->render->Blit(backTexture, 0, 0, &back, 0);
+	//		}
+	//	}
+	//}
+	//App->render->Blit(backTexture, 0, 0, &back, 0);
+	App->render->Blit(background3Texture, 0, 0, &back, 0);
 
-	
+
 	if (cienpos.x != 0 && cienpos.y != 0) {
 
 		App->render->Blit(cientexture, cienpos.x, cienpos.y, &cienrect);
-		
+
 	}
-	
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-bool ModuleLvl4::CleanUp()
+bool ModuleLvl3::CleanUp()
 {
 	App->collision->CleanUp();
 

@@ -111,14 +111,45 @@ Update_Status ModulePlayer::Update()
 		godmode = !godmode;
 
 	}
-	if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
-		App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
+	if (App->player->activelevel == 2) {
+		if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
+			App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->winning, 0);
 
-	}
-	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
-		App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->gameover, 0);
+		}
+		if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
+			App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->gameover, 0);
 
+		}
+		if (App->input->keys[SDL_SCANCODE_F5] == Key_State::KEY_DOWN) {
+			App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->lvl3, 0);
+
+		}
 	}
+	if (App->player->activelevel == 3) {
+		if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
+			App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->winning, 0);
+
+		}
+		if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
+			App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->gameover, 0);
+
+		}
+		if (App->input->keys[SDL_SCANCODE_F5] == Key_State::KEY_DOWN) {
+			App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->lvl4, 0);
+
+		}
+	}
+	if (App->player->activelevel == 4) {
+		if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
+			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
+
+		}
+		if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
+			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->gameover, 0);
+
+		}
+	}
+
 	if (godmode == true) {
 
 		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
@@ -168,8 +199,16 @@ Update_Status ModulePlayer::Update()
 			resetVidas = true;
 			collider->pendingToDelete = true;
 			App->hammer->hammerCollider->pendingToDelete = true;
-
-			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->gameover, 30);
+			if (App->player->activelevel == 2) {
+				App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->gameover, 30);
+			}
+			if (App->player->activelevel == 3) {
+				App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->gameover, 30);
+			}
+			if (App->player->activelevel == 4) {
+				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->gameover, 30);
+			}
+			
 			destroyed = false;
 		}
 
@@ -209,8 +248,15 @@ Update_Status ModulePlayer::Update()
 			}
 			else if(currentAnimation == &angelAnim && i % 200 == 0)
 			{
-
-				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->pierdevida, 30);
+				if (App->player->activelevel == 2) {
+					App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->pierdevida, 30);
+				}
+				if (App->player->activelevel == 3) {
+					App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->pierdevida, 30);
+				}
+				if (App->player->activelevel == 4) {
+					App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->pierdevida, 30);
+				}
 				destroyed = false;
 				i = 0;
 				j = 0;
@@ -441,8 +487,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			n++;
 
 			if (carrotcount == 0) {
-				
-				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
+				if (App->player->activelevel == 2) {
+					App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->siguientenivel, 0);
+				}
+				if (App->player->activelevel == 3) {
+					App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->siguientenivel, 0);
+				}
+				if (App->player->activelevel == 4) {
+					App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
+				}
+	
+
+	
 				resetVidas = true;
 			}
 

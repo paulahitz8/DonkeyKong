@@ -8,6 +8,8 @@
 #include "ModuleRender.h"
 #include "InitialScreen.h"
 #include "IntroScreen.h"
+#include "ModuleLvl2.h"
+#include "ModuleLvl3.h"
 #include "ModuleLvl4.h"
 #include "ModulePlayer.h"
 #include "ModuleDonkey.h"
@@ -16,6 +18,7 @@
 #include "ModuleLady.h"
 #include "ModuleHammer.h"
 #include "ModuleScore.h"
+#include "SiguienteNivel.h"
 #include "PierdeVida.h"
 #include "GameOver.h"
 #include "WinningScreen.h"
@@ -35,6 +38,8 @@ Application::Application()
 	
 	modules[i++] =  initial =		new InitialScreen(true);
 	modules[i++] =  intro =			new IntroScreen(false);
+	modules[i++] =  lvl2 =			new ModuleLvl2(false);
+	modules[i++] =  lvl3 =			new ModuleLvl3(false);
 	modules[i++] =	lvl4 =			new ModuleLvl4(false);
 	modules[i++] =	player =		new ModulePlayer(false);
 	modules[i++] =	donkey =		new ModuleDonkey(false);
@@ -43,7 +48,9 @@ Application::Application()
 	modules[i++] =  hammer =		new ModuleHammer(false);
 	modules[i++] =  score =			new ModuleScore(false);
 
+
 	modules[i++] =  pierdevida =	new PierdeVida(false);
+	modules[i++] =  siguientenivel =new SiguienteNivel(false);
 	modules[i++] =  gameover =		new GameOver(false);
 	modules[i++] =  winning =		new WinningScreen(false);
 	

@@ -1,6 +1,7 @@
+
 #pragma once
-#ifndef __MODULE_LVL4_H__
-#define __MODULE_LVL4_H__
+#ifndef __MODULE_LVL3_H__
+#define __MODULE_LVL3_H__
 
 #include "Module.h"
 #include "SDL_Rect.h"
@@ -8,11 +9,11 @@
 
 struct SDL_Texture;
 
-class ModuleLvl4 : public Module
+class ModuleLvl3 : public Module
 {
 
 private:
-	
+
 	iPoint position = { 0, 0 };
 	iPoint cienpos;
 	SDL_Texture* cientexture = nullptr;
@@ -23,7 +24,8 @@ private:
 	SDL_Rect tile;
 
 	SDL_Texture* backTexture = nullptr;
-	SDL_Texture* backgroundTexture = nullptr;
+
+	SDL_Texture* background3Texture = nullptr;
 	SDL_Texture* floorTexture = nullptr;
 	SDL_Texture* floorCarrotTexture = nullptr;
 	SDL_Texture* carrotTexture = nullptr;
@@ -32,23 +34,23 @@ private:
 	SDL_Texture* leftPoleTexture = nullptr;
 	SDL_Texture* rightPoleTexture = nullptr;
 	SDL_Texture* liveTexture = nullptr;
-	
+
 	int i = 1;
 	int t = 1;
-	
 
-	int lvl4[32][32] = {};
-	
+
+	int lvl3[32][32] = {};
+
 
 public:
-	ModuleLvl4(bool startEnabled);
-	~ModuleLvl4();
+	ModuleLvl3(bool startEnabled);
+	~ModuleLvl3();
 	bool Start() override;
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
 	bool CleanUp() override;
-	bool lvl4score = false;
-	bool lvl4status = false;
+	bool lvl3score = false;
+	bool lvl3status = false;
 
 };
 

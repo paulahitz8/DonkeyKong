@@ -42,7 +42,7 @@ Update_Status GameOver::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->lvl4, 30);
+		App->fade->FadeToBlack(this, (Module*)App->intro, 30);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
