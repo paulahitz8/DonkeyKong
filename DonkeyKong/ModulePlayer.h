@@ -49,6 +49,8 @@ private:
 
 public:
 
+	int activelevel = 0;
+
 	iPoint position;
 
 	// Animation

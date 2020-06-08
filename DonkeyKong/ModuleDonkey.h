@@ -14,7 +14,7 @@ class ModuleDonkey : public Module
 private:
 
 	SDL_Rect donkey;
-	iPoint donkeyPosition = { 108, 56 };
+
 	SDL_Texture* donkeytexture = nullptr;
 	Collider* colliderD = nullptr;
 

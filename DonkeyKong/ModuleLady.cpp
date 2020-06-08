@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "ModuleTextures.h"
+#include "ModulePlayer.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 
@@ -75,13 +76,26 @@ Update_Status ModuleLady::Update()
 		{
 			currentAnimation = &rightladyAnim;
 			currentAnimationhelp = &righthelpAnim;
-			helpPosition.x = 90;
+			if (App->player->activelevel == 4) {
+				helpPosition.x = 90;
+			}
+			if (App->player->activelevel == 2 || App->player->activelevel == 3) {
+				helpPosition.x = 74;
+			}
+			
+
 		}
 		else if (currentAnimation == &rightladyAnim)
 		{
 			currentAnimation = &leftladyAnim;
 			currentAnimationhelp = &lefthelpAnim;
-			helpPosition.x = 140;
+			
+			if (App->player->activelevel == 4) {
+				helpPosition.x = 140;
+			}
+			if (App->player->activelevel == 2 || App->player->activelevel == 3) {
+				helpPosition.x = 124;
+			}
 		}
 	}
 
@@ -91,13 +105,23 @@ Update_Status ModuleLady::Update()
 		{
 			currentAnimation = &leftladyAnim;
 			currentAnimationhelp = &lefthelpAnim;
-			helpPosition.x = 140;
+			if (App->player->activelevel == 4) {
+				helpPosition.x = 140;
+			}
+			if (App->player->activelevel == 2 || App->player->activelevel == 3) {
+				helpPosition.x = 124;
+			}
 		}
 		if (currentAnimation == &rightidleladyAnim)
 		{
 			currentAnimation = &rightladyAnim;
 			currentAnimationhelp = &righthelpAnim;
-			helpPosition.x = 90;
+			if (App->player->activelevel == 4) {
+				helpPosition.x = 90;
+			}
+			if (App->player->activelevel == 2 || App->player->activelevel == 3) {
+				helpPosition.x = 74;
+			}
 		}
 		j = 0;
 	}
@@ -127,11 +151,31 @@ Update_Status ModuleLady::Update()
 
 Update_Status ModuleLady::PostUpdate()
 {
-	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	App->render->Blit(ladytexture, ladyPosition.x, ladyPosition.y, &rect);
+	if (App->player->activelevel == 2) {
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(ladytexture, 104, 34, &rect);
+		SDL_Rect recthelp = currentAnimationhelp->GetCurrentFrame();
+		App->render->Blit(helptexture, helpPosition.x, helpPosition.y, &recthelp);
+	}
 
-	SDL_Rect recthelp = currentAnimationhelp->GetCurrentFrame();
-	App->render->Blit(helptexture, helpPosition.x, helpPosition.y, &recthelp);
+	if (App->player->activelevel == 3) {
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(ladytexture, 104, 34, &rect);
+		SDL_Rect recthelp = currentAnimationhelp->GetCurrentFrame();
+		App->render->Blit(helptexture, helpPosition.x, helpPosition.y, &recthelp);
+	}
+
+	if (App->player->activelevel == 4) {
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(ladytexture, 120, 26, &rect);
+		SDL_Rect recthelp = currentAnimationhelp->GetCurrentFrame();
+		App->render->Blit(helptexture, helpPosition.x, helpPosition.y, &recthelp);
+	}
+
+
+
+
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }

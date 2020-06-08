@@ -4,6 +4,7 @@
 
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModulePlayer.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "SDL_scancode.h"
@@ -37,8 +38,10 @@ bool ModuleDonkey::Start()
 	}*/
 
 	stompFx = App->audio->LoadFx("Assets/Music/17 SFX (Stomp).wav");
-
+	
 	donkey = { 34, 66, 40, 32 };
+	
+	
 
 
 	return true;
@@ -86,7 +89,19 @@ Update_Status ModuleDonkey::Update()
 Update_Status ModuleDonkey::PostUpdate()
 {
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	App->render->Blit(donkeytexture, donkeyPosition.x, donkeyPosition.y, &rect);
+	if (App->player->activelevel == 2) {
+		App->render->Blit(donkeytexture, 99, 56, &rect);
+	}
+	
+	if (App->player->activelevel == 3) {
+		App->render->Blit(donkeytexture, 40, 56, &rect);
+	}
+
+	if (App->player->activelevel == 4) {
+		App->render->Blit(donkeytexture, 108, 56, &rect);
+	}
+	
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
