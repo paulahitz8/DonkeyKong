@@ -175,17 +175,17 @@ bool ModuleLvl3::Start()
 	leftFloorRectA = { 0, 0, 9, 10 };
 	leftFloorA.x = 51;
 	leftFloorA.y = 238;
-	leftFloorCoA = App->collision->AddCollider({ leftFloorA.x, leftFloorA.y, 10, 9 }, Collider::Type::GROUND);
+	leftFloorCoA = App->collision->AddCollider({ leftFloorA.x, leftFloorA.y, 10, 9 }, Collider::Type::LEFTFLOOR);
 
 	leftFloorRectB = { 0, 0, 9, 10 };
 	leftFloorB.x = 51;
 	leftFloorB.y = 190;
-	leftFloorCoB = App->collision->AddCollider({ leftFloorB.x, leftFloorB.y, 10, 9 }, Collider::Type::GROUND);
+	leftFloorCoB = App->collision->AddCollider({ leftFloorB.x, leftFloorB.y, 10, 9 }, Collider::Type::LEFTFLOOR);
 
 	leftFloorRectC = { 0, 0, 9, 10 };
 	leftFloorC.x = 51;
 	leftFloorC.y = 140;
-	leftFloorCoC = App->collision->AddCollider({ leftFloorC.x, leftFloorC.y, 10, 9 }, Collider::Type::GROUND);
+	leftFloorCoC = App->collision->AddCollider({ leftFloorC.x, leftFloorC.y, 10, 9 }, Collider::Type::LEFTFLOOR);
 
 	//RIGHT
 	movingFloorTex = App->textures->Load("Assets/cositasfondo/suelo.png");

@@ -528,11 +528,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == Collider::Type::OBJECT)
 	{
 
-		//SCORE ++;
-
 		groundOn = true;
 
 	}
+
+	// LEFTFLOOR
+	/*if (c2->type == Collider::Type::OBJECT)
+	{
+		if ((position.y + player.h) < (c2->GetRect().y + 2) && (position.y + player.h) > c2->GetRect().y -2) { position.y --; }
+		
+		groundOn = true;
+
+	}*/
 
 } 
 
