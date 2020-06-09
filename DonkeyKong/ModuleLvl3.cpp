@@ -169,6 +169,41 @@ bool ModuleLvl3::Start()
 	App->collision->AddCollider({ 147, 54 , 2, 36 }, Collider::Type::LADDER);
 
 
+	//Moving floors 104
+	//LEFT
+	movingFloorTex = App->textures->Load("Assets/cositasfondo/suelo.png");
+	leftFloorRectA = { 0, 0, 9, 10 };
+	leftFloorA.x = 51;
+	leftFloorA.y = 238;
+	leftFloorCoA = App->collision->AddCollider({ leftFloorA.x, leftFloorA.y, 10, 9 }, Collider::Type::GROUND);
+
+	leftFloorRectB = { 0, 0, 9, 10 };
+	leftFloorB.x = 51;
+	leftFloorB.y = 190;
+	leftFloorCoB = App->collision->AddCollider({ leftFloorB.x, leftFloorB.y, 10, 9 }, Collider::Type::GROUND);
+
+	leftFloorRectC = { 0, 0, 9, 10 };
+	leftFloorC.x = 51;
+	leftFloorC.y = 140;
+	leftFloorCoC = App->collision->AddCollider({ leftFloorC.x, leftFloorC.y, 10, 9 }, Collider::Type::GROUND);
+
+	//RIGHT
+	movingFloorTex = App->textures->Load("Assets/cositasfondo/suelo.png");
+	rightFloorRectA = { 0, 0, 9, 10 };
+	rightFloorA.x = 115;
+	rightFloorA.y = 238;
+	rightFloorCoA = App->collision->AddCollider({ rightFloorA.x, rightFloorA.y, 10, 9 }, Collider::Type::GROUND);
+
+	rightFloorRectB = { 0, 0, 9, 10 };
+	rightFloorB.x = 115;
+	rightFloorB.y = 190;
+	rightFloorCoB = App->collision->AddCollider({ rightFloorB.x, rightFloorB.y, 10, 9 }, Collider::Type::GROUND);
+
+	rightFloorRectC = { 0, 0, 9, 10 };
+	rightFloorC.x = 115;
+	rightFloorC.y = 140;
+	rightFloorCoC = App->collision->AddCollider({ rightFloorC.x, rightFloorC.y, 10, 9 }, Collider::Type::GROUND);
+
 
 	// Enable Player
 	App->score->Enable();
@@ -196,63 +231,6 @@ Update_Status ModuleLvl3::Update()
 
 	}
 
-	// Carrots
-	if (App->player->carrotDeletey == 193) {
-		cienpos.y = 216;
-		if (App->player->carrotDeletex == 75) {
-			lvl3[26][9] = 0;
-			lvl3[25][9] = 0;
-			cienpos.x = 69;
-		}
-		else if (App->player->carrotDeletex == 179) {
-			lvl3[26][22] = 0;
-			lvl3[25][22] = 0;
-			cienpos.x = 173;
-		}
-		App->player->colliderDelete->pendingToDelete = true;
-	}
-	else if (App->player->carrotDeletey == 153) {
-		cienpos.y = 176;
-		if (App->player->carrotDeletex == 75) {
-			lvl3[21][9] = 0;
-			lvl3[20][9] = 0;
-			cienpos.x = 69;
-		}
-		else if (App->player->carrotDeletex == 179) {
-			lvl3[21][22] = 0;
-			lvl3[20][22] = 0;
-			cienpos.x = 173;
-		}
-		App->player->colliderDelete->pendingToDelete = true;
-	}
-	else if (App->player->carrotDeletey == 113) {
-		cienpos.y = 136;
-		if (App->player->carrotDeletex == 75) {
-			lvl3[16][9] = 0;
-			lvl3[15][9] = 0;
-			cienpos.x = 69;
-		}
-		else if (App->player->carrotDeletex == 179) {
-			lvl3[16][22] = 0;
-			lvl3[15][22] = 0;
-			cienpos.x = 173;
-		}
-		App->player->colliderDelete->pendingToDelete = true;
-	}
-	else if (App->player->carrotDeletey == 73) {
-		cienpos.y = 96;
-		if (App->player->carrotDeletex == 75) {
-			lvl3[11][9] = 0;
-			lvl3[10][9] = 0;
-			cienpos.x = 69;
-		}
-		else if (App->player->carrotDeletex == 179) {
-			lvl3[11][22] = 0;
-			lvl3[10][22] = 0;
-			cienpos.x = 173;
-		}
-		App->player->colliderDelete->pendingToDelete = true;
-	}
 
 
 	// Enemy spawn timer
@@ -271,6 +249,48 @@ Update_Status ModuleLvl3::Update()
 	}
 	i++;
 
+
+	//MovingFloors
+	//LEFT
+	leftFloorA.y--;
+	if (leftFloorA.y == 94) {
+		leftFloorA.y = 248;
+	}
+	leftFloorCoA->SetPos(leftFloorA.x, leftFloorA.y);
+
+	leftFloorB.y--;
+	if (leftFloorB.y == 94) {
+		leftFloorB.y = 248;
+	}
+	leftFloorCoB->SetPos(leftFloorB.x, leftFloorB.y);
+
+	leftFloorC.y--;
+	if (leftFloorC.y == 94) {
+		leftFloorC.y = 248;
+	}
+	leftFloorCoC->SetPos(leftFloorC.x, leftFloorC.y);
+
+	//RIGHT
+	rightFloorA.y++;
+	if (rightFloorA.y == 248) {
+		rightFloorA.y = 94;
+	}
+	rightFloorCoA->SetPos(rightFloorA.x, rightFloorA.y);
+
+	rightFloorB.y++;
+	if (rightFloorB.y == 248) {
+		rightFloorB.y = 94;
+	}
+	rightFloorCoB->SetPos(rightFloorB.x, rightFloorB.y);
+
+	rightFloorC.y++;
+	if (rightFloorC.y == 248) {
+		rightFloorC.y = 94;
+	}
+	rightFloorCoC->SetPos(rightFloorC.x, rightFloorC.y);
+
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -279,52 +299,6 @@ Update_Status ModuleLvl3::PostUpdate()
 
 	int type = 0;
 
-	//for (int column = 0; column < 32; column++) {
-	//	for (int row = 0; row < 32; row++) {
-
-	//		type = lvl3[column][row];
-
-	//		switch (type) {
-
-	//		case 0:
-	//			App->render->Blit(backgroundTexture, row * 8, column * 8, &tile, 0);
-	//			break;
-
-	//		case 1:
-	//			App->render->Blit(floorTexture, row * 8, column * 8, &tile, 0);
-	//			break;
-
-	//		case 2:
-	//			App->render->Blit(floorCarrotTexture, row * 8, column * 8, &tile, 0);
-	//			break;
-
-	//		case 3:
-	//			App->render->Blit(carrotTexture, row * 8, column * 8, &tile, 0);
-	//			break;
-
-	//		case 4:
-	//			App->render->Blit(ladderTexture, row * 8, column * 8, &tile, 0);
-	//			break;
-
-	//		case 5:
-	//			App->render->Blit(floorLadderTexture, row * 8, column * 8, &tile, 0);
-	//			break;
-
-	//		case 6:
-	//			App->render->Blit(leftPoleTexture, row * 8, column * 8, &tile, 0);
-	//			break;
-
-	//		case 7:
-	//			App->render->Blit(rightPoleTexture, row * 8, column * 8, &tile, 0);
-	//			break;
-	//		case 8:
-	//			App->render->Blit(liveTexture, row * 8, column * 8, &tile, 0);
-	//			break;
-
-	//		}
-	//	}
-	//}
-	//App->render->Blit(backTexture, 0, 0, &back, 0);
 	App->render->Blit(background3Texture, 0, 0, &back, 0);
 
 
@@ -334,6 +308,13 @@ Update_Status ModuleLvl3::PostUpdate()
 
 	}
 
+	App->render->Blit(movingFloorTex, leftFloorA.x, leftFloorA.y, &leftFloorRectA);
+	App->render->Blit(movingFloorTex, leftFloorB.x, leftFloorB.y, &leftFloorRectB);
+	App->render->Blit(movingFloorTex, leftFloorC.x, leftFloorC.y, &leftFloorRectC);
+
+	App->render->Blit(movingFloorTex, rightFloorA.x, rightFloorA.y, &rightFloorRectA);
+	App->render->Blit(movingFloorTex, rightFloorB.x, rightFloorB.y, &rightFloorRectB);
+	App->render->Blit(movingFloorTex, rightFloorC.x, rightFloorC.y, &rightFloorRectC);
 
 	return Update_Status::UPDATE_CONTINUE;
 }

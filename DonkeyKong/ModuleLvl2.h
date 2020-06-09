@@ -41,6 +41,16 @@ private:
 
 	int lvl2[32][32] = {};
 
+	//Moving ladders
+	float ladVel;
+	int count;
+	SDL_Rect leftLad;
+	SDL_Texture* ladTexture = nullptr;
+	iPoint leftLadposition;
+
+
+	Collider* leftLadcollider = nullptr;
+
 
 public:
 	ModuleLvl2(bool startEnabled);

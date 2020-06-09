@@ -64,6 +64,8 @@ ModuleLvl2::~ModuleLvl2()
 
 bool ModuleLvl2::Start()
 {
+
+
 	i = 1;
 	App->player->activelevel = 2;
 
@@ -77,7 +79,6 @@ bool ModuleLvl2::Start()
 	App->winning->win = false;
 	App->intro->intro = false;
 
-	// FUnciona mas o menos pero la zanahoria que coges justo antes de morir no spawnea otra vez
 
 	for (int a = 0; a < 32; a++) {
 		for (int b = 0; b < 32; b++) {
@@ -99,17 +100,12 @@ bool ModuleLvl2::Start()
 	cienrect = { 59,104,15,7 };
 
 
-	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
+	//backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
 	cientexture = App->textures->Load("Assets/Lady/RandomSprites.png");
 
 	background2Texture = App->textures->Load("Assets/cositasfondo/background2.png");
-	floorTexture = App->textures->Load("Assets/cositasfondo/suelo.png");
-	floorCarrotTexture = App->textures->Load("Assets/cositasfondo/sueloencimazanahoria.png");
-	carrotTexture = App->textures->Load("Assets/cositasfondo/zanahoria.png");
 	ladderTexture = App->textures->Load("Assets/cositasfondo/escalera.png");
-	floorLadderTexture = App->textures->Load("Assets/cositasfondo/sueloescalera.png");
-	leftPoleTexture = App->textures->Load("Assets/cositasfondo/barraizquierda.png");
-	rightPoleTexture = App->textures->Load("Assets/cositasfondo/barraderecha.png");
+
 	liveTexture = App->textures->Load("Assets/cositasfondo/MarioLive.png");
 
 	// Level 2 colliders:
@@ -154,10 +150,18 @@ bool ModuleLvl2::Start()
 	App->collision->AddCollider({ 155, 126 , 2, 44 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 211, 126 , 2, 44 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 219, 109 , 2, 21 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 35, 109 , 2, 21 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 35, 111 , 2, 21 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 147, 54 , 2, 36 }, Collider::Type::LADDER);
 	
+	//Moving ladders
+	ladVel = 1;
+	count = 0;
+	ladTexture = App->textures->Load("Assets/cositasfondo/escalera.png");
+	leftLad = {0, 0, 9, 10 };
+	leftLadposition.x = 31;
+	leftLadposition.y = 96;
 
+	leftLadcollider = App->collision->AddCollider({ leftLadposition.x + 3, leftLadposition.y - 9, 2, 25 }, Collider::Type::LADDER);
 
 	// Enable Player
 	App->score->Enable();
@@ -185,64 +189,6 @@ Update_Status ModuleLvl2::Update()
 
 	}
 
-	// Carrots
-	if (App->player->carrotDeletey == 193) {
-		cienpos.y = 216;
-		if (App->player->carrotDeletex == 75) {
-			lvl2[26][9] = 0;
-			lvl2[25][9] = 0;
-			cienpos.x = 69;
-		}
-		else if (App->player->carrotDeletex == 179) {
-			lvl2[26][22] = 0;
-			lvl2[25][22] = 0;
-			cienpos.x = 173;
-		}
-		App->player->colliderDelete->pendingToDelete = true;
-	}
-	else if (App->player->carrotDeletey == 153) {
-		cienpos.y = 176;
-		if (App->player->carrotDeletex == 75) {
-			lvl2[21][9] = 0;
-			lvl2[20][9] = 0;
-			cienpos.x = 69;
-		}
-		else if (App->player->carrotDeletex == 179) {
-			lvl2[21][22] = 0;
-			lvl2[20][22] = 0;
-			cienpos.x = 173;
-		}
-		App->player->colliderDelete->pendingToDelete = true;
-	}
-	else if (App->player->carrotDeletey == 113) {
-		cienpos.y = 136;
-		if (App->player->carrotDeletex == 75) {
-			lvl2[16][9] = 0;
-			lvl2[15][9] = 0;
-			cienpos.x = 69;
-		}
-		else if (App->player->carrotDeletex == 179) {
-			lvl2[16][22] = 0;
-			lvl2[15][22] = 0;
-			cienpos.x = 173;
-		}
-		App->player->colliderDelete->pendingToDelete = true;
-	}
-	else if (App->player->carrotDeletey == 73) {
-		cienpos.y = 96;
-		if (App->player->carrotDeletex == 75) {
-			lvl2[11][9] = 0;
-			lvl2[10][9] = 0;
-			cienpos.x = 69;
-		}
-		else if (App->player->carrotDeletex == 179) {
-			lvl2[11][22] = 0;
-			lvl2[10][22] = 0;
-			cienpos.x = 173;
-		}
-		App->player->colliderDelete->pendingToDelete = true;
-	}
-
 
 	// Enemy spawn timer
 
@@ -260,6 +206,35 @@ Update_Status ModuleLvl2::Update()
 	}
 	i++;
 
+	
+	//MovingLadders - necesito una imagen del trozo de escalera, con su rectangulo
+	leftLadposition.y += ladVel;
+
+	/*if (leftLadposition.y > 140) {
+		leftLadposition.y--;
+		ladVel = 0;
+		count = 0;
+	}
+
+	if (leftLadposition.y < 95) {
+		leftLadposition.y++;
+		ladVel = 0;
+		count = 0;
+	}
+	
+	if (count == 50) {
+		ladVel++;
+	}*/
+
+	if (leftLadposition.y > 140 || leftLadposition.y < 95) {
+		ladVel = -ladVel;
+	}
+
+	//count++;
+
+	leftLadcollider->SetPos(leftLadposition.x + 3, leftLadposition.y - 9);
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -268,54 +243,8 @@ Update_Status ModuleLvl2::PostUpdate()
 
 	int type = 0;
 
-	/*for (int column = 0; column < 32; column++) {
-		for (int row = 0; row < 32; row++) {
 
-			type = lvl2[column][row];
-
-			switch (type) {
-
-			case 0:
-				App->render->Blit(backgroundTexture, row * 8, column * 8, &tile, 0);
-				break;
-
-			case 1:
-				App->render->Blit(floorTexture, row * 8, column * 8, &tile, 0);
-				break;
-
-			case 2:
-				App->render->Blit(floorCarrotTexture, row * 8, column * 8, &tile, 0);
-				break;
-
-			case 3:
-				App->render->Blit(carrotTexture, row * 8, column * 8, &tile, 0);
-				break;
-
-			case 4:
-				App->render->Blit(ladderTexture, row * 8, column * 8, &tile, 0);
-				break;
-
-			case 5:
-				App->render->Blit(floorLadderTexture, row * 8, column * 8, &tile, 0);
-				break;
-
-			case 6:
-				App->render->Blit(leftPoleTexture, row * 8, column * 8, &tile, 0);
-				break;
-
-			case 7:
-				App->render->Blit(rightPoleTexture, row * 8, column * 8, &tile, 0);
-				break;
-			case 8:
-				App->render->Blit(liveTexture, row * 8, column * 8, &tile, 0);
-				break;
-
-			}
-		}
-	}*/
-	//App->render->Blit(backTexture, 0, 0, &back, 0);
 	App->render->Blit(background2Texture, 0, 0, &back, 0);
-
 
 	if (cienpos.x != 0 && cienpos.y != 0) {
 
@@ -323,6 +252,7 @@ Update_Status ModuleLvl2::PostUpdate()
 
 	}
 
+	App->render->Blit(ladTexture, leftLadposition.x, leftLadposition.y, &leftLad);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
