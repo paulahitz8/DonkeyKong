@@ -35,6 +35,12 @@ bool ModuleHammer::Start()
 
 Update_Status ModuleHammer::Update()
 {
+	if ((App->player->currentAnimation == &App->player->upladderAnim) || (App->player->currentAnimation == &App->player->downladderAnim) || (App->player->currentAnimation == &App->player->deadAnim1) || (App->player->currentAnimation == &App->player->deadAnim2) || (App->player->currentAnimation == &App->player->deadAnim3) || (App->player->currentAnimation == &App->player->deadAnim4)) {
+
+		hammerCollider->SetPos(0, 0);
+
+	}
+
 	if (App->player->currentAnimation->GetFrame() % 2 == 0)
 	{
 		if ((App->player->currentAnimation == &App->player->leftAnim) || (App->player->currentAnimation == &App->player->leftidleAnim)) {
