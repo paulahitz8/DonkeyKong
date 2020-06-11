@@ -267,7 +267,7 @@ Update_Status ModulePlayer::Update()
 	}
 
 
-	if (!destroyed) {
+	if (!destroyed) { 
 
 		if (groundOn == true) {
 
@@ -407,6 +407,7 @@ Update_Status ModulePlayer::Update()
 			}
 			
 		}
+
 	}
 
 	collider->SetPos(position.x + 18, position.y + 10);
@@ -526,13 +527,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 
 	// LEFTFLOOR
-	/*if (c2->type == Collider::Type::OBJECT)
+	if (c2->type == Collider::Type::LEFTFLOOR)
 	{
-		if ((position.y + player.h) < (c2->GetRect().y + 2) && (position.y + player.h) > c2->GetRect().y -2) { position.y --; }
-		
-		groundOn = true;
+		/*if ((position.y + player.h) < c2->GetRect().y && (position.y + player.h) > c2->GetRect().y) {
+			groundOn = true;
+		}*/
 
-	}*/
+		//leftPlatOn = true;
+	}
 
 } 
 

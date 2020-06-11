@@ -252,7 +252,7 @@ Update_Status ModuleLvl3::Update()
 
 	//MovingFloors
 	//LEFT
-	leftFloorA.y--;
+	/*leftFloorA.y--;
 	if (leftFloorA.y == 94) {
 		leftFloorA.y = 248;
 	}
@@ -287,7 +287,7 @@ Update_Status ModuleLvl3::Update()
 	if (rightFloorC.y == 248) {
 		rightFloorC.y = 94;
 	}
-	rightFloorCoC->SetPos(rightFloorC.x, rightFloorC.y);
+	rightFloorCoC->SetPos(rightFloorC.x, rightFloorC.y);*/
 
 
 
