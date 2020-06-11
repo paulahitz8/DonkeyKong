@@ -269,39 +269,36 @@ Update_Status ModulePlayer::Update()
 
 	if (!destroyed) {
 
-		/*if (ladderOn == false && groundOn == false && isJumping == false) {
-			position.y + 1;
-		}
-		Con esto o lo de abajo debería caerse al salir de un collider del ground*/
-
-		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN) {
-			isJumping = true;
-			jumpTimer = 1;
-			startingy = position.y;
-			jumpingspeedy = 6;
-		}
-
-		if (isJumping == true) {
-
-			jumpingspeedy -= gravity;
-			position.y -= jumpingspeedy;
-
-			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT) {
-				position.x -= jumpingspeedx;
-			}
-			    
-			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT) {
-				position.x += jumpingspeedx;
-			}
-
-			if (position.y == startingy) {
-				isJumping = false;
-			}
-
-		}
-
-
 		if (groundOn == true) {
+
+			if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN) {
+				if (isJumping == false) {
+					isJumping = true;
+					jumpTimer = 1;
+					startingy = position.y;
+					jumpingspeedy = 6;
+				}
+			}
+
+			if (isJumping == true) {
+
+				jumpingspeedy -= gravity;
+				position.y -= jumpingspeedy;
+
+				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT) {
+					position.x -= jumpingspeedx;
+				}
+
+				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT) {
+					position.x += jumpingspeedx;
+				}
+
+				if (position.y == startingy) {
+					isJumping = false;
+				}
+
+			}
+
 
 			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 			{
@@ -408,11 +405,7 @@ Update_Status ModulePlayer::Update()
 					position.y -= speedy;
 				}
 			}
-
-			/*if (ladderOn == false && isJumping == false) {
-				position.y + 1;
-			} 
-			Con esto o lo de arriba debería caerse al salir de un collider del ground*/
+			
 		}
 	}
 
@@ -435,6 +428,7 @@ Update_Status ModulePlayer::PostUpdate()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {	
 	if (godmode == false) {
+		
 		// LADDER
 		if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 8) && (position.x + 18) < (c2->rect.x)))
 		{
@@ -456,6 +450,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			}
 
 			ladderOn = true;
+
 		}
 		else {
 			ladderOn = false;
@@ -471,8 +466,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		else {
 			groundOn = false;
 		}
-
-
 
 		// ENEMY
 		if (c1 == collider && c2->type == Collider::ENEMY && destroyed == false)
