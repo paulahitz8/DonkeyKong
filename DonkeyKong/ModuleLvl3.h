@@ -41,6 +41,35 @@ private:
 
 	int lvl3[32][32] = {};
 
+	//Moving Floors
+	SDL_Texture* movingFloorTex = nullptr;
+	//LEFT
+	SDL_Rect leftFloorRectA;
+	iPoint leftFloorA;
+	Collider* leftFloorCoA = nullptr;
+
+	SDL_Rect leftFloorRectB;
+	iPoint leftFloorB;
+	Collider* leftFloorCoB = nullptr;
+
+	SDL_Rect leftFloorRectC;
+	iPoint leftFloorC;
+	Collider* leftFloorCoC = nullptr;
+
+	//RIGHT
+	SDL_Rect rightFloorRectA;
+	iPoint rightFloorA;
+	Collider* rightFloorCoA = nullptr;
+
+	SDL_Rect rightFloorRectB;
+	iPoint rightFloorB;
+	Collider* rightFloorCoB = nullptr;
+
+	SDL_Rect rightFloorRectC;
+	iPoint rightFloorC;
+	Collider* rightFloorCoC = nullptr;
+
+
 
 public:
 	ModuleLvl3(bool startEnabled);

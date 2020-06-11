@@ -269,6 +269,10 @@ Update_Status ModulePlayer::Update()
 
 	if (!destroyed) {
 
+		/*if (ladderOn == false && groundOn == false && isJumping == false) {
+			position.y + 1;
+		}
+		Con esto o lo de abajo debería caerse al salir de un collider del ground*/
 
 		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN) {
 			isJumping = true;
@@ -405,6 +409,10 @@ Update_Status ModulePlayer::Update()
 				}
 			}
 
+			/*if (ladderOn == false && isJumping == false) {
+				position.y + 1;
+			} 
+			Con esto o lo de arriba debería caerse al salir de un collider del ground*/
 		}
 	}
 
@@ -449,18 +457,21 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 			ladderOn = true;
 		}
-		else
+		else {
 			ladderOn = false;
+		}
+
 
 		// GROUND
 
 		if (c2->type == Collider::Type::GROUND || c2->type == Collider::Type::LADDER)
 		{
-
 			groundOn = true;
 		}
-		else
+		else {
 			groundOn = false;
+		}
+
 
 
 		// ENEMY
@@ -517,11 +528,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == Collider::Type::OBJECT)
 	{
 
-		//SCORE ++;
-
 		groundOn = true;
 
 	}
+
+	// LEFTFLOOR
+	/*if (c2->type == Collider::Type::OBJECT)
+	{
+		if ((position.y + player.h) < (c2->GetRect().y + 2) && (position.y + player.h) > c2->GetRect().y -2) { position.y --; }
+		
+		groundOn = true;
+
+	}*/
 
 } 
 
