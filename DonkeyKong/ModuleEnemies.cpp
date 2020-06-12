@@ -32,6 +32,9 @@ ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
+
+	for (uint i = 0; i < MAX_CAKES; ++i)
+		enemiescakes[i] = nullptr;
 }
 
 ModuleEnemies::~ModuleEnemies()
@@ -59,6 +62,12 @@ Update_Status ModuleEnemies::Update()
 	{
 		if (enemies[i] != nullptr)
 			enemies[i]->Update();
+	}
+
+	for (uint i = 0; i < MAX_CAKES; ++i)
+	{
+		if (enemiescakes[i] != nullptr)
+			enemiescakes[i]->Update();
 	}
 
 	HandleEnemiesDespawn();
@@ -89,6 +98,12 @@ Update_Status ModuleEnemies::PostUpdate()
 			enemies[i]->Draw();
 	}
 
+	for (uint i = 0; i < MAX_CAKES; ++i)
+	{
+		if (enemiescakes[i] != nullptr)
+			enemiescakes[i]->Draw();
+	}
+
 	if (currentAnim2 != nullptr)
 		App->render->Blit(particlestexture, position.x, position.y, &(currentAnim2->GetCurrentFrame()));
 
@@ -109,6 +124,15 @@ bool ModuleEnemies::CleanUp()
 		}
 	}
 
+	for (uint i = 0; i < MAX_CAKES; ++i)
+	{
+		if (enemiescakes[i] != nullptr)
+		{
+			delete enemiescakes[i];
+			enemiescakes[i] = nullptr;
+		}
+	}
+
 	return true;
 }
 
@@ -116,15 +140,32 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, int x, int y)
 {
 	bool ret = false;
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	if (type != ENEMY_TYPE::CAKES)
 	{
-		if (spawnQueue[i].type == ENEMY_TYPE::NO_TYPE)
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
 		{
-			spawnQueue[i].type = type;
-			spawnQueue[i].x = x;
-			spawnQueue[i].y = y;
-			ret = true;
-			break;
+			if (spawnQueue[i].type == ENEMY_TYPE::NO_TYPE)
+			{
+				spawnQueue[i].type = type;
+				spawnQueue[i].x = x;
+				spawnQueue[i].y = y;
+				ret = true;
+				break;
+			}
+		}
+	}
+	else
+	{
+		for (uint i = 0; i < MAX_CAKES; ++i)
+		{
+			if (spawnQueuecakes[i].type == ENEMY_TYPE::NO_TYPE)
+			{
+				spawnQueuecakes[i].type = type;
+				spawnQueuecakes[i].x = x;
+				spawnQueuecakes[i].y = y;
+				ret = true;
+				break;
+			}
 		}
 	}
 
@@ -148,6 +189,20 @@ void ModuleEnemies::HandleEnemiesSpawn()
 			}
 		}
 	}
+	for (uint i = 0; i < MAX_CAKES; ++i)
+	{
+		if (spawnQueuecakes[i].type != ENEMY_TYPE::NO_TYPE)
+		{
+			// Spawn a new enemy if the screen has reached a spawn position
+			if (spawnQueuecakes[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			{
+				LOG("Spawning enemy at %d", spawnQueuecakes[i].x * SCREEN_SIZE);
+
+				SpawnEnemy(spawnQueuecakes[i]);
+				spawnQueuecakes[i].type = ENEMY_TYPE::NO_TYPE; // Removing the newly spawned enemy from the queue
+			}
+		}
+	}
 }
 
 void ModuleEnemies::HandleEnemiesDespawn()
@@ -167,38 +222,69 @@ void ModuleEnemies::HandleEnemiesDespawn()
 			}
 		}
 	}
+	for (uint i = 0; i < MAX_CAKES; ++i)
+	{
+		if (enemiescakes[i] != nullptr)
+		{
+			// Delete the enemy when it has reached the end of the screen
+			if (enemiescakes[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			{
+				LOG("DeSpawning enemy at %d", enemiescakes[i]->position.x * SCREEN_SIZE);
+
+				delete enemiescakes[i];
+				enemiescakes[i] = nullptr;
+			}
+		}
+	}
 }
 
 void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 {
 	// Find an empty slot in the enemies array
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	if (info.type != ENEMY_TYPE::CAKES)
 	{
-		if (enemies[i] == nullptr)
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
 		{
-			switch (info.type)
+			if (enemies[i] == nullptr)
 			{
-			case ENEMY_TYPE::FIREBALLS:
-				enemies[i] = new Enemy_Fireballs(info.x, info.y);
-				break;
-			case ENEMY_TYPE::FIRESPARKS:
-				enemies[i] = new Enemy_Firesparks(info.x, info.y);
-				break;
-			case ENEMY_TYPE::CAKES:
-				enemies[i] = new Enemy_Cakes(info.x, info.y);
+				switch (info.type)
+				{
+				case ENEMY_TYPE::FIREBALLS:
+					enemies[i] = new Enemy_Fireballs(info.x, info.y);
+					break;
+				case ENEMY_TYPE::FIRESPARKS:
+					enemies[i] = new Enemy_Firesparks(info.x, info.y);
+					break;
+				}
+				enemies[i]->enemiestexture = enemiestexture;
+				enemies[i]->enemiestexture2 = enemiestexture2;
+				enemies[i]->destroyedFx = enemyDestroyedFx;
 				break;
 			}
-			enemies[i]->enemiestexture = enemiestexture;
-			enemies[i]->enemiestexture2 = enemiestexture2;
-			enemies[i]->destroyedFx = enemyDestroyedFx;
-			break;
+		}
+	}
+	else
+	{
+		for (uint i = 0; i < MAX_CAKES; ++i)
+		{
+			if (enemiescakes[i] == nullptr)
+			{
+				switch (info.type)
+				{
+				case ENEMY_TYPE::CAKES:
+					enemiescakes[i] = new Enemy_Cakes(info.x, info.y);
+					break;
+				}
+				enemiescakes[i]->enemiestexture2 = enemiestexture2;
+				enemiescakes[i]->destroyedFx = enemyDestroyedFx;
+				break;
+			}
 		}
 	}
 }
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && c2->type == Collider::Type::HAMMER)
@@ -215,6 +301,25 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 			delete enemies[i];
 			enemies[i] = nullptr;
+			break;
+		}
+	}
+	for (uint i = 0; i < MAX_CAKES; ++i)
+	{
+		if (enemiescakes[i] != nullptr && enemiescakes[i]->GetCollider() == c1 && c2->type == Collider::Type::HAMMER)
+		{
+			enemiescakes[i]->OnCollision(c2); //Notify collision of an enemy
+
+			App->player->n = App->player->n + 8;
+
+			position = enemiescakes[i]->GetPos();
+
+			enemyDead = true;
+
+			App->audio->PlayFx(enemyDestroyedFx);
+
+			delete enemiescakes[i];
+			enemiescakes[i] = nullptr;
 			break;
 		}
 	}

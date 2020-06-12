@@ -14,16 +14,17 @@ Enemy_Cakes::Enemy_Cakes(int x, int y) : Enemies(x, y)
 
 void Enemy_Cakes::Update()
 {
-	/*if (position.y == 196)
-	{
+	position.x += speed;
+	/*if (position.y == 120)
+	{*/
 		if (position.x < 24) {
-			currentAnim = &rightAnim;
+			speed = -speed;
 		}
 		if (position.x > 220) {
-			currentAnim = &leftAnim;
+			speed = -speed;
 		}
-	}
-	if (position.y == 156)
+	/*}*/
+	/*if (position.y == 156)
 	{
 		if (position.x < 32) {
 			currentAnim = &rightAnim;

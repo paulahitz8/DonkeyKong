@@ -208,10 +208,20 @@ Update_Status ModuleLvl2::Update()
 	//}
 	//i++;
 
-	App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 156);
+	if (i % 150 == 0 && i % 300 != 0)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 120);
+	}
+	if (i % 300 == 0)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 200);
+	}
 
-	App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 209, 126);
-
+	if (i % 50 == 0)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 109, 105);
+	}
+	i++;
 	
 	//MovingLadders - necesito una imagen del trozo de escalera, con su rectangulo
 	leftLadposition.y += ladVel;
