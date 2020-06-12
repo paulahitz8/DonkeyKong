@@ -19,6 +19,10 @@ Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 
 void Enemy_Firesparks::Update()
 {
+	if (position.y >= 105 && position.y < 112)
+	{
+		position.y++;
+	}
 	position.x -= speed;
 	if (position.x < 24) {
 		currentAnimfiresparks = &rightAnim;
