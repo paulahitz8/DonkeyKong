@@ -518,13 +518,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	}
 
-	// OBJECT
-	if (c2->type == Collider::Type::OBJECT)
-	{
 
-		groundOn = true;
-
-	}
 
 	// LEFTFLOOR
 	if (c2->type == Collider::Type::LEFTFLOOR)

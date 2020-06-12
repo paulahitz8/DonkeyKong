@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleHammer.h"
+#include "ModuleObject.h"
 #include "ModuleScore.h"
 #include "ModuleDonkey.h"
 #include "ModuleEnemies.h"
@@ -166,6 +167,7 @@ bool ModuleLvl2::Start()
 	leftLadcollider = App->collision->AddCollider({ leftLadposition.x + 3, leftLadposition.y - 9, 2, 25 }, Collider::Type::LADDER);
 
 	// Enable Player
+	App->object->Enable();
 	App->score->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
@@ -269,6 +271,7 @@ bool ModuleLvl2::CleanUp()
 
 
 	App->player->Disable();
+	App->object->Disable();
 	App->donkey->Disable();
 	App->hammer->Disable();
 	App->enemies->Disable();

@@ -9,6 +9,7 @@
 #include "ModuleScore.h"
 #include "ModuleDonkey.h"
 #include "ModuleEnemies.h"
+#include "ModuleObject.h"
 #include "ModuleCollisions.h"
 #include "WinningScreen.h"
 #include "IntroScreen.h"
@@ -182,6 +183,7 @@ bool ModuleLvl4::Start()
 
 	// Enable Player
 	App->score->Enable();
+	App->object->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
 	App->hammer->Enable();
@@ -353,6 +355,7 @@ bool ModuleLvl4::CleanUp()
 
 
 	App->player->Disable();
+	App->object->Disable();
 	App->donkey->Disable();
 	App->hammer->Disable();
 	App->enemies->Disable();
