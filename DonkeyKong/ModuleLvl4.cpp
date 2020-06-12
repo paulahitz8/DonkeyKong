@@ -76,8 +76,6 @@ bool ModuleLvl4::Start()
 	}
 	App->winning->win = false;
 	App->intro->intro = false;
-	
-	// FUnciona mas o menos pero la zanahoria que coges justo antes de morir no spawnea otra vez
 
 	for (int a = 0; a < 32; a++) {
 		for (int b = 0; b < 32; b++) {

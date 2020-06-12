@@ -156,8 +156,10 @@ bool ModuleLvl2::Start()
 	//Moving ladders
 	ladVel = 1;
 	count = 0;
-	ladTexture = App->textures->Load("Assets/cositasfondo/escalera.png");
-	leftLad = {0, 0, 9, 10 };
+	/*ladTexture = App->textures->Load("Assets/cositasfondo/escalera.png");*/
+	ladTexture = App->textures->Load("Assets/Enemies/EnemiesSprites.png");
+	/*leftLad = {0, 0, 9, 10 };*/
+	leftLad = {81, 194, 10, 16 };
 	leftLadposition.x = 31;
 	leftLadposition.y = 96;
 
@@ -192,19 +194,23 @@ Update_Status ModuleLvl2::Update()
 
 	// Enemy spawn timer
 
-	if (i % 1002 == 0)
-	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 209, 156);
-	}
-	else if (i % 501 == 0 && (i % 1002 != 0) && (i % 1503 != 0) && (i % 2505 != 0))
-	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
-	}
-	else if ((i % 1503 == 0) || (i % 2505 == 0))
-	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 201, 116);
-	}
-	i++;
+	//if (i % 1002 == 0)
+	//{
+	//	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 209, 156);
+	//}
+	//else if (i % 501 == 0 && (i % 1002 != 0) && (i % 1503 != 0) && (i % 2505 != 0))
+	//{
+	//	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
+	//}
+	//else if ((i % 1503 == 0) || (i % 2505 == 0))
+	//{
+	//	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 201, 116);
+	//}
+	//i++;
+
+	App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 156);
+
+	App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 209, 126);
 
 	
 	//MovingLadders - necesito una imagen del trozo de escalera, con su rectangulo

@@ -14,7 +14,9 @@
 enum class ENEMY_TYPE
 {
 	NO_TYPE,
-	FIREBALLS
+	FIREBALLS,
+	FIRESPARKS,
+	CAKES
 };
 
 struct EnemySpawnpoint
@@ -64,6 +66,7 @@ private: //?
 	Enemies* enemies[MAX_ENEMIES] = { nullptr };
 
 	SDL_Texture* enemiestexture = nullptr;
+	SDL_Texture* enemiestexture2 = nullptr;
 	SDL_Texture* particlestexture = nullptr;
 
 

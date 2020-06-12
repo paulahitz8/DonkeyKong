@@ -27,13 +27,19 @@ iPoint Enemies::GetPos() const
 
 void Enemies::Update()
 {
-	if (currentAnim != nullptr)
-		currentAnim->Update();
+	if (currentAnimfireballs != nullptr)
+		currentAnimfireballs->Update();
+
+	if (currentAnimcakes != nullptr)
+		currentAnimcakes->Update();
+
+	if (currentAnimfiresparks != nullptr)
+		currentAnimfiresparks->Update();
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
-	position.x += speed;
+	/*position.x += speed;
 	if (position.y == 196)
 	{
 		if (position.x < 24) {
@@ -60,13 +66,23 @@ void Enemies::Update()
 		if (position.x > 206) {
 			speed = -speed;
 		}
-	}
+	}*/
 }
 
 void Enemies::Draw()
 {
-	if (currentAnim != nullptr)
-		App->render->Blit(enemiestexture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+	if (currentAnimfireballs != nullptr)
+	{
+		App->render->Blit(enemiestexture, position.x, position.y, &(currentAnimfireballs->GetCurrentFrame()));
+	}
+	if (currentAnimcakes != nullptr)
+	{
+		App->render->Blit(enemiestexture2, position.x, position.y, &(currentAnimcakes->GetCurrentFrame()));
+	}
+	if (currentAnimfiresparks != nullptr)
+	{
+		App->render->Blit(enemiestexture2, position.x, position.y, &(currentAnimfiresparks->GetCurrentFrame()));
+	}
 }
 
 void Enemies::OnCollision(Collider* collider)

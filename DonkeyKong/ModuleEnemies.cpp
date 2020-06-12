@@ -10,6 +10,8 @@
 
 #include "Enemies.h"
 #include "EnemyFireballs.h"
+#include "EnemyFiresparks.h"
+#include "EnemyCakes.h"
 
 #define SPAWN_MARGIN 50
 
@@ -40,6 +42,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	enemiestexture = App->textures->Load("Assets/Enemies/Enemies2.png");
+	enemiestexture2 = App->textures->Load("Assets/Enemies/EnemiesSprites.png");
 	particlestexture = App->textures->Load("Assets/Lady/RandomSprites.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Music/21 SFX (Kill).wav");
 
@@ -178,8 +181,15 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			case ENEMY_TYPE::FIREBALLS:
 				enemies[i] = new Enemy_Fireballs(info.x, info.y);
 				break;
+			case ENEMY_TYPE::FIRESPARKS:
+				enemies[i] = new Enemy_Firesparks(info.x, info.y);
+				break;
+			case ENEMY_TYPE::CAKES:
+				enemies[i] = new Enemy_Cakes(info.x, info.y);
+				break;
 			}
 			enemies[i]->enemiestexture = enemiestexture;
+			enemies[i]->enemiestexture2 = enemiestexture2;
 			enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
 		}
