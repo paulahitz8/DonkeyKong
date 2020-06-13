@@ -158,9 +158,7 @@ bool ModuleLvl2::Start()
 	//Moving ladders
 	ladVel = 1;
 	count = 0;
-	/*ladTexture = App->textures->Load("Assets/cositasfondo/escalera.png");*/
 	ladTexture = App->textures->Load("Assets/Enemies/EnemiesSprites.png");
-	/*leftLad = {0, 0, 9, 10 };*/
 	leftLad = {81, 194, 10, 16 };
 	leftLadposition.x = 31;
 	leftLadposition.y = 96;

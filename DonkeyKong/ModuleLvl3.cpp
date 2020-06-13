@@ -154,10 +154,6 @@ bool ModuleLvl3::Start()
 	App->collision->AddCollider({ 16, 231, 24, 9 }, Collider::Type::GROUND);
 
 
-	
-
-
-
 	// Ladders by floor
 	App->collision->AddCollider({ 27, 190 , 2, 44 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 35, 134 , 2, 60 }, Collider::Type::LADDER);
