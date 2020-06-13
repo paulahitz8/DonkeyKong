@@ -1,5 +1,4 @@
 #include "EnemyFireballs.h"
-
 #include "Application.h"
 #include "ModuleCollisions.h"
 
@@ -13,39 +12,47 @@ Enemy_Fireballs::Enemy_Fireballs(int x, int y) : Enemies(x, y)
 	rightAnim.PushBack({ 93, 217, 16,12 });
 	rightAnim.speed = 0.2f;
 
-	currentAnim = &leftAnim;
+	currentAnimfireballs = &leftAnim;
 
 	collider = App->collision->AddCollider({ position.x, position.y, 15, 12 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Fireballs::Update()
 {
+	position.x += speed;
 	if (position.y == 196)
 	{
 		if (position.x < 24) {
-			currentAnim = &rightAnim;
+			currentAnimfireballs = &rightAnim;
+			speed = -speed;
 		}
 		if (position.x > 220) {
-			currentAnim = &leftAnim;
+			currentAnimfireballs = &leftAnim;
+			speed = -speed;
 		}
 	}
 	if (position.y == 156)
 	{
 		if (position.x < 32) {
-			currentAnim = &rightAnim;
+			currentAnimfireballs = &rightAnim;
+			speed = -speed;
 		}
 		if (position.x > 212) {
-			currentAnim = &leftAnim;
+			currentAnimfireballs = &leftAnim;
+			speed = -speed;
 		}
 	}
 	if (position.y == 116)
 	{
 		if (position.x < 40) {
-			currentAnim = &rightAnim;
+			currentAnimfireballs = &rightAnim;
+			speed = -speed;
 		}
 		if (position.x > 206) {
-			currentAnim = &leftAnim;
+			currentAnimfireballs = &leftAnim;
+			speed = -speed;
 		}
 	}
+
 	Enemies::Update();
 }

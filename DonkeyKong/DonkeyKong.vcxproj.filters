@@ -94,6 +94,18 @@
     <ClCompile Include="SiguienteNivel.cpp">
       <Filter>Source\Modules\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyCakes.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFiresparks.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleObject.cpp">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyJumper.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -194,6 +206,18 @@
     </ClInclude>
     <ClInclude Include="SiguienteNivel.h">
       <Filter>Source\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyCakes.h">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFiresparks.h">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleObject.h">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyJumper.h">
+      <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

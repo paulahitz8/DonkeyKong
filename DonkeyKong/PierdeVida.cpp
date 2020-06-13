@@ -6,6 +6,7 @@
 #include "ModuleInput.h"
 #include "ModuleLvl4.h"
 #include "ModuleLvl3.h"
+#include "ModuleObject.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleScore.h"
@@ -56,6 +57,8 @@ PierdeVida::~PierdeVida()
 
 bool PierdeVida::Start()
 {
+
+
 	LOG("Loading background assets");
 
 	bool ret = true;
