@@ -25,6 +25,9 @@ bool ModuleObject::Start()
 	hat = App->textures->Load("Assets/objects/RandomSprites.png");
 	bag = App->textures->Load("Assets/objects/RandomSprites.png");
 	paraguas = App->textures->Load("Assets/objects/RandomSprites.png");
+	negro = App->textures->Load("Assets/cositasfondo/fondonegro.png");
+
+	rectnegro = { 0,0,16,15 };
 	
 	hammerrect = { 144, 81, 9, 10 };
 	bagrect = { 191, 81, 9, 9 };
@@ -36,45 +39,61 @@ bool ModuleObject::Start()
 
 	if (App->player->activelevel == 2) {
 
-		hammer1col = App->collision->AddCollider({ 121, 178, 9, 9 }, Collider::Type::OBJECT, this);
+		hammer1col = App->collision->AddCollider({ 121, 178, 9, 10 }, Collider::Type::OBJECT, this);
 	
-		hammer2col = App->collision->AddCollider({ 32, 138, 9, 9 }, Collider::Type::OBJECT, this);
+		hammer2col = App->collision->AddCollider({ 32, 138, 9, 10 }, Collider::Type::OBJECT, this);
 		
 		bagcol = App->collision->AddCollider({ 134, 238, 9, 9 }, Collider::Type::OBJECT, this);
 	
-		paraguascol = App->collision->AddCollider({ 212, 152, 9, 9 }, Collider::Type::OBJECT, this);
+		paraguascol = App->collision->AddCollider({ 212, 152, 16, 15 }, Collider::Type::OBJECT, this);
 	
-		hatcol = App->collision->AddCollider({ 77, 159, 9, 9 }, Collider::Type::OBJECT, this);
+		hatcol = App->collision->AddCollider({ 77, 159, 15, 8 }, Collider::Type::OBJECT, this);
 		
 	
 
 	}
 
-	//if (App->player->activelevel == 3) {
 
+	if (App->player->activelevel == 3) {
+		//falta poner posiciones correctas
+		bagcol = App->collision->AddCollider({ 223, 94, 9, 9 }, Collider::Type::OBJECT, this);
 
-	//
+		paraguascol = App->collision->AddCollider({ 20, 120, 16, 15 }, Collider::Type::OBJECT, this);
 
-	//}
+		hatcol = App->collision->AddCollider({ 85, 199, 15, 8 }, Collider::Type::OBJECT, this);
 
-	//if (App->player->activelevel == 4) {
+	}
 
+	if (App->player->activelevel == 4) {
 
-	//}
-	//
+		//falta poner posiciones correctas
+		hammer1col = App->collision->AddCollider({ 24, 138, 9, 10 }, Collider::Type::OBJECT, this);
+
+		hammer2col = App->collision->AddCollider({ 121, 98, 9, 10 }, Collider::Type::OBJECT, this);
+
+		bagcol = App->collision->AddCollider({ 143, 238, 9, 9 }, Collider::Type::OBJECT, this);
+
+		paraguascol = App->collision->AddCollider({ 44, 72, 16, 15 }, Collider::Type::OBJECT, this);
+
+		hatcol = App->collision->AddCollider({ 213, 199, 15, 8 }, Collider::Type::OBJECT, this);
+
+	
+
+	}
 	return true;
 }
 
 Update_Status ModuleObject::Update()
 {
+
+
+	// LEVEL 2
+
 	if (App->player->activelevel == 2) {
-
-	
-
 		if (objetetodeletey == 178 && objetetodeletex == 121) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-		
+			
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 138 && objetetodeletex == 32) {
@@ -86,7 +105,7 @@ Update_Status ModuleObject::Update()
 		else if (objetetodeletey == 238 && objetetodeletex == 134) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			//App->render->Blit(negro, 121, 178, &rectnegro);
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 152 && objetetodeletex == 212) {
@@ -103,7 +122,64 @@ Update_Status ModuleObject::Update()
 		}
 	}
 
+	// LEVEL 3
 
+	if (App->player->activelevel == 3) {
+
+		if (objetetodeletey == 94 && objetetodeletex == 223) {
+			cienpos.y = 216;
+			cienpos.x = 69;
+
+			colliderDelete->pendingToDelete = true;
+		}
+		else if (objetetodeletey == 120 && objetetodeletex == 20) {
+			cienpos.y = 216;
+			cienpos.x = 69;
+
+			colliderDelete->pendingToDelete = true;
+		}
+		else if (objetetodeletey == 199 && objetetodeletex == 85) {
+			cienpos.y = 216;
+			cienpos.x = 69;
+
+			colliderDelete->pendingToDelete = true;
+		}
+
+	}
+	
+	// LEVEL 4
+	if (App->player->activelevel == 4) {
+		if (objetetodeletey == 138 && objetetodeletex == 24) {
+			cienpos.y = 216;
+			cienpos.x = 69;
+
+			colliderDelete->pendingToDelete = true;
+		}
+		else if (objetetodeletey == 98 && objetetodeletex == 121) {
+			cienpos.y = 216;
+			cienpos.x = 69;
+
+			colliderDelete->pendingToDelete = true;
+		}
+		else if (objetetodeletey == 238 && objetetodeletex == 143) {
+			cienpos.y = 216;
+			cienpos.x = 69;
+
+			colliderDelete->pendingToDelete = true;
+		}
+		else if (objetetodeletey == 72 && objetetodeletex == 44) {
+			cienpos.y = 216;
+			cienpos.x = 69;
+
+			colliderDelete->pendingToDelete = true;
+		}
+		else if (objetetodeletey == 199 && objetetodeletex == 213) {
+			cienpos.y = 216;
+			cienpos.x = 69;
+
+			colliderDelete->pendingToDelete = true;
+		}
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -123,24 +199,22 @@ Update_Status ModuleObject::PostUpdate()
 	if (App->player->activelevel == 3) {
 	
 
-		App->render->Blit(bag, 104, 34, &bagrect);
-		App->render->Blit(paraguas, 104, 34, &paraguasrect);
-		App->render->Blit(hat, 104, 34, &hatrect);
+		App->render->Blit(bag, 223, 94, &bagrect);
+		App->render->Blit(paraguas, 20, 120, &paraguasrect);
+		App->render->Blit(hat, 85, 199, &hatrect);
 	
 	}
 
 	if (App->player->activelevel == 4) {
 	
-		App->render->Blit(hammer, 104, 34, &hammerrect);
-		App->render->Blit(hammer, 104, 34, &hammerrect);
-		App->render->Blit(bag, 104, 34, &bagrect);
-		App->render->Blit(paraguas, 104, 34, &paraguasrect);
-		App->render->Blit(hat, 104, 34, &hatrect);
+		App->render->Blit(hammer, 24, 138, &hammerrect);
+		App->render->Blit(hammer, 121, 98, &hammerrect);
+		App->render->Blit(bag, 143, 238, &bagrect);
+		App->render->Blit(paraguas, 44, 72, &paraguasrect);
+		App->render->Blit(hat, 213, 199, &hatrect);
 	
 	}
 	
-
-
 	return Update_Status::UPDATE_CONTINUE;
 }
 

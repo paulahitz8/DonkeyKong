@@ -44,6 +44,9 @@ private:
 	SDL_Rect bagrect;
 	SDL_Rect paraguasrect;
 
+	SDL_Rect rectnegro;
+	SDL_Texture* negro = nullptr;
+
 	iPoint position;
 
 };
