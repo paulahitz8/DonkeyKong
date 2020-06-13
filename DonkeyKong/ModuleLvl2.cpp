@@ -8,7 +8,6 @@
 #include "ModuleHammer.h"
 #include "ModuleScore.h"
 #include "ModuleDonkey.h"
-#include "ModuleObject.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 #include "WinningScreen.h"
@@ -66,11 +65,6 @@ ModuleLvl2::~ModuleLvl2()
 bool ModuleLvl2::Start()
 {
 
-	App->object->hammer1exists = true;
-	App->object->hammer2exists = true;
-	App->object->bagexists = true;
-	App->object->hatexists = true;
-	App->object->paraguasexists = true;
 
 	i = 1;
 	App->player->activelevel = 2;
@@ -106,7 +100,7 @@ bool ModuleLvl2::Start()
 	cienrect = { 59,104,15,7 };
 
 
-	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
+	//backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
 	cientexture = App->textures->Load("Assets/Lady/RandomSprites.png");
 
 	background2Texture = App->textures->Load("Assets/cositasfondo/background2.png");
@@ -162,17 +156,14 @@ bool ModuleLvl2::Start()
 	//Moving ladders
 	ladVel = 1;
 	count = 0;
-	/*ladTexture = App->textures->Load("Assets/cositasfondo/escalera.png");*/
-	ladTexture = App->textures->Load("Assets/Enemies/EnemiesSprites.png");
-	/*leftLad = {0, 0, 9, 10 };*/
-	leftLad = {81, 194, 10, 16 };
+	ladTexture = App->textures->Load("Assets/cositasfondo/escalera.png");
+	leftLad = {0, 0, 9, 10 };
 	leftLadposition.x = 31;
 	leftLadposition.y = 96;
 
 	leftLadcollider = App->collision->AddCollider({ leftLadposition.x + 3, leftLadposition.y - 9, 2, 25 }, Collider::Type::LADDER);
 
 	// Enable Player
-	App->object->Enable();
 	App->score->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
@@ -201,34 +192,20 @@ Update_Status ModuleLvl2::Update()
 
 	// Enemy spawn timer
 
-	//if (i % 1002 == 0)
-	//{
-	//	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 209, 156);
-	//}
-	//else if (i % 501 == 0 && (i % 1002 != 0) && (i % 1503 != 0) && (i % 2505 != 0))
-	//{
-	//	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
-	//}
-	//else if ((i % 1503 == 0) || (i % 2505 == 0))
-	//{
-	//	App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 201, 116);
-	//}
-	//i++;
-
-	if (i % 150 == 0 && i % 300 != 0)
+	if (i % 1002 == 0)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 120);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 209, 156);
 	}
-	if (i % 300 == 0)
+	else if (i % 501 == 0 && (i % 1002 != 0) && (i % 1503 != 0) && (i % 2505 != 0))
 	{
-		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 200);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
 	}
-
-	if (i % 50 == 0)
+	else if ((i % 1503 == 0) || (i % 2505 == 0))
 	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 109, 105);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 201, 116);
 	}
 	i++;
+
 	
 	//MovingLadders - necesito una imagen del trozo de escalera, con su rectangulo
 	leftLadposition.y += ladVel;
@@ -274,7 +251,7 @@ Update_Status ModuleLvl2::PostUpdate()
 		App->render->Blit(cientexture, cienpos.x, cienpos.y, &cienrect);
 
 	}
-	App->render->Blit(backTexture, 0, 0, &back, 0);
+
 	App->render->Blit(ladTexture, leftLadposition.x, leftLadposition.y, &leftLad);
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -286,7 +263,6 @@ bool ModuleLvl2::CleanUp()
 
 
 	App->player->Disable();
-	App->object->Disable();
 	App->donkey->Disable();
 	App->hammer->Disable();
 	App->enemies->Disable();

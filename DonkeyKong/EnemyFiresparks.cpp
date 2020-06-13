@@ -1,10 +1,9 @@
 #include "EnemyFiresparks.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
-<<<<<<< HEAD
-=======
+
 #include "ModuleEnemies.h"
->>>>>>> 5eef4b02f3a10c6301b9bd51426bf6767fb5840b
+
 
 Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 {
@@ -23,7 +22,7 @@ Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 
 void Enemy_Firesparks::Update()
 {
-<<<<<<< HEAD
+
 	if (position.y >= 105 && position.y < 112)
 	{
 		position.y++;
