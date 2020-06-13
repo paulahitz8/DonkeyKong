@@ -237,7 +237,7 @@ Update_Status ModuleLvl3::Update()
 
 	// Enemy spawn timer
 
-	if (i % 150 == 0)
+	if (i % 120 == 0)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::JUMPER, 16, 57);
 	}
