@@ -65,6 +65,12 @@ ModuleLvl4::~ModuleLvl4()
 
 bool ModuleLvl4::Start()
 {
+	App->object->hammer1exists = true;
+	App->object->hammer2exists = true;
+	App->object->bagexists = true;
+	App->object->hatexists = true;
+	App->object->paraguasexists = true;
+
 	i = 1;
 	lvl4status = true;
 	App->player->activelevel = 4;

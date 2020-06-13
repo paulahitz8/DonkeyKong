@@ -65,6 +65,13 @@ ModuleLvl3::~ModuleLvl3()
 
 bool ModuleLvl3::Start()
 {
+
+	App->object->bagexists = true;
+	App->object->hatexists = true;
+	App->object->paraguasexists = true;
+	
+
+
 	i = 1;
 	App->player->activelevel = 3;
 	lvl3status = true;
