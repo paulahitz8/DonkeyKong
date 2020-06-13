@@ -5,13 +5,14 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleHammer.h"
 
 
 
 
 ModuleObject::ModuleObject(bool startEnabled) : Module(startEnabled)
 {
-	
+
 }
 
 ModuleObject::~ModuleObject()
@@ -34,8 +35,8 @@ bool ModuleObject::Start()
 	paraguas = App->textures->Load("Assets/objects/RandomSprites.png");
 	negro = App->textures->Load("Assets/cositasfondo/fondonegro.png");
 
-	
-	
+
+
 	hammerrect = { 144, 81, 9, 10 };
 	bagrect = { 191, 81, 9, 9 };
 	paraguasrect = { 212, 75, 16, 15 };
@@ -47,16 +48,16 @@ bool ModuleObject::Start()
 	if (App->player->activelevel == 2) {
 
 		hammer1col = App->collision->AddCollider({ 121, 178, 9, 10 }, Collider::Type::OBJECT, this);
-	
+
 		hammer2col = App->collision->AddCollider({ 32, 138, 9, 10 }, Collider::Type::OBJECT, this);
-		
+
 		bagcol = App->collision->AddCollider({ 134, 238, 9, 9 }, Collider::Type::OBJECT, this);
-	
+
 		paraguascol = App->collision->AddCollider({ 212, 152, 16, 15 }, Collider::Type::OBJECT, this);
-	
+
 		hatcol = App->collision->AddCollider({ 77, 159, 15, 8 }, Collider::Type::OBJECT, this);
-		
-	
+
+
 
 	}
 
@@ -84,7 +85,7 @@ bool ModuleObject::Start()
 
 		hatcol = App->collision->AddCollider({ 213, 199, 15, 8 }, Collider::Type::OBJECT, this);
 
-	
+
 
 	}
 	return true;
@@ -92,7 +93,6 @@ bool ModuleObject::Start()
 
 Update_Status ModuleObject::Update()
 {
-
 
 	// LEVEL 2
 
@@ -102,6 +102,9 @@ Update_Status ModuleObject::Update()
 			ochopos.x = 123;
 			hammer1exists = false;
 			colliderDelete->pendingToDelete = true;
+
+		
+
 		}
 		else if (objetetodeletey == 138 && objetetodeletex == 32) {
 			ochopos.y = 140;
@@ -153,7 +156,7 @@ Update_Status ModuleObject::Update()
 		}
 
 	}
-	
+
 	// LEVEL 4
 	if (App->player->activelevel == 4) {
 		if (objetetodeletey == 138 && objetetodeletex == 24) {
@@ -194,7 +197,7 @@ Update_Status ModuleObject::Update()
 Update_Status ModuleObject::PostUpdate()
 {
 	if (App->player->activelevel == 2) {
-	
+
 		if (hammer1exists == true) {
 			App->render->Blit(hammer, 121, 178, &hammerrect);
 		}
@@ -212,19 +215,19 @@ Update_Status ModuleObject::PostUpdate()
 
 			App->render->Blit(hat, 77, 159, &hatrect);
 		}
-		
-		
+
+
 		if (ochopos.x != 0 && ochopos.y != 0) {
 
 			App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
 
 		}
-	
+
 	}
 
 	if (App->player->activelevel == 3) {
-	
-		
+
+
 		if (bagexists == true) {
 
 			App->render->Blit(bag, 223, 94, &bagrect);
@@ -240,7 +243,7 @@ Update_Status ModuleObject::PostUpdate()
 			App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
 
 		}
-	
+
 	}
 
 	if (App->player->activelevel == 4) {
@@ -262,14 +265,14 @@ Update_Status ModuleObject::PostUpdate()
 		}if (hatexists == true) {
 			App->render->Blit(hat, 213, 199, &hatrect);
 		}
-	
+
 		if (ochopos.x != 0 && ochopos.y != 0) {
 
 			App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
 
 		}
 	}
-	
+
 
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -279,7 +282,7 @@ Update_Status ModuleObject::PostUpdate()
 bool ModuleObject::CleanUp()
 {
 
-	
+
 
 	return true;
 }
@@ -296,10 +299,11 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 		colliderDelete = c1;
 		objetetodeletex = c1->GetRect().x;
 		objetetodeletey = c1->GetRect().y;
-		
+
 		App->player->n = App->player->n + 8;
 
-
+		hammerOn = true;
+		App->hammer->Enable();
 
 		App->audio->PlayFx(objectFx);
 
@@ -311,7 +315,8 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 		objetetodeletey = c1->GetRect().y;
 
 		App->player->n = App->player->n + 8;
-
+		hammerOn = true;
+		App->hammer->Enable();
 
 
 		App->audio->PlayFx(objectFx);

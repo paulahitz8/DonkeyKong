@@ -1,8 +1,7 @@
-
 #pragma once
 
-#ifndef __MODULE_OBJECT_H__
-#define __MODULE_OBJECT_H__
+#ifndef MODULE_OBJECT_H
+#define MODULE_OBJECT_H
 
 #include "Module.h"
 #include "SDL_Rect.h"
@@ -30,7 +29,9 @@ public:
 	bool hatexists = true;
 	bool paraguasexists = true;
 
-private: 
+	bool hammerOn = false;
+
+private:
 	Collider* colliderDelete = nullptr;
 	iPoint cienpos;
 	Collider* hammer1col = nullptr;

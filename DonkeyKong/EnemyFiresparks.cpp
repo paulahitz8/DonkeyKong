@@ -39,19 +39,7 @@ void Enemy_Firesparks::Update()
 
 	/*if (App->enemies->spawnQueue->y == 105)
 	{*/
-		if (position.y >= 105 && position.y < 112)
-		{
-			position.y++;
-		}
-		position.x -= speed;
-		if (position.x < 24) {
-			currentAnimfiresparks = &rightAnim;
-			speed = -speed;
-		}
-		if (position.x > 220) {
-			currentAnimfiresparks = &leftAnim;
-			speed = -speed;
-		}
+
 	/*}
 	if (App->enemies->spawnQueue->type == ENEMY_TYPE::FIRESPARKS && App->enemies->spawnQueue->y == 120)
 	{

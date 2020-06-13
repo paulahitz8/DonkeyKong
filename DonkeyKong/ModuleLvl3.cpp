@@ -65,7 +65,7 @@ ModuleLvl3::~ModuleLvl3()
 
 bool ModuleLvl3::Start()
 {
-
+	App->object->hammerOn = false;
 	App->object->bagexists = true;
 	App->object->hatexists = true;
 	App->object->paraguasexists = true;
@@ -218,7 +218,6 @@ bool ModuleLvl3::Start()
 	App->score->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
-	App->hammer->Enable();
 	App->enemies->Enable();
 	App->lady->Enable();
 
@@ -242,7 +241,9 @@ Update_Status ModuleLvl3::Update()
 
 
 
-	// Enemy spawn timer
+
+
+// Enemy spawn timer
 
 	if (i % 120 == 0)
 	{
@@ -250,11 +251,13 @@ Update_Status ModuleLvl3::Update()
 	}
 	if (i == 1)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 217, 190);
-		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 217, 196);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 95, 120);
+	}
+	if (i == 10)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 215, 128);
 	}
 	i++;
-
 
 	//MovingFloors
 	//LEFT

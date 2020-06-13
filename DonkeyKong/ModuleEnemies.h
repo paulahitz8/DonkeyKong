@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __MODULE_ENEMIES_H__
-#define __MODULE_ENEMIES_H__
+#ifndef MODULE_ENEMIES_H
+#define MODULE_ENEMIES_H
 
 #include "Module.h"
 #include "SDL_Rect.h"
@@ -60,11 +60,12 @@ public:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
 
+	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
+	EnemySpawnpoint spawnQueuecakes[MAX_CAKES];
+
 private: //?
 
 	// A queue with all spawn points information
-	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
-	EnemySpawnpoint spawnQueuecakes[MAX_CAKES];
 
 	Enemies* enemies[MAX_ENEMIES] = { nullptr };
 	Enemies* enemiescakes[MAX_CAKES] = { nullptr };
@@ -87,4 +88,4 @@ private: //?
 	Animation blankAnim;
 };
 
-#endif // __MODULE_ENEMIES_H__
+#endif // MODULE_ENEMIES_H
