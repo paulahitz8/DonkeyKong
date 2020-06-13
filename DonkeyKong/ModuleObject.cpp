@@ -301,7 +301,6 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 		hammerOn = true;
 		App->hammer->Enable();
-		App->player->collider->SetPos(position.x, position.y);
 
 		App->audio->PlayFx(objectFx);
 

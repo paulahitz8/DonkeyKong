@@ -75,22 +75,21 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.2f;
 
 	//up animation
-	upladderAnim1.PushBack({ 276, 105, 16, 15 });
-	upladderAnim.PushBack({ 277, 132, 13, 16 });
-	upladderAnim.PushBack({ 278, 11, 13, 16 });
-	upladderAnim1.PushBack({ 276, 105, 16, 15 });
-	upladderAnim.PushBack({ 277, 132, 13, 16 });
-	upladderAnim.PushBack({ 278, 11, 13, 16 });
+	upladderAnim1.PushBack({ 278, 11, 13, 16 });
+	upladderAnim.PushBack({ 276, 46, 14, 15 });
+	upladderAnim.PushBack({ 176, 77, 16, 12 });
+	upladderAnim2.PushBack({ 261, 35, 50, 26 });
+	upladderAnim3.PushBack({ 261, 63, 50, 26 });
 	upladderAnim.speed = 0.12f;
 
 
 	//down animation
 	
-	downladderAnim2.PushBack({ 276, 77, 16, 12 });
-	downladderAnim3.PushBack({ 276, 46, 14, 15 });
-	downladderAnim.PushBack({ 278, 11, 13, 16 }); 
-	downladderAnim.PushBack({ 277, 132, 13, 16 }); 
-	downladderAnim.PushBack({ 276, 105, 16, 15 });
+	downladderAnim3.PushBack({ 261, 63, 50, 26 });
+	downladderAnim2.PushBack({ 261, 35, 50, 26 });
+	downladderAnim.PushBack({ 261, 1, 50, 26 });
+	downladderAnim.PushBack({ 261, 122, 50, 26 });
+	downladderAnim1.PushBack({ 261, 94, 50, 26 }); 
 	downladderAnim.speed = 0.12f;
 
 
@@ -122,8 +121,8 @@ bool ModulePlayer::Start()
 
 	currentAnimation = &rightidleAnimNoHam; //mario empieza mirando a la derecha
 
-	position.x = { 55 };
-	position.y = { 232 };
+	position.x = { 44 };
+	position.y = { 223 };
 
 	carrotcount = 8;
 	if (resetVidas == true) {
@@ -556,12 +555,9 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (App->object->hammerOn == true) {
+
 		collider->SetPos(position.x + 18, position.y + 10);
-	}
-	if (App->object->hammerOn == false) {
-		collider->SetPos(position.x, position.y);
-	}
+
 
 	currentAnimation->Update();
 
@@ -581,26 +577,27 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {	
 	if (godmode == false) {
 		// LADDER
-		if (c2->type == Collider::Type::LADDER && ((position.x) > (c2->rect.x - 8) && (position.x) < (c2->rect.x)))
+		if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 8) && (position.x + 18) < (c2->rect.x)))
 		{
-			if (((position.y) + player.h) < (c2->rect.y + 3)) {
+			if (((position.y + 10) + player.h) < (c2->rect.y + 3)) {
 				position.y += 1;
 			}
 
-			if (((position.y) + player.h) > c2->rect.y + 42)
+			if (((position.y + 10) + player.h) > c2->rect.y + 42)
 			{
 				position.y -= 1;
 			}
 
-			if (((position.y) < (c2->rect.y + 26)) && ((position.y) > (c2->rect.y - 13)) && ((position.x) < (c2->rect.x - 6))) {
+			if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 6))) {
 				position.x += 1;
 			}
 
-			if (((position.y) < (c2->rect.y + 26)) && ((position.y) > (c2->rect.y - 13)) && ((position.x) > (c2->rect.x - 4))) {
+			if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x - 4))) {
 				position.x -= 1;
 			}
 
 			ladderOn = true;
+
 		}
 		else {
 			ladderOn = false;

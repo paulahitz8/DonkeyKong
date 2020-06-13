@@ -33,7 +33,6 @@ private:
 	uint bonusFx = 0;
 
 
-
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 	bool ladderOn = false;
@@ -51,8 +50,9 @@ private:
 
 public:
 
+
 	// The player's collider
-	Collider* collider = nullptr;
+	Collider* collider = nullptr; 
 
 	int activelevel = 0;
 
