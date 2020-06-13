@@ -109,8 +109,8 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
-<<<<<<< HEAD
-	if (App->object->hammerOn == true) {
+
+	/*if (App->object->hammerOn == true) {
 		hammerCount++;
 		
 		
@@ -123,10 +123,10 @@ Update_Status ModulePlayer::Update()
 		}
 
 	}
+*/
 
-=======
 	GamePad& pad = App->input->pads[0];
->>>>>>> parent of 165e2ee... Deberia workear
+
 
 	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN) {
 		godmode = !godmode;
