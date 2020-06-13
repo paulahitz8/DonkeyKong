@@ -1,6 +1,7 @@
 #include "EnemyFiresparks.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModuleEnemies.h"
 
 Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 {
@@ -19,19 +20,29 @@ Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 
 void Enemy_Firesparks::Update()
 {
-	if (position.y >= 105 && position.y < 112)
+	/*if (App->enemies->spawnQueue->y == 105)
+	{*/
+		if (position.y >= 105 && position.y < 112)
+		{
+			position.y++;
+		}
+		position.x -= speed;
+		if (position.x < 24) {
+			currentAnimfiresparks = &rightAnim;
+			speed = -speed;
+		}
+		if (position.x > 220) {
+			currentAnimfiresparks = &leftAnim;
+			speed = -speed;
+		}
+	/*}
+	if (App->enemies->spawnQueue->type == ENEMY_TYPE::FIRESPARKS && App->enemies->spawnQueue->y == 120)
 	{
-		position.y++;
-	}
-	position.x -= speed;
-	if (position.x < 24) {
-		currentAnimfiresparks = &rightAnim;
-		speed = -speed;
-	}
-	if (position.x > 220) {
-		currentAnimfiresparks = &leftAnim;
-		speed = -speed;
-	}
+		if (position.x > 80)
+		{
+			position.x--;
+		}
+	}*/
 	/*if (position.y == 196)
 	{
 		if (position.x < 24) {
