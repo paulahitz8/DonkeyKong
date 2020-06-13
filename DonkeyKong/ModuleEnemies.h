@@ -60,11 +60,12 @@ public:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
 
+	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
+	EnemySpawnpoint spawnQueuecakes[MAX_CAKES];
+
 private: //?
 
 	// A queue with all spawn points information
-	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
-	EnemySpawnpoint spawnQueuecakes[MAX_CAKES];
 
 	Enemies* enemies[MAX_ENEMIES] = { nullptr };
 	Enemies* enemiescakes[MAX_CAKES] = { nullptr };

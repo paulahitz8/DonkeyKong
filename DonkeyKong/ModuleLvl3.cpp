@@ -16,6 +16,7 @@
 #include "GameOver.h"
 #include "ModuleLady.h"
 #include "SDL.h"
+#include "Enemies.h"
 
 
 int lvl3Initial[32][32]{ {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -250,8 +251,11 @@ Update_Status ModuleLvl3::Update()
 	}
 	if (i == 1)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 217, 190);
-		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 217, 196);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 95, 120);
+	}
+	if (i == 10)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 225, 86);
 	}
 	i++;
 
