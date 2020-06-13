@@ -36,10 +36,22 @@ void Enemy_Firesparks::Update()
 		currentAnimfiresparks = &leftAnim;
 		speed = -speed;
 	}
-
+=======
 	/*if (App->enemies->spawnQueue->y == 105)
 	{*/
-
+		if (position.y >= 105 && position.y < 112)
+		{
+			position.y++;
+		}
+		position.x -= speed;
+		if (position.x < 24) {
+			currentAnimfiresparks = &rightAnim;
+			speed = -speed;
+		}
+		if (position.x > 220) {
+			currentAnimfiresparks = &leftAnim;
+			speed = -speed;
+		}
 	/*}
 	if (App->enemies->spawnQueue->type == ENEMY_TYPE::FIRESPARKS && App->enemies->spawnQueue->y == 120)
 	{
@@ -48,7 +60,7 @@ void Enemy_Firesparks::Update()
 			position.x--;
 		}
 	}*/
-
+>>>>>>> 5eef4b02f3a10c6301b9bd51426bf6767fb5840b
 	/*if (position.y == 196)
 	{
 		if (position.x < 24) {

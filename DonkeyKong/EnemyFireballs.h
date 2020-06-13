@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __ENEMY_FIREBALLS_H__
-#define __ENEMY_FIREBALLS_H__
+#ifndef __ENEMY_BROWNSHIP_H__
+#define __ENEMY_BROWNSHIP_H__
 
 #include "Enemies.h"
 #include "Path.h"
@@ -22,5 +22,5 @@ private:
 	Animation rightAnim;
 };
 
-#endif
+#endif // __ENEMY_BROWNSHIP_H__
 

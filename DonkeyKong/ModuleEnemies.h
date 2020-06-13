@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef MODULE_ENEMIES_H
-#define MODULE_ENEMIES_H
+#ifndef __MODULE_ENEMIES_H__
+#define __MODULE_ENEMIES_H__
 
 #include "Module.h"
 #include "SDL_Rect.h"
@@ -10,15 +10,11 @@
 #include "Enemies.h"
 
 #define MAX_ENEMIES 5
-#define MAX_CAKES 10
 
 enum class ENEMY_TYPE
 {
 	NO_TYPE,
-	FIREBALLS,
-	FIRESPARKS,
-	CAKES,
-	JUMPER
+	FIREBALLS
 };
 
 struct EnemySpawnpoint
@@ -60,18 +56,14 @@ public:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
 
-	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
-	EnemySpawnpoint spawnQueuecakes[MAX_CAKES];
-
 private: //?
 
 	// A queue with all spawn points information
+	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
 
 	Enemies* enemies[MAX_ENEMIES] = { nullptr };
-	Enemies* enemiescakes[MAX_CAKES] = { nullptr };
 
 	SDL_Texture* enemiestexture = nullptr;
-	SDL_Texture* enemiestexture2 = nullptr;
 	SDL_Texture* particlestexture = nullptr;
 
 
@@ -88,4 +80,4 @@ private: //?
 	Animation blankAnim;
 };
 
-#endif // MODULE_ENEMIES_H
+#endif // __MODULE_ENEMIES_H__

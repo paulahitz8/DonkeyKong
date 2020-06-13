@@ -9,7 +9,6 @@
 #include "ModuleScore.h"
 #include "ModuleDonkey.h"
 #include "ModuleEnemies.h"
-#include "ModuleObject.h"
 #include "ModuleCollisions.h"
 #include "WinningScreen.h"
 #include "IntroScreen.h"
@@ -65,12 +64,6 @@ ModuleLvl4::~ModuleLvl4()
 
 bool ModuleLvl4::Start()
 {
-	App->object->hammer1exists = true;
-	App->object->hammer2exists = true;
-	App->object->bagexists = true;
-	App->object->hatexists = true;
-	App->object->paraguasexists = true;
-
 	i = 1;
 	lvl4status = true;
 	App->player->activelevel = 4;
@@ -83,6 +76,8 @@ bool ModuleLvl4::Start()
 	}
 	App->winning->win = false;
 	App->intro->intro = false;
+	
+	// FUnciona mas o menos pero la zanahoria que coges justo antes de morir no spawnea otra vez
 
 	for (int a = 0; a < 32; a++) {
 		for (int b = 0; b < 32; b++) {
@@ -189,7 +184,6 @@ bool ModuleLvl4::Start()
 
 	// Enable Player
 	App->score->Enable();
-	App->object->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
 	App->enemies->Enable();
@@ -360,7 +354,6 @@ bool ModuleLvl4::CleanUp()
 
 
 	App->player->Disable();
-	App->object->Disable();
 	App->donkey->Disable();
 	App->enemies->Disable();
 	App->hammer->Disable();

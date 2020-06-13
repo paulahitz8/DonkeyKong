@@ -18,7 +18,6 @@
 #include "ModuleLady.h"
 #include "ModuleHammer.h"
 #include "ModuleScore.h"
-#include "ModuleObject.h"
 #include "SiguienteNivel.h"
 #include "PierdeVida.h"
 #include "GameOver.h"
@@ -42,7 +41,6 @@ Application::Application()
 	modules[i++] =  lvl2 =			new ModuleLvl2(false);
 	modules[i++] =  lvl3 =			new ModuleLvl3(false);
 	modules[i++] =	lvl4 =			new ModuleLvl4(false);
-	modules[i++] =	object =		new ModuleObject(false);
 	modules[i++] =	player =		new ModulePlayer(false);
 	modules[i++] =	donkey =		new ModuleDonkey(false);
 	modules[i++] =  lady =			new ModuleLady(false);

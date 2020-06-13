@@ -5,7 +5,6 @@
 #include "ModuleAudio.h"
 #include "ModuleScore.h"
 #include "ModuleInput.h"
-#include "ModuleObject.h"
 #include "ModuleScore.h"
 #include "ModuleFadeToBlack.h"
 
@@ -22,13 +21,6 @@ IntroScreen::~IntroScreen()
 // Load assets
 bool IntroScreen::Start()
 {
-	//adding all the objects again if we play again
-	App->object->hammer1exists = true;
-	App->object->hammer2exists = true;
-	App->object->bagexists = true;
-	App->object->hatexists = true;
-	App->object->paraguasexists = true;
-
 	LOG("Loading background assets");
 
 	bool ret = true;
