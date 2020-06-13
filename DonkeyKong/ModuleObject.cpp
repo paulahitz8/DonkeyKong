@@ -5,6 +5,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleHammer.h"
 
 
 
@@ -93,7 +94,6 @@ bool ModuleObject::Start()
 Update_Status ModuleObject::Update()
 {
 
-
 	// LEVEL 2
 
 	if (App->player->activelevel == 2) {
@@ -102,6 +102,10 @@ Update_Status ModuleObject::Update()
 			ochopos.x = 123;
 			hammer1exists = false;
 			colliderDelete->pendingToDelete = true;
+
+			hammerOn = true;
+			App->hammer->Enable();
+
 		}
 		else if (objetetodeletey == 138 && objetetodeletex == 32) {
 			ochopos.y = 140;

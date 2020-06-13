@@ -30,6 +30,8 @@ public:
 	bool hatexists = true;
 	bool paraguasexists = true;
 
+	bool hammerOn = false;
+
 private: 
 	Collider* colliderDelete = nullptr;
 	iPoint cienpos;

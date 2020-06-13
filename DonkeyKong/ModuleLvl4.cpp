@@ -192,7 +192,6 @@ bool ModuleLvl4::Start()
 	App->object->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
-	App->hammer->Enable();
 	App->enemies->Enable();
 	App->lady->Enable();
 
@@ -363,8 +362,8 @@ bool ModuleLvl4::CleanUp()
 	App->player->Disable();
 	App->object->Disable();
 	App->donkey->Disable();
-	App->hammer->Disable();
 	App->enemies->Disable();
+	App->hammer->Disable();
 	App->lady->Disable();
 	App->score->Disable();
 	return true;
