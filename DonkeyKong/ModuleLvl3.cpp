@@ -219,7 +219,7 @@ bool ModuleLvl3::Start()
 	App->score->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
-	App->hammer->Enable();
+	//App->hammer->Enable();
 	App->enemies->Enable();
 	App->lady->Enable();
 

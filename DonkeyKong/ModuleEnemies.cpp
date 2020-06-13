@@ -312,6 +312,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	}
 	for (uint i = 0; i < MAX_CAKES; ++i)
 	{
+
 		if (enemiescakes[i] != nullptr && enemiescakes[i]->GetCollider() == c1 && c2->type == Collider::Type::HAMMER)
 		{
 			enemiescakes[i]->OnCollision(c2); //Notify collision of an enemy

@@ -48,6 +48,8 @@ private:
 	bool isJumping = false;
 
 
+	int hammerCount;
+
 public:
 
 	int activelevel = 0;
