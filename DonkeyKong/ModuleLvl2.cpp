@@ -95,6 +95,7 @@ bool ModuleLvl2::Start()
 	cienpos.x = 0;
 	cienpos.y = 0;
 
+	
 	App->audio->PlayMusic("Assets/Music/stage2.ogg", 1.0f);
 
 	//TILEMAP
