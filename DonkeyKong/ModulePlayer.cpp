@@ -16,23 +16,23 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	//NO HAMMER ANIMATIONS
 
 	// left idle
-	leftidleAnimNoHam.PushBack({ 56, 2, 12, 16 });
+	leftidleAnimNoHam.PushBack({ 0, 264, 50, 26 });
 	leftidleAnimNoHam.speed = 0.1f;
 
 	//right idle
-	rightidleAnimNoHam.PushBack({ 158, 160, 12, 16 });
+	rightidleAnimNoHam.PushBack({ 0, 470, 50, 26 });
 	rightidleAnimNoHam.speed = 0.1f;
 
 	// left animation
-	leftAnimNoHam.PushBack({ 79, 2, 15, 16 });
-	leftAnimNoHam.PushBack({ 103, 3, 15, 15 });
-	leftAnimNoHam.PushBack({ 79, 2, 15, 16 });
+	leftAnimNoHam.PushBack({ 0, 306, 50, 26 });
+	leftAnimNoHam.PushBack({ 0, 346, 50, 26 });
+	leftAnimNoHam.PushBack({ 0, 306, 50, 26 });
 	leftAnimNoHam.speed = 0.2f;
 
 	//right animation
-	rightAnimNoHam.PushBack({ 132, 160, 15, 16 });
-	rightAnimNoHam.PushBack({ 108, 161, 15, 15 });
-	rightAnimNoHam.PushBack({ 132, 160, 15, 16 });
+	rightAnimNoHam.PushBack({ 0, 388, 50, 26 });
+	rightAnimNoHam.PushBack({ 0, 431, 50, 26 });
+	rightAnimNoHam.PushBack({ 0, 388, 50, 26 });
 	rightAnimNoHam.speed = 0.2f;
 	
 	//jump left
