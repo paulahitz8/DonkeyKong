@@ -22,7 +22,10 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Colliders.cpp" />
     <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="EnemyCakes.cpp" />
     <ClCompile Include="EnemyFireballs.cpp" />
+    <ClCompile Include="EnemyFiresparks.cpp" />
+    <ClCompile Include="EnemyJumper.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="InitialScreen.cpp" />
@@ -41,6 +44,7 @@
     <ClCompile Include="ModuleLvl2.cpp" />
     <ClCompile Include="ModuleLvl3.cpp" />
     <ClCompile Include="ModuleLvl4.cpp" />
+    <ClCompile Include="ModuleObject.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleScore.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
@@ -56,7 +60,10 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Colliders.h" />
     <ClInclude Include="Enemies.h" />
+    <ClInclude Include="EnemyCakes.h" />
     <ClInclude Include="EnemyFireballs.h" />
+    <ClInclude Include="EnemyFiresparks.h" />
+    <ClInclude Include="EnemyJumper.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="InitialScreen.h" />
@@ -75,6 +82,7 @@
     <ClInclude Include="ModuleLvl2.h" />
     <ClInclude Include="ModuleLvl3.h" />
     <ClInclude Include="ModuleLvl4.h" />
+    <ClInclude Include="ModuleObject.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleScore.h" />
     <ClInclude Include="ModuleTextures.h" />

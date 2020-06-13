@@ -45,6 +45,7 @@ public:
 
 	// The enemy's texture
 	SDL_Texture* enemiestexture = nullptr;
+	SDL_Texture* enemiestexture2 = nullptr;
 
 	// Sound fx when destroyed
 	int destroyedFx = 0;
@@ -52,7 +53,10 @@ public:
 	//bool pendingToDelete = false;
 
 	// A ptr to the current animation
-	Animation* currentAnim = nullptr;
+	Animation* currentAnimfireballs = nullptr;
+	Animation* currentAnimfiresparks = nullptr;
+	Animation* currentAnimcakes = nullptr;
+	Animation* currentAnimjumper = nullptr;
 
 	// The enemy's collider
 	Collider* collider = nullptr;

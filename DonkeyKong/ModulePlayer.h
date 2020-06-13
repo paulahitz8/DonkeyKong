@@ -39,6 +39,7 @@ private:
 	bool destroyed = false;
 	bool ladderOn = false;
 	bool groundOn = false;
+	bool leftPlatOn = false;
 
 	int i = 1;
 	int j = 0;
