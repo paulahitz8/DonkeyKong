@@ -10,11 +10,15 @@
 #include "Enemies.h"
 
 #define MAX_ENEMIES 5
+#define MAX_CAKES 10
 
 enum class ENEMY_TYPE
 {
 	NO_TYPE,
-	FIREBALLS
+	FIREBALLS,
+	FIRESPARKS,
+	CAKES,
+	JUMPER
 };
 
 struct EnemySpawnpoint
@@ -60,10 +64,13 @@ private: //?
 
 	// A queue with all spawn points information
 	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
+	EnemySpawnpoint spawnQueuecakes[MAX_CAKES];
 
 	Enemies* enemies[MAX_ENEMIES] = { nullptr };
+	Enemies* enemiescakes[MAX_CAKES] = { nullptr };
 
 	SDL_Texture* enemiestexture = nullptr;
+	SDL_Texture* enemiestexture2 = nullptr;
 	SDL_Texture* particlestexture = nullptr;
 
 

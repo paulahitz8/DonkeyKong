@@ -109,6 +109,7 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
+<<<<<<< HEAD
 	if (App->object->hammerOn == true) {
 		hammerCount++;
 		
@@ -123,6 +124,9 @@ Update_Status ModulePlayer::Update()
 
 	}
 
+=======
+	GamePad& pad = App->input->pads[0];
+>>>>>>> parent of 165e2ee... Deberia workear
 
 	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN) {
 		godmode = !godmode;
@@ -296,7 +300,7 @@ Update_Status ModulePlayer::Update()
 		}
 		Con esto o lo de abajo debería caerse al salir de un collider del ground*/
 
-		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN) {
+		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true) {
 			isJumping = true;
 			jumpTimer = 1;
 			startingy = position.y;
@@ -308,11 +312,11 @@ Update_Status ModulePlayer::Update()
 			jumpingspeedy -= gravity;
 			position.y -= jumpingspeedy;
 
-			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT) {
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT || pad.l_x < 0.0f) {
 				position.x -= jumpingspeedx;
 			}
 			    
-			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT) {
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT || pad.r_x < 0.0f) {
 				position.x += jumpingspeedx;
 			}
 
@@ -325,7 +329,7 @@ Update_Status ModulePlayer::Update()
 
 		if (groundOn == true) {
 
-			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT || pad.l_x < 0.0f)
 			{
 				position.x -= speedx;
 					currentAnimation = &leftAnim;
@@ -335,7 +339,7 @@ Update_Status ModulePlayer::Update()
 				}
 			}
 
-			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT || pad.r_x < 0.0f)
 			{
 				position.x += speedx;
 				currentAnimation = &rightAnim;
@@ -346,18 +350,18 @@ Update_Status ModulePlayer::Update()
 			}
 
 			// If last movement was left, set the current animation back to left idle
-			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP || pad.l_x < 0.0f)
 			{
 				currentAnimation = &leftidleAnim;
 			}
 			// If last movement was right, set the current animation back to left idle
-			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP || pad.r_x < 0.0f)
 				currentAnimation = &rightidleAnim;
 
 
 			if (ladderOn == true) {
 
-				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT || pad.r_y < 0.0f)
 				{
 					position.y += speedy;
 					if (position.y == 223 || position.y == 183 || position.y == 143 || position.y == 103 || position.y == 63)
@@ -382,7 +386,7 @@ Update_Status ModulePlayer::Update()
 					}
 				}
 
-				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT || pad.l_y < 0.0f)
 				{
 					position.y -= speedy;
 					if (position.y == 222 || position.y == 182 || position.y == 142 || position.y == 102 || position.y == 62)
@@ -407,7 +411,7 @@ Update_Status ModulePlayer::Update()
 					}
 				}
 
-				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_UP || App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_UP)
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_UP || App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_UP || pad.l_y < 0.0f || pad.r_y < 0.0f)
 				{
 					currentAnimation = &upladderAnim1;
 				}
@@ -419,13 +423,13 @@ Update_Status ModulePlayer::Update()
 
 			if (ladderOn == true) {
 
-				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT || pad.l_y < 0.0f)
 				{
 					position.y += speedy;
 
 				}
 
-				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT || pad.r_y < 0.0f)
 				{
 					position.y -= speedy;
 				}
