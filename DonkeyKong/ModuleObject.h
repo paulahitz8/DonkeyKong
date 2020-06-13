@@ -49,6 +49,12 @@ private:
 	SDL_Rect bagrect;
 	SDL_Rect paraguasrect;
 
+
+	iPoint ochopos;
+	SDL_Texture* ochotexture = nullptr;
+	SDL_Rect ochorect;
+
+
 	int objectFx = 0;
 
 	SDL_Rect rectnegro;

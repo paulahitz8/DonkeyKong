@@ -24,13 +24,17 @@ bool ModuleObject::Start()
 
 	objetetodeletey = 0;
 	objetetodeletex = 0;
+	ochopos.x = 0;
+	ochopos.y = 0;
+	ochorect = { 155,104,15,7 };
+	ochotexture = App->textures->Load("Assets/objects/RandomSprites.png");
 	hammer = App->textures->Load("Assets/objects/RandomSprites.png");
 	hat = App->textures->Load("Assets/objects/RandomSprites.png");
 	bag = App->textures->Load("Assets/objects/RandomSprites.png");
 	paraguas = App->textures->Load("Assets/objects/RandomSprites.png");
 	negro = App->textures->Load("Assets/cositasfondo/fondonegro.png");
 
-	rectnegro = { 0,0,16,15 };
+	
 	
 	hammerrect = { 144, 81, 9, 10 };
 	bagrect = { 191, 81, 9, 9 };
@@ -94,32 +98,32 @@ Update_Status ModuleObject::Update()
 
 	if (App->player->activelevel == 2) {
 		if (objetetodeletey == 178 && objetetodeletex == 121) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 180;
+			ochopos.x = 123;
 			hammer1exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 138 && objetetodeletex == 32) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 140;
+			ochopos.x = 34;
 			hammer2exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 238 && objetetodeletex == 134) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 238;
+			ochopos.x = 135;
 			bagexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 152 && objetetodeletex == 212) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 154;
+			ochopos.x = 214;
 			paraguasexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 159 && objetetodeletex == 77) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 159;
+			ochopos.x = 77;
 			hatexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
@@ -130,20 +134,20 @@ Update_Status ModuleObject::Update()
 	if (App->player->activelevel == 3) {
 
 		if (objetetodeletey == 94 && objetetodeletex == 223) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 94;
+			ochopos.x = 221;
 			bagexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 120 && objetetodeletex == 20) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 120;
+			ochopos.x = 18;
 			paraguasexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 199 && objetetodeletex == 85) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 199;
+			ochopos.x = 83;
 			hatexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
@@ -153,32 +157,32 @@ Update_Status ModuleObject::Update()
 	// LEVEL 4
 	if (App->player->activelevel == 4) {
 		if (objetetodeletey == 138 && objetetodeletex == 24) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 138;
+			ochopos.x = 22;
 			hammer1exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 98 && objetetodeletex == 121) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 98;
+			ochopos.x = 119;
 			hammer2exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 238 && objetetodeletex == 143) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 238;
+			ochopos.x = 141;
 			bagexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 72 && objetetodeletex == 44) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 72;
+			ochopos.x = 42;
 			paraguasexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 199 && objetetodeletex == 213) {
-			cienpos.y = 216;
-			cienpos.x = 69;
+			ochopos.y = 199;
+			ochopos.x = 211;
 			hatexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
@@ -210,7 +214,11 @@ Update_Status ModuleObject::PostUpdate()
 		}
 		
 		
-		
+		if (ochopos.x != 0 && ochopos.y != 0) {
+
+			App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
+
+		}
 	
 	}
 
@@ -227,7 +235,11 @@ Update_Status ModuleObject::PostUpdate()
 
 			App->render->Blit(hat, 85, 199, &hatrect);
 		}
-	
+		if (ochopos.x != 0 && ochopos.y != 0) {
+
+			App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
+
+		}
 	
 	}
 
@@ -251,9 +263,15 @@ Update_Status ModuleObject::PostUpdate()
 			App->render->Blit(hat, 213, 199, &hatrect);
 		}
 	
-	
+		if (ochopos.x != 0 && ochopos.y != 0) {
+
+			App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
+
+		}
 	}
 	
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
