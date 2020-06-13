@@ -36,15 +36,15 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnimNoHam.speed = 0.2f;
 	
 	//jump left
-	jumpLeftAnim.PushBack({ 54, 49, 16, 15 });
-	jumpLeftAnim.PushBack({ 78, 49, 16, 15 });
-	jumpLeftAnim.PushBack({ 102, 48, 16, 16 });
+	jumpLeftAnim.PushBack({ 71, 263, 50, 26 });
+	jumpLeftAnim.PushBack({ 71, 305,  50, 26 });
+	jumpLeftAnim.PushBack({ 71, 346,  50, 26 });
 	rightAnimNoHam.speed = 0.2f;
 
 	//jump right
-	jumpRightAnim.PushBack({ 156, 207, 16, 15 });
-	jumpRightAnim.PushBack({ 132, 2070, 16, 15 });
-	jumpRightAnim.PushBack({ 108, 206, 16, 16 });
+	jumpRightAnim.PushBack({ 71, 388, 50, 26 });
+	jumpRightAnim.PushBack({ 71, 430, 50, 26 });
+	jumpRightAnim.PushBack({ 71, 470, 50, 26 });
 	rightAnimNoHam.speed = 0.2f;
 	
 
@@ -75,16 +75,15 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.2f;
 
 	//up animation
-	upladderAnim1.PushBack({ 278, 11, 13, 16 });
-	upladderAnim.PushBack({ 276, 46, 14, 15 });
-	upladderAnim.PushBack({ 176, 77, 16, 12 });
+	upladderAnim1.PushBack({ 261, 94, 50, 26 });
+	upladderAnim.PushBack({ 261, 122, 50, 26 });
+	upladderAnim.PushBack({ 261, 1, 50, 26 });
 	upladderAnim2.PushBack({ 261, 35, 50, 26 });
 	upladderAnim3.PushBack({ 261, 63, 50, 26 });
 	upladderAnim.speed = 0.12f;
 
 
 	//down animation
-	
 	downladderAnim3.PushBack({ 261, 63, 50, 26 });
 	downladderAnim2.PushBack({ 261, 35, 50, 26 });
 	downladderAnim.PushBack({ 261, 1, 50, 26 });
@@ -121,8 +120,8 @@ bool ModulePlayer::Start()
 
 	currentAnimation = &rightidleAnimNoHam; //mario empieza mirando a la derecha
 
-	position.x = { 44 };
-	position.y = { 223 };
+	position.x = { 43 };
+	position.y = { 222 };
 
 	carrotcount = 8;
 	if (resetVidas == true) {
@@ -134,7 +133,7 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 
-	collider = App->collision->AddCollider({ position.x, position.y, 12, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collision->AddCollider({ position.x + 18, position.y + 10, 12, 16 }, Collider::Type::PLAYER, this);
 
 	walkingFx = App->audio->LoadFx("Assets/Music/15 SFX (Walking).wav");
 	silenceFx = App->audio->LoadFx("Assets/Music/silence.wav");
@@ -556,7 +555,7 @@ Update_Status ModulePlayer::Update()
 	}
 
 
-		collider->SetPos(position.x + 18, position.y + 10);
+	collider->SetPos(position.x + 18, position.y + 10);
 
 
 	currentAnimation->Update();
