@@ -14,6 +14,8 @@ public:
 
 	void Update() override;
 
+	int i = 0;
+
 private:
 
 	Collider* colliderJ = nullptr;

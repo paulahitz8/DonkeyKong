@@ -15,33 +15,66 @@ Enemy_Jumper::Enemy_Jumper(int x, int y) : Enemies(x, y)
 
 void Enemy_Jumper::Update()
 {
-	position.x += speed;
-	/*if (position.y == 120)
-	{*/
-	if (position.x < 15) {
+	position.y += speed;
+	if (position.x < 200)
+	{
+		position.x++;
+		if (position.y < 70)
+		{
+			currentAnimjumper = &AnimUp;
+		}
+		else
+		{
+			currentAnimjumper = &AnimDown;
+			if (position.y == 74)
+			{
+				speed = -speed;
+			}
+		}
+	}
+	if (position.y == 57)
+	{
 		speed = -speed;
 	}
-	if (position.x > 220) {
-		speed = -speed;
-	}
-	/*}*/
-	/*if (position.y == 156)
+	if (position.y < 90 && position.y > 74)
 	{
-		if (position.x < 32) {
-			currentAnim = &rightAnim;
-		}
-		if (position.x > 212) {
-			currentAnim = &leftAnim;
-		}
+		currentAnimjumper = &AnimDown;
+		position.y += speed;
 	}
-	if (position.y == 116)
+	else if (position.y < 120 && position.y > 90)
 	{
-		if (position.x < 40) {
-			currentAnim = &rightAnim;
-		}
-		if (position.x > 206) {
-			currentAnim = &leftAnim;
-		}
-	}*/
+		currentAnimjumper = &AnimUp;
+		position.y += speed;
+	}
+	else if (position.y < 130 && position.y > 120)
+	{
+		currentAnimjumper = &AnimDown;
+		position.y += speed;
+	}
+	else if (position.y < 160 && position.y > 130)
+	{
+		currentAnimjumper = &AnimUp;
+		position.y += speed;
+	}
+	else if (position.y < 170 && position.y > 160)
+	{
+		currentAnimjumper = &AnimDown;
+		position.y += speed;
+	}
+	else if (position.y < 200 && position.y > 170)
+	{
+		currentAnimjumper = &AnimUp;
+		position.y += speed;
+	}
+	else if (position.y < 210 && position.y > 200)
+	{
+		currentAnimjumper = &AnimDown;
+		position.y += speed;
+	}
+	else if (position.y > 210)
+	{
+		currentAnimjumper = &AnimUp;
+		position.y += speed;
+	}
 	Enemies::Update();
 }
