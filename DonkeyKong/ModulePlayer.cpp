@@ -341,9 +341,6 @@ Update_Status ModulePlayer::Update()
 
 			if (App->object->hammerOn == true) {
 				
-					
-
-
 				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN /*|| pad.a == true*/) {
 
 					if (isJumping == false) {
@@ -405,8 +402,6 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP /*|| pad.r_x < 0.0f*/)
 					currentAnimation = &rightidleAnim;
 			}
-
-
 
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			
@@ -577,7 +572,7 @@ Update_Status ModulePlayer::Update()
 Update_Status ModulePlayer::PostUpdate()
 {
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	App->render->Blit(playertexture, position.x, position.y, &rect);
+		App->render->Blit(playertexture, position.x, position.y, &rect);
 
 	return Update_Status::UPDATE_CONTINUE;
 }

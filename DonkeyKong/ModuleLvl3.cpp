@@ -69,7 +69,7 @@ bool ModuleLvl3::Start()
 	App->object->bagexists = true;
 	App->object->hatexists = true;
 	App->object->paraguasexists = true;
-	
+	App->object->hammerOn = false;
 
 
 	i = 1;

@@ -32,8 +32,7 @@ private:
 	uint deadFx = 0;
 	uint bonusFx = 0;
 
-	// The player's collider
-	Collider* collider = nullptr;
+
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
@@ -51,6 +50,9 @@ private:
 	int hammerCount;
 
 public:
+
+	// The player's collider
+	Collider* collider = nullptr;
 
 	int activelevel = 0;
 

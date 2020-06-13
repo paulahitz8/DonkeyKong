@@ -102,9 +102,6 @@ Update_Status ModuleObject::Update()
 			ochopos.x = 123;
 			hammer1exists = false;
 			colliderDelete->pendingToDelete = true;
-
-		
-
 		}
 		else if (objetetodeletey == 138 && objetetodeletex == 32) {
 			ochopos.y = 140;
@@ -304,6 +301,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 		hammerOn = true;
 		App->hammer->Enable();
+		App->player->collider->SetPos(position.x, position.y);
 
 		App->audio->PlayFx(objectFx);
 

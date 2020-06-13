@@ -70,6 +70,7 @@ bool ModuleLvl4::Start()
 	App->object->bagexists = true;
 	App->object->hatexists = true;
 	App->object->paraguasexists = true;
+	App->object->hammerOn = false;
 
 	i = 1;
 	lvl4status = true;
