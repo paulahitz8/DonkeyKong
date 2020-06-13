@@ -255,7 +255,7 @@ Update_Status ModuleLvl3::Update()
 	}
 	if (i == 10)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 225, 86);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 215, 128);
 	}
 	i++;
 
