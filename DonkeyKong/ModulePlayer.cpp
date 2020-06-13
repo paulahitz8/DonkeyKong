@@ -8,6 +8,7 @@
 #include "ModuleHammer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollisions.h"
+#include "ModuleObject.h"
 
 #include "SDL_scancode.h"
 
@@ -73,6 +74,8 @@ ModulePlayer::~ModulePlayer() {
 
 bool ModulePlayer::Start()
 {
+	hammerCount = 0;
+
 	carrotDeletex = 0;
 	carrotDeletey = 0;
 
@@ -106,6 +109,20 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
+	if (App->object->hammerOn == true) {
+		hammerCount++;
+		
+		
+		
+		
+		if (hammerCount == 50) {
+			App->hammer->Disable();
+			hammerCount = 0;
+			App->object->hammerOn = false;
+		}
+
+	}
+
 
 	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN) {
 		godmode = !godmode;
@@ -198,7 +215,9 @@ Update_Status ModulePlayer::Update()
 
 			resetVidas = true;
 			collider->pendingToDelete = true;
-			App->hammer->hammerCollider->pendingToDelete = true;
+			if (App->object->hammerOn == true) {
+				App->hammer->hammerCollider->pendingToDelete = true;
+			}
 			if (App->player->activelevel == 2) {
 				App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->gameover, 30);
 			}
@@ -216,7 +235,10 @@ Update_Status ModulePlayer::Update()
 		else {
 
 			collider->pendingToDelete = true;
-			App->hammer->hammerCollider->pendingToDelete = true;
+			if (App->object->hammerOn == true) {
+				App->hammer->hammerCollider->pendingToDelete = true;
+			}
+
 
 			if (currentAnimation != &angelAnim && currentAnimation != &deadAnim2 && currentAnimation != &deadAnim3 && currentAnimation != &deadAnim4)
 			{
@@ -306,7 +328,7 @@ Update_Status ModulePlayer::Update()
 			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 			{
 				position.x -= speedx;
-				currentAnimation = &leftAnim;
+					currentAnimation = &leftAnim;
 				if (position.x % 15 == 0)
 				{
 					App->audio->PlayFx(walkingFx);
