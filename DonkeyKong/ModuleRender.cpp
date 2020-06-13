@@ -37,6 +37,9 @@ bool ModuleRender::Init()
 		ret = false;
 	}
 
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);//Deberia adaptarse a la resoluciond de fullscreen
+
+
 	return ret;
 }
 
