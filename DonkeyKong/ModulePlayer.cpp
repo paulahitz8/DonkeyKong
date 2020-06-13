@@ -75,20 +75,24 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.2f;
 
 	//up animation
-	upladderAnim1.PushBack({ 278, 11, 13, 16 });
-	upladderAnim.PushBack({ 276, 46, 14, 15 });
-	upladderAnim.PushBack({ 176, 77, 16, 12 });
-	upladderAnim2.PushBack({ 261, 35, 50, 26 });
-	upladderAnim3.PushBack({ 261, 63, 50, 26 });
+	upladderAnim1.PushBack({ 276, 105, 16, 15 });
+	upladderAnim.PushBack({ 277, 132, 13, 16 });
+	upladderAnim.PushBack({ 278, 11, 13, 16 });
+	upladderAnim1.PushBack({ 276, 105, 16, 15 });
+	upladderAnim.PushBack({ 277, 132, 13, 16 });
+	upladderAnim.PushBack({ 278, 11, 13, 16 });
 	upladderAnim.speed = 0.12f;
 
+
 	//down animation
-	downladderAnim3.PushBack({ 261, 63, 50, 26 });
-	downladderAnim2.PushBack({ 261, 35, 50, 26 });
-	downladderAnim.PushBack({ 261, 1, 50, 26 });
-	downladderAnim.PushBack({ 261, 122, 50, 26 });
-	downladderAnim1.PushBack({ 261, 94, 50, 26 });
+	
+	downladderAnim2.PushBack({ 276, 77, 16, 12 });
+	downladderAnim3.PushBack({ 276, 46, 14, 15 });
+	downladderAnim.PushBack({ 278, 11, 13, 16 }); 
+	downladderAnim.PushBack({ 277, 132, 13, 16 }); 
+	downladderAnim.PushBack({ 276, 105, 16, 15 });
 	downladderAnim.speed = 0.12f;
+
 
 	//dead animation
 	deadAnim1.PushBack({ 149, 41, 50, 26 });
