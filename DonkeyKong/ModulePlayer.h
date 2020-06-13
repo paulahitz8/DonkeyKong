@@ -58,6 +58,12 @@ public:
 
 	// Animation
 	Animation* currentAnimation = nullptr;
+	Animation leftidleAnimNoHam;
+	Animation rightidleAnimNoHam;
+	Animation leftAnimNoHam;
+	Animation rightAnimNoHam;
+	Animation jumpLeftAnim;
+	Animation jumpRightAnim;
 	Animation leftidleAnim;
 	Animation rightidleAnim;
 	Animation leftAnim;
