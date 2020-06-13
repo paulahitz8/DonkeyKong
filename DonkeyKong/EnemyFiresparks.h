@@ -1,26 +1,26 @@
 #pragma once
-#ifndef __ENEMY_FIREBALLS_H__
-#define __ENEMY_FIREBALLS_H__
+#ifndef __ENEMY_FIRESPARKS_H__
+#define __ENEMY_FIRESPARKS_H__
 
 #include "Enemies.h"
 #include "Path.h"
 
-class Enemy_Fireballs : public Enemies
+class Enemy_Firesparks : public Enemies
 {
 public:
 
 	// Constructor (x y coordinates in the world)
-	Enemy_Fireballs(int x, int y);
+	Enemy_Firesparks(int x, int y);
 
 	void Update() override;
 
 private:
 
-	Collider* colliderF = nullptr;
+	Collider* colliderFS = nullptr;
 
 	Animation leftAnim;
 	Animation rightAnim;
 };
 
-#endif
+#endif 
 

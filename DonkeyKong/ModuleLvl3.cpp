@@ -8,6 +8,7 @@
 #include "ModuleHammer.h"
 #include "ModuleScore.h"
 #include "ModuleDonkey.h"
+#include "ModuleObject.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 #include "WinningScreen.h"
@@ -64,6 +65,13 @@ ModuleLvl3::~ModuleLvl3()
 
 bool ModuleLvl3::Start()
 {
+
+	App->object->bagexists = true;
+	App->object->hatexists = true;
+	App->object->paraguasexists = true;
+	
+
+
 	i = 1;
 	App->player->activelevel = 3;
 	lvl3status = true;
@@ -206,6 +214,7 @@ bool ModuleLvl3::Start()
 
 
 	// Enable Player
+	App->object->Enable();
 	App->score->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
@@ -235,24 +244,21 @@ Update_Status ModuleLvl3::Update()
 
 	// Enemy spawn timer
 
-	if (i % 1002 == 0)
+	if (i % 120 == 0)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 209, 156);
+		App->enemies->AddEnemy(ENEMY_TYPE::JUMPER, 16, 57);
 	}
-	else if (i % 501 == 0 && (i % 1002 != 0) && (i % 1503 != 0) && (i % 2505 != 0))
+	if (i == 1)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
-	}
-	else if ((i % 1503 == 0) || (i % 2505 == 0))
-	{
-		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 201, 116);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 217, 190);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 217, 196);
 	}
 	i++;
 
 
 	//MovingFloors
 	//LEFT
-	leftFloorA.y--;
+	/*leftFloorA.y--;
 	if (leftFloorA.y == 94) {
 		leftFloorA.y = 248;
 	}
@@ -287,7 +293,7 @@ Update_Status ModuleLvl3::Update()
 	if (rightFloorC.y == 248) {
 		rightFloorC.y = 94;
 	}
-	rightFloorCoC->SetPos(rightFloorC.x, rightFloorC.y);
+	rightFloorCoC->SetPos(rightFloorC.x, rightFloorC.y);*/
 
 
 
@@ -315,7 +321,7 @@ Update_Status ModuleLvl3::PostUpdate()
 	App->render->Blit(movingFloorTex, rightFloorA.x, rightFloorA.y, &rightFloorRectA);
 	App->render->Blit(movingFloorTex, rightFloorB.x, rightFloorB.y, &rightFloorRectB);
 	App->render->Blit(movingFloorTex, rightFloorC.x, rightFloorC.y, &rightFloorRectC);
-
+	App->render->Blit(backTexture, 0, 0, &back, 0);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -323,7 +329,7 @@ bool ModuleLvl3::CleanUp()
 {
 	App->collision->CleanUp();
 
-
+	App->object->Disable();
 	App->player->Disable();
 	App->donkey->Disable();
 	App->hammer->Disable();
