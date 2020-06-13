@@ -24,6 +24,11 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 
+	bool hammer1exists = true;
+	bool hammer2exists = true;
+	bool bagexists = true;
+	bool hatexists = true;
+	bool paraguasexists = true;
 
 private: 
 	Collider* colliderDelete = nullptr;
@@ -43,6 +48,8 @@ private:
 	SDL_Rect hatrect;
 	SDL_Rect bagrect;
 	SDL_Rect paraguasrect;
+
+	int objectFx = 0;
 
 	SDL_Rect rectnegro;
 	SDL_Texture* negro = nullptr;

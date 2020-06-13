@@ -6,9 +6,9 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleHammer.h"
-#include "ModuleObject.h"
 #include "ModuleScore.h"
 #include "ModuleDonkey.h"
+#include "ModuleObject.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 #include "WinningScreen.h"
@@ -66,6 +66,11 @@ ModuleLvl2::~ModuleLvl2()
 bool ModuleLvl2::Start()
 {
 
+	App->object->hammer1exists = true;
+	App->object->hammer2exists = true;
+	App->object->bagexists = true;
+	App->object->hatexists = true;
+	App->object->paraguasexists = true;
 
 	i = 1;
 	App->player->activelevel = 2;

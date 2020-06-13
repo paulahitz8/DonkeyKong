@@ -21,6 +21,9 @@ ModuleObject::~ModuleObject()
 
 bool ModuleObject::Start()
 {
+
+	objetetodeletey = 0;
+	objetetodeletex = 0;
 	hammer = App->textures->Load("Assets/objects/RandomSprites.png");
 	hat = App->textures->Load("Assets/objects/RandomSprites.png");
 	bag = App->textures->Load("Assets/objects/RandomSprites.png");
@@ -34,7 +37,7 @@ bool ModuleObject::Start()
 	paraguasrect = { 212, 75, 16, 15 };
 	hatrect = { 165, 82, 15, 8 };
 
-	
+	objectFx = App->audio->LoadFx("Assets/Music/19 SFX (Bonus).wav");
 
 
 	if (App->player->activelevel == 2) {
@@ -93,31 +96,31 @@ Update_Status ModuleObject::Update()
 		if (objetetodeletey == 178 && objetetodeletex == 121) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-			
+			hammer1exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 138 && objetetodeletex == 32) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			hammer2exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 238 && objetetodeletex == 134) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-			//App->render->Blit(negro, 121, 178, &rectnegro);
+			bagexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 152 && objetetodeletex == 212) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			paraguasexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 159 && objetetodeletex == 77) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			hatexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 	}
@@ -129,19 +132,19 @@ Update_Status ModuleObject::Update()
 		if (objetetodeletey == 94 && objetetodeletex == 223) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			bagexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 120 && objetetodeletex == 20) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			paraguasexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 199 && objetetodeletex == 85) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			hatexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 
@@ -152,31 +155,31 @@ Update_Status ModuleObject::Update()
 		if (objetetodeletey == 138 && objetetodeletex == 24) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			hammer1exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 98 && objetetodeletex == 121) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			hammer2exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 238 && objetetodeletex == 143) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			bagexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 72 && objetetodeletex == 44) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			paraguasexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 199 && objetetodeletex == 213) {
 			cienpos.y = 216;
 			cienpos.x = 69;
-
+			hatexists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 	}
@@ -188,30 +191,66 @@ Update_Status ModuleObject::PostUpdate()
 {
 	if (App->player->activelevel == 2) {
 	
-		App->render->Blit(hammer, 121, 178, &hammerrect);
-		App->render->Blit(hammer, 32, 138, &hammerrect);
-		App->render->Blit(bag, 134, 238, &bagrect);
-		App->render->Blit(paraguas, 212, 152, &paraguasrect);
-		App->render->Blit(hat, 77, 159, &hatrect);
+		if (hammer1exists == true) {
+			App->render->Blit(hammer, 121, 178, &hammerrect);
+		}
+		if (hammer2exists == true) {
+
+			App->render->Blit(hammer, 32, 138, &hammerrect);
+		}
+		if (bagexists == true) {
+
+			App->render->Blit(bag, 134, 238, &bagrect);
+		}if (paraguasexists == true) {
+
+			App->render->Blit(paraguas, 212, 152, &paraguasrect);
+		}if (hatexists == true) {
+
+			App->render->Blit(hat, 77, 159, &hatrect);
+		}
+		
+		
+		
 	
 	}
 
 	if (App->player->activelevel == 3) {
 	
+		
+		if (bagexists == true) {
 
-		App->render->Blit(bag, 223, 94, &bagrect);
-		App->render->Blit(paraguas, 20, 120, &paraguasrect);
-		App->render->Blit(hat, 85, 199, &hatrect);
+			App->render->Blit(bag, 223, 94, &bagrect);
+		}if (paraguasexists == true) {
+
+			App->render->Blit(paraguas, 20, 120, &paraguasrect);
+		}if (hatexists == true) {
+
+			App->render->Blit(hat, 85, 199, &hatrect);
+		}
+	
 	
 	}
 
 	if (App->player->activelevel == 4) {
+		if (hammer1exists == true) {
+			App->render->Blit(hammer, 24, 138, &hammerrect);
+		}
+		if (hammer2exists == true) {
+
+			App->render->Blit(hammer, 121, 98, &hammerrect);
+		}
+
+		if (bagexists == true) {
+			App->render->Blit(bag, 143, 238, &bagrect);
+
+		}
+		if (paraguasexists == true) {
+
+			App->render->Blit(paraguas, 44, 72, &paraguasrect);
+		}if (hatexists == true) {
+			App->render->Blit(hat, 213, 199, &hatrect);
+		}
 	
-		App->render->Blit(hammer, 24, 138, &hammerrect);
-		App->render->Blit(hammer, 121, 98, &hammerrect);
-		App->render->Blit(bag, 143, 238, &bagrect);
-		App->render->Blit(paraguas, 44, 72, &paraguasrect);
-		App->render->Blit(hat, 213, 199, &hatrect);
 	
 	}
 	
@@ -244,7 +283,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 
 
-		//App->audio->PlayFx(enemyDestroyedFx);
+		App->audio->PlayFx(objectFx);
 
 	}
 	if (c1 == hammer2col && c2->type == Collider::Type::PLAYER)
@@ -257,7 +296,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 
 
-		//App->audio->PlayFx(enemyDestroyedFx);
+		App->audio->PlayFx(objectFx);
 
 	}
 	if (c1 == bagcol && c2->type == Collider::Type::PLAYER)
@@ -270,7 +309,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 
 
-		//App->audio->PlayFx(enemyDestroyedFx);
+		App->audio->PlayFx(objectFx);
 
 	}
 	if (c1 == hatcol && c2->type == Collider::Type::PLAYER)
@@ -283,7 +322,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 
 
-		//App->audio->PlayFx(enemyDestroyedFx);
+		App->audio->PlayFx(objectFx);
 
 	}
 	if (c1 == paraguascol && c2->type == Collider::Type::PLAYER)
@@ -296,7 +335,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 
 
-		//App->audio->PlayFx(enemyDestroyedFx);
+		App->audio->PlayFx(objectFx);
 
 	}
 
