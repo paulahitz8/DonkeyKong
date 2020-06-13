@@ -1,6 +1,7 @@
 #include "EnemyJumper.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModuleAudio.h"
 
 Enemy_Jumper::Enemy_Jumper(int x, int y) : Enemies(x, y)
 {
@@ -11,6 +12,8 @@ Enemy_Jumper::Enemy_Jumper(int x, int y) : Enemies(x, y)
 	currentAnimjumper = &AnimUp;
 
 	collider = App->collision->AddCollider({ position.x, position.y, 16, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	JumperJumpFx = App->audio->LoadFx("Assets/Music/16 SFX (Jump).wav");
+	JumperFallFx = App->audio->LoadFx("Assets/Music/18 SFX (Fall).wav");
 }
 
 void Enemy_Jumper::Update()
@@ -75,6 +78,14 @@ void Enemy_Jumper::Update()
 	{
 		currentAnimjumper = &AnimUp;
 		position.y += speed;
+	}
+	if (position.y == 74 && position.x < 200)
+	{
+		App->audio->PlayFx(JumperJumpFx);
+	}
+	if (position.x == 190)
+	{
+		App->audio->PlayFx(JumperFallFx);
 	}
 	Enemies::Update();
 }
