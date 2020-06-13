@@ -20,6 +20,9 @@ private:
 
 	Collider* colliderJ = nullptr;
 
+	int JumperJumpFx = 0;
+	int JumperFallFx = 0;
+
 	Animation AnimUp;
 	Animation AnimDown;
 };
