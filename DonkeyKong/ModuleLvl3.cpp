@@ -132,8 +132,8 @@ bool ModuleLvl3::Start()
 	App->collision->AddCollider({ 0, 85, 14, 11 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 16, 87, 168, 9 }, Collider::Type::GROUND);
 
-
-
+	//evita bugs
+	App->collision->AddCollider({ 37, 237, 3, 11 }, Collider::Type::WALL);
 
 	App->collision->AddCollider({ 80, 207, 24, 9 }, Collider::Type::GROUND);
 	App->collision->AddCollider({ 72, 135, 32, 9 }, Collider::Type::GROUND);

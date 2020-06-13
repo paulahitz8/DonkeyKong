@@ -120,8 +120,20 @@ bool ModulePlayer::Start()
 
 	currentAnimation = &rightidleAnimNoHam; //mario empieza mirando a la derecha
 
-	position.x = { 43 };
-	position.y = { 222 };
+
+	if (App->player->activelevel == 2) {
+		position.x = { 43 };
+		position.y = { 222 };
+	}
+	if (App->player->activelevel == 3) {
+		position.x = { 0 };
+		position.y = { 206 };
+	}
+	if (App->player->activelevel == 4) {
+		position.x = { 43 };
+		position.y = { 222 };
+	}
+	
 
 	carrotcount = 8;
 	if (resetVidas == true) {
@@ -145,6 +157,20 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
+
+
+	if (godmode == false) {
+		if (activelevel == 2) {
+			if (position.y == 31) {
+				App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->siguientenivel, 0);
+			}
+		}
+		if (activelevel == 3) {
+			if (position.y == 31) {
+				App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->siguientenivel, 0);
+			}
+		}
+	}
 
 	if (App->object->hammerOn == true) {
 		hammerCount++;
@@ -207,43 +233,92 @@ Update_Status ModulePlayer::Update()
 
 	if (godmode == true) {
 
-		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
-		{
-			position.x -= speedx;
-			currentAnimation = &leftAnim;
+		if (App->object->hammerOn == true) {
+		
+
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
+			{
+				position.x -= speedx;
+				currentAnimation = &leftAnim;
+			}
+
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+			{
+				position.x += speedx;
+				currentAnimation = &rightAnim;
+
+			}
+
+			// If last movement was left, set the current animation back to left idle
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
+			{
+				currentAnimation = &leftidleAnim;
+			}
+			// If last movement was right, set the current animation back to left idle
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
+				currentAnimation = &rightidleAnim;
+
+			if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+			{
+				position.y += 2;
+			}
+
+			if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+			{
+				position.y -= 2;
+			}
+
+			if (position.x < 0) { position.x += 2; }
+			if (position.x > 216) { position.x -= 2; }
+			if (position.y < 0) { position.y += 2; }
+			if (position.y > 232) { position.y -= 2; }
+		
 		}
 
-		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
-		{
-			position.x += speedx;
-			currentAnimation = &rightAnim;
+		///////////////////////////////////////////////////////////////////////
+
+
+		if (App->object->hammerOn == false) {
+
+
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
+			{
+				position.x -= speedx;
+				currentAnimation = &leftAnimNoHam;
+			}
+
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+			{
+				position.x += speedx;
+				currentAnimation = &rightAnimNoHam;
+
+			}
+
+			// If last movement was left, set the current animation back to left idle
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
+			{
+				currentAnimation = &leftidleAnimNoHam;
+			}
+			// If last movement was right, set the current animation back to left idle
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
+				currentAnimation = &rightidleAnimNoHam;
+
+			if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+			{
+				position.y += 2;
+			}
+
+			if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+			{
+				position.y -= 2;
+			}
+
+			if (position.x < 0) { position.x += 2; }
+			if (position.x > 216) { position.x -= 2; }
+			if (position.y < 0) { position.y += 2; }
+			if (position.y > 232) { position.y -= 2; }
 
 		}
-
-		// If last movement was left, set the current animation back to left idle
-		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
-		{
-			currentAnimation = &leftidleAnim;
-		}
-		// If last movement was right, set the current animation back to left idle
-		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
-			currentAnimation = &rightidleAnim;
-
-		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-		{
-			position.y += 2;
-		}
-
-		if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
-		{
-			position.y -= 2;
-		}
-
-		if (position.x < 0) {position.x +=2;}
-		if (position.x > 216) { position.x -= 2; }
-		if (position.y < 0) { position.y += 2; }
-		if (position.y > 232) { position.y -= 2; }
-
 	}
 
 
@@ -560,6 +635,9 @@ Update_Status ModulePlayer::Update()
 
 	currentAnimation->Update();
 
+
+	
+
 	return Update_Status::UPDATE_CONTINUE;
 	
 }
@@ -639,12 +717,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			n++;
 
 			if (carrotcount == 0) {
-				if (App->player->activelevel == 2) {
-					App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->siguientenivel, 0);
-				}
-				if (App->player->activelevel == 3) {
-					App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->siguientenivel, 0);
-				}
+			
 				if (App->player->activelevel == 4) {
 					App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
 				}
