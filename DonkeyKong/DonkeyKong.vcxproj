@@ -25,6 +25,7 @@
     <ClCompile Include="EnemyCakes.cpp" />
     <ClCompile Include="EnemyFireballs.cpp" />
     <ClCompile Include="EnemyFiresparks.cpp" />
+    <ClCompile Include="EnemyJumper.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="InitialScreen.cpp" />
@@ -62,6 +63,7 @@
     <ClInclude Include="EnemyCakes.h" />
     <ClInclude Include="EnemyFireballs.h" />
     <ClInclude Include="EnemyFiresparks.h" />
+    <ClInclude Include="EnemyJumper.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="InitialScreen.h" />

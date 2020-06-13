@@ -17,7 +17,8 @@ enum class ENEMY_TYPE
 	NO_TYPE,
 	FIREBALLS,
 	FIRESPARKS,
-	CAKES
+	CAKES,
+	JUMPER
 };
 
 struct EnemySpawnpoint

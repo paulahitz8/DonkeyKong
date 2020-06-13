@@ -1,27 +1,29 @@
-#include "EnemyCakes.h"
+#include "EnemyJumper.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
 
-Enemy_Cakes::Enemy_Cakes(int x, int y) : Enemies(x, y)
+Enemy_Jumper::Enemy_Jumper(int x, int y) : Enemies(x, y)
 {
-	Anim.PushBack({ 181, 168, 16, 8 });
+	AnimUp.PushBack({ 82, 70, 16, 15 });
 
-	currentAnimcakes = &Anim;
+	AnimDown.PushBack({ 106, 70, 16, 15 });
 
-	collider = App->collision->AddCollider({ position.x, position.y, 16, 8 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	currentAnimjumper = &AnimUp;
+
+	collider = App->collision->AddCollider({ position.x, position.y, 16, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
-void Enemy_Cakes::Update()
+void Enemy_Jumper::Update()
 {
 	position.x += speed;
 	/*if (position.y == 120)
 	{*/
-		if (position.x < 24) {
-			speed = -speed;
-		}
-		if (position.x > 220) {
-			speed = -speed;
-		}
+	if (position.x < 15) {
+		speed = -speed;
+	}
+	if (position.x > 220) {
+		speed = -speed;
+	}
 	/*}*/
 	/*if (position.y == 156)
 	{

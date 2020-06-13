@@ -12,6 +12,7 @@
 #include "EnemyFireballs.h"
 #include "EnemyFiresparks.h"
 #include "EnemyCakes.h"
+#include "EnemyJumper.h"
 
 #define SPAWN_MARGIN 50
 
@@ -254,6 +255,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case ENEMY_TYPE::FIRESPARKS:
 					enemies[i] = new Enemy_Firesparks(info.x, info.y);
+					break;
+				case ENEMY_TYPE::JUMPER:
+					enemies[i] = new Enemy_Jumper(info.x, info.y);
 					break;
 				}
 				enemies[i]->enemiestexture = enemiestexture;

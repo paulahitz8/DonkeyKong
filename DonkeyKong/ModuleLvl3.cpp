@@ -237,7 +237,7 @@ Update_Status ModuleLvl3::Update()
 
 	// Enemy spawn timer
 
-	if (i % 1002 == 0)
+	/*if (i % 1002 == 0)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 209, 156);
 	}
@@ -248,6 +248,16 @@ Update_Status ModuleLvl3::Update()
 	else if ((i % 1503 == 0) || (i % 2505 == 0))
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 201, 116);
+	}
+	i++;*/
+	if (i % 100 == 0)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::JUMPER, 16, 57);
+	}
+	if (i == 1)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 217, 190);
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 217, 196);
 	}
 	i++;
 

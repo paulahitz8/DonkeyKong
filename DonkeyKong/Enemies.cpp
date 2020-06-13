@@ -36,6 +36,9 @@ void Enemies::Update()
 	if (currentAnimfiresparks != nullptr)
 		currentAnimfiresparks->Update();
 
+	if (currentAnimjumper != nullptr)
+		currentAnimjumper->Update();
+
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
@@ -82,6 +85,10 @@ void Enemies::Draw()
 	if (currentAnimfiresparks != nullptr)
 	{
 		App->render->Blit(enemiestexture2, position.x, position.y, &(currentAnimfiresparks->GetCurrentFrame()));
+	}
+	if (currentAnimjumper != nullptr)
+	{
+		App->render->Blit(enemiestexture, position.x, position.y, &(currentAnimjumper->GetCurrentFrame()));
 	}
 }
 

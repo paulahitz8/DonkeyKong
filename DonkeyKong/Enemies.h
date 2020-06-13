@@ -56,6 +56,7 @@ public:
 	Animation* currentAnimfireballs = nullptr;
 	Animation* currentAnimfiresparks = nullptr;
 	Animation* currentAnimcakes = nullptr;
+	Animation* currentAnimjumper = nullptr;
 
 	// The enemy's collider
 	Collider* collider = nullptr;
