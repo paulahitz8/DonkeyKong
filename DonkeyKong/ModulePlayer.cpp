@@ -165,6 +165,7 @@ Update_Status ModulePlayer::Update()
 		godmode = !godmode;
 
 	}
+
 	if (App->player->activelevel == 2) {
 		if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
 			App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->winning, 0);
@@ -179,6 +180,7 @@ Update_Status ModulePlayer::Update()
 
 		}
 	}
+
 	if (App->player->activelevel == 3) {
 		if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
 			App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->winning, 0);
@@ -193,6 +195,7 @@ Update_Status ModulePlayer::Update()
 
 		}
 	}
+
 	if (App->player->activelevel == 4) {
 		if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
 			App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
@@ -336,74 +339,13 @@ Update_Status ModulePlayer::Update()
 
 		if (groundOn == true) {
 
-			//if (App->object->hammerOn == true) {
-			//	
-			//	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN /*|| pad.a == true*/) {
-
-			//		if (isJumping == false) {
-			//			isJumping = true;
-			//			jumpTimer = 1;
-			//			startingy = position.y;
-			//			jumpingspeedy = 6;
-
-			//		}
-
-			//	}
-
-			//	if (isJumping == true) {
-
-			//		jumpingspeedy -= gravity;
-			//		position.y -= jumpingspeedy;
-
-			//		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/) {
-			//			position.x -= jumpingspeedx;
-			//		}
-
-			//		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/) {
-			//			position.x += jumpingspeedx;
-			//		}
-
-			//		if (position.y == startingy) {
-			//			isJumping = false;
-			//		}
-
-			//	}
-
-
-			//	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/)
-			//	{
-			//		position.x -= speedx;
-			//		currentAnimation = &leftAnim;
-			//		if (position.x % 15 == 0)
-			//		{
-			//			App->audio->PlayFx(walkingFx);
-			//		}
-			//	}
-
-			//	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/)
-			//	{
-			//		position.x += speedx;
-			//		currentAnimation = &rightAnim;
-			//		if (position.x % 15 == 0)
-			//		{
-			//			App->audio->PlayFx(walkingFx);
-			//		}
-			//	}
-
-			//	// If last movement was left, set the current animation back to left idle
-			//	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP /*|| pad.l_x < 0.0f*/)
-			//	{
-			//		currentAnimation = &leftidleAnim;
-			//	}
-			//	// If last movement was right, set the current animation back to left idle
-			//	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP /*|| pad.r_x < 0.0f*/)
-			//		currentAnimation = &rightidleAnim;
-			//}
-			
-			//if (App->object->hammerOn == false) {
+			if (App->object->hammerOn == true) {
+				
+					
 
 
 				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN /*|| pad.a == true*/) {
+
 					if (isJumping == false) {
 						isJumping = true;
 						jumpTimer = 1;
@@ -416,6 +358,74 @@ Update_Status ModulePlayer::Update()
 
 				if (isJumping == true) {
 
+					jumpingspeedy -= gravity;
+					position.y -= jumpingspeedy;
+
+					if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/) {
+						position.x -= jumpingspeedx;
+					}
+
+					if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/) {
+						position.x += jumpingspeedx;
+					}
+
+					if (position.y == startingy) {
+						isJumping = false;
+					}
+
+				}
+
+
+				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/)
+				{
+					position.x -= speedx;
+					currentAnimation = &leftAnim;
+					if (position.x % 15 == 0)
+					{
+						App->audio->PlayFx(walkingFx);
+					}
+				}
+
+				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/)
+				{
+					position.x += speedx;
+					currentAnimation = &rightAnim;
+					if (position.x % 15 == 0)
+					{
+						App->audio->PlayFx(walkingFx);
+					}
+				}
+
+				// If last movement was left, set the current animation back to left idle
+				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP /*|| pad.l_x < 0.0f*/)
+				{
+					currentAnimation = &leftidleAnim;
+				}
+				// If last movement was right, set the current animation back to left idle
+				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP /*|| pad.r_x < 0.0f*/)
+					currentAnimation = &rightidleAnim;
+			}
+
+
+
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			if (App->object->hammerOn == false) {
+
+
+				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN /*|| pad.a == true*/) {
+					if (isJumping == false) {
+						isJumping = true;
+						jumpTimer = 1;
+						startingy = position.y;
+						jumpingspeedy = 6;
+						
+					}
+
+				}
+
+				if (isJumping == true) {
+					//faltan animaciones jumping
 					jumpingspeedy -= gravity;
 					position.y -= jumpingspeedy;
 
@@ -522,7 +532,7 @@ Update_Status ModulePlayer::Update()
 						currentAnimation = &upladderAnim1;
 					}
 				}
-			//}
+			}
 
 
 
