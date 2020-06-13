@@ -106,7 +106,7 @@ bool ModuleLvl2::Start()
 	cienrect = { 59,104,15,7 };
 
 
-	//backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
+	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
 	cientexture = App->textures->Load("Assets/Lady/RandomSprites.png");
 
 	background2Texture = App->textures->Load("Assets/cositasfondo/background2.png");
@@ -274,7 +274,7 @@ Update_Status ModuleLvl2::PostUpdate()
 		App->render->Blit(cientexture, cienpos.x, cienpos.y, &cienrect);
 
 	}
-
+	App->render->Blit(backTexture, 0, 0, &back, 0);
 	App->render->Blit(ladTexture, leftLadposition.x, leftLadposition.y, &leftLad);
 
 	return Update_Status::UPDATE_CONTINUE;

@@ -321,7 +321,7 @@ Update_Status ModuleLvl3::PostUpdate()
 	App->render->Blit(movingFloorTex, rightFloorA.x, rightFloorA.y, &rightFloorRectA);
 	App->render->Blit(movingFloorTex, rightFloorB.x, rightFloorB.y, &rightFloorRectB);
 	App->render->Blit(movingFloorTex, rightFloorC.x, rightFloorC.y, &rightFloorRectC);
-
+	App->render->Blit(backTexture, 0, 0, &back, 0);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
