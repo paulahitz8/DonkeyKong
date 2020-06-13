@@ -57,6 +57,7 @@ private:
 
 
 	int objectFx = 0;
+	
 
 	SDL_Rect rectnegro;
 	SDL_Texture* negro = nullptr;
