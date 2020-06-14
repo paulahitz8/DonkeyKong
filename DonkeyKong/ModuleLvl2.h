@@ -37,6 +37,7 @@ private:
 
 	int i = 1;
 	int t = 1;
+	int j = 1;
 
 
 	int lvl2[32][32] = {};

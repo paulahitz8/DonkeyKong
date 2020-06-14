@@ -631,9 +631,22 @@ Update_Status ModulePlayer::Update()
 
 	if (isFalling == true) {
 		position.y++;
-		if (position.y == 182) {
-			isFalling = false;
+		
+		if (activelevel == 2) {
+			if (firstFloor == true) {
+				if (position.y == 182) {
+					isFalling = false;
+				}
+			}
+
+			if (secondFloor == true) {
+				if (position.y == 142) {
+					isFalling = false;
+				}
+			}
 		}
+	
+		
 		
 	}
 
@@ -765,6 +778,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//Fall
 	
 	if (c2->type == Collider::Type::FALL) {
+		if (position.y < 182 && position.y > 142) {
+			firstFloor = true;
+		}
+		if (position.y < 142 && position.y > 102) {
+			secondFloor = true;
+		}
 		groundOn = true;
 		isFalling = true;
 	}

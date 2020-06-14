@@ -151,13 +151,23 @@ bool ModuleLvl2::Start()
 	App->collision->AddCollider({ 99, 126 , 2, 44 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 155, 126 , 2, 44 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 211, 126 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 219, 109 , 2, 21 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 35, 111 , 2, 21 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 147, 54 , 2, 36 }, Collider::Type::LADDER);
+	//special short boi
+	App->collision->AddCollider({ 35, 109 , 2, 21 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 219, 109 , 2, 21 }, Collider::Type::LADDER);
+
+	//special long boi
+	App->collision->AddCollider({ 35, 86 , 2, 44 }, Collider::Type::LADDER);
+	App->collision->AddCollider({ 219, 86 , 2, 44 }, Collider::Type::LADDER);
 	
 
 	//Falling colliders
 	App->collision->AddCollider({ 71, 166 , 2, 10 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 176, 166 , 2, 10 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 135, 126 , 2, 10 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 119, 126 , 2, 10 }, Collider::Type::FALL);
+
+
 
 	//Moving ladders
 	ladVel = 1;
@@ -166,8 +176,6 @@ bool ModuleLvl2::Start()
 	leftLad = {81, 194, 10, 16 };
 	leftLadposition.x = 31;
 	leftLadposition.y = 96;
-
-	leftLadcollider = App->collision->AddCollider({ leftLadposition.x + 3, leftLadposition.y - 9, 2, 25 }, Collider::Type::LADDER);
 
 	// Enable Player
 	App->object->Enable();
@@ -221,29 +229,13 @@ Update_Status ModuleLvl2::Update()
 	//MovingLadders - necesito una imagen del trozo de escalera, con su rectangulo
 	leftLadposition.y += ladVel;
 
-	/*if (leftLadposition.y > 140) {
-		leftLadposition.y--;
-		ladVel = 0;
-		count = 0;
-	}
-
-	if (leftLadposition.y < 95) {
-		leftLadposition.y++;
-		ladVel = 0;
-		count = 0;
-	}
-	
-	if (count == 50) {
-		ladVel++;
-	}*/
 
 	if (leftLadposition.y > 140 || leftLadposition.y < 95) {
 		ladVel = -ladVel;
 	}
 
-	//count++;
 
-	leftLadcollider->SetPos(leftLadposition.x + 3, leftLadposition.y - 9);
+	
 
 
 	return Update_Status::UPDATE_CONTINUE;
