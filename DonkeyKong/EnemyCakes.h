@@ -16,8 +16,6 @@ public:
 
 private:
 
-	int i = 1;
-
 	Collider* colliderC = nullptr;
 
 	Animation Anim;

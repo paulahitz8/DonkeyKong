@@ -11,24 +11,15 @@ Enemy_Cakes::Enemy_Cakes(int x, int y) : Enemies(x, y)
 	currentAnimcakes = &Anim;
 
 	collider = App->collision->AddCollider({ position.x, position.y, 16, 8 }, Collider::Type::ENEMY, (Module*)App->enemies);
-
-	i = 1;
 }
 
 void Enemy_Cakes::Update()
 {
-	position.x += speed;
-	/*if (position.x < 24) {			
-		speed = -speed;
-	}
-	if (position.x > 220) {
-		speed = -speed;
-	}*/
+	position.x -= speed;
 	if (App->lvl2->change == true)
 	{
 		speed = -speed;
 		App->lvl2->change = false;
 	}
-	i++;
 	Enemies::Update();
 }
