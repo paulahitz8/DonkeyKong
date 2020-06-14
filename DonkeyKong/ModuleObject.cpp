@@ -5,6 +5,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleMusic.h"
 #include "ModuleHammer.h"
 
 
@@ -300,7 +301,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 		hammerOn = true;
 		App->hammer->Enable();
-
+		
 		App->audio->PlayFx(objectFx);
 		App->audio->PlayFx(hammerFx);
 		
@@ -319,6 +320,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 
 		App->audio->PlayFx(objectFx);
+		
 		App->audio->PlayFx(hammerFx);
 	
 	

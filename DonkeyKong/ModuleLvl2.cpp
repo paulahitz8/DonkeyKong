@@ -203,7 +203,9 @@ bool ModuleLvl2::Start()
 Update_Status ModuleLvl2::Update()
 {
 
-
+	if (App->object->hammerOn) {
+		App->music->Disable();
+	}
 	
 
 	// Lives
