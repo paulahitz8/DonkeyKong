@@ -770,7 +770,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				position.y -= 1;
 			}
 
-			if (((position.y + 10) < (c2->rect.y + c2->rect.h - player.h)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 6))) {
+			if (((position.y + 10) < (c2->rect.y + c2->rect.h - player.h - 2)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 6))) {
 				position.x += 1;
 			}
 
