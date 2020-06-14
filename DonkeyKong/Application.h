@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 25 //actualiza esto
+#define NUM_MODULES 26 //actualiza esto
 
 class Module; //este no cuenta en NUM_MODULES :D
 class ModuleWindow;
@@ -29,7 +29,7 @@ class SiguienteNivel;
 class GameOver;
 class WinningScreen;
 class WinningLvl2;
-//class WinningLvl3;
+class WinningLvl3;
 
 class ModuleFadeToBlack;
 class ModuleCollisions;
@@ -82,7 +82,7 @@ public:
 	GameOver* gameover = nullptr;
 	WinningScreen* winning = nullptr;
 	WinningLvl2* winninglvl2 = nullptr;
-	//WinningLvl3* winninglvl3 = nullptr;
+	WinningLvl3* winninglvl3 = nullptr;
 
 	
 	ModuleCollisions* collision = nullptr;

@@ -25,7 +25,7 @@
 #include "GameOver.h"
 #include "WinningScreen.h"
 #include "WinningLvl2.h"
-//#include "WinningLvl3.h"
+#include "WinningLvl3.h"
 
 #include "ModuleCollisions.h"
 
@@ -60,7 +60,7 @@ Application::Application()
 	modules[i++] =  gameover =		new GameOver(false);
 	modules[i++] =  winning =		new WinningScreen(false);
 	modules[i++] =  winninglvl2 =	new WinningLvl2(false);
-	//modules[i++] =  winninglvl3 =	new WinningLvl3(false);
+	modules[i++] =  winninglvl3 =	new WinningLvl3(false);
 	
 	
 	
