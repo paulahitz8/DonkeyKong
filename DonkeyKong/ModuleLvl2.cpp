@@ -378,6 +378,6 @@ bool ModuleLvl2::CleanUp()
 	App->lady->Disable();
 	App->score->Disable();
 	App->collision->Disable();
-
+ 
 	return true;
 }
