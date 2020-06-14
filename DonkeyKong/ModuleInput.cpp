@@ -17,11 +17,13 @@ bool ModuleInput::Init()
 	bool ret = true;
 	SDL_Init(0);
 
-	if(SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
+	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
+
+
 
 	cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
 	if (cursor == NULL) {
@@ -30,6 +32,18 @@ bool ModuleInput::Init()
 	else {
 		SDL_SetCursor(cursor);
 		SDL_ShowCursor(0);
+	}
+
+	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0)
+	{
+		LOG("SDL_INIT_GAMECONTROLLER could not initialize! SDL_Error: %s\n", SDL_GetError());
+		ret = false;
+	}
+
+	if (SDL_InitSubSystem(SDL_INIT_HAPTIC) < 0)
+	{
+		LOG("SDL_INIT_HAPTIC could not initialize! SDL_Error: %s\n", SDL_GetError());
+		ret = false;
 	}
 
 	return ret;
@@ -86,7 +100,7 @@ Update_Status ModuleInput::PreUpdate()
 		}
 		}
 	}
-	
+
 	UpdateGamepadsInput();
 
 	if (keys[SDL_SCANCODE_F6] == KEY_DOWN) {
@@ -108,6 +122,20 @@ bool ModuleInput::CleanUp()
 	SDL_FreeCursor(cursor);
 
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+	for (uint i = 0; i < MAX_PADS; ++i)
+	{
+		if (pads[i].haptic != nullptr)
+		{
+			SDL_HapticStopAll(pads[i].haptic);
+			SDL_HapticClose(pads[i].haptic);
+		}
+		if (pads[i].controller != nullptr) SDL_GameControllerClose(pads[i].controller);
+	}
+
+	SDL_QuitSubSystem(SDL_INIT_HAPTIC);
+	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
+	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+
 	return true;
 }
 

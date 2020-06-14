@@ -34,7 +34,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnimNoHam.PushBack({ 0, 431, 50, 26 });
 	rightAnimNoHam.PushBack({ 0, 388, 50, 26 });
 	rightAnimNoHam.speed = 0.2f;
-	
+
 	//jump left
 	jumpLeftAnim.PushBack({ 71, 263, 50, 26 });
 	jumpLeftAnim.PushBack({ 71, 305,  50, 26 });
@@ -46,7 +46,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	jumpRightAnim.PushBack({ 71, 430, 50, 26 });
 	jumpRightAnim.PushBack({ 71, 470, 50, 26 });
 	jumpRightAnim.speed = 0.1f;
-	
+
 
 	//HAMMER ANIMATIONS
 
@@ -88,7 +88,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	downladderAnim2.PushBack({ 261, 35, 50, 26 });
 	downladderAnim.PushBack({ 261, 1, 50, 26 });
 	downladderAnim.PushBack({ 261, 122, 50, 26 });
-	downladderAnim1.PushBack({ 261, 94, 50, 26 }); 
+	downladderAnim1.PushBack({ 261, 94, 50, 26 });
 	downladderAnim.speed = 0.12f;
 
 
@@ -133,7 +133,7 @@ bool ModulePlayer::Start()
 		position.x = { 43 };
 		position.y = { 222 };
 	}
-	
+
 
 	carrotcount = 8;
 	if (resetVidas == true) {
@@ -157,6 +157,7 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
+	GamePad& pad = App->input->pads[0];
 
 	if (godmode == false) {
 		if (activelevel == 2) {
@@ -181,7 +182,7 @@ Update_Status ModulePlayer::Update()
 		App->object->hammerOn = false;
 	}
 
-	//GamePad& pad = App->input->pads[0];
+
 
 
 	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN) {
@@ -233,7 +234,7 @@ Update_Status ModulePlayer::Update()
 	if (godmode == true) {
 
 		if (App->object->hammerOn == true) {
-		
+
 
 			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 			{
@@ -285,7 +286,7 @@ Update_Status ModulePlayer::Update()
 			if (position.x > 216) { position.x -= 2; }
 			if (position.y < 0) { position.y += 2; }
 			if (position.y > 232) { position.y -= 2; }
-		
+
 		}
 
 		///////////////////////////////////////////////////////////////////////
@@ -294,7 +295,7 @@ Update_Status ModulePlayer::Update()
 		if (App->object->hammerOn == false) {
 
 
-			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT || pad.r_x < 0.0f)
 			{
 				position.x -= speedx;
 				if (isJumping != true)
@@ -303,7 +304,7 @@ Update_Status ModulePlayer::Update()
 				}
 			}
 
-			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT || pad.l_x < 0.0f)
 			{
 				position.x += speedx;
 				if (isJumping != true)
@@ -367,7 +368,7 @@ Update_Status ModulePlayer::Update()
 			if (App->player->activelevel == 4) {
 				App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->gameover, 30);
 			}
-			
+
 			destroyed = false;
 		}
 
@@ -408,7 +409,7 @@ Update_Status ModulePlayer::Update()
 			{
 				currentAnimation = &angelAnim;
 			}
-			else if(currentAnimation == &angelAnim && i % 200 == 0)
+			else if (currentAnimation == &angelAnim && i % 200 == 0)
 			{
 				if (App->player->activelevel == 2) {
 					App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->pierdevida, 30);
@@ -434,8 +435,8 @@ Update_Status ModulePlayer::Update()
 		if (groundOn == true) {
 
 			if (App->object->hammerOn == true) {
-				
-				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN /*|| pad.a == true*/) {
+
+				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true || pad.r1 == true) {
 
 					if (isJumping == false) {
 						isJumping = true;
@@ -451,7 +452,7 @@ Update_Status ModulePlayer::Update()
 
 					jumpingspeedy -= gravity;
 					position.y -= jumpingspeedy;
-					
+
 					if (currentAnimation == &leftidleAnimNoHam || currentAnimation == &leftAnimNoHam || currentAnimation == &leftidleAnim || currentAnimation == &leftAnim)
 					{
 						currentAnimation = &jumpLeftAnim;
@@ -461,12 +462,12 @@ Update_Status ModulePlayer::Update()
 						currentAnimation = &jumpRightAnim;
 					}
 
-					if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/) {
+					if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT || pad.l_x > 0.0f || pad.right == true) {
 						position.x -= jumpingspeedx;
 						currentAnimation = &jumpLeftAnim;
 					}
 
-					if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/) {
+					if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT || pad.l_x > 0.0f || pad.right == true) {
 						position.x += jumpingspeedx;
 						currentAnimation = &jumpRightAnim;
 					}
@@ -486,7 +487,7 @@ Update_Status ModulePlayer::Update()
 				}
 
 
-				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT || pad.l_x < 0.0f)
 				{
 					position.x -= speedx;
 					if (isJumping != true)
@@ -499,7 +500,7 @@ Update_Status ModulePlayer::Update()
 					}
 				}
 
-				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
 				{
 					position.x += speedx;
 					if (isJumping != true)
@@ -513,7 +514,7 @@ Update_Status ModulePlayer::Update()
 				}
 
 				// If last movement was left, set the current animation back to left idle
-				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP /*|| pad.l_x < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP || pad.l_x < 0.0f)
 				{
 					if (isJumping != true)
 					{
@@ -521,7 +522,7 @@ Update_Status ModulePlayer::Update()
 					}
 				}
 				// If last movement was right, set the current animation back to left idle
-				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP /*|| pad.r_x < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP || pad.l_x > 0.0f)
 				{
 					if (isJumping != true)
 					{
@@ -531,17 +532,17 @@ Update_Status ModulePlayer::Update()
 			}
 
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			
+
 			if (App->object->hammerOn == false) {
 
 
-				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN /*|| pad.a == true*/) {
+				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true || pad.r1 == true) {
 					if (isJumping == false) {
 						isJumping = true;
 						jumpTimer = 1;
 						startingy = position.y;
 						jumpingspeedy = 6;
-						
+
 					}
 
 				}
@@ -560,12 +561,12 @@ Update_Status ModulePlayer::Update()
 						currentAnimation = &jumpRightAnim;
 					}
 
-					if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/) {
+					if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT || pad.l_x < 0.0f) {
 						position.x -= jumpingspeedx;
 						currentAnimation = &jumpLeftAnim;
 					}
 
-					if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/) {
+					if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT || pad.l_x > 0.0f) {
 						position.x += jumpingspeedx;
 						currentAnimation = &jumpRightAnim;
 					}
@@ -586,7 +587,7 @@ Update_Status ModulePlayer::Update()
 
 
 
-				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT || pad.l_x < 0.0f)
 				{
 					position.x -= speedx;
 					if (isJumping != true)
@@ -599,7 +600,7 @@ Update_Status ModulePlayer::Update()
 					}
 				}
 
-				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
 				{
 					position.x += speedx;
 					if (isJumping != true)
@@ -613,7 +614,7 @@ Update_Status ModulePlayer::Update()
 				}
 
 				// If last movement was left, set the current animation back to left idle
-				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP /*|| pad.l_x < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP || pad.l_x < 0.0f)
 				{
 					if (isJumping != true)
 					{
@@ -621,7 +622,7 @@ Update_Status ModulePlayer::Update()
 					}
 				}
 				// If last movement was right, set the current animation back to left idle
-				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP /*|| pad.r_x < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP || pad.r_x < 0.0f)
 				{
 					if (isJumping != true)
 					{
@@ -632,7 +633,7 @@ Update_Status ModulePlayer::Update()
 
 				if (ladderOn == true) {
 
-					if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT /*|| pad.r_y < 0.0f*/)
+					if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT || pad.r_y < 0.0f)
 					{
 						position.y += speedy;
 						if (position.y == 223 || position.y == 183 || position.y == 143 || position.y == 103 || position.y == 63)
@@ -657,7 +658,7 @@ Update_Status ModulePlayer::Update()
 						}
 					}
 
-					if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT /*||*//* pad.l_y < 0.0f*/)
+					if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT || pad.l_y < 0.0f)
 					{
 						position.y -= speedy;
 						if (position.y == 222 || position.y == 182 || position.y == 142 || position.y == 102 || position.y == 62)
@@ -682,7 +683,7 @@ Update_Status ModulePlayer::Update()
 						}
 					}
 
-					if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_UP || App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_UP /*|| pad.l_y < 0.0f || pad.r_y < 0.0f*/)
+					if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_UP || App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_UP || pad.l_y < 0.0f || pad.r_y < 0.0f)
 					{
 						currentAnimation = &upladderAnim1;
 					}
@@ -697,13 +698,13 @@ Update_Status ModulePlayer::Update()
 
 			if (ladderOn == true) {
 
-				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT /*|| pad.l_y < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT || pad.l_y < 0.0f)
 				{
 					position.y += speedy;
 
 				}
 
-				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT /*|| pad.r_y < 0.0f*/)
+				if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT || pad.r_y < 0.0f)
 				{
 					position.y -= speedy;
 				}
@@ -714,12 +715,12 @@ Update_Status ModulePlayer::Update()
 
 	if (isFalling == true) {
 		position.y++;
-		
+
 		if (activelevel == 2) {
 			if (firstFloor == true) {
 				if (position.y == 182) {
 					isFalling = false;
-										destroyed = true;
+					destroyed = true;
 				}
 			}
 
@@ -730,7 +731,7 @@ Update_Status ModulePlayer::Update()
 				}
 			}
 		}
-	
+
 		if (activelevel == 3) {
 			if (leftfall == true) {
 				if (position.y == 222) {
@@ -746,8 +747,8 @@ Update_Status ModulePlayer::Update()
 				}
 			}
 		}
-		
-		
+
+
 	}
 
 	collider->SetPos(position.x + 18, position.y + 10);
@@ -757,12 +758,12 @@ Update_Status ModulePlayer::Update()
 
 
 	return Update_Status::UPDATE_CONTINUE;
-	
+
 }
 
 Update_Status ModulePlayer::PostUpdate()
 {
-	
+
 
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 
@@ -772,7 +773,7 @@ Update_Status ModulePlayer::PostUpdate()
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
-{	
+{
 	if (godmode == false) {
 		// LADDER
 		// LADDER
@@ -814,7 +815,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 
 
-			
+
 		// ENEMY
 		if (c1 == collider && c2->type == Collider::ENEMY && destroyed == false)
 		{
@@ -839,13 +840,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			n++;
 
 			if (carrotcount == 0) {
-			
+
 				if (App->player->activelevel == 4) {
 					App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
 				}
-	
 
-	
+
+
 				resetVidas = true;
 			}
 
@@ -892,7 +893,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 
 
-} 
+}
 
 bool ModulePlayer::CleanUp()
 {

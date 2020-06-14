@@ -257,38 +257,38 @@ Update_Status ModuleLvl3::Update()
 	if (leftFloorA.y == 94) {
 		leftFloorA.y = 248;
 	}
-	leftFloorCoA->SetPos(leftFloorA.x, leftFloorA.y);
+	//leftFloorCoA->SetPos(leftFloorA.x, leftFloorA.y);
 
 	leftFloorB.y--;
 	if (leftFloorB.y == 94) {
 		leftFloorB.y = 248;
 	}
-	leftFloorCoB->SetPos(leftFloorB.x, leftFloorB.y);
+//	leftFloorCoB->SetPos(leftFloorB.x, leftFloorB.y);
 
 	leftFloorC.y--;
 	if (leftFloorC.y == 94) {
 		leftFloorC.y = 248;
 	}
-	leftFloorCoC->SetPos(leftFloorC.x, leftFloorC.y);
+//	leftFloorCoC->SetPos(leftFloorC.x, leftFloorC.y);
 
 	//RIGHT
 	rightFloorA.y++;
 	if (rightFloorA.y == 248) {
 		rightFloorA.y = 94;
 	}
-	rightFloorCoA->SetPos(rightFloorA.x, rightFloorA.y);
+	//rightFloorCoA->SetPos(rightFloorA.x, rightFloorA.y);
 
 	rightFloorB.y++;
 	if (rightFloorB.y == 248) {
 		rightFloorB.y = 94;
 	}
-	rightFloorCoB->SetPos(rightFloorB.x, rightFloorB.y);
+	//rightFloorCoB->SetPos(rightFloorB.x, rightFloorB.y);
 
 	rightFloorC.y++;
 	if (rightFloorC.y == 248) {
 		rightFloorC.y = 94;
 	}
-	rightFloorCoC->SetPos(rightFloorC.x, rightFloorC.y);
+	//rightFloorCoC->SetPos(rightFloorC.x, rightFloorC.y);
 
 
 
