@@ -25,23 +25,31 @@ public:
 
 public:
 	SDL_Rect back;
-	SDL_Rect /*pauline, mario, heart,*/ donkey;
 	SDL_Texture* spritesTexture = nullptr;
 	SDL_Texture* backgroundTexture = nullptr;
-	//SDL_Texture* happybackgroundTexture = nullptr;
+	SDL_Texture* heartTexture = nullptr;
+	SDL_Texture* ladyTexture = nullptr;
+	SDL_Texture* marioTexture = nullptr;
 
 	SDL_Rect tile;
 	SDL_Texture* liveTexture = nullptr;
 	SDL_Texture* backgroundtileTexture = nullptr;
 
 	Animation* currentAnimation = nullptr;
+	Animation* currentheartAnim = nullptr;
+	Animation* currentladyAnim = nullptr;
+	Animation* currentmarioAnim = nullptr;
+
 	Animation donkeyidleAnim;
 	Animation donkeyupAnim;
 	Animation donkeywithoutladyAnim;
 	Animation donkeywithladyAnim;
-	//Animation heartAnim;
-	//Animation heartAnim1;
-	//Animation heartAnimvoid;
+	Animation heartAnim;
+	Animation heartAnim1;
+	Animation heartAnimvoid;
+	Animation rightidleladyAnim;
+	Animation ladyvoidAnim;
+	Animation leftmarioAnim;
 	pos1 donkeypos;
 
 

@@ -61,10 +61,17 @@ WinningLvl2::WinningLvl2(bool startEnabled) : Module(startEnabled)
 	donkeywithladyAnim.speed = 0.1f;
 
 	//heart anims
-	/*heartAnim.PushBack({ 93, 77, 16, 13 });
-	heartAnim1.PushBack({ 116, 77, 16, 13 });
-	heartAnimvoid.PushBack({ 0, 0, 16, 13 });*/
+	heartAnim.PushBack({ 93, 77, 16, 13 });
 
+	heartAnim1.PushBack({ 116, 77, 16, 13 });
+
+	//lady anims
+	rightidleladyAnim.PushBack({ 98,145,15,22 });
+
+	ladyvoidAnim.PushBack({ 0,0,10,10 });
+
+	//Mario anims
+	leftmarioAnim.PushBack({ 0, 264, 50, 26 });
 
 }
 
@@ -78,6 +85,9 @@ bool WinningLvl2::Start()
 	LOG("Loading background assets");
 
 	currentAnimation = &donkeyidleAnim;
+	currentheartAnim = &heartAnim;
+	currentladyAnim = &rightidleladyAnim;
+	currentmarioAnim = &leftmarioAnim;
 	bool ret = true;
 
 	back = { 0, 0, 256, 256 };
@@ -90,7 +100,7 @@ bool WinningLvl2::Start()
 	//pauline = { 8, 189, 16, 22 };
 	//mario = { 34, 195, 12, 16 };
 	//heart = { 57, 189, 15, 13 };
-	donkey = { 22, 46, 40, 32 };
+	/*donkey = { 22, 46, 40, 32 };*/
 
 	tile.w = 8;
 	tile.h = 8;
@@ -99,6 +109,9 @@ bool WinningLvl2::Start()
 	liveTexture = App->textures->Load("Assets/cositasfondo/MarioLive.png");
 	spritesTexture = App->textures->Load("Assets/Donkey/DonkeyKongSprites2.png");
 	backgroundTexture = App->textures->Load("Assets/cositasfondo/background2.png");
+	heartTexture = App->textures->Load("Assets/objects/RandomSprites.png");
+	ladyTexture = App->textures->Load("Assets/Lady/PaulineSprites.png");
+	marioTexture = App->textures->Load("Assets/Mario/MarioSprites.png");
 
 	App->audio->PlayMusic("Assets/Music/08 Stage Clear 1.ogg", 1.0f);
 
@@ -132,11 +145,13 @@ Update_Status WinningLvl2::Update()
 		}
 		else if (donkeypos.y > 25 && donkeypos.y < 30)
 		{
-			currentAnimation = &donkeywithladyAnim;
+			currentAnimation = &donkeywithoutladyAnim;
+			currentheartAnim = &heartAnim1;
 		}
 		else
 		{
 			currentAnimation = &donkeywithladyAnim;
+			currentladyAnim = &ladyvoidAnim;
 		}
 		if (i % 2 == 0)
 		{
@@ -144,46 +159,15 @@ Update_Status WinningLvl2::Update()
 		}
 	}
 
-	//animation times
-	/*if (i < 50) {
-		a = 1;
-
-	}
-	if (i > 50 && i < 200) {
-		a = 2;
-		currentAnimation = &angryAnim;
-	}
-
-	if (i > 200 && i < 300) {
-		a = 3;
-		currentAnimation = &downAnim;
-		donkeypos.y += 1.3;
-	}
-
-	if (i > 300 && i < 370) {
-		a = 4;
-		currentAnimation = &dizzyAnim;
-		donkeypos.y = 184;
-
-	}
-
-	if (i > 370 && i < 400) {
-		a = 5;
-		currentAnimation = &dizzyAnim;
-		donkeypos.y = 184;
-	}
-
-	if (i > 400) {
-		a = 6;
-		currentAnimation = &dizzyAnim;
-		donkeypos.y = 184;
-	}*/
-
-	if (i > 730) {
-		App->fade->FadeToBlack(this, (Module*)App->lvl3, 30);
+	if (donkeypos.y == 0) {
+		App->fade->FadeToBlack(this, (Module*)App->lvl3, 0);
+		/*App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->winninglvl2, 0)*/
 	}
 
 	currentAnimation->Update();
+	currentheartAnim->Update();
+	currentladyAnim->Update();
+	currentmarioAnim->Update();
 	i++;
 
 
@@ -209,14 +193,19 @@ Update_Status WinningLvl2::PostUpdate()
 		}
 	}
 
-	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	SDL_Rect rectdonkey = currentAnimation->GetCurrentFrame();
+	SDL_Rect rectheart = currentheartAnim->GetCurrentFrame();
+	SDL_Rect rectlady = currentladyAnim->GetCurrentFrame();
+	SDL_Rect rectmario = currentmarioAnim->GetCurrentFrame();
 
 	/*if (a == 1) {*/
 
 
 		App->render->Blit(backgroundTexture, 0, 0, &back);
-		//App->render->Blit(spritesTexture, 120, 26, &pauline);
-		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
+		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rectdonkey);
+		App->render->Blit(heartTexture, 120, 28, &rectheart);
+		App->render->Blit(ladyTexture, 104, 34, &rectlady);
+		App->render->Blit(marioTexture, 185, 63, &rectmario);
 		/*App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);*/
 	/*}*/
 	//else if (a == 2) {
