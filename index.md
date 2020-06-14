@@ -14,7 +14,7 @@ https://github.com/paulahitz8/DonkeyKong
 * Adrià Belmonte (croaco)
 
 ## Team Delete Teemo
-![Team Photo](https://github.com/paulahitz8/DonkeyKong/blob/master/Wiki/Images%20used/TeamPhotoFinal2S.png)
+![Team Photo](https://github.com/paulahitz8/DonkeyKong/blob/master/Wiki/Images%20used/TeamPhoto.jpg)
 
 
 
