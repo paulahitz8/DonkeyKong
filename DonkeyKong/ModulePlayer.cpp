@@ -680,20 +680,20 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				position.y += 1;
 			}
 
-			if (((position.y + 10) + player.h) > c2->rect.y + 42)
+			if (((position.y + 10) + player.h) > c2->rect.y + c2->rect.h)
 			{
 				position.y -= 1;
 			}
 
-			if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 6))) {
+			if (((position.y + 10) < (c2->rect.y + c2->rect.h - player.h)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) < (c2->rect.x - 6))) {
 				position.x += 1;
 			}
 
-			if (((position.y + 10) < (c2->rect.y + 26)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x - 4))) {
+			if (((position.y + 10) < (c2->rect.y + c2->rect.h - player.h)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x - 4))) {
 				position.x -= 1;
 			}
 
-			ladderOn = true;
+			ladderOn = true; 
 
 		}
 		else {
