@@ -75,6 +75,8 @@ ModuleLvl2::ModuleLvl2(bool startEnabled) : Module(startEnabled)
 	cosa2.PushBack({ 128,214,11,10 });
 	cosa2.PushBack({ 152,214,11,10 });
 	cosa2.speed = 0.025f;
+
+
 }
 
 ModuleLvl2::~ModuleLvl2()
