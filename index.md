@@ -4,7 +4,9 @@
 
 https://github.com/paulahitz8/DonkeyKong
 
-# Team Members
+## Download the latest release!
+
+## Team Members
 
 * Maria Calle 
 * Paula Hitz
