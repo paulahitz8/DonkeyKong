@@ -431,12 +431,6 @@ Update_Status ModulePlayer::Update()
 
 	if (!destroyed) {
 
-		/*if (ladderOn == false && groundOn == false && isJumping == false) {
-			position.y + 1;
-		}
-		Con esto o lo de abajo debería caerse al salir de un collider del ground*/
-
-
 		if (groundOn == true) {
 
 			if (App->object->hammerOn == true) {
@@ -715,10 +709,6 @@ Update_Status ModulePlayer::Update()
 				}
 			}
 
-			/*if (ladderOn == false && isJumping == false) {
-				position.y + 1;
-			} 
-			Con esto o lo de arriba debería caerse al salir de un collider del ground*/
 		}
 	}
 
@@ -749,8 +739,6 @@ Update_Status ModulePlayer::Update()
 	currentAnimation->Update();
 
 
-	//groundOn = false;
-
 	return Update_Status::UPDATE_CONTINUE;
 	
 }
@@ -770,13 +758,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {	
 	if (godmode == false) {
 		// LADDER
+		// LADDER
 		if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 8) && (position.x + 18) < (c2->rect.x)))
 		{
 			if (((position.y + 10) + player.h) < (c2->rect.y + 3)) {
 				position.y += 1;
 			}
 
-			if (((position.y + 10) + player.h) > c2->rect.y + c2->rect.h)
+			if (((position.y + 10) + player.h) > c2->rect.y + c2->rect.h - 2)
 			{
 				position.y -= 1;
 			}
@@ -785,11 +774,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				position.x += 1;
 			}
 
-			if (((position.y + 10) < (c2->rect.y + c2->rect.h - player.h)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x - 4))) {
+			if (((position.y + 10) < (c2->rect.y + c2->rect.h - player.h - 2)) && ((position.y + 10) > (c2->rect.y - 13)) && ((position.x + 18) > (c2->rect.x - 4))) {
 				position.x -= 1;
 			}
 
-			ladderOn = true; 
+			ladderOn = true;
 
 		}
 		else {
