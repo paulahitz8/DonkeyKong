@@ -25,7 +25,7 @@ public:
 
 public:
 	SDL_Rect back;
-	//SDL_Rect pauline, mario, heart, donkey;
+	SDL_Rect /*pauline, mario, heart,*/ donkey;
 	SDL_Texture* spritesTexture = nullptr;
 	SDL_Texture* backgroundTexture = nullptr;
 	//SDL_Texture* happybackgroundTexture = nullptr;
@@ -36,6 +36,9 @@ public:
 
 	Animation* currentAnimation = nullptr;
 	Animation donkeyidleAnim;
+	Animation donkeyupAnim;
+	Animation donkeywithoutladyAnim;
+	Animation donkeywithladyAnim;
 	//Animation heartAnim;
 	//Animation heartAnim1;
 	//Animation heartAnimvoid;
@@ -44,7 +47,8 @@ public:
 
 private:
 	int i = 1;
-	int a = 0;
+	/*int a = 0;*/
+
 
 };
 
