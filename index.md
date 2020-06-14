@@ -1,10 +1,5 @@
 # Donkey Kong 
 
-## Github: 
-
-[https://github.com/paulahitz8/DonkeyKong](https://github.com/paulahitz8/DonkeyKong)
-
-## [Download the latest release!](https://github.com/paulahitz8/DonkeyKong/releases)
 
 ## Team Members
 
