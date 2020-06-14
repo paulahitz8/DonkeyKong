@@ -195,9 +195,13 @@ Update_Status ModuleLvl2::Update()
 
 	// Enemy spawn timer
 
-	if (i % 150 == 0 && i % 300 != 0)
+	if (i % 150 == 0 && i % 300 != 0 && i % 450 != 0)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 120);
+	}
+	if (i % 150 == 0 && i % 300 != 0 && i % 450 == 0)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 25, 120);
 	}
 	if (i % 300 == 0)
 	{
