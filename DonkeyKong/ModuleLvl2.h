@@ -54,6 +54,7 @@ private:
 
 
 public:
+	bool change = false;
 	ModuleLvl2(bool startEnabled);
 	~ModuleLvl2();
 	bool Start() override;

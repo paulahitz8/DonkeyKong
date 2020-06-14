@@ -65,6 +65,7 @@ ModuleLvl2::~ModuleLvl2()
 
 bool ModuleLvl2::Start()
 {
+	change = false;
 
 	App->player->isJumping = false;
 	App->player->isFalling = false;
@@ -206,15 +207,15 @@ Update_Status ModuleLvl2::Update()
 
 	// Enemy spawn timer
 
-	if (i % 150 == 0 && i % 300 != 0 && i % 450 != 0)
+	if (i % 50 == 0 && i % 100 != 0 && i % 150 != 0)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 120);
 	}
-	if (i % 150 == 0 && i % 300 != 0 && i % 450 == 0)
+	if (i % 50 == 0 && i % 100 != 0 && i % 150 == 0)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 25, 120);
 	}
-	if (i % 300 == 0)
+	if (i % 100 == 0)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 200);
 	}
@@ -226,6 +227,11 @@ Update_Status ModuleLvl2::Update()
 	if (i % 150 == 0)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 109, 105);
+	}
+
+	if (i % 150 == 0 || i == 1)
+	{
+		change = true;
 	}
 	i++;
 	

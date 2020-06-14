@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
+#include "ModuleLvl2.h"
 
 Enemy_Cakes::Enemy_Cakes(int x, int y) : Enemies(x, y)
 {
@@ -23,9 +24,10 @@ void Enemy_Cakes::Update()
 	if (position.x > 220) {
 		speed = -speed;
 	}*/
-	if (i % 100 == 0)
+	if (App->lvl2->change == true)
 	{
 		speed = -speed;
+		App->lvl2->change = false;
 	}
 	i++;
 	Enemies::Update();
