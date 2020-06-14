@@ -230,7 +230,7 @@ void ModuleEnemies::HandleEnemiesDespawn()
 		if (enemiescakes[i] != nullptr)
 		{
 			// Delete the enemy when it has reached the end of the screen
-			if (enemiescakes[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN || (enemiescakes[i]->position.x == 120 && enemiescakes[i]->position.y == 120))
+			if (enemiescakes[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN || (enemiescakes[i]->position.x == 120 && enemiescakes[i]->position.y == 120) || position.x == 240)
 			{
 				LOG("DeSpawning enemy at %d", enemiescakes[i]->position.x * SCREEN_SIZE);
 
