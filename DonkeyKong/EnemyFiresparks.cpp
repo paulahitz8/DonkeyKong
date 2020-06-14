@@ -164,11 +164,141 @@ void Enemy_Firesparks::Update()
 	}
 	if (position.x == 225 && position.y == 112)
 	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 225 && position.y == 111)
+	{
 		up = false;
 		down = false;
 		right = false;
 		left = true;
 		currentAnimfiresparks = &leftAnim;
+	}
+	if (position.x == 148 && position.y == 111)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 148 && position.y == 151)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+		currentAnimfiresparks = &rightAnim;
+	}
+	if (position.x == 157 && position.y == 151)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 157 && position.y == 191)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+	}
+	if (position.x == 204 && position.y == 191)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 204 && position.y == 231)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+		currentAnimfiresparks = &leftAnim;
+	}
+	if (position.x == 149 && position.y == 231)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 149 && position.y == 191)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+	}
+	if (position.x == 92 && position.y == 191)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 92 && position.y == 231)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+	}
+	if (position.x == 36 && position.y == 231)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 36 && position.y == 191)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+		currentAnimfiresparks = &rightAnim;
+	}
+	if (position.x == 77 && position.y == 191)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 77 && position.y == 151)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+	}
+	if (position.x == 92 && position.y == 151)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 92 && position.y == 111)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+		currentAnimfiresparks = &leftAnim;
+	}
+	if (position.x == 16 && position.y == 111)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
 	}
 	
 
