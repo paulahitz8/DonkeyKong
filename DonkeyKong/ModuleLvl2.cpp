@@ -155,6 +155,10 @@ bool ModuleLvl2::Start()
 	App->collision->AddCollider({ 35, 111 , 2, 21 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 147, 54 , 2, 36 }, Collider::Type::LADDER);
 	
+
+	//Falling colliders
+	App->collision->AddCollider({ 71, 166 , 2, 10 }, Collider::Type::FALL);
+
 	//Moving ladders
 	ladVel = 1;
 	count = 0;

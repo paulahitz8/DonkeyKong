@@ -19,6 +19,7 @@ struct Collider
 		CARROT,
 		OBJECT,
 		LEFTFLOOR,
+		FALL,
 
 		MAX
 	};
