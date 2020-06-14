@@ -549,7 +549,7 @@ Update_Status ModulePlayer::Update()
 				}
 
 				if (isJumping == true) {
-					//faltan animaciones jumping
+
 					jumpingspeedy -= gravity;
 					position.y -= jumpingspeedy;
 
@@ -776,7 +776,7 @@ Update_Status ModulePlayer::PostUpdate()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (godmode == false) {
-		// LADDER
+
 		// LADDER
 		if (c2->type == Collider::Type::LADDER && ((position.x + 18) > (c2->rect.x - 8) && (position.x + 18) < (c2->rect.x)))
 		{
@@ -845,8 +845,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				if (App->player->activelevel == 4) {
 					App->fade->FadeToBlack((Module*)App->lvl4, (Module*)App->winning, 0);
 				}
-
-
 
 				resetVidas = true;
 			}

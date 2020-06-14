@@ -369,8 +369,6 @@ Update_Status ModuleLvl2::PostUpdate()
 
 bool ModuleLvl2::CleanUp()
 {
-
-
 	App->music->Disable();
 	App->player->Disable();
 	App->object->Disable();
@@ -380,5 +378,6 @@ bool ModuleLvl2::CleanUp()
 	App->lady->Disable();
 	App->score->Disable();
 	App->collision->Disable();
+
 	return true;
 }
