@@ -42,9 +42,13 @@ private:
 	int i = 1;
 	int j = 0;
 
+
+
 	bool godmode = false;
 	bool isJumping = false;
 	bool isFalling = false;
+	bool firstFloor = false;
+	bool secondFloor = false;
 
 
 	int hammerCount;
