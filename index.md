@@ -1,6 +1,8 @@
 # Donkey Kong 
 
-## Github: https://github.com/paulahitz8/DonkeyKong
+## Github: 
+
+https://github.com/paulahitz8/DonkeyKong
 
 # Team Members
 
@@ -21,16 +23,40 @@ Donkey Kong is an arcade platform videogame created by Nintendo in 1981. It is a
 ### Controls 
 
 -Arrow left: move left
+
+
 -Arrow right: move right
+
+
 -Arrow up: move up
+
+
 -Arrow left: move down
--Space bar: jump (not yet)
+
+
+-Space bar: jump 
+
+
 -ESC: exit
+
+
 -F1: collisions debug draw
+
+
 -F2: godmode 
+
+
 -F3: automatic lose
+
+
 -F4: automatic win
+
+
 -F5: next level
+
+
 -F6: toggle mouse
+
+
 
 
