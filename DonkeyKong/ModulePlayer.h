@@ -44,6 +44,7 @@ private:
 
 	bool godmode = false;
 	bool isJumping = false;
+	bool isFalling = false;
 
 
 	int hammerCount;
