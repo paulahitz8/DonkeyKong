@@ -44,6 +44,7 @@
     <ClCompile Include="ModuleLvl2.cpp" />
     <ClCompile Include="ModuleLvl3.cpp" />
     <ClCompile Include="ModuleLvl4.cpp" />
+    <ClCompile Include="ModuleMusic.cpp" />
     <ClCompile Include="ModuleObject.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleScore.cpp" />
@@ -82,6 +83,7 @@
     <ClInclude Include="ModuleLvl2.h" />
     <ClInclude Include="ModuleLvl3.h" />
     <ClInclude Include="ModuleLvl4.h" />
+    <ClInclude Include="ModuleMusic.h" />
     <ClInclude Include="ModuleObject.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleScore.h" />

@@ -59,6 +59,8 @@ private:
 
 
 public:
+	bool playmusic = true;
+	bool playhammermusic = false;
 	bool change = false;
 	ModuleLvl2(bool startEnabled);
 	~ModuleLvl2();
@@ -67,7 +69,7 @@ public:
 	Update_Status PostUpdate() override;
 	bool CleanUp() override;
 	bool lvl2score = false;
-
+	
 };
 
 #endif

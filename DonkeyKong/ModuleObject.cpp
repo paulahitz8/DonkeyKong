@@ -43,6 +43,7 @@ bool ModuleObject::Start()
 	hatrect = { 165, 82, 15, 8 };
 
 	objectFx = App->audio->LoadFx("Assets/Music/19 SFX (Bonus).wav");
+
 	hammerFx = App->audio->LoadFx("Assets/Music/07 SFX (Hammer).wav");
 	
 
@@ -303,6 +304,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 		App->audio->PlayFx(objectFx);
 		App->audio->PlayFx(hammerFx);
 		
+		
 
 	}
 	if (c1 == hammer2col && c2->type == Collider::Type::PLAYER)
@@ -318,6 +320,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 
 		App->audio->PlayFx(objectFx);
 		App->audio->PlayFx(hammerFx);
+	
 	
 	}
 	if (c1 == bagcol && c2->type == Collider::Type::PLAYER)

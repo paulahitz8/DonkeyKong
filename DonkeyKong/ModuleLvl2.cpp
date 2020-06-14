@@ -15,6 +15,7 @@
 #include "IntroScreen.h"
 #include "GameOver.h"
 #include "ModuleLady.h"
+#include "ModuleMusic.h"
 #include "SDL.h"
 
 
@@ -94,7 +95,6 @@ bool ModuleLvl2::Start()
 	cienpos.y = 0;
 
 	
-	App->audio->PlayMusic("Assets/Music/stage2.ogg", 1.0f);
 
 	//TILEMAP
 
@@ -186,6 +186,7 @@ bool ModuleLvl2::Start()
 	rightLadposition.y = 96;
 
 	// Enable Player
+	App->music->Enable();
 	App->object->Enable();
 	App->score->Enable();
 	App->player->Enable();
@@ -193,11 +194,18 @@ bool ModuleLvl2::Start()
 	App->enemies->Enable();
 	App->lady->Enable();
 
+
+	
+
 	return true;
 }
 
 Update_Status ModuleLvl2::Update()
 {
+
+
+	
+
 	// Lives
 	for (int i = 0; i < 3; i++) {
 		lives2[3][2 + i] = 0;
@@ -309,7 +317,7 @@ bool ModuleLvl2::CleanUp()
 {
 	App->collision->CleanUp();
 
-
+	App->music->Disable();
 	App->player->Disable();
 	App->object->Disable();
 	App->donkey->Disable();

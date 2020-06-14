@@ -14,6 +14,7 @@
 #include "WinningScreen.h"
 #include "IntroScreen.h"
 #include "GameOver.h"
+#include "ModuleMusic.h"
 #include "ModuleLady.h"
 #include "SDL.h"
 
@@ -97,7 +98,6 @@ bool ModuleLvl4::Start()
 	cienpos.x = 0;
 	cienpos.y = 0;
 
-	App->audio->PlayMusic("Assets/Music/10 Stage 4 BGM.ogg", 1.0f);
 
 	//TILEMAP
 
@@ -192,6 +192,7 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 179, 73, 2, 15 }, Collider::Type::CARROT);
 
 	// Enable Player
+	App->music->Enable();
 	App->score->Enable();
 	App->object->Enable();
 	App->player->Enable();
@@ -362,7 +363,7 @@ bool ModuleLvl4::CleanUp()
 {
 	App->collision->CleanUp();
 
-
+	App->music->Disable();
 	App->player->Disable();
 	App->object->Disable();
 	App->donkey->Disable();

@@ -8,6 +8,7 @@
 #include "ModuleHammer.h"
 #include "ModuleScore.h"
 #include "ModuleDonkey.h"
+#include "ModuleMusic.h"
 #include "ModuleObject.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -91,7 +92,6 @@ bool ModuleLvl3::Start()
 	cienpos.x = 0;
 	cienpos.y = 0;
 
-	App->audio->PlayMusic("Assets/Music/stage2.ogg", 1.0f);
 
 	//TILEMAP
 
@@ -207,6 +207,7 @@ bool ModuleLvl3::Start()
 
 	// Enable Player
 	App->object->Enable();
+	App->music->Enable();
 	App->score->Enable();
 	App->player->Enable();
 	App->donkey->Enable();
@@ -329,6 +330,8 @@ bool ModuleLvl3::CleanUp()
 {
 	App->collision->CleanUp();
 
+
+	App->music->Disable();
 	App->object->Disable();
 	App->player->Disable();
 	App->donkey->Disable();

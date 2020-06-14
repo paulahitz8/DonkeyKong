@@ -11,6 +11,7 @@
 #include "ModuleLvl2.h"
 #include "ModuleLvl3.h"
 #include "ModuleLvl4.h"
+#include "ModuleMusic.h"
 #include "ModulePlayer.h"
 #include "ModuleDonkey.h"
 #include "ModuleFadeToBlack.h"
@@ -42,6 +43,7 @@ Application::Application()
 	modules[i++] =  lvl2 =			new ModuleLvl2(false);
 	modules[i++] =  lvl3 =			new ModuleLvl3(false);
 	modules[i++] =	lvl4 =			new ModuleLvl4(false);
+	modules[i++] =	music =			new ModuleMusic(false);
 	modules[i++] =	object =		new ModuleObject(false);
 	modules[i++] =	player =		new ModulePlayer(false);
 	modules[i++] =	donkey =		new ModuleDonkey(false);
