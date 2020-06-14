@@ -63,6 +63,8 @@ public:
 	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
 	EnemySpawnpoint spawnQueuecakes[MAX_CAKES];
 
+	bool enemyDead;
+
 private: //?
 
 	// A queue with all spawn points information
@@ -76,8 +78,6 @@ private: //?
 
 
 	Animation* currentAnim2 = nullptr;
-
-	bool enemyDead;
 
 	int enemyDestroyedFx = 0;
 	int i = 1;

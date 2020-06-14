@@ -65,6 +65,9 @@ ModuleLvl4::~ModuleLvl4()
 
 bool ModuleLvl4::Start()
 {
+	App->player->isJumping = false;
+	App->player->isFalling = false;
+
 	App->object->hammer1exists = true;
 	App->object->hammer2exists = true;
 	App->object->bagexists = true;
@@ -275,15 +278,15 @@ Update_Status ModuleLvl4::Update()
 
 	// Enemy spawn timer
 
-	if (i % 1002 == 0)
+	if (i % 502 == 0)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 209, 156);
 	}
-	else if (i % 501 == 0 && (i % 1002 != 0) && (i % 1503 != 0) && (i % 2505 != 0))
+	else if (i % 251 == 0 && (i % 502 != 0) && (i % 703 != 0) && (i % 1505 != 0))
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 217, 196);
 	}
-	else if ((i % 1503 == 0) || (i % 2505 == 0))
+	else if ((i % 703 == 0) || (i % 1505 == 0))
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 201, 116);
 	}

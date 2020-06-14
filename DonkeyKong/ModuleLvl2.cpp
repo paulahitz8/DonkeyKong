@@ -66,6 +66,9 @@ ModuleLvl2::~ModuleLvl2()
 bool ModuleLvl2::Start()
 {
 
+	App->player->isJumping = false;
+	App->player->isFalling = false;
+
 	App->object->hammer1exists = true;
 	App->object->hammer2exists = true;
 	App->object->bagexists = true;

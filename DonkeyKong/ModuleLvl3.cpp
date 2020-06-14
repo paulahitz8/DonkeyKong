@@ -65,6 +65,9 @@ ModuleLvl3::~ModuleLvl3()
 
 bool ModuleLvl3::Start()
 {
+	App->player->isJumping = false;
+	App->player->isFalling = false;
+
 	App->object->hammerOn = false;
 	App->object->bagexists = true;
 	App->object->hatexists = true;
