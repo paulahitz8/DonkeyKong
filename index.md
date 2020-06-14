@@ -29,41 +29,46 @@ Donkey Kong is an arcade platform videogame created by Nintendo in 1981. It is a
 ## How to play
 ### Controls 
 
--Arrow left: move left
+### PC
+
+- Arrow left: move left
+
+- Arrow right: move right
+
+- Arrow up: move up
+
+- Arrow left: move down
+
+- Space bar: jump 
+
+- ESC: exit
 
 
--Arrow right: move right
+### Controller
+
+- Left: move left
+
+- Right: move right
+
+- Up: move up
+
+- Down: move down
+
+- A: jump
 
 
--Arrow up: move up
+### Functionalities
 
+- F1: collisions debug draw
 
--Arrow left: move down
+- F2: godmode 
 
+- F3: automatic lose
 
--Space bar: jump 
+- F4: automatic win
 
+- F5: next level
 
--ESC: exit
-
-
--F1: collisions debug draw
-
-
--F2: godmode 
-
-
--F3: automatic lose
-
-
--F4: automatic win
-
-
--F5: next level
-
-
--F6: toggle mouse
-
-
+- F6: toggle mouse
 
 

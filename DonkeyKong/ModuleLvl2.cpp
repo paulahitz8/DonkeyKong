@@ -209,7 +209,7 @@ bool ModuleLvl2::Start()
 	leftLadposition.y = 96;	
 	
 	rightLad = {81, 194, 10, 16 };
-	rightLadposition.x = 216;
+	rightLadposition.x = 215;
 	rightLadposition.y = 96;
 
 
@@ -286,7 +286,7 @@ Update_Status ModuleLvl2::Update()
 	leftLadposition.y += ladVel;
 	rightLadposition.y += ladVel;
 
-	if (leftLadposition.y > 140 ) {
+	if (leftLadposition.y > 115 ) {
 		ladVel = -1;
 		leftLadcollidershort->SetPos(35, 109);
 		leftLadcolliderlong->SetPos(0, 0);

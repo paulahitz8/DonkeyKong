@@ -22,33 +22,44 @@ and popular games of the Arcade Golden Age.
 
 
 How to play:
+Level 2: Get to the top without dying
+Level 3: Get to the top without dying
 Level 4: Destroy the beams in order to make Donkey Kong fall and get to Pauline!
+
 Don't let the enemies get you, make sure to use the hammer. 
 
 
-Controls:
-Arrow left: move left
-Arrow right: move right
-Arrow up: move up
-Arrow left: move down
-Space bar: jump (not yet)
-ESC: exit
-F1: collisions debug draw
-F2: godmode 
-F3: automatic lose
-F4: automatic win
+## How to play
+### Controls 
+PC
+-Arrow left: move left
+-Arrow right: move right
+-Arrow up: move up
+-Arrow left: move down
+-Space bar: jump 
+-ESC: exit
+
+Controller
+- Left: move left
+- Right: move right
+- Up: move up
+- Down: move down
+- A: jump
+
+Functionalities
+-F1: collisions debug draw
+-F2: godmode 
+-F3: automatic lose
+-F4: automatic win
+-F5: next level
+-F6: toggle mouse
+
 
 
 Bugs found:
-	1. The last "carrot" that you picked up does not respawn when you restart the level
-	2. We tried to do the audio clean ups but the program crashed
-	3. Winning animation crashes after a few rounds (we tried doing clean ups but we can't find the error)
-
-
-
-
-
-
+	1. Enemy crashing error. Still crashes even if we tried to fix it with the teacher. To fix it just restart .exe
+	2. Level 3 is not winnable without cheats, even though the win condition is there. Problems with groundOn
+	3. 100 and 800 don't want to leave. 
 
 
 
