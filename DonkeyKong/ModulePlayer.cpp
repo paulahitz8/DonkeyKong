@@ -770,7 +770,7 @@ Update_Status ModulePlayer::Update()
 	currentheart->Update();
 
 
-	
+	//groundOn = false;
 
 	return Update_Status::UPDATE_CONTINUE;
 	
@@ -778,6 +778,8 @@ Update_Status ModulePlayer::Update()
 
 Update_Status ModulePlayer::PostUpdate()
 {
+	
+
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	SDL_Rect rectheart = currentheart->GetCurrentFrame();
 
