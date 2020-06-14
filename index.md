@@ -4,7 +4,7 @@
 
 [https://github.com/paulahitz8/DonkeyKong](https://github.com/paulahitz8/DonkeyKong)
 
-## Download the latest release!
+## [Download the latest release!](https://github.com/paulahitz8/DonkeyKong/releases)
 
 ## Team Members
 
@@ -19,6 +19,10 @@
 
 ## Description
 Donkey Kong is an arcade platform videogame created by Nintendo in 1981. It is about a protagonist character, Mario (first called Jumpan), who has to rescue a lady in distress called Pauline (originally named Lady) who has been kidnapped by an enormous gorilla called Donkey Kong. The player goes through different scenarios and has to dodge attacks Donkey Kong throws against him in order to rescue Pauline. This game is one of the most important and popular games of the Arcade Golden Age.
+
+
+## Gameplay Video
+(Video aqui lol)[]
 
 ## How to play
 ### Controls 
