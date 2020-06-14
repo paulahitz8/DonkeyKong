@@ -11,6 +11,7 @@
 #include "ModuleObject.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
+#include "Animation.h"
 #include "WinningScreen.h"
 #include "IntroScreen.h"
 #include "GameOver.h"
@@ -55,7 +56,25 @@ int lives2[32][32]{ {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 ModuleLvl2::ModuleLvl2(bool startEnabled) : Module(startEnabled)
 {
+	barril1.PushBack({ 120, 113, 16, 32 });
 
+
+	barril2.PushBack({ 48, 113, 16, 32 });
+	barril2.PushBack({ 72, 113, 16, 32 });
+	barril2.PushBack({ 96, 113, 16, 32 });
+	barril2.PushBack({ 24, 113, 16, 32 });
+	barril2.speed = 0.1f;
+
+
+	cosa.PushBack({104,197,11,10});
+	cosa.PushBack({ 128,197,11,10 });
+	cosa.PushBack({ 152,197,11,10 });
+	cosa.speed = 0.025f;
+
+	cosa2.PushBack({ 104,214,11,10 });
+	cosa2.PushBack({ 128,214,11,10 });
+	cosa2.PushBack({ 152,214,11,10 });
+	cosa2.speed = 0.025f;
 }
 
 ModuleLvl2::~ModuleLvl2()
@@ -66,6 +85,11 @@ ModuleLvl2::~ModuleLvl2()
 
 bool ModuleLvl2::Start()
 {
+
+	currentbarrilAnim = &barril1;
+	currentcosaAnim = &cosa;
+	currentcosa2Anim = &cosa2;
+
 	change = false;
 
 	App->player->isJumping = false;
@@ -106,6 +130,7 @@ bool ModuleLvl2::Start()
 
 
 	backTexture = App->textures->Load("Assets/cositasfondo/backgroundconcosas.png");
+	barrilTexture = App->textures->Load("Assets/Enemies/EnemiesSprites.png");
 	cientexture = App->textures->Load("Assets/Lady/RandomSprites.png");
 	liveTexture = App->textures->Load("Assets/cositasfondo/MarioLive.png");
 
@@ -185,6 +210,8 @@ bool ModuleLvl2::Start()
 	rightLadposition.x = 216;
 	rightLadposition.y = 96;
 
+
+
 	// Enable Player
 	App->music->Enable();
 	App->object->Enable();
@@ -202,6 +229,9 @@ bool ModuleLvl2::Start()
 
 Update_Status ModuleLvl2::Update()
 {
+	if (i >= 10) {
+		currentbarrilAnim = &barril2;
+	}
 
 	if (App->object->hammerOn) {
 		App->music->Disable();
@@ -279,13 +309,32 @@ Update_Status ModuleLvl2::Update()
 	j++;
 
 
+	currentbarrilAnim->Update();
+	currentcosa2Anim->Update();
+	currentcosaAnim->Update();
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status ModuleLvl2::PostUpdate()
 {
+	SDL_Rect barrilrect = currentbarrilAnim->GetCurrentFrame();
+
+	SDL_Rect cosarect = currentcosaAnim->GetCurrentFrame();
+	SDL_Rect cosa2rect = currentcosa2Anim->GetCurrentFrame();
 
 	App->render->Blit(background2Texture, 0, 0, &back, 0);
+
+	App->render->Blit(barrilTexture, 120, 112, &barrilrect);
+
+	App->render->Blit(barrilTexture, 13, 87, &cosarect);
+	App->render->Blit(barrilTexture, 133, 127, &cosarect);
+	App->render->Blit(barrilTexture, 13, 207, &cosarect);
+
+	App->render->Blit(barrilTexture, 232, 87, &cosa2rect);
+	App->render->Blit(barrilTexture, 112, 127, &cosa2rect);
+	App->render->Blit(barrilTexture, 232, 207, &cosa2rect);
+
+
 
 	int type = 0;
 	for (int column = 0; column < 32; column++) {

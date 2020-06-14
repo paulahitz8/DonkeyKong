@@ -6,6 +6,7 @@
 #include "Module.h"
 #include "SDL_Rect.h"
 #include "p2Point.h"
+#include "Animation.h"
 
 struct SDL_Texture;
 
@@ -26,14 +27,11 @@ private:
 
 	SDL_Texture* backTexture = nullptr;
 	SDL_Texture* background2Texture = nullptr;
-	SDL_Texture* floorTexture = nullptr;
-	SDL_Texture* floorCarrotTexture = nullptr;
-	SDL_Texture* carrotTexture = nullptr;
-	SDL_Texture* ladderTexture = nullptr;
-	SDL_Texture* floorLadderTexture = nullptr;
-	SDL_Texture* leftPoleTexture = nullptr;
-	SDL_Texture* rightPoleTexture = nullptr;
 	SDL_Texture* liveTexture = nullptr;
+	SDL_Texture* ladderTexture = nullptr;
+
+
+
 
 	int i = 1;
 	int t = 1;
@@ -51,6 +49,7 @@ private:
 	iPoint leftLadposition;
 	iPoint rightLadposition;
 
+	SDL_Texture* barrilTexture = nullptr;
 
 	Collider* leftLadcollidershort = nullptr;
 	Collider* rightLadcollidershort = nullptr;
@@ -69,7 +68,20 @@ public:
 	Update_Status PostUpdate() override;
 	bool CleanUp() override;
 	bool lvl2score = false;
+
+
+
 	
+	Animation* currentbarrilAnim = nullptr;
+	Animation barril1;
+	Animation barril2;
+
+
+	Animation* currentcosaAnim = nullptr;
+	Animation* currentcosa2Anim = nullptr;
+	
+	Animation cosa;
+	Animation cosa2;
 };
 
 #endif
