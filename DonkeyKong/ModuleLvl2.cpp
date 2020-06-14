@@ -232,13 +232,21 @@ Update_Status ModuleLvl2::Update()
 	//MovingLadders - necesito una imagen del trozo de escalera, con su rectangulo
 	leftLadposition.y += ladVel;
 
-
-	if (leftLadposition.y > 140 || leftLadposition.y < 95) {
-		ladVel = -ladVel;
+	if (leftLadposition.y > 140 ) {
+		ladVel = -1;
 	}
 
+	if (leftLadposition.y < 95) {
+		ladVel = 0;
+		
+		if (j % 400 == 1) {
+			ladVel = 1;
+			j = 0;
+		}
+		
+	}
 
-	
+	j++;
 
 
 	return Update_Status::UPDATE_CONTINUE;
