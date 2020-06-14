@@ -2,16 +2,16 @@
 
 ## Github: 
 
-https://github.com/paulahitz8/DonkeyKong
+[https://github.com/paulahitz8/DonkeyKong](https://github.com/paulahitz8/DonkeyKong)
 
 ## Download the latest release!
 
 ## Team Members
 
-* Maria Calle (mav006)
-* Paula Hitz (paulahitz8)
-* Irene Hernández (ihedud)
-* Adrià Belmonte (croaco)
+* Maria Calle: colliders master
+* Paula Hitz: stages creator and animations
+* Irene Hernández: enemies and animations
+* Adrià Belmonte: gamepad and fullscreen
 
 ## Team Delete Teemo
 ![Team Photo](https://raw.githubusercontent.com/paulahitz8/DonkeyKong/master/Wiki/Images%20used/TeamPhoto.jpg)
