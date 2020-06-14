@@ -22,22 +22,90 @@ Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 
 void Enemy_Firesparks::Update()
 {
-	if (App->enemies->spawnQueue->y == 105)
+		
+	if (position.x == 109 && position.y == 105)
 	{
-		if (position.y >= 105 && position.y < 112)
-		{
-			position.y++;
-		}
-		position.x -= speed;
-		if (position.x < 24) {
-			currentAnimfiresparks = &rightAnim;
-			speed = -speed;
-		}
-		if (position.x > 220) {
-			currentAnimfiresparks = &leftAnim;
-			speed = -speed;
-		}
+		up = false;
+		down = true;
+		right = false;
+		left = true;
+		currentAnimfiresparks = &leftAnim;
 	}
+	if (position.x == 102 && position.y == 112)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+	}
+	if (position.x == 16 && position.y == 112)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+		currentAnimfiresparks = &rightAnim;
+	}
+	if (position.x == 93 && position.y == 112 && currentAnimfiresparks == &rightAnim)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 93 && position.y == 152)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+		currentAnimfiresparks = &leftAnim;
+	}
+	if (position.x == 79 && position.y == 152)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 79 && position.y == 192)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+	}
+	if (position.x == 37 && position.y == 192)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 37 && position.y == 232)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+		currentAnimfiresparks = &rightAnim;
+	}
+	if (position.x == 93 && position.y == 232)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 93 && position.y == 192)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+	}
+	
+
 
 	if (position.x == 95 && position.y == 120)
 	{
@@ -45,6 +113,7 @@ void Enemy_Firesparks::Update()
 		down = false;
 		right = false;
 		left = true;
+		currentAnimfiresparks = &leftAnim;
 	}
 	if (position.x == 77 && position.y == 120)
 	{
@@ -59,6 +128,7 @@ void Enemy_Firesparks::Update()
 		down = false;
 		right = true;
 		left = false;
+		currentAnimfiresparks = &rightAnim;
 	}
 	if (position.x == 95 && position.y == 193)
 	{
@@ -68,12 +138,15 @@ void Enemy_Firesparks::Update()
 		left = false;
 	}
 
+
+
 	if (position.x == 215 && position.y == 128)
 	{
 		up = false;
 		down = false;
 		right = false;
 		left = true;
+		currentAnimfiresparks = &leftAnim;
 	}
 	if (position.x == 198 && position.y == 128)
 	{
@@ -102,6 +175,7 @@ void Enemy_Firesparks::Update()
 		down = false;
 		right = true;
 		left = false;
+		currentAnimfiresparks = &rightAnim;
 	}
 	if (position.x == 221 && position.y == 127)
 	{
@@ -130,6 +204,7 @@ void Enemy_Firesparks::Update()
 		down = false;
 		right = false;
 		left = true;
+		currentAnimfiresparks = &leftAnim;
 	}
 
 	if (up == true)
