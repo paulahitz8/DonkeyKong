@@ -161,7 +161,7 @@ Update_Status ModulePlayer::Update()
 	if (godmode == false) {
 		if (activelevel == 2) {
 			if (position.y == 63) {
-				/*App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->winninglvl2, 0);*/
+				App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->winninglvl2, 0);
 			}
 		}
 		if (activelevel == 3) {
