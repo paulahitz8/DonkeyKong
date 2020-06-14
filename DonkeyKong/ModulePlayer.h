@@ -48,6 +48,8 @@ private:
 	
 	bool firstFloor = false;
 	bool secondFloor = false;
+	bool leftfall = false;
+	bool rightfall = false;
 
 
 	int hammerCount;
