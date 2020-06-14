@@ -719,16 +719,33 @@ Update_Status ModulePlayer::Update()
 			if (firstFloor == true) {
 				if (position.y == 182) {
 					isFalling = false;
+										destroyed = true;
 				}
 			}
 
 			if (secondFloor == true) {
 				if (position.y == 142) {
 					isFalling = false;
+					destroyed = true;
 				}
 			}
 		}
 	
+		if (activelevel == 3) {
+			if (leftfall == true) {
+				if (position.y == 222) {
+					isFalling = false;
+					destroyed = true;
+				}
+			}
+
+			if (rightfall == true) {
+				if (position.y == 206) {
+					isFalling = false;
+					destroyed = true;
+				}
+			}
+		}
 		
 		
 	}
@@ -841,6 +858,29 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		}
 
+		if (c2->type == Collider::Type::FALL) {
+
+			if (activelevel == 2) {
+				if (position.y < 182 && position.y > 142) {
+					firstFloor = true;
+				}
+				if (position.y < 142 && position.y > 102) {
+					secondFloor = true;
+				}
+			}
+			if (activelevel == 3) {
+				if (position.x < 120) {
+					leftfall = true;
+				}
+				if (position.x > 120) {
+					rightfall = true;
+				}
+			}
+
+			groundOn = true;
+			isFalling = true;
+		}
+
 	}
 
 	// OBJECT
@@ -851,27 +891,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	}
 
-	// LEFTFLOOR
-	/*if (c2->type == Collider::Type::OBJECT)
-	{
-		if ((position.y + player.h) < (c2->GetRect().y + 2) && (position.y + player.h) > c2->GetRect().y -2) { position.y --; }
-		
-		groundOn = true;
-
-	}*/
-
-	//Fall
-	
-	if (c2->type == Collider::Type::FALL) {
-		if (position.y < 182 && position.y > 142) {
-			firstFloor = true;
-		}
-		if (position.y < 142 && position.y > 102) {
-			secondFloor = true;
-		}
-		groundOn = true;
-		isFalling = true;
-	}
 
 } 
 

@@ -41,6 +41,7 @@ private:
 	
 
 public:
+
 	ModuleLvl4(bool startEnabled);
 	~ModuleLvl4();
 	bool Start() override;

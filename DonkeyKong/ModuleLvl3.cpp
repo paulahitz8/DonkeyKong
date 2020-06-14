@@ -118,21 +118,17 @@ bool ModuleLvl3::Start()
 
 	// Level 3 colliders:
 	// Walls and ground by floor
-	App->collision->AddCollider({ 0, 245, 14, 11 }, Collider::Type::WALL);
+	
+	App->collision->AddCollider({ 3, 75, 11, 181 }, Collider::Type::WALL);
+	App->collision->AddCollider({ 242, 82, 12, 174 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 16, 247, 224, 9 }, Collider::Type::GROUND);
-	App->collision->AddCollider({ 16 + 223 + 3, 246, 16, 11 }, Collider::Type::WALL);
 
-	App->collision->AddCollider({ 0, 319, 14, 11 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 16, 321, 24, 9 }, Collider::Type::GROUND);
 
-
-	App->collision->AddCollider({ 0, 189, 14, 11 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 16, 191, 24, 9 }, Collider::Type::GROUND);
 
-	App->collision->AddCollider({ 0, 133, 14, 11 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 16, 135, 24, 9 }, Collider::Type::GROUND);
 
-	App->collision->AddCollider({ 0, 85, 14, 11 }, Collider::Type::WALL);
 	App->collision->AddCollider({ 16, 87, 168, 9 }, Collider::Type::GROUND);
 
 	//evita bugs
@@ -168,9 +164,18 @@ bool ModuleLvl3::Start()
 	App->collision->AddCollider({ 179, 86 , 2, 36 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 147, 54 , 2, 36 }, Collider::Type::LADDER);
 
+	// Falling
+	App->collision->AddCollider({ 46, 134 , 2, 15 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 65, 134 , 2, 15 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 46, 190 , 2, 15 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 71, 206 , 2, 15 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 110, 206 , 2, 15 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 110, 134 , 2, 15 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 135, 126 , 2, 15 }, Collider::Type::FALL);
+	App->collision->AddCollider({ 144, 158 , 2, 15 }, Collider::Type::FALL);
+	
 
-	//Moving floors 104
-	//LEFT
+	/*//LEFT
 	movingFloorTex = App->textures->Load("Assets/cositasfondo/suelo.png");
 	leftFloorRectA = { 0, 0, 9, 10 };
 	leftFloorA.x = 51;
@@ -203,6 +208,7 @@ bool ModuleLvl3::Start()
 	rightFloorC.x = 115;
 	rightFloorC.y = 140;
 	rightFloorCoC = App->collision->AddCollider({ rightFloorC.x, rightFloorC.y, 10, 9 }, Collider::Type::GROUND);
+	*/
 
 
 	// Enable Player
@@ -246,9 +252,8 @@ Update_Status ModuleLvl3::Update()
 	}
 	i++;
 
-	//MovingFloors
 	//LEFT
-	/*leftFloorA.y--;
+	leftFloorA.y--;
 	if (leftFloorA.y == 94) {
 		leftFloorA.y = 248;
 	}
@@ -283,7 +288,7 @@ Update_Status ModuleLvl3::Update()
 	if (rightFloorC.y == 248) {
 		rightFloorC.y = 94;
 	}
-	rightFloorCoC->SetPos(rightFloorC.x, rightFloorC.y);*/
+	rightFloorCoC->SetPos(rightFloorC.x, rightFloorC.y);
 
 
 
