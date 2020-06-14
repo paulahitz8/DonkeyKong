@@ -104,6 +104,72 @@ void Enemy_Firesparks::Update()
 		right = true;
 		left = false;
 	}
+	if (position.x == 148 && position.y == 192)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 148 && position.y == 232)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+	}
+	if (position.x == 205 && position.y == 232)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 205 && position.y == 192)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+		currentAnimfiresparks = &leftAnim;
+	}
+	if (position.x == 156 && position.y == 192)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 156 && position.y == 152)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+	}
+	if (position.x == 149 && position.y == 152)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 149 && position.y == 112)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+		currentAnimfiresparks = &rightAnim;
+	}
+	if (position.x == 225 && position.y == 112)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+		currentAnimfiresparks = &leftAnim;
+	}
 	
 
 

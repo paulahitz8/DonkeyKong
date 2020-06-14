@@ -200,7 +200,11 @@ Update_Status ModuleLvl2::Update()
 		App->enemies->AddEnemy(ENEMY_TYPE::CAKES, 209, 200);
 	}
 
-	if (i % 100 == 0)
+	if (i == 1)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 109, 105);
+	}
+	if (i % 150 == 0)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 109, 105);
 	}
