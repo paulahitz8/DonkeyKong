@@ -177,7 +177,7 @@ Update_Status ModulePlayer::Update()
 		hammerCount++;
 	}
 
-	if (hammerCount == 500) {
+	if (hammerCount == 600) {
 		App->hammer->Disable();
 		hammerCount = 0;
 		App->object->hammerOn = false;

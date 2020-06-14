@@ -36,7 +36,6 @@ bool ModuleHammer::Start()
 
 Update_Status ModuleHammer::Update()
 {
-	//if (App->object->hammerOn == true) {
 
 		if ((App->player->currentAnimation == &App->player->upladderAnim) || (App->player->currentAnimation == &App->player->downladderAnim) || (App->player->currentAnimation == &App->player->deadAnim1) || (App->player->currentAnimation == &App->player->deadAnim2) || (App->player->currentAnimation == &App->player->deadAnim3) || (App->player->currentAnimation == &App->player->deadAnim4)) {
 
