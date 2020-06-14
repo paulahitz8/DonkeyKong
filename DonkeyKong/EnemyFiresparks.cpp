@@ -1,19 +1,28 @@
 #include "EnemyFiresparks.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModuleObject.h"
 
 #include "ModuleEnemies.h"
 
 
 Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 {
-	leftAnim.PushBack({ 33, 47, 15, 16 });
+	leftAnim.PushBack({ 33, 46, 15, 16 });
 	leftAnim.PushBack({ 56, 46, 15, 16 });
 	leftAnim.speed = 0.2f;
 
 	rightAnim.PushBack({ 80, 46, 15, 16 });
 	rightAnim.PushBack({ 103, 46, 15, 16 });
 	rightAnim.speed = 0.2f;
+
+	leftAnimhammer.PushBack({ 129, 46, 15, 16 });
+	leftAnimhammer.PushBack({ 152, 46, 15, 16 });
+	leftAnimhammer.speed = 0.2f;
+
+	rightAnimhammer.PushBack({ 176, 46, 15, 16 });
+	rightAnimhammer.PushBack({ 199, 46, 15, 16 });
+	rightAnimhammer.speed = 0.2f;
 
 	currentAnimfiresparks = &leftAnim;
 
@@ -22,7 +31,17 @@ Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 
 void Enemy_Firesparks::Update()
 {
-		
+	if (App->object->hammerOn == true)
+	{
+		if (currentAnimfiresparks == &leftAnim)
+		{
+			currentAnimfiresparks = &leftAnimhammer;
+		}
+		else if (currentAnimfiresparks == &rightAnim)
+		{
+			currentAnimfiresparks = &rightAnimhammer;
+		}
+	}
 	if (position.x == 109 && position.y == 105)
 	{
 		up = false;
@@ -46,7 +65,7 @@ void Enemy_Firesparks::Update()
 		left = false;
 		currentAnimfiresparks = &rightAnim;
 	}
-	if (position.x == 93 && position.y == 112 && currentAnimfiresparks == &rightAnim)
+	if (position.x == 93 && position.y == 112 && (currentAnimfiresparks == &rightAnim || currentAnimfiresparks == &rightAnimhammer))
 	{
 		up = false;
 		down = true;

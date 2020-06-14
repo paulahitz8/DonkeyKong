@@ -20,6 +20,8 @@ private:
 
 	Animation leftAnim;
 	Animation rightAnim;
+	Animation leftAnimhammer;
+	Animation rightAnimhammer;
 };
 
 #endif
