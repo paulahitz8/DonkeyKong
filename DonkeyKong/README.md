@@ -57,9 +57,10 @@ Functionalities
 
 
 Bugs found:
-	1. The last "carrot" that you picked up does not respawn when you restart the level
-	2. We tried to do the audio clean ups but the program crashed
-	3. Winning animation crashes after a few rounds (we tried doing clean ups but we can't find the error)
+	1. Enemy crashing error. Still crashes even if we tried to fix it with the teacher. To fix it just restart .exe
+	2. Level 3 is not winnable without cheats, even though the win condition is there. Problems with groundOn
+	3. 100 and 800 don't want to leave. 
+
 
 
 
