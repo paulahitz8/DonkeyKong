@@ -101,9 +101,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	//dead angel animation
 	angelAnim.PushBack({ 59, 67, 30, 26 });
 
-	heartAnim.PushBack({ 93, 77, 16, 13 });
-	heartAnim1.PushBack({ 116, 77, 16, 13 });
-	heartAnimvoid.PushBack({ 0, 0, 16, 13 });
 }
 
 ModulePlayer::~ModulePlayer() {
@@ -120,11 +117,7 @@ bool ModulePlayer::Start()
 
 	LOG("Loading player textures");
 	playertexture = App->textures->Load("Assets/Mario/mariosprites.png");
-	hearttexture = App->textures->Load("Assets/objects/RandomSprites.png");
 
-	k = 1;
-
-	currentheart = &heartAnimvoid;
 	currentAnimation = &rightidleAnimNoHam; //mario empieza mirando a la derecha
 
 
@@ -168,25 +161,12 @@ Update_Status ModulePlayer::Update()
 	if (godmode == false) {
 		if (activelevel == 2) {
 			if (position.y == 63) {
-				lvl2Win = true;
-				if (k < 100)
-				{
-					currentheart = &heartAnim;
-				}
-				if (k >= 100)
-				{
-					currentheart = &heartAnim1;
-				}
-				if (k == 300)
-				{
-					App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->siguientenivel, 0);
-				}
-				k++;
+				App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->winninglvl2, 0);
 			}
 		}
 		if (activelevel == 3) {
 			if (position.y == 31) {
-				App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->siguientenivel, 0);
+				App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->winninglvl3, 0);
 			}
 		}
 	}
@@ -767,7 +747,6 @@ Update_Status ModulePlayer::Update()
 
 
 	currentAnimation->Update();
-	currentheart->Update();
 
 
 	
@@ -779,10 +758,8 @@ Update_Status ModulePlayer::Update()
 Update_Status ModulePlayer::PostUpdate()
 {
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	SDL_Rect rectheart = currentheart->GetCurrentFrame();
 
 	App->render->Blit(playertexture, position.x, position.y, &rect);
-	App->render->Blit(hearttexture, 120, 28, &rectheart);
 
 	return Update_Status::UPDATE_CONTINUE;
 }

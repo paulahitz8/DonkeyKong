@@ -109,6 +109,12 @@
     <ClCompile Include="ModuleMusic.cpp">
       <Filter>Source\Modules\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="WinningLvl2.cpp">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="WinningLvl3.cpp">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -223,6 +229,12 @@
       <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="ModuleMusic.h">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="WinningLvl3.h">
+      <Filter>Source\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="WinningLvl2.h">
       <Filter>Source\Modules\Scenes</Filter>
     </ClInclude>
   </ItemGroup>

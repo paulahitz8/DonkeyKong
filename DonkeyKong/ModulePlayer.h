@@ -16,7 +16,6 @@ private:
 	SDL_Rect player;
 
 	SDL_Texture* playertexture = nullptr;
-	SDL_Texture* hearttexture = nullptr;
 	
 	int jumpTimer = 0;
 	int gravity = 1;
@@ -58,7 +57,6 @@ public:
 	bool isJumping = false;
 	bool isFalling = false;
 
-	bool lvl2Win = false;
 
 	// The player's collider
 	Collider* collider = nullptr; 
@@ -69,7 +67,6 @@ public:
 
 	// Animation
 	Animation* currentAnimation = nullptr;
-	Animation* currentheart = nullptr;
 
 	Animation leftidleAnimNoHam;
 	Animation rightidleAnimNoHam;
@@ -94,12 +91,8 @@ public:
 	Animation deadAnim3;
 	Animation deadAnim4;
 	Animation angelAnim;
-	Animation heartAnim;
-	Animation heartAnim1;
-	Animation heartAnimvoid;
 
 	int n = 0;
-	int k = 1;
 	
 	bool resetVidas = false;
 	int livecount = 3;
