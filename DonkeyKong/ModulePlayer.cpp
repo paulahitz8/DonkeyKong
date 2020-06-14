@@ -629,6 +629,13 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+	if (isFalling == true) {
+		position.y++;
+		if (position.y == 182) {
+			isFalling = false;
+		}
+		
+	}
 
 	collider->SetPos(position.x + 18, position.y + 10);
 
@@ -754,6 +761,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		groundOn = true;
 
 	}*/
+
+	//Fall
+	
+	if (c2->type == Collider::Type::FALL) {
+		groundOn = true;
+		isFalling = true;
+	}
 
 } 
 
