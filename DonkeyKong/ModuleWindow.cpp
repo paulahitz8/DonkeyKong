@@ -24,6 +24,7 @@ bool ModuleWindow::Init()
 	}
 	else
 	{
+
 		//Create window
 		Uint32 flags = SDL_WINDOW_SHOWN;
 

@@ -24,12 +24,13 @@ public:
 	// Destroys the window and uninitializes the SDL library
 	bool CleanUp() override;
 
-public:
+	
 	//The window we'll be rendering to
 	SDL_Window* window = nullptr;
 
 	//The window's surface
 	SDL_Surface* screenSurface = nullptr;
+
 };
 
 #endif // !__MODULE_WINDOW_H__
