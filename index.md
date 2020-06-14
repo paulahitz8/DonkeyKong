@@ -8,10 +8,10 @@
 
 ## Team Members
 
-* Maria Calle: colliders master
-* Paula Hitz: stages creator and animations
-* Irene Hernández: enemies and animations
-* Adrià Belmonte: gamepad and fullscreen
+> * Maria Calle: colliders master
+> * Paula Hitz: stages creator and animations
+> * Irene Hernández: enemies and animations
+> * Adrià Belmonte: gamepad and fullscreen
 
 ## Team Delete Teemo
 ![Team Photo](https://raw.githubusercontent.com/paulahitz8/DonkeyKong/master/Wiki/Images%20used/TeamPhoto.jpg)
@@ -22,7 +22,9 @@ Donkey Kong is an arcade platform videogame created by Nintendo in 1981. It is a
 
 
 ## Gameplay Video
-(Video aqui lol)[]
+<iframe width="[1280]" height="[720]" src="[https://www.youtube.com/watch?v=Pp2aMs38ERY]"> </iframe>
+[Click here](https://www.youtube.com/watch?v=Pp2aMs38ERY) if you can't watch the video.
+
 
 ## How to play
 ### Controls 
