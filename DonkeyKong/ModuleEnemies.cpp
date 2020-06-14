@@ -5,6 +5,7 @@
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
+#include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 
@@ -51,12 +52,28 @@ bool ModuleEnemies::Start()
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Music/21 SFX (Kill).wav");
 
 	currentAnim2 = &blankAnim;
-
+	onceSpawn = true;
 	return true;
 }
 
 Update_Status ModuleEnemies::Update()
 {
+
+	if (App->input->GetCursorState() == 1 && App->input->CheckIfClicked() && onceSpawn == true) {
+		onceSpawn = false;
+		if (App->player->activelevel == 2) {
+			AddEnemy(ENEMY_TYPE::FIRESPARKS, App->input->GetMouseX(), App->input->GetMouseY());
+		}
+		if (App->player->activelevel == 3) {
+			AddEnemy(ENEMY_TYPE::FIRESPARKS, App->input->GetMouseX(), App->input->GetMouseY());
+		}
+		if (App->player->activelevel == 4) {
+			AddEnemy(ENEMY_TYPE::FIREBALLS, App->input->GetMouseX(), App->input->GetMouseY());
+		}
+		
+	}
+	else if (App->input->GetCursorState() == 1 && App->input->CheckIfClicked() == false) { onceSpawn = true; }
+
 	HandleEnemiesSpawn();
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)

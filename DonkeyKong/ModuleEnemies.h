@@ -83,7 +83,7 @@ private: //?
 	int i = 1;
 
 	iPoint position;
-
+	bool onceSpawn = true;
 	Animation deadAnim;
 	Animation blankAnim;
 };

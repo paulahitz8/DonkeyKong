@@ -10,6 +10,7 @@
 
 struct _SDL_GameController;
 struct _SDL_Haptic;
+struct SDL_Cursor;
 
 struct GamePad
 {
@@ -62,11 +63,25 @@ public:
 	void UpdateGamepadsInput();
 	const char* GetControllerName(int id) const;
 
+
+	
+
+	int GetCursorState() const;
+	int GetMouseX() const;
+	int GetMouseY() const;
+	bool CheckIfClicked() const;
+
 public:
 	// An array to fill in the state of all the keyboard keys
 	Key_State keys[MAX_KEYS] = { KEY_IDLE };
 
 	GamePad pads[MAX_PADS];
+
+	SDL_Cursor* cursor;
+	int mouseX;
+	int mouseY;
+	bool clicked;
+
 };
 
 #endif // __ModuleInput_H__
