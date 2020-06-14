@@ -15,7 +15,7 @@ https://github.com/paulahitz8/DonkeyKong
 
 ## Team Delete Teemo
 ![Team Photo](https://github.com/paulahitz8/DonkeyKong/blob/master/Wiki/Images%20used/TeamPhoto.jpg)
-
+![Team Photo](https://raw.githubusercontent.com/paulahitz8/DonkeyKong/master/Wiki/Images%20used/TeamPhoto.jpg)
 
 
 ## Description
