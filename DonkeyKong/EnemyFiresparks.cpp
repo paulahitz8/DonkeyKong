@@ -7,11 +7,11 @@
 
 Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 {
-	leftAnim.PushBack({ 33, 47, 13, 15 });
+	leftAnim.PushBack({ 33, 47, 15, 16 });
 	leftAnim.PushBack({ 56, 46, 15, 16 });
 	leftAnim.speed = 0.2f;
 
-	rightAnim.PushBack({ 80, 47, 13, 15 });
+	rightAnim.PushBack({ 80, 46, 15, 16 });
 	rightAnim.PushBack({ 103, 46, 15, 16 });
 	rightAnim.speed = 0.2f;
 
@@ -22,59 +22,68 @@ Enemy_Firesparks::Enemy_Firesparks(int x, int y) : Enemies(x, y)
 
 void Enemy_Firesparks::Update()
 {
-
-	if (position.y >= 105 && position.y < 112)
+	if (App->enemies->spawnQueue->y == 105)
 	{
-		position.y++;
-	}
-	position.x -= speed;
-	if (position.x < 24) {
-		currentAnimfiresparks = &rightAnim;
-		speed = -speed;
-	}
-	if (position.x > 220) {
-		currentAnimfiresparks = &leftAnim;
-		speed = -speed;
-	}
-
-	/*if (App->enemies->spawnQueue->y == 105)
-	{*/
-
-	/*}
-	if (App->enemies->spawnQueue->type == ENEMY_TYPE::FIRESPARKS && App->enemies->spawnQueue->y == 120)
-	{
-		if (position.x > 80)
+		if (position.y >= 105 && position.y < 112)
 		{
-			position.x--;
+			position.y++;
 		}
-	}*/
-
-	/*if (position.y == 196)
-	{
+		position.x -= speed;
 		if (position.x < 24) {
-			currentAnim = &rightAnim;
+			currentAnimfiresparks = &rightAnim;
+			speed = -speed;
 		}
 		if (position.x > 220) {
-			currentAnim = &leftAnim;
+			currentAnimfiresparks = &leftAnim;
+			speed = -speed;
 		}
 	}
-	if (position.y == 156)
+
+	if (position.x == 95 && position.y == 120)
 	{
-		if (position.x < 32) {
-			currentAnim = &rightAnim;
-		}
-		if (position.x > 212) {
-			currentAnim = &leftAnim;
-		}
+		up = false;
+		down = false;
+		right = false;
+		left = true;
 	}
-	if (position.y == 116)
+	if (position.x == 77 && position.y == 120)
 	{
-		if (position.x < 40) {
-			currentAnim = &rightAnim;
-		}
-		if (position.x > 206) {
-			currentAnim = &leftAnim;
-		}
-	}*/
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 77 && position.y == 193)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+	}
+	if (position.x == 95 && position.y == 193)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+
+	if (up == true)
+	{
+		position.y -= speed;
+	}
+	if (down == true)
+	{
+		position.y += speed;
+	}
+	if (right == true)
+	{
+		position.x += speed;
+	}
+	if (left == true)
+	{
+		position.x -= speed;
+	}
+
 	Enemies::Update();
 }

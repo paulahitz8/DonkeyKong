@@ -16,6 +16,11 @@ public:
 
 private:
 
+	bool up = false;
+	bool down = false;
+	bool right = false;
+	bool left = false;
+
 	Collider* colliderFS = nullptr;
 
 	Animation leftAnim;
