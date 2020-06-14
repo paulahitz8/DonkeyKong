@@ -57,6 +57,7 @@ private:
 
 
 	int objectFx = 0;
+	int hammerFx = 0;
 	
 
 	SDL_Rect rectnegro;
