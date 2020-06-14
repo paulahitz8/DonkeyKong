@@ -58,9 +58,8 @@ Functionalities
 
 Bugs found:
 	1. Enemy crashing error. Still crashes even if we tried to fix it with the teacher. To fix it just restart .exe
-	2. Level 3 is not winnable without cheats, even though the win condition is there. Problems with groundOn
-	3. 100 and 800 don't want to leave. 
-
+	2. Level 3 is not winnable without cheats, even though the win condition is there. Problems with groundOn.
+	3. Sometimes enemies don't want to have colliders.
 
 
 
