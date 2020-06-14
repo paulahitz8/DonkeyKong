@@ -68,6 +68,70 @@ void Enemy_Firesparks::Update()
 		left = false;
 	}
 
+	if (position.x == 215 && position.y == 128)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+	}
+	if (position.x == 198 && position.y == 128)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 198 && position.y == 160)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+	}
+	if (position.x == 197 && position.y == 160)
+	{
+		up = true;
+		down = false;
+		right = false;
+		left = false;
+	}
+	if (position.x == 197 && position.y == 127)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+	}
+	if (position.x == 221 && position.y == 127)
+	{
+		up = true;
+		down = false;
+		right = false; 
+		left = false;
+	}
+	if (position.x == 221 && position.y == 89)
+	{
+		up = false;
+		down = false;
+		right = true;
+		left = false;
+	}
+	if (position.x == 222 && position.y == 89)
+	{
+		up = false;
+		down = true;
+		right = false;
+		left = false;
+	}
+	if (position.x == 222 && position.y == 128)
+	{
+		up = false;
+		down = false;
+		right = false;
+		left = true;
+	}
+
 	if (up == true)
 	{
 		position.y -= speed;
