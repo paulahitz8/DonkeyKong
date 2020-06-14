@@ -17,8 +17,8 @@ Donkey Kong is an arcade platform videogame created by Nintendo in 1981. It is a
 
 
 ## Gameplay Video
-<iframe width="[1280]" height="[720]" src="[https://www.youtube.com/watch?v=Pp2aMs38ERY]"> </iframe>
-[Click here](https://www.youtube.com/watch?v=Pp2aMs38ERY) if you can't watch the video.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UBHJhla8TO4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[Click here](https://www.youtube.com/watch?v=UBHJhla8TO4&t=497s) if you can't watch the video.
 
 
 ## How to play
