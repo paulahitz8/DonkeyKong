@@ -39,13 +39,13 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	jumpLeftAnim.PushBack({ 71, 263, 50, 26 });
 	jumpLeftAnim.PushBack({ 71, 305,  50, 26 });
 	jumpLeftAnim.PushBack({ 71, 346,  50, 26 });
-	rightAnimNoHam.speed = 0.2f;
+	jumpLeftAnim.speed = 0.1f;
 
 	//jump right
 	jumpRightAnim.PushBack({ 71, 388, 50, 26 });
 	jumpRightAnim.PushBack({ 71, 430, 50, 26 });
 	jumpRightAnim.PushBack({ 71, 470, 50, 26 });
-	rightAnimNoHam.speed = 0.2f;
+	jumpRightAnim.speed = 0.1f;
 	
 
 	//HAMMER ANIMATIONS
@@ -158,7 +158,6 @@ bool ModulePlayer::Start()
 Update_Status ModulePlayer::Update()
 {
 
-
 	if (godmode == false) {
 		if (activelevel == 2) {
 			if (position.y == 31) {
@@ -239,24 +238,38 @@ Update_Status ModulePlayer::Update()
 			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 			{
 				position.x -= speedx;
-				currentAnimation = &leftAnim;
+				if (isJumping != true)
+				{
+					currentAnimation = &leftAnim;
+				}
 			}
 
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 			{
 				position.x += speedx;
-				currentAnimation = &rightAnim;
+				if (isJumping != true)
+				{
+					currentAnimation = &rightAnim;
+				}
 
 			}
 
 			// If last movement was left, set the current animation back to left idle
 			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
 			{
-				currentAnimation = &leftidleAnim;
+				if (isJumping != true)
+				{
+					currentAnimation = &leftidleAnim;
+				}
 			}
 			// If last movement was right, set the current animation back to left idle
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
-				currentAnimation = &rightidleAnim;
+			{
+				if (isJumping != true)
+				{
+					currentAnimation = &rightidleAnim;
+				}
+			}
 
 			if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 			{
@@ -284,24 +297,38 @@ Update_Status ModulePlayer::Update()
 			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 			{
 				position.x -= speedx;
-				currentAnimation = &leftAnimNoHam;
+				if (isJumping != true)
+				{
+					currentAnimation = &leftAnimNoHam;
+				}
 			}
 
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 			{
 				position.x += speedx;
-				currentAnimation = &rightAnimNoHam;
+				if (isJumping != true)
+				{
+					currentAnimation = &rightAnimNoHam;
+				}
 
 			}
 
 			// If last movement was left, set the current animation back to left idle
 			if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP)
 			{
-				currentAnimation = &leftidleAnimNoHam;
+				if (isJumping != true)
+				{
+					currentAnimation = &leftidleAnimNoHam;
+				}
 			}
 			// If last movement was right, set the current animation back to left idle
 			if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP)
-				currentAnimation = &rightidleAnimNoHam;
+			{
+				if (isJumping != true)
+				{
+					currentAnimation = &rightidleAnimNoHam;
+				}
+			}
 
 			if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 			{
@@ -430,6 +457,15 @@ Update_Status ModulePlayer::Update()
 
 					jumpingspeedy -= gravity;
 					position.y -= jumpingspeedy;
+					
+					if (currentAnimation == &leftidleAnimNoHam || currentAnimation == &leftAnimNoHam || currentAnimation == &leftidleAnim || currentAnimation == &leftAnim)
+					{
+						currentAnimation = &jumpLeftAnim;
+					}
+					if (currentAnimation == &rightidleAnimNoHam || currentAnimation == &rightAnimNoHam || currentAnimation == &rightidleAnim || currentAnimation == &rightAnim)
+					{
+						currentAnimation = &jumpRightAnim;
+					}
 
 					if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/) {
 						position.x -= jumpingspeedx;
@@ -438,11 +474,19 @@ Update_Status ModulePlayer::Update()
 
 					if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/) {
 						position.x += jumpingspeedx;
-						currentAnim = &jumpRightAnim;
+						currentAnimation = &jumpRightAnim;
 					}
 
 					if (position.y == startingy) {
 						isJumping = false;
+						if (currentAnimation == &jumpLeftAnim)
+						{
+							currentAnimation = &leftidleAnimNoHam;
+						}
+						if (currentAnimation == &jumpRightAnim)
+						{
+							currentAnimation = &rightidleAnimNoHam;
+						}
 					}
 
 				}
@@ -451,7 +495,10 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/)
 				{
 					position.x -= speedx;
-					currentAnimation = &leftAnim;
+					if (isJumping != true)
+					{
+						currentAnimation = &leftAnim;
+					}
 					if (position.x % 15 == 0)
 					{
 						App->audio->PlayFx(walkingFx);
@@ -461,7 +508,10 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/)
 				{
 					position.x += speedx;
-					currentAnimation = &rightAnim;
+					if (isJumping != true)
+					{
+						currentAnimation = &rightAnim;
+					}
 					if (position.x % 15 == 0)
 					{
 						App->audio->PlayFx(walkingFx);
@@ -471,11 +521,19 @@ Update_Status ModulePlayer::Update()
 				// If last movement was left, set the current animation back to left idle
 				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP /*|| pad.l_x < 0.0f*/)
 				{
-					currentAnimation = &leftidleAnim;
+					if (isJumping != true)
+					{
+						currentAnimation = &leftidleAnim;
+					}
 				}
 				// If last movement was right, set the current animation back to left idle
 				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP /*|| pad.r_x < 0.0f*/)
-					currentAnimation = &rightidleAnim;
+				{
+					if (isJumping != true)
+					{
+						currentAnimation = &rightidleAnim;
+					}
+				}
 			}
 
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -499,6 +557,15 @@ Update_Status ModulePlayer::Update()
 					jumpingspeedy -= gravity;
 					position.y -= jumpingspeedy;
 
+					if (currentAnimation == &leftidleAnimNoHam || currentAnimation == &leftAnimNoHam || currentAnimation == &leftidleAnim || currentAnimation == &leftAnim)
+					{
+						currentAnimation = &jumpLeftAnim;
+					}
+					if (currentAnimation == &rightidleAnimNoHam || currentAnimation == &rightAnimNoHam || currentAnimation == &rightidleAnim || currentAnimation == &rightAnim)
+					{
+						currentAnimation = &jumpRightAnim;
+					}
+
 					if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/) {
 						position.x -= jumpingspeedx;
 						currentAnimation = &jumpLeftAnim;
@@ -511,6 +578,14 @@ Update_Status ModulePlayer::Update()
 
 					if (position.y == startingy) {
 						isJumping = false;
+						if (currentAnimation == &jumpLeftAnim)
+						{
+							currentAnimation = &leftidleAnimNoHam;
+						}
+						if (currentAnimation == &jumpRightAnim)
+						{
+							currentAnimation = &rightidleAnimNoHam;
+						}
 					}
 
 				}
@@ -520,7 +595,10 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT /*|| pad.l_x < 0.0f*/)
 				{
 					position.x -= speedx;
-					currentAnimation = &leftAnimNoHam;
+					if (isJumping != true)
+					{
+						currentAnimation = &leftAnimNoHam;
+					}
 					if (position.x % 15 == 0)
 					{
 						App->audio->PlayFx(walkingFx);
@@ -530,7 +608,10 @@ Update_Status ModulePlayer::Update()
 				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT /*|| pad.r_x < 0.0f*/)
 				{
 					position.x += speedx;
-					currentAnimation = &rightAnimNoHam;
+					if (isJumping != true)
+					{
+						currentAnimation = &rightAnimNoHam;
+					}
 					if (position.x % 15 == 0)
 					{
 						App->audio->PlayFx(walkingFx);
@@ -540,11 +621,19 @@ Update_Status ModulePlayer::Update()
 				// If last movement was left, set the current animation back to left idle
 				if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_UP /*|| pad.l_x < 0.0f*/)
 				{
-					currentAnimation = &leftidleAnimNoHam;
+					if (isJumping != true)
+					{
+						currentAnimation = &leftidleAnimNoHam;
+					}
 				}
 				// If last movement was right, set the current animation back to left idle
 				if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_UP /*|| pad.r_x < 0.0f*/)
-					currentAnimation = &rightidleAnimNoHam;
+				{
+					if (isJumping != true)
+					{
+						currentAnimation = &rightidleAnimNoHam;
+					}
+				}
 
 
 				if (ladderOn == true) {
