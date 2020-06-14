@@ -45,8 +45,7 @@ private:
 
 
 	bool godmode = false;
-	bool isJumping = false;
-	bool isFalling = false;
+	
 	bool firstFloor = false;
 	bool secondFloor = false;
 
@@ -55,6 +54,8 @@ private:
 
 public:
 
+	bool isJumping = false;
+	bool isFalling = false;
 
 	// The player's collider
 	Collider* collider = nullptr; 
