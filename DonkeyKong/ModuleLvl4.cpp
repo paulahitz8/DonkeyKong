@@ -192,6 +192,7 @@ bool ModuleLvl4::Start()
 	App->collision->AddCollider({ 179, 73, 2, 15 }, Collider::Type::CARROT);
 
 	// Enable Player
+	App->collision->Enable();
 	App->music->Enable();
 	App->score->Enable();
 	App->object->Enable();
@@ -361,7 +362,6 @@ Update_Status ModuleLvl4::PostUpdate()
 
 bool ModuleLvl4::CleanUp()
 {
-	App->collision->CleanUp();
 
 	App->music->Disable();
 	App->player->Disable();
@@ -371,5 +371,6 @@ bool ModuleLvl4::CleanUp()
 	App->hammer->Disable();
 	App->lady->Disable();
 	App->score->Disable();
+	App->collision->Disable();
 	return true;
 }

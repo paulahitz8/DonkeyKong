@@ -749,7 +749,7 @@ Update_Status ModulePlayer::Update()
 	currentAnimation->Update();
 
 
-	
+	//groundOn = false;
 
 	return Update_Status::UPDATE_CONTINUE;
 	
@@ -757,6 +757,8 @@ Update_Status ModulePlayer::Update()
 
 Update_Status ModulePlayer::PostUpdate()
 {
+	
+
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 
 	App->render->Blit(playertexture, position.x, position.y, &rect);

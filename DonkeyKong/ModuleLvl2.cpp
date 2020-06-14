@@ -215,6 +215,7 @@ bool ModuleLvl2::Start()
 
 
 	// Enable Player
+	App->collision->Enable();
 	App->music->Enable();
 	App->object->Enable();
 	App->score->Enable();
@@ -368,7 +369,7 @@ Update_Status ModuleLvl2::PostUpdate()
 
 bool ModuleLvl2::CleanUp()
 {
-	App->collision->CleanUp();
+
 
 	App->music->Disable();
 	App->player->Disable();
@@ -378,5 +379,6 @@ bool ModuleLvl2::CleanUp()
 	App->enemies->Disable();
 	App->lady->Disable();
 	App->score->Disable();
+	App->collision->Disable();
 	return true;
 }

@@ -59,7 +59,7 @@ bool ModuleEnemies::Start()
 Update_Status ModuleEnemies::Update()
 {
 
-	if (App->input->GetCursorState() == 1 && App->input->CheckIfClicked() && onceSpawn == true) {
+	if (App->input->GetCursorState() == 1 && App->input->CheckIfClicked() == true && onceSpawn == true) {
 		onceSpawn = false;
 		if (App->player->activelevel == 2) {
 			AddEnemy(ENEMY_TYPE::FIRESPARKS, App->input->GetMouseX(), App->input->GetMouseY());
