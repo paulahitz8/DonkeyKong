@@ -31,6 +31,8 @@ public:
 
 	bool hammerOn = false;
 
+	int k = 0;
+
 private:
 	Collider* colliderDelete = nullptr;
 	iPoint cienpos;

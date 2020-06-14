@@ -293,7 +293,8 @@ Update_Status ModuleLvl4::Update()
 		App->enemies->AddEnemy(ENEMY_TYPE::FIREBALLS, 201, 116);
 	}
 	i++;
-
+	
+	z++;
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -349,12 +350,14 @@ Update_Status ModuleLvl4::PostUpdate()
 	}
 	App->render->Blit(backTexture, 0, 0, &back, 0);
 
-	
-	if (cienpos.x != 0 && cienpos.y != 0) {
+	if (z > 1 && z < 30) {
+		if (cienpos.x != 0 && cienpos.y != 0) {
 
-		App->render->Blit(cientexture, cienpos.x, cienpos.y, &cienrect);
-		
+			App->render->Blit(cientexture, cienpos.x, cienpos.y, &cienrect);
+
+		}
 	}
+	
 	
 
 	return Update_Status::UPDATE_CONTINUE;

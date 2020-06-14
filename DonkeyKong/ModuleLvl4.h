@@ -41,7 +41,7 @@ private:
 	
 
 public:
-
+	int z = 0;
 	ModuleLvl4(bool startEnabled);
 	~ModuleLvl4();
 	bool Start() override;

@@ -101,14 +101,12 @@ Update_Status ModuleObject::Update()
 
 	if (App->player->activelevel == 2) {
 		if (objetetodeletey == 178 && objetetodeletex == 121) {
-			ochopos.y = 180;
-			ochopos.x = 123;
+		
 			hammer1exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 138 && objetetodeletex == 32) {
-			ochopos.y = 140;
-			ochopos.x = 34;
+		
 			hammer2exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
@@ -160,14 +158,12 @@ Update_Status ModuleObject::Update()
 	// LEVEL 4
 	if (App->player->activelevel == 4) {
 		if (objetetodeletey == 138 && objetetodeletex == 24) {
-			ochopos.y = 138;
-			ochopos.x = 22;
+	
 			hammer1exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
 		else if (objetetodeletey == 98 && objetetodeletex == 121) {
-			ochopos.y = 98;
-			ochopos.x = 119;
+
 			hammer2exists = false;
 			colliderDelete->pendingToDelete = true;
 		}
@@ -190,7 +186,7 @@ Update_Status ModuleObject::Update()
 			colliderDelete->pendingToDelete = true;
 		}
 	}
-
+	k++;
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -216,12 +212,14 @@ Update_Status ModuleObject::PostUpdate()
 			App->render->Blit(hat, 77, 159, &hatrect);
 		}
 
+		if (k > 1 && k < 30) {
+			if (ochopos.x != 0 && ochopos.y != 0) {
 
-		if (ochopos.x != 0 && ochopos.y != 0) {
+				App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
 
-			App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
-
+			}
 		}
+		
 
 	}
 
@@ -238,11 +236,14 @@ Update_Status ModuleObject::PostUpdate()
 
 			App->render->Blit(hat, 85, 199, &hatrect);
 		}
-		if (ochopos.x != 0 && ochopos.y != 0) {
+		if (k > 1 && k < 30) {
+			if (ochopos.x != 0 && ochopos.y != 0) {
 
-			App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
+				App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
 
+			}
 		}
+	
 
 	}
 
@@ -265,12 +266,14 @@ Update_Status ModuleObject::PostUpdate()
 		}if (hatexists == true) {
 			App->render->Blit(hat, 213, 199, &hatrect);
 		}
+		if (k > 1 && k < 30) {
+			if (ochopos.x != 0 && ochopos.y != 0) {
 
-		if (ochopos.x != 0 && ochopos.y != 0) {
+				App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
 
-			App->render->Blit(ochotexture, ochopos.x, ochopos.y, &ochorect);
-
+			}
 		}
+		
 	}
 
 
@@ -297,7 +300,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 		objetetodeletex = c1->GetRect().x;
 		objetetodeletey = c1->GetRect().y;
 
-		App->player->n = App->player->n + 8;
+	
 
 		hammerOn = true;
 		App->hammer->Enable();
@@ -314,10 +317,10 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 		objetetodeletex = c1->GetRect().x;
 		objetetodeletey = c1->GetRect().y;
 
-		App->player->n = App->player->n + 8;
+	
 		hammerOn = true;
 		App->hammer->Enable();
-
+	
 
 		App->audio->PlayFx(objectFx);
 		
@@ -332,7 +335,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 		objetetodeletey = c1->GetRect().y;
 
 		App->player->n = App->player->n + 8;
-
+		k = 0;
 
 
 		App->audio->PlayFx(objectFx);
@@ -345,7 +348,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 		objetetodeletey = c1->GetRect().y;
 
 		App->player->n = App->player->n + 8;
-
+		k = 0;
 
 
 		App->audio->PlayFx(objectFx);
@@ -358,7 +361,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 		objetetodeletey = c1->GetRect().y;
 
 		App->player->n = App->player->n + 8;
-
+		k = 0;
 
 
 		App->audio->PlayFx(objectFx);

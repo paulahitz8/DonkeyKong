@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleHammer.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleLvl4.h"
 #include "ModuleCollisions.h"
 #include "ModuleObject.h"
 
@@ -834,7 +835,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		// CARROT
 		if (c2->type == Collider::Type::CARROT)
 		{
-
+			App->lvl4->z = 0;
 			carrotcount--;
 			App->audio->PlayFx(bonusFx);
 			n++;
