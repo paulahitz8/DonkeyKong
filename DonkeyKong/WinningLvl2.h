@@ -30,6 +30,7 @@ public:
 	SDL_Texture* heartTexture = nullptr;
 	SDL_Texture* ladyTexture = nullptr;
 	SDL_Texture* marioTexture = nullptr;
+	SDL_Texture* barrilTexture = nullptr;
 
 	SDL_Rect tile;
 	SDL_Texture* liveTexture = nullptr;
@@ -39,6 +40,11 @@ public:
 	Animation* currentheartAnim = nullptr;
 	Animation* currentladyAnim = nullptr;
 	Animation* currentmarioAnim = nullptr;
+	Animation* currentbarrilAnim = nullptr;
+	Animation* currentcosaAnim = nullptr;
+	Animation* currentcosa2Anim = nullptr;
+
+
 
 	Animation donkeyidleAnim;
 	Animation donkeyupAnim;
@@ -50,12 +56,16 @@ public:
 	Animation rightidleladyAnim;
 	Animation ladyvoidAnim;
 	Animation leftmarioAnim;
+	Animation barril1;
+	Animation barril2;
+	Animation cosa;
+	Animation cosa2;
+
 	pos1 donkeypos;
 
 
 private:
 	int i = 1;
-	/*int a = 0;*/
 
 
 };

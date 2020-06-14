@@ -167,7 +167,7 @@ Update_Status ModulePlayer::Update()
 		}
 		if (activelevel == 3) {
 			if (position.y == 31) {
-				/*App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->winninglvl3, 0);*/
+				App->fade->FadeToBlack((Module*)App->lvl3, (Module*)App->winninglvl3, 0);
 			}
 		}
 	}

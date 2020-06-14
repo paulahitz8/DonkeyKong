@@ -73,6 +73,26 @@ WinningLvl2::WinningLvl2(bool startEnabled) : Module(startEnabled)
 	//Mario anims
 	leftmarioAnim.PushBack({ 0, 264, 50, 26 });
 
+	//barril
+	barril1.PushBack({ 120, 113, 16, 32 });
+
+
+	barril2.PushBack({ 48, 113, 16, 32 });
+	barril2.PushBack({ 72, 113, 16, 32 });
+	barril2.PushBack({ 96, 113, 16, 32 });
+	barril2.PushBack({ 24, 113, 16, 32 });
+	barril2.speed = 0.1f;
+
+	//cosas fondo
+	cosa.PushBack({ 104,197,11,10 });
+	cosa.PushBack({ 128,197,11,10 });
+	cosa.PushBack({ 152,197,11,10 });
+	cosa.speed = 0.025f;
+
+	cosa2.PushBack({ 104,214,11,10 });
+	cosa2.PushBack({ 128,214,11,10 });
+	cosa2.PushBack({ 152,214,11,10 });
+	cosa2.speed = 0.025f;
 }
 
 WinningLvl2::~WinningLvl2()
@@ -88,19 +108,15 @@ bool WinningLvl2::Start()
 	currentheartAnim = &heartAnim;
 	currentladyAnim = &rightidleladyAnim;
 	currentmarioAnim = &leftmarioAnim;
+	currentbarrilAnim = &barril1;
+	currentcosaAnim = &cosa;
+	currentcosa2Anim = &cosa2;
 	bool ret = true;
 
 	back = { 0, 0, 256, 256 };
 
 	donkeypos.x = 99;
 	donkeypos.y = 56;
-	//back.w = 256;
-	//back.h = 256;
-
-	//pauline = { 8, 189, 16, 22 };
-	//mario = { 34, 195, 12, 16 };
-	//heart = { 57, 189, 15, 13 };
-	/*donkey = { 22, 46, 40, 32 };*/
 
 	tile.w = 8;
 	tile.h = 8;
@@ -112,6 +128,7 @@ bool WinningLvl2::Start()
 	heartTexture = App->textures->Load("Assets/objects/RandomSprites.png");
 	ladyTexture = App->textures->Load("Assets/Lady/PaulineSprites.png");
 	marioTexture = App->textures->Load("Assets/Mario/MarioSprites.png");
+	barrilTexture = App->textures->Load("Assets/Enemies/EnemiesSprites.png");
 
 	App->audio->PlayMusic("Assets/Music/08 Stage Clear 1.ogg", 1.0f);
 
@@ -131,6 +148,10 @@ Update_Status WinningLvl2::Update()
 
 	for (int j = 0; j < App->player->livecount; j++) {
 		life1[3][2 + j] = 1;
+	}
+
+	if (i >= 10) {
+		currentbarrilAnim = &barril2;
 	}
 
 	if (donkeypos.x > 75)
@@ -159,15 +180,17 @@ Update_Status WinningLvl2::Update()
 		}
 	}
 
-	if (donkeypos.y == 0) {
+	if (i % 240 == 0) {
 		App->fade->FadeToBlack(this, (Module*)App->lvl3, 0);
-		/*App->fade->FadeToBlack((Module*)App->lvl2, (Module*)App->winninglvl2, 0)*/
 	}
 
 	currentAnimation->Update();
 	currentheartAnim->Update();
 	currentladyAnim->Update();
 	currentmarioAnim->Update();
+	currentbarrilAnim->Update();
+	currentcosa2Anim->Update();
+	currentcosaAnim->Update();
 	i++;
 
 
@@ -197,56 +220,22 @@ Update_Status WinningLvl2::PostUpdate()
 	SDL_Rect rectheart = currentheartAnim->GetCurrentFrame();
 	SDL_Rect rectlady = currentladyAnim->GetCurrentFrame();
 	SDL_Rect rectmario = currentmarioAnim->GetCurrentFrame();
+	SDL_Rect barrilrect = currentbarrilAnim->GetCurrentFrame();
+	SDL_Rect cosarect = currentcosaAnim->GetCurrentFrame();
+	SDL_Rect cosa2rect = currentcosa2Anim->GetCurrentFrame();
 
-	/*if (a == 1) {*/
-
-
-		App->render->Blit(backgroundTexture, 0, 0, &back);
-		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rectdonkey);
-		App->render->Blit(heartTexture, 120, 28, &rectheart);
-		App->render->Blit(ladyTexture, 104, 34, &rectlady);
-		App->render->Blit(marioTexture, 185, 63, &rectmario);
-		/*App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);*/
-	/*}*/
-	//else if (a == 2) {
-	//	App->render->Blit(backgroundTexture, 0, 0, &back);
-	//	App->render->Blit(spritesTexture, 120, 26, &pauline);
-	//	App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
-	//	App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);
-	//}
-
-	//else if (a == 3) {
-	//	App->render->Blit(backgroundTexture, 0, 0, &back);
-	//	App->render->Blit(spritesTexture, 120, 26, &pauline);
-	//	App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
-	//	App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);
-
-	//}
-
-	/*else if (a == 4) {
-		App->render->Blit(happybackgroundTexture, 0, 0, &back);
-		App->render->Blit(spritesTexture, 120, 66, &pauline);
-		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
-		App->render->Blit(spritesTexture, App->player->position.x + 17, App->player->position.y + 10, &mario);
-
-	}
-
-	else if (a == 5) {
-		App->render->Blit(happybackgroundTexture, 0, 0, &back);
-		App->render->Blit(spritesTexture, 120, 66, &pauline);
-		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
-		App->render->Blit(spritesTexture, 154, 72, &mario);
-
-	}
-
-	else if (a == 6) {
-		App->render->Blit(happybackgroundTexture, 0, 0, &back);
-		App->render->Blit(spritesTexture, 120, 66, &pauline);
-		App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rect);
-		App->render->Blit(spritesTexture, 154, 72, &mario);
-		App->render->Blit(spritesTexture, 138, 59, &heart);
-
-	}*/
+	App->render->Blit(backgroundTexture, 0, 0, &back);
+	App->render->Blit(spritesTexture, donkeypos.x, donkeypos.y, &rectdonkey);
+	App->render->Blit(heartTexture, 120, 28, &rectheart);
+	App->render->Blit(ladyTexture, 104, 34, &rectlady);
+	App->render->Blit(marioTexture, 185, 62, &rectmario);
+	App->render->Blit(barrilTexture, 120, 112, &barrilrect);
+	App->render->Blit(barrilTexture, 13, 87, &cosarect);
+	App->render->Blit(barrilTexture, 133, 127, &cosarect);
+	App->render->Blit(barrilTexture, 13, 207, &cosarect);
+	App->render->Blit(barrilTexture, 232, 87, &cosa2rect);
+	App->render->Blit(barrilTexture, 112, 127, &cosa2rect);
+	App->render->Blit(barrilTexture, 232, 207, &cosa2rect);
 
 
 	return Update_Status::UPDATE_CONTINUE;
