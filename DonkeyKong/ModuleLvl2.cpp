@@ -157,11 +157,11 @@ bool ModuleLvl2::Start()
 	App->collision->AddCollider({ 211, 126 , 2, 44 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 147, 54 , 2, 36 }, Collider::Type::LADDER);
 	//special short boi
-	App->collision->AddCollider({ 35, 109 , 2, 21 }, Collider::Type::LADDER);
+	leftLadcollidershort = App->collision->AddCollider({ 35, 109 , 2, 21 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 219, 109 , 2, 21 }, Collider::Type::LADDER);
 
 	//special long boi
-	App->collision->AddCollider({ 35, 86 , 2, 44 }, Collider::Type::LADDER);
+	leftLadcolliderlong	= App->collision->AddCollider({ 35, 86 , 2, 44 }, Collider::Type::LADDER);
 	App->collision->AddCollider({ 219, 86 , 2, 44 }, Collider::Type::LADDER);
 	
 
@@ -229,7 +229,7 @@ Update_Status ModuleLvl2::Update()
 		App->enemies->AddEnemy(ENEMY_TYPE::FIRESPARKS, 109, 105);
 	}
 
-	if (i % 150 == 0 || i == 1)
+	if (i % 200 == 0 )
 	{
 		change = true;
 	}
@@ -240,17 +240,23 @@ Update_Status ModuleLvl2::Update()
 
 	if (leftLadposition.y > 140 ) {
 		ladVel = -1;
+		leftLadcollidershort->SetPos(35, 109);
+		leftLadcolliderlong->SetPos(0, 0);
 	}
 
 	if (leftLadposition.y < 95) {
 		ladVel = 0;
-		
+		leftLadcollidershort->SetPos(0, 0);
+		leftLadcolliderlong->SetPos(35, 86);
+
 		if (j % 400 == 1) {
 			ladVel = 1;
 			j = 0;
+			
 		}
 		
 	}
+	
 
 	j++;
 

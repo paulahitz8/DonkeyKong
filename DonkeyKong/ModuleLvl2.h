@@ -50,7 +50,8 @@ private:
 	iPoint leftLadposition;
 
 
-	Collider* leftLadcollider = nullptr;
+	Collider* leftLadcollidershort = nullptr;
+	Collider* leftLadcolliderlong = nullptr;
 
 
 public:
