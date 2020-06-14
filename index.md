@@ -8,10 +8,10 @@
 
 ## Team Members
 
-* Maria Calle: colliders master
-* Paula Hitz: stages creator and animations
-* Irene Hernández: enemies and animations
-* Adrià Belmonte: gamepad and fullscreen
+> * Maria Calle: colliders master
+> * Paula Hitz: stages creator and animations
+> * Irene Hernández: enemies and animations
+> * Adrià Belmonte: gamepad and fullscreen
 
 ## Team Delete Teemo
 ![Team Photo](https://raw.githubusercontent.com/paulahitz8/DonkeyKong/master/Wiki/Images%20used/TeamPhoto.jpg)
