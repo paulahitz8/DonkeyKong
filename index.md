@@ -4,16 +4,17 @@
 
 https://github.com/paulahitz8/DonkeyKong
 
-# Team Members
+## Download the latest release!
 
-* Maria Calle 
-* Paula Hitz
-* Irene Hernández
-* Adrià Belmonte
+## Team Members
+
+* Maria Calle (mav006)
+* Paula Hitz (paulahitz8)
+* Irene Hernández (ihedud)
+* Adrià Belmonte (croaco)
 
 ## Team Delete Teemo
-![Team Photo](https://github.com/paulahitz8/DonkeyKong/blob/master/Wiki/Images%20used/TeamPhotoFinal2S.png)
-
+![Team Photo](https://raw.githubusercontent.com/paulahitz8/DonkeyKong/master/Wiki/Images%20used/TeamPhoto.jpg)
 
 
 ## Description
