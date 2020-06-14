@@ -158,11 +158,11 @@ bool ModuleLvl2::Start()
 	App->collision->AddCollider({ 147, 54 , 2, 36 }, Collider::Type::LADDER);
 	//special short boi
 	leftLadcollidershort = App->collision->AddCollider({ 35, 109 , 2, 21 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 219, 109 , 2, 21 }, Collider::Type::LADDER);
+	rightLadcollidershort = App->collision->AddCollider({ 219, 109 , 2, 21 }, Collider::Type::LADDER);
 
 	//special long boi
 	leftLadcolliderlong	= App->collision->AddCollider({ 35, 86 , 2, 44 }, Collider::Type::LADDER);
-	App->collision->AddCollider({ 219, 86 , 2, 44 }, Collider::Type::LADDER);
+	rightLadcolliderlong= App->collision->AddCollider({ 219, 86 , 2, 44 }, Collider::Type::LADDER);
 	
 
 	//Falling colliders
@@ -179,7 +179,11 @@ bool ModuleLvl2::Start()
 	ladTexture = App->textures->Load("Assets/Enemies/EnemiesSprites.png");
 	leftLad = {81, 194, 10, 16 };
 	leftLadposition.x = 31;
-	leftLadposition.y = 96;
+	leftLadposition.y = 96;	
+	
+	rightLad = {81, 194, 10, 16 };
+	rightLadposition.x = 216;
+	rightLadposition.y = 96;
 
 	// Enable Player
 	App->object->Enable();
@@ -237,17 +241,22 @@ Update_Status ModuleLvl2::Update()
 	
 	//MovingLadders - necesito una imagen del trozo de escalera, con su rectangulo
 	leftLadposition.y += ladVel;
+	rightLadposition.y += ladVel;
 
 	if (leftLadposition.y > 140 ) {
 		ladVel = -1;
 		leftLadcollidershort->SetPos(35, 109);
 		leftLadcolliderlong->SetPos(0, 0);
+		rightLadcollidershort->SetPos(219, 109);
+		rightLadcolliderlong->SetPos(0, 0);
 	}
 
 	if (leftLadposition.y < 95) {
 		ladVel = 0;
 		leftLadcollidershort->SetPos(0, 0);
 		leftLadcolliderlong->SetPos(35, 86);
+		rightLadcollidershort->SetPos(0, 0);
+		rightLadcolliderlong->SetPos(219, 86);
 
 		if (j % 400 == 1) {
 			ladVel = 1;
@@ -257,7 +266,6 @@ Update_Status ModuleLvl2::Update()
 		
 	}
 	
-
 	j++;
 
 
@@ -290,7 +298,9 @@ Update_Status ModuleLvl2::PostUpdate()
 
 	}
 	App->render->Blit(backTexture, 0, 0, &back, 0);
+
 	App->render->Blit(ladTexture, leftLadposition.x, leftLadposition.y, &leftLad);
+	App->render->Blit(ladTexture, rightLadposition.x, rightLadposition.y, &rightLad);
 
 	return Update_Status::UPDATE_CONTINUE;
 }

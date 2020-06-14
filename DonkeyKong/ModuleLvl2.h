@@ -46,12 +46,16 @@ private:
 	float ladVel;
 	int count;
 	SDL_Rect leftLad;
+	SDL_Rect rightLad;
 	SDL_Texture* ladTexture = nullptr;
 	iPoint leftLadposition;
+	iPoint rightLadposition;
 
 
 	Collider* leftLadcollidershort = nullptr;
+	Collider* rightLadcollidershort = nullptr;
 	Collider* leftLadcolliderlong = nullptr;
+	Collider* rightLadcolliderlong = nullptr;
 
 
 public:
