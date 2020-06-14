@@ -28,6 +28,8 @@ class PierdeVida;
 class SiguienteNivel;
 class GameOver;
 class WinningScreen;
+class WinningLvl2;
+class WinningLvl3;
 
 class ModuleFadeToBlack;
 class ModuleCollisions;
@@ -79,6 +81,8 @@ public:
 	SiguienteNivel* siguientenivel = nullptr;
 	GameOver* gameover = nullptr;
 	WinningScreen* winning = nullptr;
+	WinningLvl2* winninglvl2 = nullptr;
+	WinningLvl3* winninglvl3 = nullptr;
 
 	
 	ModuleCollisions* collision = nullptr;

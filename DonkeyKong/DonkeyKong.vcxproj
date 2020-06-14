@@ -54,6 +54,8 @@
     <ClCompile Include="ModulePlayer.cpp" />
     <ClCompile Include="PierdeVida.cpp" />
     <ClCompile Include="SiguienteNivel.cpp" />
+    <ClCompile Include="WinningLvl2.cpp" />
+    <ClCompile Include="WinningLvl3.cpp" />
     <ClCompile Include="WinningScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +96,8 @@
     <ClInclude Include="ModulePlayer.h" />
     <ClInclude Include="PierdeVida.h" />
     <ClInclude Include="SiguienteNivel.h" />
+    <ClInclude Include="WinningLvl2.h" />
+    <ClInclude Include="WinningLvl3.h" />
     <ClInclude Include="WinningScreen.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
